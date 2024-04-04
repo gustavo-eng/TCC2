@@ -11,16 +11,9 @@ module.exports = {
         let token = bearToken.split(" ")
         if (token[0] == 'Bearer') {
             token = token[1];
-        }
-        jwt.verify(token, process.env.SECRET_JWT, (err, obj) => {
-            if (err) {
-                res.status(403).json({ msg: "Invalid token" });
 
-            } else {
-                req.user = obj.user;
-                next();
-            }
-        })
+        }
+        //jwt.verify(token, )
     },
     soma: (a = 0, b = 0) => { // teste
         return a + b;

@@ -18,7 +18,6 @@ module.exports = {
 
             } else {
                 req.user = obj.user;
-                next();
             }
         })
     },
