@@ -11,8 +11,6 @@ router.get('/', (req, res) => {
     res.send('<h1>Ola mundo !</h1>');
 });
 
-
-
 router.post('/', (req, res) => {
     // Nessa etapa sera feito a busca do banco de dados
     // Ja posso comecar as tabelas de autores com roles

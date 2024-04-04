@@ -11,8 +11,6 @@ router.get('/', (req, res) => {
     res.send('<h1>Ola mundo !</h1>');
 });
 
-
-
 router.post('/', (req, res) => {
     // Nessa etapa sera feito a busca do banco de dados
     // Ja posso comecar as tabelas de autores com roles
@@ -21,7 +19,7 @@ router.post('/', (req, res) => {
     //
 
     let { user, password } = req.body;
-    if (user != '' && password == user) {
+    if (user != '' && password != '') {
         let token = jwt.sign({ user: user, userPermission: 'student', userId: 1 }, '12345', { expiresIn: '24h' });
         res.json({ isLogged: true, token: token, msg: 'User successfully authenticated' });
 
