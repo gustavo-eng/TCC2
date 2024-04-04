@@ -8,7 +8,7 @@ var http = require('http');
 
 // Routes
 var routeLogin = require('./routes/login');
-var routeGym = require('./routes/gyms');
+var routeGym = require('./routes/teachers');
 
 
 

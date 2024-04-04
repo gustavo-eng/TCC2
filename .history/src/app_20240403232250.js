@@ -8,7 +8,7 @@ var http = require('http');
 
 // Routes
 var routeLogin = require('./routes/login');
-var routeGym = require('./routes/gyms');
+var routeGym = require('./routes/teachers');
 
 
 
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
 app.use('/login', routeLogin);
-app.use('/gym', routeGym);
+app.use('/gym',);
 
 
 

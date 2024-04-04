@@ -3,8 +3,6 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-//process.env.SECRET_JWT
-
 module.exports = {
     controllAccess: (req, res, next) => {
         let bearToken = req.headers['Authorization'] || ""
