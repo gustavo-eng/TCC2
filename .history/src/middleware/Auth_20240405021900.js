@@ -19,7 +19,7 @@ module.exports = {
 
         jwt.verify(token, process.env.SECRET_JWT, (err, obj) => {
             if (err) {
-                return res.status(403).json({ msg: "Invalid token" });
+                res.status(403).json({ msg: "Invalid token" });
 
             } else {
                 req.user = obj.user;

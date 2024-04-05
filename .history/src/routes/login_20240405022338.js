@@ -20,12 +20,12 @@ router.post('/', (req, res) => {
     // Nessa etapa sera feito a busca do banco de dados
     // Ja posso comecar as tabelas de autores com roles
     // previamente setadas
-    // todo  1. Adicionar role para o usuario
+    // todo  1. Colocar a secret do jwt em .env
     //
 
     let { user, password } = req.body;
     if (user != '' && password == user) {
-        let token = jwt.sign({ user: user, userPermission: 'sensei', userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
+        let token = jwt.sign({ user: user, userPermission: 'student', userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
         res.json({ isLogged: true, token: token, msg: 'User successfully authenticated' });
 
     } else {

@@ -10,7 +10,7 @@ require('dotenv').config();
 module.exports = {
 
     controllAccess: (req, res, next) => {
-        let bearToken = req.headers['authorization'] || ""
+        let bearToken = req.headers['Authorization'] || ""
         let token = bearToken.split(" ")
 
         if (token[0] == 'Bearer') {
@@ -19,7 +19,7 @@ module.exports = {
 
         jwt.verify(token, process.env.SECRET_JWT, (err, obj) => {
             if (err) {
-                return res.status(403).json({ msg: "Invalid token" });
+                res.status(403).json({ msg: "Invalid token" });
 
             } else {
                 req.user = obj.user;
@@ -28,6 +28,8 @@ module.exports = {
             }
         });
     },
-
+    soma: (a = 0, b = 0) => { // teste
+        return a + b;
+    },
 
 }

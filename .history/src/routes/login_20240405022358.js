@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 
     let { user, password } = req.body;
     if (user != '' && password == user) {
-        let token = jwt.sign({ user: user, userPermission: 'sensei', userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
+        let token = jwt.sign({ user: user, userPermission: 'student', userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
         res.json({ isLogged: true, token: token, msg: 'User successfully authenticated' });
 
     } else {

@@ -2,13 +2,15 @@ var express = require('express');
 var router = express.Router();
 require('dotenv').config();
 
+/*
+    Aqui sera aplicado middleware para que apenas as academias
+    possam visualizar as
+*/
 
-// Middlewares
 const Auth = require('../middleware/Auth');
-const permissao = require('../middleware/permission');
 
 
-router.get('/', Auth.controllAccess, permissao, (req, res) => {
+router.get('/', Auth.controllAccess, (req, res) => {
     res.send(`<h1>FFFRota professores - Permissao de usuario - ${req.userPermission}</h1>`);
 });
 
