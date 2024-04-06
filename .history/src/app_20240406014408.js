@@ -12,10 +12,8 @@ var http = require('http');
 //todo retirar e estudar melhor forma para isso
 // todo nao quero ficar executando toda hora esse comando
 (async () => {
-    console.log(`funcao imediatamente invocada`)
-    const database = await require('./config/db');
-    const event = require('./model/event');
-    await database.sync();
+    console.log(`8888888888`)
+    await require('./config/db');
 })();
 
 // Routes
@@ -86,5 +84,4 @@ server.listen(port, () => {
 
 
 module.exports = app;
-
 

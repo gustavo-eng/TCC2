@@ -7,16 +7,7 @@ var cors = require('cors');
 var http = require('http');
 
 //Midleware conection to database
-
-//require('./config/db')
-//todo retirar e estudar melhor forma para isso
-// todo nao quero ficar executando toda hora esse comando
-(async () => {
-    console.log(`funcao imediatamente invocada`)
-    const database = await require('./config/db');
-    const event = require('./model/event');
-    await database.sync();
-})();
+require('./config/db')
 
 // Routes
 var routeLogin = require('./routes/login');
@@ -86,5 +77,4 @@ server.listen(port, () => {
 
 
 module.exports = app;
-
 

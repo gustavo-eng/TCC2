@@ -2,8 +2,6 @@
 
 require('dotenv').config();
 const Sequelize = require('sequelize');
-
-//Config
 const sequelize = new Sequelize('fprjsystem',
     process.env.USER_DATABASE, process.env.PASSWORD_DATABASE,
     {
@@ -12,7 +10,6 @@ const sequelize = new Sequelize('fprjsystem',
     },
 );
 
-//Establishing connection
 const setConnection = async (sequelize) => {
     try {
         await sequelize.authenticate();

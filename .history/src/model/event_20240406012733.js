@@ -52,14 +52,12 @@ const Event = sequelize.define('Event', {
         field: 'created_at',
         allowNull: false
     },
-    /*
     testDatetime: {
         type: DataTypes.DATETIME,
         defaultValue: DataTypes.NOW,
         allowNull: true
         // This way, the current date/time will be used to populate this column (at the moment of insertion)
     },
-    */
     myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
 
 }, {

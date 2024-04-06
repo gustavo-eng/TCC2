@@ -12,10 +12,9 @@ var http = require('http');
 //todo retirar e estudar melhor forma para isso
 // todo nao quero ficar executando toda hora esse comando
 (async () => {
-    console.log(`funcao imediatamente invocada`)
+    console.log(`Dentro da funcao imediatamente invocada`)
     const database = await require('./config/db');
-    const event = require('./model/event');
-    await database.sync();
+
 })();
 
 // Routes
@@ -86,5 +85,4 @@ server.listen(port, () => {
 
 
 module.exports = app;
-
 

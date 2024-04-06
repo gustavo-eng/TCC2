@@ -43,23 +43,21 @@ const Event = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.FLOAT,
         allowNull: true
     },
     data: { // Analisar como ficou
         type: DataTypes.DATE,
-        //defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+        defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
         field: 'created_at',
         allowNull: false
     },
-    /*
     testDatetime: {
         type: DataTypes.DATETIME,
         defaultValue: DataTypes.NOW,
         allowNull: true
         // This way, the current date/time will be used to populate this column (at the moment of insertion)
     },
-    */
     myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
 
 }, {

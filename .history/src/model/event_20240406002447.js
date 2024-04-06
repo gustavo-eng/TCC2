@@ -2,7 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { allow } = require('joi');
 
-
 //todo Mudar o nome da tabela la na modelagem para Event
 //todo Caso for necessario eh possivel inserir novos campos
 
@@ -17,7 +16,6 @@ const { allow } = require('joi');
 
 */
 
-
 const Event = sequelize.define('Event', {
 
     cod_Event: {
@@ -27,8 +25,8 @@ const Event = sequelize.define('Event', {
     },
     nome: {
         type: DataTypes.STRING,
-        defaultValue: "John Doe",
-        allowNull: true
+        allowNull: true,
+        defaultValue: "John Doe"
     },
     rua: {
         type: DataTypes.STRING,
@@ -43,24 +41,15 @@ const Event = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.DECIMAL,
+        type: DataTypes.FLOAT,
         allowNull: true
     },
-    data: { // Analisar como ficou
+    data: {
         type: DataTypes.DATE,
-        //defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+        defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
         field: 'created_at',
         allowNull: false
-    },
-    /*
-    testDatetime: {
-        type: DataTypes.DATETIME,
-        defaultValue: DataTypes.NOW,
-        allowNull: true
-        // This way, the current date/time will be used to populate this column (at the moment of insertion)
-    },
-    */
-    myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: false },
+    }
 
 }, {
     freezeTableName: true,

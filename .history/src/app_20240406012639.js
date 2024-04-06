@@ -6,18 +6,6 @@ var logger = require('morgan');
 var cors = require('cors');
 var http = require('http');
 
-//Midleware conection to database
-
-//require('./config/db')
-//todo retirar e estudar melhor forma para isso
-// todo nao quero ficar executando toda hora esse comando
-(async () => {
-    console.log(`funcao imediatamente invocada`)
-    const database = await require('./config/db');
-    const event = require('./model/event');
-    await database.sync();
-})();
-
 // Routes
 var routeLogin = require('./routes/login');
 var routeGym = require('./routes/gyms');
@@ -74,7 +62,6 @@ app.use(function (err, req, res, next) {
 
 /* Executing   backend development */
 //var port = normalizePort(process.env.PORT || '3333');
-
 var port = 3001;
 app.set('port', port);
 var server = http.createServer(app);
@@ -86,5 +73,4 @@ server.listen(port, () => {
 
 
 module.exports = app;
-
 
