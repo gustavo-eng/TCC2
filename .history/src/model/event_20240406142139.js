@@ -38,7 +38,6 @@ const EventModel = sequelize.define('Event', {
     data: { // Analisar como ficou
         type: DataTypes.DATE,
         field: 'created_at',
-        // defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
         allowNull: false
     },
 
@@ -58,7 +57,6 @@ const EventModel = sequelize.define('Event', {
 }
 
 );
-
 console.log('Sync EventModel');
 EventModel.sync();
 
@@ -68,16 +66,7 @@ module.exports = {
         const events = await EventModel.findAll();
         return events;
     },
-    save: async (nome, rua, numero, cidade, preco, data) => {
-        //moment.utc().format('YYYY-MM-DD HH:mm:ss')
-        return await EventModel.create({
-            nome: nome,
-            rua: rua,
-            numero: numero,
-            cidade: cidade,
-            preco: preco,
-            data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
-        });
+    save: async (nome, rua, numero, cidade, preco) => {
 
     }
 }

@@ -18,7 +18,6 @@ app.set('port', port);
 // Routes
 var routeLogin = require('./routes/login');
 var routeGym = require('./routes/gyms');
-var routeEvent = require('./routes/eventAPI');
 
 
 app.use(cors());
@@ -31,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
 app.use('/login', routeLogin);
 app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
-app.use('/events', routeEvent);
+
 
 
 
@@ -48,10 +47,16 @@ app.use(function (err, req, res, next) {
 });
 
 
+/* Executing   backend development */
+//var port = normalizePort(process.env.PORT || '3333');
+
+
+
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
 
+/* Executing   backend development */
 
 
 module.exports = app;

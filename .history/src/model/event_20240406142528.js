@@ -58,7 +58,6 @@ const EventModel = sequelize.define('Event', {
 }
 
 );
-
 console.log('Sync EventModel');
 EventModel.sync();
 
@@ -76,7 +75,7 @@ module.exports = {
             numero: numero,
             cidade: cidade,
             preco: preco,
-            data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
+            data: moment.utc().format('YYYY-MM-DD HH:mm:ss');
         });
 
     }

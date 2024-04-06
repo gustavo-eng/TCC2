@@ -59,8 +59,8 @@ const EventModel = sequelize.define('Event', {
 
 );
 
-console.log('Sync EventModel');
-EventModel.sync();
+//console.log('Sync EventModel');
+//EventModel.sync();
 
 
 module.exports = {

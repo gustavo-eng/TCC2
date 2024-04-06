@@ -58,7 +58,6 @@ const EventModel = sequelize.define('Event', {
 }
 
 );
-
 console.log('Sync EventModel');
 EventModel.sync();
 
