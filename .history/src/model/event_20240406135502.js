@@ -57,14 +57,13 @@ const EventModel = sequelize.define('Event', {
 }
 
 );
-console.log('Sync EventModel');
+
 EventModel.sync();
 
 
 module.exports = {
     list: async function () {
-        const events = await EventModel.findAll();
-        return events;
+
     }
 }
 

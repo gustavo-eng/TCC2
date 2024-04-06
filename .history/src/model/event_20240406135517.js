@@ -63,8 +63,7 @@ EventModel.sync();
 
 module.exports = {
     list: async function () {
-        const events = await EventModel.findAll();
-        return events;
+
     }
 }
 

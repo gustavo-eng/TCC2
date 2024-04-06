@@ -4,6 +4,3 @@ const eventDAO = require('../model/event');
 
 
 router.get('')
-
-
-module.exports = router;

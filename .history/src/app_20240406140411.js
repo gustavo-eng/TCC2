@@ -5,10 +5,6 @@ var cookieParser = require('cookie-parser');
 var cors = require('cors');
 var http = require('http');
 
-var app = express();
-var server = http.createServer(app);
-var port = 3001;
-app.set('port', port);
 
 //require('./config/db')
 //todo retirar e estudar melhor forma para isso
@@ -28,6 +24,7 @@ app.set('port', port);
 var routeLogin = require('./routes/login');
 var routeGym = require('./routes/gyms');
 
+var app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -59,8 +56,9 @@ app.use(function (err, req, res, next) {
 /* Executing   backend development */
 //var port = normalizePort(process.env.PORT || '3333');
 
-
-
+var port = 3001;
+app.set('port', port);
+var server = http.createServer(app);
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
