@@ -55,8 +55,8 @@ const EventModel = sequelize.define('Event', {
 }, {
     freezeTableName: true,
     timestamps: true,
-    createdAt: false,
-    updatedAt: false,
+    createdAt: true,
+    updatedAt: true,
 }
 
 );

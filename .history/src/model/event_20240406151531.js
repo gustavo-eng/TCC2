@@ -38,25 +38,23 @@ const EventModel = sequelize.define('Event', {
     data: { // Analisar como ficou
         type: DataTypes.DATE,
         field: 'created_at',
-        defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
-        allowNull: true
+        // defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+        allowNull: false
     },
-    /*
-        testDate: {
-            type: DataTypes.DATE,
-            defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
-            defaultValue: DataTypes.NOW,
-            allowNull: true
-            // This way, the current date/time will be used to populate this column (at the moment of insertion)
-        },
-    */
-    // myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
+
+    testDate: {
+        type: DataTypes.DATE,
+        defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+        defaultValue: DataTypes.NOW,
+        allowNull: true
+        // This way, the current date/time will be used to populate this column (at the moment of insertion)
+    },
+
+    myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
 
 }, {
     freezeTableName: true,
-    timestamps: true,
-    createdAt: false,
-    updatedAt: false,
+    timestamps: false
 }
 
 );
@@ -70,18 +68,17 @@ module.exports = {
         const events = await EventModel.findAll();
         return events;
     },
-    save: async (cod, nome, rua, numero, cidade, preco, data) => {
+    save: async (nome, rua, numero, cidade, preco, data) => {
         //moment.utc().format('YYYY-MM-DD HH:mm:ss')
-        const event = EventModel.create({
+        return await EventModel.create({
             nome: nome,
             rua: rua,
             numero: numero,
             cidade: cidade,
             preco: preco,
-            //data: data || moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
-            data: data, // TIRAR
+            data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
         });
-        return event
+
     }
 }
 

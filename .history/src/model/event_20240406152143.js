@@ -50,13 +50,11 @@ const EventModel = sequelize.define('Event', {
             // This way, the current date/time will be used to populate this column (at the moment of insertion)
         },
     */
-    // myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
+    myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
 
 }, {
     freezeTableName: true,
-    timestamps: true,
-    createdAt: false,
-    updatedAt: false,
+    timestamps: false
 }
 
 );
@@ -70,7 +68,7 @@ module.exports = {
         const events = await EventModel.findAll();
         return events;
     },
-    save: async (cod, nome, rua, numero, cidade, preco, data) => {
+    save: async (nome, rua, numero, cidade, preco, data) => {
         //moment.utc().format('YYYY-MM-DD HH:mm:ss')
         const event = EventModel.create({
             nome: nome,
@@ -78,10 +76,12 @@ module.exports = {
             numero: numero,
             cidade: cidade,
             preco: preco,
-            //data: data || moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
-            data: data, // TIRAR
+            data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
+            //data: data, // TIRAR
         });
+
         return event
+
     }
 }
 

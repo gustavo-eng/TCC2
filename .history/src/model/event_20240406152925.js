@@ -54,7 +54,7 @@ const EventModel = sequelize.define('Event', {
 
 }, {
     freezeTableName: true,
-    timestamps: true,
+    timestamps: false,
     createdAt: false,
     updatedAt: false,
 }
@@ -78,10 +78,12 @@ module.exports = {
             numero: numero,
             cidade: cidade,
             preco: preco,
-            //data: data || moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
-            data: data, // TIRAR
+            data: data || moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
+            //data: data, // TIRAR
         });
+
         return event
+
     }
 }
 
