@@ -32,8 +32,8 @@ const EventModel = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.FLOAT,
-        //field: 'itemPrice',
+        type: DataTypes.DECIMAL,
+        field: 'itemPrice',
         allowNull: true
     },
     data: { // Analisar como ficou
@@ -53,9 +53,9 @@ const EventModel = sequelize.define('Event', {
     */
 }, {
     freezeTableName: true,
-    //timestamps: true,
-    createdAt: true,
-    updatedAt: true,
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
 }
 
 );

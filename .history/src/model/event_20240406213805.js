@@ -32,8 +32,7 @@ const EventModel = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.FLOAT,
-        //field: 'itemPrice',
+        type: DataTypes.DECIMAL(4, 2),
         allowNull: true
     },
     data: { // Analisar como ficou
@@ -51,11 +50,13 @@ const EventModel = sequelize.define('Event', {
             // This way, the current date/time will be used to populate this column (at the moment of insertion)
         },
     */
+    // myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
+
 }, {
     freezeTableName: true,
-    //timestamps: true,
-    createdAt: true,
-    updatedAt: true,
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
 }
 
 );

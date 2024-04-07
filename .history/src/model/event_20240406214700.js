@@ -69,7 +69,7 @@ User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco d
   as alterações necessárias na tabela para que ela corresponda ao modelo.
 
 */
-EventModel.sync({ alter: true });
+EventModel.sync({ force: true });
 
 
 module.exports = {

@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 
 //todo - Validar campos
 router.post('/', (req, res) => {
-    const { nome, rua, numero, cidade, preco, data } = req.body;
+    const { nome, rua, numero, cidade, preco } = req.body;
 
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {
         res.status(200).json({ status: 200, event: event });
@@ -27,8 +27,6 @@ router.post('/', (req, res) => {
         res.status(500).json({ status: 500, msg: "Falha ao salvar event" })
     })
 });
-
-
 
 // Salvar evento
 

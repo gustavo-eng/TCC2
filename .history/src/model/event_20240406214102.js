@@ -32,8 +32,8 @@ const EventModel = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.FLOAT,
-        //field: 'itemPrice',
+        type: DataTypes.DECIMAL,
+        field: 'itemPrice',
         allowNull: true
     },
     data: { // Analisar como ficou
@@ -51,11 +51,13 @@ const EventModel = sequelize.define('Event', {
             // This way, the current date/time will be used to populate this column (at the moment of insertion)
         },
     */
+    // myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
+
 }, {
     freezeTableName: true,
-    //timestamps: true,
-    createdAt: true,
-    updatedAt: true,
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
 }
 
 );
@@ -69,7 +71,7 @@ User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco d
   as alterações necessárias na tabela para que ela corresponda ao modelo.
 
 */
-EventModel.sync({ alter: true });
+EventModel.sync();
 
 
 module.exports = {

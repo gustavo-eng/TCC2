@@ -32,11 +32,10 @@ const EventModel = sequelize.define('Event', {
         allowNull: true
     },
     preco: {
-        type: DataTypes.FLOAT,
-        //field: 'itemPrice',
+        type: DataTypes.DECIMAL,
         allowNull: true
     },
-    data: { // Analisar como ficou
+    calender: { // Analisar como ficou
         type: DataTypes.STRING, // mudar para date
         //field: 'data',
         //defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
@@ -51,25 +50,19 @@ const EventModel = sequelize.define('Event', {
             // This way, the current date/time will be used to populate this column (at the moment of insertion)
         },
     */
+    // myDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW, allowNull: true },
+
 }, {
     freezeTableName: true,
-    //timestamps: true,
-    createdAt: true,
-    updatedAt: true,
+    timestamps: false,
+    createdAt: false,
+    updatedAt: false,
 }
 
 );
 
-/*
-
-User.sync()- Isso cria a tabela se ela não existir (e não faz nada se já existir)
-User.sync({ force: true })- Isso cria a tabela, descartando-a primeiro se ela já existir
-User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco de dados
- (quais colunas ela possui, quais são seus tipos de dados, etc), e então realiza
-  as alterações necessárias na tabela para que ela corresponda ao modelo.
-
-*/
-EventModel.sync({ alter: true });
+console.log('Sync EventModel');
+EventModel.sync();
 
 
 module.exports = {
@@ -77,7 +70,7 @@ module.exports = {
         const events = await EventModel.findAll();
         return events;
     },
-    save: async (nome, rua, numero, cidade, preco, data) => {
+    save: async (nome, rua, numero, cidade, preco, calender) => {
         //moment.utc().format('YYYY-MM-DD HH:mm:ss')
         const event = EventModel.create({
             nome: nome,
@@ -85,8 +78,8 @@ module.exports = {
             numero: numero,
             cidade: cidade,
             preco: preco,
-            //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
-            data: data, // TIRAR
+            //data: data || moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
+            calender: calender, // TIRAR
         });
         return event
     }

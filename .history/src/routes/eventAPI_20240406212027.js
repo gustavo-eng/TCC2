@@ -4,31 +4,27 @@ const eventDAO = require('../model/event');
 
 // DTO ?
 // Lista todos os eventos
-let { fail, success } = require("../helpers/response");
 
 //todo padronizar retornos
 router.get('/', (req, res) => {
     //res.send(`<h2>Rota evento aqui contera a api para lidar com banco evento </h2>`)
     eventDAO.list().then(events => {
-
-        res.status(200).json(success(events, "data"));
-    }).catch(err => {
-        res.status(500).json(fail("Erro ao listar eventos do banco. erro " + err));
+        console.log('-------- dentro de list api event -------------')
+        res.status(200).json({ status: 200, events: events });
     });
 });
 
 //todo - Validar campos
 router.post('/', (req, res) => {
-    const { nome, rua, numero, cidade, preco, data } = req.body;
-
+    const { nome, rua, numero, cidade, preco, calender } = req.body;
+    //console.log('dados do body')
+    //console.log(cod, nome, rua, numero, cidade, preco, data)
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {
         res.status(200).json({ status: 200, event: event });
     }).catch(err => {
         res.status(500).json({ status: 500, msg: "Falha ao salvar event" })
     })
 });
-
-
 
 // Salvar evento
 

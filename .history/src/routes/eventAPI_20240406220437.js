@@ -28,8 +28,6 @@ router.post('/', (req, res) => {
     })
 });
 
-
-
 // Salvar evento
 
 // Qaundo usar query ou params
