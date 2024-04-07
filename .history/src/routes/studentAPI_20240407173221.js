@@ -21,15 +21,10 @@ router.post('/', (req, res) => {
     let { name, email, password, cpf } = req.body;
 
     studentDAO.save(name, email, password, cpf).then(student => {
-        res.status(201).json(success(student, 'payload'));
-    }).catch(erro => {
-        console.log(erro);
-        res.status(500).json(fail("Internal Server Error", erro));
+
     });
 
 });
-
-
 
 
 
