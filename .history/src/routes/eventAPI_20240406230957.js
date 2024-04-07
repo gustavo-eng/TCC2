@@ -11,20 +11,10 @@ let { fail, success } = require("../helpers/response");
 router.get('/', (req, res) => {
     //res.send(`<h2>Rota evento aqui contera a api para lidar com banco evento </h2>`)
     eventDAO.list().then(events => {
-        res.status(200).json(success(events, "payload"));
+        res.status(200).json(success(events, "data"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao listar eventos do banco. erro " + err));
     });
-});
-
-//Get specific  object by id
-router.get('/:id', (req, res) => {
-    let id = req.params.id;
-    eventDAO.findSpecific(id).then(event => {
-        res.status(200).json(success(event, "payload"))
-    }).catch((err) => {
-        res.status(500).json(fail("Erro ao listar . ERRO = " + err));
-    })
 });
 
 
@@ -37,17 +27,18 @@ router.post('/', (req, res) => {
         res.status(500).json({ status: 500, msg: "Falha ao salvar event" })
     })
 });
-
+router.delete('/', (req, res) => {
+    res.json({ msg: 'Rota delete' })
+})
 
 router.delete('/:id', (req, res) => {
+    const id = req.params.id;
     eventDAO.delete(id).then((event) => {
-
-        res.status(200).json(success(objDeletado, "data"));
+        res.status(200).json(success(event, "data"));
     }).catch((err) => {
         res.status(500).json(fail("Erro ao deletar evento. ERRO = " + err));
     });
 });
-
 
 
 

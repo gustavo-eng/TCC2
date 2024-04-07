@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 
 //Get specific  object by id
 router.get('/:id', (req, res) => {
+    console.log('Get specific objetc 90 90 90')
     let id = req.params.id;
     eventDAO.findSpecific(id).then(event => {
         res.status(200).json(success(event, "payload"))

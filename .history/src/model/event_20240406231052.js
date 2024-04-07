@@ -88,12 +88,8 @@ module.exports = {
         });
         return event
     },
-    findSpecific: async (id) => { // para teste
-        //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        return await EventModel.findByPk(id);
-    },
     delete: async (id) => {
-        await EventModel.destroy({ where: { cod_Event: id } });
+        await EventModel.destroy({ where: { id } });
     }
 }
 

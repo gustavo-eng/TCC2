@@ -11,20 +11,10 @@ let { fail, success } = require("../helpers/response");
 router.get('/', (req, res) => {
     //res.send(`<h2>Rota evento aqui contera a api para lidar com banco evento </h2>`)
     eventDAO.list().then(events => {
-        res.status(200).json(success(events, "payload"));
+        res.status(200).json(success(events, "data"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao listar eventos do banco. erro " + err));
     });
-});
-
-//Get specific  object by id
-router.get('/:id', (req, res) => {
-    let id = req.params.id;
-    eventDAO.findSpecific(id).then(event => {
-        res.status(200).json(success(event, "payload"))
-    }).catch((err) => {
-        res.status(500).json(fail("Erro ao listar . ERRO = " + err));
-    })
 });
 
 
@@ -40,14 +30,20 @@ router.post('/', (req, res) => {
 
 
 router.delete('/:id', (req, res) => {
-    eventDAO.delete(id).then((event) => {
+    const id = req.params.id;
+    let ob = {}
+    const objDeletado = eventDAO.findSpecific(id).then(el => {
+        return el
+    }).catch(e => {
+        return "Objeto nao encontrado"
+    });
 
+    eventDAO.delete(id).then((event) => {
         res.status(200).json(success(objDeletado, "data"));
     }).catch((err) => {
         res.status(500).json(fail("Erro ao deletar evento. ERRO = " + err));
     });
 });
-
 
 
 

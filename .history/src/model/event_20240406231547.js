@@ -90,7 +90,7 @@ module.exports = {
     },
     findSpecific: async (id) => { // para teste
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        return await EventModel.findByPk(id);
+        return await EventModel.findOne({ where: { cod_Event: id } });
     },
     delete: async (id) => {
         await EventModel.destroy({ where: { cod_Event: id } });
