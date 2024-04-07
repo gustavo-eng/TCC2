@@ -92,13 +92,8 @@ module.exports = {
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
         return await EventModel.findByPk(id);
     },
-    // listar os atribustos especificos que quero modificar
-    update: async (id, obj) => {
-        let event = this.findSpecific(id);
-        if (!event) return false
-        Object.keys(obj).forEach(key => event[key] = obj[key]);
-        await event.save();
-        return event;
+    update: async () => {
+
     },
     delete: async (id) => {
         await EventModel.destroy({ where: { cod_Event: id } });
@@ -107,42 +102,5 @@ module.exports = {
 
 }
 
-/*
-const jane = await User.create({ name: "Jane" });
-jane.favoriteColor = "blue"
-await jane.update({ name: "Ada" })
-// The database now has "Ada" for name, but still has the default "green" for favorite color
-await jane.save()
-// Now the database has "Ada" for name and "blue" for favorite color
-*/
 
-/*
-Project.update(
-  { title: 'a very different title now' },
-  { where: { _id: 1 } }
-)
-  .then(result =>
-    handleResult(result)
-  )
-  .catch(err =>
-    handleError(err)
-  )
-*/
-
-/*
-function update(id, vet) {
-  console.log("id ", id)
-  console.log("vet ", vet)
-  vet.forEach(el => {
-    console.log("key ", el )
-  })
-}
-
-let list = ["corrente", "tensao", "harmonica"];
-let id = 10
-
-console.log('funcao update --> ')
-update(id, list)
-
-*/
 

@@ -59,19 +59,6 @@ router.put('/:id', (req, res) => {
     if (preco) obj.preco = preco;
     if (data) obj.data = data;
 
-    if (obj == {}) {
-        return res.status(500).json(fail("Não foi possível alterar o documento"));
-    }
-
-    eventDAO.update(id, obj)
-        .then(() => {
-            res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
-        })
-        .catch((e) => {
-            console.log('Erro no catch do put');
-            res.status(400).json(fail("Erro ao atualizar o Evento", e))
-        });
-
 });
 
 

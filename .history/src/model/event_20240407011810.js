@@ -93,12 +93,8 @@ module.exports = {
         return await EventModel.findByPk(id);
     },
     // listar os atribustos especificos que quero modificar
-    update: async (id, obj) => {
-        let event = this.findSpecific(id);
-        if (!event) return false
-        Object.keys(obj).forEach(key => event[key] = obj[key]);
-        await event.save();
-        return event;
+    update: async () => {
+
     },
     delete: async (id) => {
         await EventModel.destroy({ where: { cod_Event: id } });
@@ -127,22 +123,5 @@ Project.update(
   .catch(err =>
     handleError(err)
   )
-*/
-
-/*
-function update(id, vet) {
-  console.log("id ", id)
-  console.log("vet ", vet)
-  vet.forEach(el => {
-    console.log("key ", el )
-  })
-}
-
-let list = ["corrente", "tensao", "harmonica"];
-let id = 10
-
-console.log('funcao update --> ')
-update(id, list)
-
 */
 

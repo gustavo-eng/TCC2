@@ -72,6 +72,8 @@ router.put('/:id', (req, res) => {
             res.status(400).json(fail("Erro ao atualizar o Evento", e))
         });
 
+
+
 });
 
 
