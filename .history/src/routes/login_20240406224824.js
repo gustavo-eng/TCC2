@@ -22,11 +22,11 @@ router.post('/', (req, res) => {
     // previamente setadas
     // todo  1. Adicionar role para o usuario
     //
-    let objPermission = ["fprj", "gym"];
+
     let { user, password } = req.body;
     if (user != '' && password == user) {
         //userId pega do banco
-        let token = jwt.sign({ user: user, userPermission: objPermission[0], userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
+        let token = jwt.sign({ user: user, userPermission: 'sensei', userId: 1 }, process.env.SECRET_JWT, { expiresIn: '24h' });
         res.json({ isLogged: true, token: token, msg: 'User successfully authenticated' });
 
     } else {

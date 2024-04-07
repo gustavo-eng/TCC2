@@ -17,8 +17,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
-// CREATE one object
 router.post('/', (req, res) => {
     const { nome, rua, numero, cidade, preco, data } = req.body;
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {

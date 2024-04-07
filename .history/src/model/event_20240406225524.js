@@ -71,7 +71,7 @@ User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco d
 EventModel.sync({ alter: true });
 
 module.exports = {
-    list: async () => {
+    list: async function () {
         const events = await EventModel.findAll();
         return events;
     },
@@ -87,9 +87,6 @@ module.exports = {
             data: data, // TIRAR
         });
         return event
-    },
-    delete: async (id) => {
-        EventModel.destroy({ where: { id } });
     }
 }
 

@@ -5,10 +5,10 @@ require('dotenv').config();
 
 // Middlewares
 const Auth = require('../middleware/Auth');
-const permission = require('../middleware/permission');
+const permissao = require('../middleware/permission');
 
 //Apenas Teste
-router.get('/', Auth.controllAccess, permission.permissionGym, (req, res) => {
+router.get('/', Auth.controllAccess, permissao.permission, (req, res) => {
     res.send(`<h1>FFFRota professores - Permissao de usuario - ${req.userPermission}</h1>`);
 });
 

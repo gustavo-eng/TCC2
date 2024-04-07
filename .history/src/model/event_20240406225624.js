@@ -88,8 +88,8 @@ module.exports = {
         });
         return event
     },
-    delete: async (id) => {
-        EventModel.destroy({ where: { id } });
+    delete: async () => {
+        console.log('fasd');
     }
 }
 

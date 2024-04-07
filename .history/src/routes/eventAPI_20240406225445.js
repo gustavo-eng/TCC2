@@ -7,7 +7,6 @@ const eventDAO = require('../model/event');
 let { fail, success } = require("../helpers/response");
 
 
-//List all objects
 router.get('/', (req, res) => {
     //res.send(`<h2>Rota evento aqui contera a api para lidar com banco evento </h2>`)
     eventDAO.list().then(events => {
@@ -17,8 +16,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
-// CREATE one object
 router.post('/', (req, res) => {
     const { nome, rua, numero, cidade, preco, data } = req.body;
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {

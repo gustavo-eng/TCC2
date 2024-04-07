@@ -6,8 +6,7 @@ const eventDAO = require('../model/event');
 // Lista todos os eventos
 let { fail, success } = require("../helpers/response");
 
-
-//List all objects
+//todo padronizar retornos
 router.get('/', (req, res) => {
     //res.send(`<h2>Rota evento aqui contera a api para lidar com banco evento </h2>`)
     eventDAO.list().then(events => {
@@ -17,10 +16,10 @@ router.get('/', (req, res) => {
     });
 });
 
-
-// CREATE one object
+//todo - Validar campos
 router.post('/', (req, res) => {
     const { nome, rua, numero, cidade, preco, data } = req.body;
+
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {
         res.status(200).json({ status: 200, event: event });
     }).catch(err => {

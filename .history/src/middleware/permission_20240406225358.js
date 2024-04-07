@@ -9,7 +9,7 @@ module.exports = {
         if (req.userPermission == 'gym') {
             return next();
         } else {
-            return res.status(403).json(fail("Unauthorized User"));
+            return res.status(403).json(fail("Unthorized User"));
         }
     },
     permissionFRPj: (req, res, next) => {
