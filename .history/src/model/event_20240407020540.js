@@ -1,23 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const moment = require('moment');
-const Fabricante = require('./fabricante');
-//const Fabricante = require('./fabricante');
+
 //todo Mudar o nome da tabela la na modelagem para Event
 //todo Caso for necessario eh possivel inserir novos campos
 
-
-
-Fabricante.create({
-    nome: 'Fabricante  1',
-});
-Fabricante.create({
-    nome: 'Fabricante  2',
-});
-Fabricante.create({
-    nome: 'Fabricante  3',
-});
-//console.log(Fabricante.findByPk(1).then((res) => console.log(res)));
 
 
 const EventModel = sequelize.define('Event', {
@@ -72,10 +59,7 @@ const EventModel = sequelize.define('Event', {
 
 );
 
-
-
 /*
-
 
 User.sync()- Isso cria a tabela se ela não existir (e não faz nada se já existir)
 User.sync({ force: true })- Isso cria a tabela, descartando-a primeiro se ela já existir
@@ -84,15 +68,7 @@ User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco d
   as alterações necessárias na tabela para que ela corresponda ao modelo.
 
 */
-
-EventModel.belongsTo(Fabricante, {
-    constraints: true,
-    foreignKey: "cod_Fabricante"
-})
-
-
 EventModel.sync({ alter: true });
-
 
 module.exports = {
     list: async () => {
@@ -109,17 +85,11 @@ module.exports = {
             preco: preco,
             //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
             data: data, // TIRAR
-            cod_Fabricante: 1,
         });
-
         return event
     },
     findSpecific: async (id) => { // para teste
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        const evento = EventModel.findByPk(id, { include: Fabricante });
-        console.log('impressao')
-        console.log(evento.fabricante)
-        //console.log(evento.getfabricante())
         return await EventModel.findByPk(id);
     },
     // listar os atribustos especificos que quero modificar

@@ -20,6 +20,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     eventDAO.findSpecific(id).then(event => {
+        console.log('tools')
+        console.log(event.fabricante)
         res.status(200).json(success(event, "payload"))
     }).catch((err) => {
         res.status(500).json(fail("Erro ao listar . ERRO = " + err));

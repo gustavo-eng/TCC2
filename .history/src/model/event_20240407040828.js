@@ -111,14 +111,14 @@ module.exports = {
             data: data, // TIRAR
             cod_Fabricante: 1,
         });
-
+        console.log('Luiz Tools')
+        console.log(EventModel.cod_Fabricante)
         return event
     },
     findSpecific: async (id) => { // para teste
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        const evento = EventModel.findByPk(id, { include: Fabricante });
+        const evento = EventModel.findByPk(id);
         console.log('impressao')
-        console.log(evento.fabricante)
         //console.log(evento.getfabricante())
         return await EventModel.findByPk(id);
     },

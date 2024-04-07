@@ -8,7 +8,6 @@ let { fail, success } = require("../helpers/response");
 
 //List all objects
 router.get('/', (req, res) => {
-    console.log('olaaaa')
     eventDAO.list().then(events => {
         res.status(200).json(success(events, "payload"));
     }).catch(err => {

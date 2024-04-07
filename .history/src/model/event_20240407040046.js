@@ -17,7 +17,7 @@ Fabricante.create({
 Fabricante.create({
     nome: 'Fabricante  3',
 });
-//console.log(Fabricante.findByPk(1).then((res) => console.log(res)));
+console.log(Fabricante.findByPk(1).then((res) => console.log(res)));
 
 
 const EventModel = sequelize.define('Event', {
@@ -111,15 +111,10 @@ module.exports = {
             data: data, // TIRAR
             cod_Fabricante: 1,
         });
-
         return event
     },
     findSpecific: async (id) => { // para teste
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        const evento = EventModel.findByPk(id, { include: Fabricante });
-        console.log('impressao')
-        console.log(evento.fabricante)
-        //console.log(evento.getfabricante())
         return await EventModel.findByPk(id);
     },
     // listar os atribustos especificos que quero modificar

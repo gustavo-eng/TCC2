@@ -8,17 +8,7 @@ const Fabricante = require('./fabricante');
 
 
 
-Fabricante.create({
-    nome: 'Fabricante  1',
-});
-Fabricante.create({
-    nome: 'Fabricante  2',
-});
-Fabricante.create({
-    nome: 'Fabricante  3',
-});
-//console.log(Fabricante.findByPk(1).then((res) => console.log(res)));
-
+z
 
 const EventModel = sequelize.define('Event', {
 
@@ -84,13 +74,13 @@ User.sync({ alter: true })- Verifica qual é o estado atual da tabela no banco d
   as alterações necessárias na tabela para que ela corresponda ao modelo.
 
 */
-
+/*
 EventModel.belongsTo(Fabricante, {
     constraints: true,
-    foreignKey: "cod_Fabricante"
+    foreignKey: "idFabricante"
 })
 
-
+*/
 EventModel.sync({ alter: true });
 
 
@@ -109,17 +99,12 @@ module.exports = {
             preco: preco,
             //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
             data: data, // TIRAR
-            cod_Fabricante: 1,
+            idFabricante: 1,
         });
-
         return event
     },
     findSpecific: async (id) => { // para teste
         //await DisciplinaModel.findOne({ where: { codigo: codigo } });
-        const evento = EventModel.findByPk(id, { include: Fabricante });
-        console.log('impressao')
-        console.log(evento.fabricante)
-        //console.log(evento.getfabricante())
         return await EventModel.findByPk(id);
     },
     // listar os atribustos especificos que quero modificar

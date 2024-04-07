@@ -8,7 +8,6 @@ let { fail, success } = require("../helpers/response");
 
 //List all objects
 router.get('/', (req, res) => {
-    console.log('olaaaa')
     eventDAO.list().then(events => {
         res.status(200).json(success(events, "payload"));
     }).catch(err => {
@@ -31,7 +30,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const { nome, rua, numero, cidade, preco, data } = req.body;
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {
-        res.status(200).json(success(event, "payload"));
+        res.status(200).json({ status: 200, event: event });
     }).catch(err => {
         res.status(500).json({ status: 500, msg: "Falha ao salvar event" })
     })

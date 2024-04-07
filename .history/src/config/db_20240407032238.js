@@ -8,8 +8,7 @@ const sequelize = new Sequelize('fprjsystem',
     process.env.USER_DATABASE, process.env.PASSWORD_DATABASE,
     {
         host: process.env.HOST_DATABASE,
-        dialect: "mysql",
-        logging: false
+        dialect: "mysql"
     },
 );
 

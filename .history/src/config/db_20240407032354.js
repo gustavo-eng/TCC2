@@ -9,7 +9,7 @@ const sequelize = new Sequelize('fprjsystem',
     {
         host: process.env.HOST_DATABASE,
         dialect: "mysql",
-        logging: false
+        "logging": false
     },
 );
 
