@@ -11,20 +11,9 @@ router.get('/', (req, res) => {
         res.status(404).json(fail("Not Found", err));
     })
     //res.send(`<h1>Ola mundo studentAPI </h1>`)
-});
+}); `
 
-//name, email, password, cpf
-router.post('/', (req, res) => {
-
-    let { name, email, password, cpf } = req.body;
-
-    studentDAO.save(name, email, password, cpf).then(student => {
-
-    });
-
-});
-
-
+`
 
 module.exports = router;
 

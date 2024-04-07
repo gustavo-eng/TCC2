@@ -15,13 +15,7 @@ router.get('/', (req, res) => {
 
 //name, email, password, cpf
 router.post('/', (req, res) => {
-
     let { name, email, password, cpf } = req.body;
-
-    studentDAO.save(name, email, password, cpf).then(student => {
-
-    });
-
 });
 
 

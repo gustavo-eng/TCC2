@@ -45,14 +45,12 @@ const StudentMode = sequelize.define('Student',
 
 StudentMode.sync({ alter: true });
 
-
 module.exports = {
-
     list: async () => {
         const students = await StudentMode.findAll();
         return students;
     },
-    save: async (name, email, password, cpf) => {
+    save: async (name, email, password, cpf, role) => {
         //if (!email || !password || !cfp) throw new Error('Missing parameters');
         const student = await StudentMode.create({
             name: name,
@@ -67,8 +65,6 @@ module.exports = {
     }
 
 }
-
-
 
 // name, email , password , cpf, role
 

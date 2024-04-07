@@ -45,9 +45,7 @@ const StudentMode = sequelize.define('Student',
 
 StudentMode.sync({ alter: true });
 
-
 module.exports = {
-
     list: async () => {
         const students = await StudentMode.findAll();
         return students;

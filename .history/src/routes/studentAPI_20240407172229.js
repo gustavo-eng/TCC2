@@ -13,16 +13,6 @@ router.get('/', (req, res) => {
     //res.send(`<h1>Ola mundo studentAPI </h1>`)
 });
 
-//name, email, password, cpf
-router.post('/', (req, res) => {
-
-    let { name, email, password, cpf } = req.body;
-
-    studentDAO.save(name, email, password, cpf).then(student => {
-
-    });
-
-});
 
 
 
