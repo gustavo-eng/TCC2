@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const sequelize = require('../helpers/response');
 
 // Role  - Do aluno será preenchido automaticamente
 const StudentMode = sequelize.define('Student',

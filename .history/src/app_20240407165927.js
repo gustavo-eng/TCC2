@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/login', routeLogin);
 app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
 app.use('/events', routeEvent);
-app.use('/students', routeStudent);
 
 
 

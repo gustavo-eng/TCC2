@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
+const sequelize = require('../helpers/response');
 
 // Role  - Do aluno será preenchido automaticamente
 const StudentMode = sequelize.define('Student',
@@ -34,11 +34,7 @@ const StudentMode = sequelize.define('Student',
             allowNull: true,
             //defaultValue: "student"
         }, // admin é o responsável por cadastrar os usuários e realiz
-    }, {
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
-}
+    }
 );
 
 
@@ -49,22 +45,8 @@ module.exports = {
     list: async () => {
         const students = await StudentMode.findAll();
         return students;
-    },
-    save: async (name, email, password, cpf, role) => {
-        //if (!email || !password || !cfp) throw new Error('Missing parameters');
-        const student = await StudentMode.create({
-            name: name,
-            email: email,
-            password: password,
-            cpf: cpf,
-            role: role
-        });
-
-        return student
-
     }
-
 }
 
-// name, email , password , cpf, role
+
 
