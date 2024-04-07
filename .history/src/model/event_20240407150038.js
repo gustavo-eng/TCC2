@@ -93,6 +93,7 @@ module.exports = {
             preco: preco,
             //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
             data: data, // TIRAR
+            cod_Fabricante: 1,
         });
 
         return event

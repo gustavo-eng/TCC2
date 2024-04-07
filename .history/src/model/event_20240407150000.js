@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const moment = require('moment');
-
+s
 //const Fabricante = require('./fabricante');
 //todo Mudar o nome da tabela la na modelagem para Event
 //todo Caso for necessario eh possivel inserir novos campos
@@ -93,11 +93,17 @@ module.exports = {
             preco: preco,
             //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
             data: data, // TIRAR
+            cod_Fabricante: 1,
         });
 
         return event
     },
     findSpecific: async (id) => { // para teste
+        //await DisciplinaModel.findOne({ where: { codigo: codigo } });
+        const evento = EventModel.findByPk(id, { include: Fabricante });
+        console.log('impressao')
+        console.log(evento.fabricante)
+        //console.log(evento.getfabricante())
         return await EventModel.findByPk(id);
     },
     // listar os atribustos especificos que quero modificar

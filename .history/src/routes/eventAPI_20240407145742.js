@@ -38,9 +38,8 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    const { id } = req.params;
     eventDAO.delete(id).then((event) => {
-        res.status(200).json(success(event, "data"));
+        res.status(200).json(success(objDeletado, "data"));
     }).catch((err) => {
         res.status(500).json(fail("Erro ao deletar evento. ERRO = " + err));
     });
@@ -48,6 +47,8 @@ router.delete('/:id', (req, res) => {
 
 // update
 router.put('/:id', (req, res) => {
+    console.log('763536533 update')
+    //let id = req.params.id;
     const { id } = req.params;
     const { nome, rua, numero, cidade, preco, data } = req.body;
 

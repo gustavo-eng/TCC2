@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const moment = require('moment');
-
+s
 //const Fabricante = require('./fabricante');
 //todo Mudar o nome da tabela la na modelagem para Event
 //todo Caso for necessario eh possivel inserir novos campos
@@ -93,6 +93,7 @@ module.exports = {
             preco: preco,
             //data: moment.utc().format('YYYY-MM-DD HH:mm:ss'), // TIRAR
             data: data, // TIRAR
+            cod_Fabricante: 1,
         });
 
         return event
