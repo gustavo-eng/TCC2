@@ -16,7 +16,7 @@ module.exports = {
         if (req.userPermission == 'fprj') {
             return next();
         } else {
-            return res.status(403).json(fail('Unauthorized User'));
-        }//Usuario não autorizado'
+            return res.status(403).json({ error: 'Usuario não autorizado' });
+        }
     },
 }
