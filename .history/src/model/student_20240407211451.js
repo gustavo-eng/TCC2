@@ -1,9 +1,9 @@
-const { Sequelize, DataTypes, where } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { update } = require('./event');
 
 // Role  - Do aluno será preenchido automaticamente
-const StudentModel = sequelize.define('Student',
+const StudentMode = sequelize.define('Student',
     {
 
         id: {
@@ -25,7 +25,7 @@ const StudentModel = sequelize.define('Student',
             allowNull: true
         },
         cpf: {
-            //field: 'cpfAluno',// para o body continua sendo cpf, mas na tabela cpfAluno
+            field: 'cpfAluno',
             type: DataTypes.STRING,
             unique: true,
             allowNull: true
@@ -44,52 +44,38 @@ const StudentModel = sequelize.define('Student',
 
 
 
-StudentModel.sync({ alter: true });
+StudentMode.sync({ alter: true });
+
 
 module.exports = {
 
     list: async () => {
-        const students = await StudentModel.findAll();
+        const students = await StudentMode.findAll();
         return students;
     },
     save: async (name, email, password, cpf) => {
         //if (!email || !password || !cfp) throw new Error('Missing parameters');
-        const student = await StudentModel.create({
+        const student = await StudentMode.create({
             name: name,
             email: email,
             password: password,
             cpf: cpf,
-            role: "student" //todo tiar isso e ver como colocar depois
+            role: "student"
         });
 
         return student;
 
     },
     update: async (id, obj) => {
-        let student = await StudentModel.findByPk(id);
+        let student = await StudentMode.findByPk(id);
         if (!student) return false;
         Object.keys(obj).forEach(key => student[key] = obj[key]);
         await student.save();
         return student;
-    },
-    delete: async (id) => {
-        return await StudentModel.destroy({ where: { id: id } });
-    },
-    findSpecific: async (id) => { // para teste
-        return await StudentModel.findByPk(id);
-    },
+    }
 
 }
 
-
-/*
-// Delete everyone named "Jane"
-await User.destroy({
-  where: {
-    firstName: "Jane"
-  },
-});
-*/
 
 
 // name, email , password , cpf, role

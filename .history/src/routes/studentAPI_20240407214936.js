@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 });
 
 
-
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -50,20 +48,13 @@ router.put('/:id', (req, res) => {
     }
 
     studentDAO.update(id, obj)
-        .then((student) => {
-            if (student) {
-                res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
-            } else {
-                res.status(404).json(fail("Aluno não encontrado"));
-            }
-        }).catch((error) => {
-            console.log('Erro no catch do put');
-            res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
+        .then(() => {
+            res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
+        }).catch((err) => {
+
         })
 
 });
-
-
 
 
 

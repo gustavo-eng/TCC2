@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 });
 
 
-
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -45,25 +43,15 @@ router.put('/:id', (req, res) => {
     if (editora) obj.password = password; // Avaliar
     if (ano) obj.cpf = cpf;
 
-    if (obj == {}) {
-        return res.status(500).json(fail("Não foi possível alterar o documento"));
-    }
-
-    studentDAO.update(id, obj)
-        .then((student) => {
-            if (student) {
-                res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
-            } else {
-                res.status(404).json(fail("Aluno não encontrado"));
-            }
-        }).catch((error) => {
-            console.log('Erro no catch do put');
-            res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
-        })
+    studentDAO.update(id, obj).then(() => {
+        return studentDAO.read(id)
+    }).then((data) => {
+        res.status(200).json(success(data, "Item atualizado!"));
+    }).catch((erro) => {
+        res.status(400).json(fail("Bad Request", erro))
+    });
 
 });
-
-
 
 
 
@@ -84,36 +72,6 @@ eventDAO.list().then(events => {
 }).catch(err => {
     res.status(500).json(fail("Erro ao listar eventos do banco. erro " + err));
 });
-});
-*/
-
-/*
-router.put('/:id', (req, res) => {
-    const { id } = req.params;
-    const { nome, rua, numero, cidade, preco, data } = req.body;
-
-    let obj = {};
-
-    if (nome) obj.nome = nome;
-    if (rua) obj.rua = rua;
-    if (numero) obj.numero = numero;
-    if (cidade) obj.cidade = cidade;
-    if (preco) obj.preco = preco;
-    if (data) obj.data = data;
-
-    if (obj == {}) {
-        return res.status(500).json(fail("Não foi possível alterar o documento"));
-    }
-
-    eventDAO.update(id, obj)
-        .then(() => {
-            res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
-        })
-        .catch((error) => {
-            console.log('Erro no catch do put');
-            res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
-        });
-
 });
 
 

@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, where } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { update } = require('./event');
 
@@ -25,7 +25,7 @@ const StudentModel = sequelize.define('Student',
             allowNull: true
         },
         cpf: {
-            //field: 'cpfAluno',// para o body continua sendo cpf, mas na tabela cpfAluno
+            field: 'cpfAluno',
             type: DataTypes.STRING,
             unique: true,
             allowNull: true
@@ -46,6 +46,7 @@ const StudentModel = sequelize.define('Student',
 
 StudentModel.sync({ alter: true });
 
+
 module.exports = {
 
     list: async () => {
@@ -59,7 +60,7 @@ module.exports = {
             email: email,
             password: password,
             cpf: cpf,
-            role: "student" //todo tiar isso e ver como colocar depois
+            role: "student"
         });
 
         return student;
@@ -73,11 +74,8 @@ module.exports = {
         return student;
     },
     delete: async (id) => {
-        return await StudentModel.destroy({ where: { id: id } });
-    },
-    findSpecific: async (id) => { // para teste
-        return await StudentModel.findByPk(id);
-    },
+        await StudentModel
+    }
 
 }
 

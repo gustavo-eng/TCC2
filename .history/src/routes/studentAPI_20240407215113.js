@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 });
 
 
-
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -56,14 +54,12 @@ router.put('/:id', (req, res) => {
             } else {
                 res.status(404).json(fail("Aluno não encontrado"));
             }
-        }).catch((error) => {
+        }).catch((err) => {
             console.log('Erro no catch do put');
             res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
         })
 
 });
-
-
 
 
 

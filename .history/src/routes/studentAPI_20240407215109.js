@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 });
 
 
-
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -54,16 +52,14 @@ router.put('/:id', (req, res) => {
             if (student) {
                 res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
             } else {
-                res.status(404).json(fail("Aluno não encontrado"));
+                res.status(404).json(fail("Aluno não encontrado"))ç
             }
-        }).catch((error) => {
+        }).catch((err) => {
             console.log('Erro no catch do put');
             res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
         })
 
 });
-
-
 
 
 

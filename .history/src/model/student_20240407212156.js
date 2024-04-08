@@ -25,7 +25,7 @@ const StudentModel = sequelize.define('Student',
             allowNull: true
         },
         cpf: {
-            //field: 'cpfAluno',// para o body continua sendo cpf, mas na tabela cpfAluno
+            field: 'cpfAluno',
             type: DataTypes.STRING,
             unique: true,
             allowNull: true
@@ -45,6 +45,7 @@ const StudentModel = sequelize.define('Student',
 
 
 StudentModel.sync({ alter: true });
+
 
 module.exports = {
 

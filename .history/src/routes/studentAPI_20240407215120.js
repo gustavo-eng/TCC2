@@ -30,8 +30,6 @@ router.post('/', (req, res) => {
 });
 
 
-
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -62,8 +60,6 @@ router.put('/:id', (req, res) => {
         })
 
 });
-
-
 
 
 
