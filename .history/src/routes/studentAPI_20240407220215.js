@@ -32,7 +32,6 @@ router.post('/', (req, res) => {
 
 
 
-
 router.put('/:id', (req, res) => {
     const { id } = req.params;
 
@@ -40,20 +39,16 @@ router.put('/:id', (req, res) => {
     //name, email, password, cpf
     console.log(' ****** Rota Student para atualizar ****** ')
     const { name, email, password, cpf } = req.body;
-    console.log('Apos req.body')
 
     let obj = {}
     if (nome) obj.name = name;
-    if (email) obj.email = email;
-    if (password) obj.password = password; // Avaliar
-    if (cpf) obj.cpf = cpf;
+    if (autor) obj.email = email
+    if (editora) obj.password = password; // Avaliar
+    if (ano) obj.cpf = cpf;
 
     if (obj == {}) {
         return res.status(500).json(fail("Não foi possível alterar o documento"));
     }
-
-    console.log('objeto a ser enviado para .put Student');
-    console.log(obj);
 
     studentDAO.update(id, obj)
         .then((student) => {
