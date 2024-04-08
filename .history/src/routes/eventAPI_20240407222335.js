@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
 
     eventDAO.update(id, obj)
         .then(() => {
-            res.status(201).json(success(obj, 'payload', 'Evento atualizado com sucesso!'));
+            res.status(201).json(success(obj, 'Evento atualizado com sucesso!'));
         })
         .catch((error) => {
             console.log('Erro no catch do put');
