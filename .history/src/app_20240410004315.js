@@ -35,9 +35,7 @@ app.use('/login', routeLogin);
 app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
 app.use('/events', routeEvent);
 app.use('/students', routeStudent);
-app.use('/requirements', routeRequirements);
-
-
+app.use('/requirements')
 
 
 

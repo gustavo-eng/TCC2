@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     //todo excluir coluna data
     const { data, aproved } = req.body;
     requirementsDAO.save(data, aproved).then(requirements => {
-        res.status(200).json(success(requirements, "payload", "Solicitacoes salvas"));
+        res.status(200).json(success(requirements, "payload", "Solicitacoes"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao listar solicitacoes do banco. erro - " + err));
     });

@@ -17,20 +17,11 @@ router.get('/', (req, res) => {
 });
 
 //Create a
-
+/*
 router.post('/', (req, res) => {
-    // todo neste caso vai a chave strangeira da academia
-    //todo e vai a chave estrangeira do aluno tbm
-    //todo excluir coluna data
-    const { data, aproved } = req.body;
-    requirementsDAO.save(data, aproved).then(requirements => {
-        res.status(200).json(success(requirements, "payload", "Solicitacoes salvas"));
-    }).catch(err => {
-        res.status(500).json(fail("Erro ao listar solicitacoes do banco. erro - " + err));
-    });
 
 });
-
+*/
 
 module.exports = router;
 

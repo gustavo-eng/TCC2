@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     let id = req.params.id;
     eventDAO.findSpecific(id).then(event => {
-        res.status(200).json(success(event, "payload"));
+        res.status(200).json(success(event, "payload"))
     }).catch((err) => {
         res.status(500).json(fail("Erro ao listar . ERRO = " + err));
-    });
+    })
 });
 
 
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
         res.status(200).json(success(event, "payload"));
     }).catch(err => {
         res.status(500).json({ status: 500, msg: "Falha ao salvar event" })
-    });
+    })
 });
 
 router.delete('/:id', (req, res) => {
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
         })
         .catch((error) => {
             console.log('Erro no catch do put');
-            res.status(400).json(fail("Erro ao atualizar o Evento -> ", error));
+            res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
         });
 
 });
