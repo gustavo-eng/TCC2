@@ -17,10 +17,8 @@ router.get('/', (req, res) => {
 });
 
 // rota para o professor buscar apenas os alunos referentes a sua academia
-//todo essa rota nao esta pronta pois so sera feito apos finalizar os relacioanmentos
 router.get('/:cnpj_Acacademia', (req, res) => {
-    const { cnpj_Acacademia } = req.params;
-    res.json(fail("Essa rota esta em desevolvimento"));
+
 });
 
 //Create a
@@ -39,3 +37,16 @@ router.post('/', (req, res) => {
 //todo rotina de deletar sob demanda
 
 module.exports = router;
+
+/*
+
+save: async (data, aproved) => {
+        const requirement = await requerimentsModel.create({
+            data: data,
+            aproved: aproved,
+        });
+
+        return requirement;
+},
+
+*/

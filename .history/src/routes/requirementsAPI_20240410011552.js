@@ -39,3 +39,16 @@ router.post('/', (req, res) => {
 //todo rotina de deletar sob demanda
 
 module.exports = router;
+
+/*
+
+save: async (data, aproved) => {
+        const requirement = await requerimentsModel.create({
+            data: data,
+            aproved: aproved,
+        });
+
+        return requirement;
+},
+
+*/
