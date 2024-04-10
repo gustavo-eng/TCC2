@@ -3,7 +3,6 @@ const sequelize = require('../config/db');
 const moment = require('moment');
 
 
-
 /*
     data
     Cod_Aluno
@@ -36,12 +35,11 @@ const requerimentsModel = sequelize.define('Requirements', {
 }
 );
 
+
 requerimentsModel.sync({ alter: true });
 
 module.exports = {
     // list funcao apenas utilizada para teste
-    //todo criar rotina para buscar solicitacoes de acordo com o aluno ou academia
-
     list: async () => {
         const requeriments = await requerimentsModel.findAll();
         return requeriments;
@@ -54,16 +52,6 @@ module.exports = {
 
         return requirement;
     },
-    delete: async (id) => {
-        return await requerimentsModel.destroy({ where: { id: id } });
-    },
-    findSpecific: async (id) => {
-        return await requerimentsModel.findByPk(id);
-    }
-    //todo colocar chave strangeira para pesquisar por academia
-    // findByAcademia
-
-
 
 }
 
