@@ -41,8 +41,7 @@ requerimentsModel.belongsTo(StudentModel, {
     constraint: true,
     foreignKey: 'idStudent',
     onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
-    onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    unique: true
+    onUpdate: 'CASCADE' // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
 });
 
 requerimentsModel.sync();
@@ -60,13 +59,6 @@ module.exports = {
     },
     //todo neste sava vai o id do aluno e cnpj da academia
     save: async (data, aproved, idStudent) => {
-
-        const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
-        //todo tratar este erro
-        if (existingRequirement) {
-            throw new Error('Já existe um requerimento associado a este estudante.');
-        }
-
         const requirement = await requerimentsModel.create({
             data: data,
             aproved: aproved,
@@ -85,7 +77,7 @@ module.exports = {
         //console.log('teste solicicatacao por aluno')
         //console.log('15 15 14 solicitacao por aluno')
         const requirement = await requerimentsModel.findByPk(id, { include: StudentModel });
-        console.log('getStudentvvv')
+        console.log('getStudent')
         console.log(requirement)
         console.log('requirement')
         console.log(requirement.dataValues.Student.dataValues)

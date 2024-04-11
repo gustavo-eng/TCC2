@@ -19,7 +19,6 @@ router.get('/', (req, res) => {
 // rota para o professor buscar apenas os alunos referentes a sua academia
 //todo essa rota nao esta pronta pois so sera feito apos finalizar os relacioanmentos
 router.get('/:idStudent', (req, res) => {
-    console.log('entrou na rota')
     const { idStudent } = req.params;
     requirementsDAO.listRequirementsByStudent(idStudent).then(student => {
         res.status(200).json(success(student, "payload", "aleluia"));
@@ -27,10 +26,6 @@ router.get('/:idStudent', (req, res) => {
         res.status(500).json(fail("Essa rota esta em desevolvimento"));
     })
 });
-
-router.get('/findSpecific/:id', (req, res) => {
-    console.log('ok')
-})
 
 //Create a
 router.post('/', (req, res) => {

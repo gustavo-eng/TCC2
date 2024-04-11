@@ -28,10 +28,6 @@ router.get('/:idStudent', (req, res) => {
     })
 });
 
-router.get('/findSpecific/:id', (req, res) => {
-    console.log('ok')
-})
-
 //Create a
 router.post('/', (req, res) => {
     // todo neste caso vai a chave strangeira da academia

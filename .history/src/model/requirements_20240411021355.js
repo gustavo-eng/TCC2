@@ -60,13 +60,6 @@ module.exports = {
     },
     //todo neste sava vai o id do aluno e cnpj da academia
     save: async (data, aproved, idStudent) => {
-
-        const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
-        //todo tratar este erro
-        if (existingRequirement) {
-            throw new Error('Já existe um requerimento associado a este estudante.');
-        }
-
         const requirement = await requerimentsModel.create({
             data: data,
             aproved: aproved,
