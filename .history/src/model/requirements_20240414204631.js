@@ -99,6 +99,8 @@ module.exports = {
     // findByAcademia
     //listRequirementsByGym
 
+
+
 }
 
 

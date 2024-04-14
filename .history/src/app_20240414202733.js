@@ -33,14 +33,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
 app.use('/login', routeLogin);
+//app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
 app.use('/events', routeEvent);
 app.use('/students', routeStudent);
 app.use('/requirements', routeRequirements);
-app.use('/gym', routeGym);
-
+app.use('/gym', routeGym)
 //app.use('/category', routeCategory);
 // app.use('')
-//app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
+
+
+
 
 
 // error handler

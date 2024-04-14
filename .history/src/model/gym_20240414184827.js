@@ -71,12 +71,12 @@ module.exports = {
     update: async (cnpj_Academia, obj) => {
         let gym = await GymModel.findByPk(cnpj_Academia);
         if (!gym) return false
-        Object.keys(obj).forEach(key => gym[key] = obj[key]);
+        Object.keys(obj).forEach(key => event[key] = obj[key]);
         await gym.save();
         return gym;
     },
     delete: async (cnpj_Academia) => {
-        await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
+        await GymModel.destroy({ where: { cod_Event: cnpj_Academia } });
     }
 
 }

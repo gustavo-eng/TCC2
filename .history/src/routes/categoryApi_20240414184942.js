@@ -19,12 +19,15 @@ router.get('/', (req, res) => {
 //gender, classAge, weight
 // middleware para FPRJ
 router.post('/', (req, res) => {
+
     const { gender, classAge, weight } = req.body;
+
     categoryDAO.save(gender, classAge, weight).then(category => {
         res.status(200).json(success(category, "payload", "Categoria listada com sucesso"))
     }).catch(err => {
         res.status(200).json(fail("Erro ao criar solicitacao. Erro -> " + err));
     });
+
 });
 
 

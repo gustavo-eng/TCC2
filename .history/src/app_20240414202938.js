@@ -36,7 +36,7 @@ app.use('/login', routeLogin);
 app.use('/events', routeEvent);
 app.use('/students', routeStudent);
 app.use('/requirements', routeRequirements);
-app.use('/gym', routeGym);
+//app.use('/gym', routeGym);
 
 //app.use('/category', routeCategory);
 // app.use('')

@@ -43,7 +43,9 @@ const StudentModel = sequelize.define('Student',
 );
 
 
+
 StudentModel.sync({ alter: true });
+
 
 
 module.exports = {

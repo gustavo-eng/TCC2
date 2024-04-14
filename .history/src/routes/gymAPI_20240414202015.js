@@ -105,7 +105,7 @@ router.delete('/:cnpj_Academia', (req, res) => {
 
 
 
-module.exports = router;
+
 
 //router.get() -> buscar academia especifica
 /*

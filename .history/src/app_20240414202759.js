@@ -43,6 +43,9 @@ app.use('/gym', routeGym);
 //app.use('/gym', routeGym); // nessa rota sera colocado middleware p/ professor
 
 
+
+
+
 // error handler
 app.use(function (err, req, res, next) {
     // set locals, only providing error in development

@@ -68,8 +68,8 @@ router.put('/:Cnpj_Academia', (req, res) => {
     if (nomeProfessor) obj.nomeProfessor = nomeProfessor;
     if (nomeAcademia) obj.nomeAcademia = nomeAcademia;
 
-
     //Verificar se o
+
     if (obj == {}) {
         return res.status(500).json(fail("Não foi possível alterar o documento"));
     }
@@ -105,7 +105,7 @@ router.delete('/:cnpj_Academia', (req, res) => {
 
 
 
-module.exports = router;
+
 
 //router.get() -> buscar academia especifica
 /*

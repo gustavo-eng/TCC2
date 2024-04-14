@@ -76,7 +76,7 @@ module.exports = {
         return gym;
     },
     delete: async (cnpj_Academia) => {
-        await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
+        await GymModel.destroy({ where: { cod_Event: cnpj_Academia } });
     }
 
 }
