@@ -100,7 +100,6 @@ module.exports = {
     //listRequirementsByGym
 
 
-
 }
 
 

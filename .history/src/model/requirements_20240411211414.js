@@ -49,6 +49,7 @@ requerimentsModel.sync();
 
 
 
+
 module.exports = {
     // list funcao apenas utilizada para teste
     //todo criar rotina para buscar solicitacoes de acordo com o aluno ou academia
@@ -97,7 +98,6 @@ module.exports = {
     }
     //todo colocar chave strangeira para pesquisar por academia
     // findByAcademia
-    //listRequirementsByGym
 
 
 
