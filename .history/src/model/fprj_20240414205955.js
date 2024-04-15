@@ -40,9 +40,6 @@ module.exports = {
     list: async () => {
         const fprj = await FprjModel.findAll();
         return fprj;
-    },
-    save: async () => {
-        //
     }
 }
 

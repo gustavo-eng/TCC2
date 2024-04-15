@@ -36,16 +36,6 @@ const FprjModel = sequelize.define('fprj', {
 FprjModel.sync();
 
 
-module.exports = {
-    list: async () => {
-        const fprj = await FprjModel.findAll();
-        return fprj;
-    },
-    save: async () => {
-        //
-    }
-}
-
 /*
 
     CNPJ_FRPJ
