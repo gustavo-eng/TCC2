@@ -48,8 +48,6 @@ FprjModel.sync();
 module.exports = {
     list: async () => {
         const fprj = await FprjModel.findAll();
-        console.log('lista de federacao')
-        console.log(fprj)
         return fprj;
     },
     save: async (nomePresidente, rua, numero, telefone, email, password) => {

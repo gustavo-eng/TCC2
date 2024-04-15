@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const { emit } = require('nodemon');
 
 
 const FprjModel = sequelize.define('fprj', {
@@ -25,14 +24,6 @@ const FprjModel = sequelize.define('fprj', {
     telefone: {
         type: DataTypes.STRING,
         allowNull: true
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: true
     }
 
 }, {
@@ -48,19 +39,15 @@ FprjModel.sync();
 module.exports = {
     list: async () => {
         const fprj = await FprjModel.findAll();
-        console.log('lista de federacao')
-        console.log(fprj)
         return fprj;
     },
-    save: async (nomePresidente, rua, numero, telefone, email, password) => {
+    save: async (nomePresidente, rua, numero, telefone) => {
         //todo adicionar logica para verificar se ja existe federecao cadastrada
         const fprj = FprjModel.create({
             nome_Presidente: nomePresidente,
             rua: rua,
             numero: numero,
-            telefone: telefone,
-            email: email,
-            password: password
+            telefone: telefone
         });
 
         return fprj;
