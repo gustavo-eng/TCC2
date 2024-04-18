@@ -55,15 +55,14 @@ requerimentsModel.hasOne(GymModel, {
 });
 */
 
-/*
-GymModel.hasOne(requerimentsModel, {
+
+GymModel.belongsTo(requerimentsModel, {
     ///constraint: true,
     foreignKey: 'idGym',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     //unique: true
 });
-*/
 
 
 

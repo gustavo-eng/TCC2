@@ -71,7 +71,7 @@ requerimentsModel.belongsTo(GymModel, {
 
 
 
-GymModel.sync({ alter: true });
+GymModel.sync();
 
 module.exports = {
 

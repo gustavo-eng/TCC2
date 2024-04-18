@@ -39,33 +39,19 @@ const requerimentsModel = sequelize.define('Requirements', {
 
 //ondelete cascade
 requerimentsModel.belongsTo(StudentModel, {
-    constraint: false,
+    constraint: true,
     foreignKey: 'idStudent',
     onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    //unique: true
-});
-/*
-requerimentsModel.hasOne(GymModel, {
-    constraint: true,
-    foreignKey: 'idGym',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
     unique: true
 });
-*/
 
-/*
-GymModel.hasOne(requerimentsModel, {
-    ///constraint: true,
+
+requerimentsModel.belongsTo(GymModel, {
     foreignKey: 'idGym',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
-    //unique: true
 });
-*/
-
-
 
 /*
 A A.hasOne(B)associação significa que existe um relacionamento Um-para-Um entre Ae B, com a chave estrangeira sendo definida no modelo alvo ( B).

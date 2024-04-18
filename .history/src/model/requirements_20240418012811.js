@@ -43,7 +43,7 @@ requerimentsModel.belongsTo(StudentModel, {
     foreignKey: 'idStudent',
     onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    //unique: true
+    unique: true
 });
 /*
 requerimentsModel.hasOne(GymModel, {
@@ -55,15 +55,14 @@ requerimentsModel.hasOne(GymModel, {
 });
 */
 
-/*
-GymModel.hasOne(requerimentsModel, {
-    ///constraint: true,
+
+requerimentsModel.belongsTo(GymModel, {
+    constraint: true,
     foreignKey: 'idGym',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
-    //unique: true
+    unique: true
 });
-*/
 
 
 

@@ -60,7 +60,6 @@ GymModel.hasMany(requerimentsModel, {
     unique: true
 });
 */
-
 requerimentsModel.belongsTo(GymModel, {
     constraint: true,
     foreignKey: 'idGym',
@@ -68,7 +67,6 @@ requerimentsModel.belongsTo(GymModel, {
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
     unique: true
 });
-
 
 
 GymModel.sync({ alter: true });
@@ -107,7 +105,7 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    GymModel: GymModel,
+    GymModel,
 }
 
 

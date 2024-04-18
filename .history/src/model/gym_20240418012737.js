@@ -60,7 +60,6 @@ GymModel.hasMany(requerimentsModel, {
     unique: true
 });
 */
-
 requerimentsModel.belongsTo(GymModel, {
     constraint: true,
     foreignKey: 'idGym',
@@ -70,8 +69,7 @@ requerimentsModel.belongsTo(GymModel, {
 });
 
 
-
-GymModel.sync({ alter: true });
+GymModel.sync();
 
 module.exports = {
 

@@ -3,7 +3,6 @@ const sequelize = require('../config/db');
 const moment = require('moment');
 const Student = require('./student');
 const { StudentModel } = require('./student');
-const { GymModel } = require('./gym');
 
 /*
     data
@@ -39,33 +38,12 @@ const requerimentsModel = sequelize.define('Requirements', {
 
 //ondelete cascade
 requerimentsModel.belongsTo(StudentModel, {
-    constraint: false,
+    constraint: true,
     foreignKey: 'idStudent',
     onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    //unique: true
-});
-/*
-requerimentsModel.hasOne(GymModel, {
-    constraint: true,
-    foreignKey: 'idGym',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
     unique: true
 });
-*/
-
-/*
-GymModel.hasOne(requerimentsModel, {
-    ///constraint: true,
-    foreignKey: 'idGym',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    //unique: true
-});
-*/
-
-
 
 /*
 A A.hasOne(B)associação significa que existe um relacionamento Um-para-Um entre Ae B, com a chave estrangeira sendo definida no modelo alvo ( B).
@@ -112,23 +90,18 @@ module.exports = {
         //console.log('teste solicicatacao por aluno')
         //console.log('15 15 14 solicitacao por aluno')
         const requirement = await requerimentsModel.findByPk(id, { include: StudentModel });
-        console.log('requirement');
-        console.log(requirement);
-        console.log('requirement.dataValues.Student.dataValues');
-        console.log(requirement.dataValues.Student.dataValues);
-
+        console.log('getStudentvvv')
+        console.log(requirement)
+        console.log('requirement')
+        console.log(requirement.dataValues.Student.dataValues)
+        //const student = await requirement.getStudentModel();
+        //console.log('*********')
+        //console.log(student)
+        //return student;
         return requirement.dataValues;
 
-    },
-    listRequirmentsByGym: async (id) => {
-        const requirement = await requerimentsModel.findByPk(id, { include: GymModel });
 
-        console.log('gymModel  listRequirmentsByGym ');
-        console.log(requirement);
-
-        return requirement;
-    },
-    requerimentsModel: requerimentsModel,
+    }
     //todo colocar chave strangeira para pesquisar por academia
     // findByAcademia
     //listRequirementsByGym

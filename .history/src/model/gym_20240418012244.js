@@ -61,16 +61,6 @@ GymModel.hasMany(requerimentsModel, {
 });
 */
 
-requerimentsModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'idGym',
-    onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
-    onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    unique: true
-});
-
-
-
 GymModel.sync({ alter: true });
 
 module.exports = {
@@ -107,7 +97,7 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    GymModel: GymModel,
+    GymModel,
 }
 
 

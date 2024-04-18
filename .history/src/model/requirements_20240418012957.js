@@ -55,7 +55,7 @@ requerimentsModel.hasOne(GymModel, {
 });
 */
 
-/*
+
 GymModel.hasOne(requerimentsModel, {
     ///constraint: true,
     foreignKey: 'idGym',
@@ -63,7 +63,6 @@ GymModel.hasOne(requerimentsModel, {
     onUpdate: 'CASCADE',
     //unique: true
 });
-*/
 
 
 
