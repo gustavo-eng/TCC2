@@ -52,15 +52,8 @@ router.post('/', (req, res) => {
 
 });
 
-// esta esta serve para o desenvolvedor. Fazer rotina para deletar
-// deletar a tabela especificada de acordo com o dado que chegou do update time
-
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-    requirementsDAO.delete(id).then(el => {
-
-    })
-});
+// esta esta serve para o desenvolvedor
+router.delete('/',)
 //todo rotina de deletar sob demanda
 // fazer
 module.exports = router;

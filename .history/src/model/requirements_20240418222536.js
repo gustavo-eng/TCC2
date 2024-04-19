@@ -5,6 +5,7 @@ const Student = require('./student');
 const { StudentModel } = require('./student');
 const { GymModel } = require('./gym');
 
+
 const requerimentsModel = sequelize.define('Requirements', {
 
     id: {
@@ -30,7 +31,6 @@ const requerimentsModel = sequelize.define('Requirements', {
 );
 
 //ondelete cascade
-
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
     foreignKey: 'idStudent',
@@ -39,6 +39,7 @@ requerimentsModel.belongsTo(StudentModel, {
     //unique: true
 });
 
+/*
 requerimentsModel.belongsTo(GymModel, {
     constraint: true,
     foreignKey: 'gymId',
@@ -46,7 +47,7 @@ requerimentsModel.belongsTo(GymModel, {
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
     //unique: true
 });
-
+*/
 
 GymModel.hasMany(requerimentsModel, {
     constraint: false,
@@ -55,6 +56,13 @@ GymModel.hasMany(requerimentsModel, {
     onUpdate: 'CASCADE',
 });
 
+
+
+
+
+/*
+A A.hasOne(B)associação significa que existe um relacionamento Um-para-Um entre Ae B, com a chave estrangeira sendo definida no modelo alvo ( B).
+*/
 
 requerimentsModel.sync();
 
@@ -82,7 +90,7 @@ module.exports = {
             data: data,
             aproved: aproved,
             idStudent: idStudent,
-            gymId: gymId
+            idGym: gymId
         });
 
         return requirement;
@@ -110,8 +118,6 @@ module.exports = {
 
         console.log('gymModel  listRequirmentsByGym ');
         console.log(requirement);
-        console.log('Elencando todas as academia atraledas a essa solicitacao ')
-        console.warn(await requerimentsModel.findAll({ include: GymModel }).toJSON());
 
         return requirement;
     },

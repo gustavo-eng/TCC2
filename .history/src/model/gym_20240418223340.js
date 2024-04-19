@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-
+const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cnpj_Academia: {

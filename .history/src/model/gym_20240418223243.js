@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-
+const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cnpj_Academia: {
@@ -87,7 +87,7 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    GymModel: GymModel,
+    GymModel,
 }
 
 

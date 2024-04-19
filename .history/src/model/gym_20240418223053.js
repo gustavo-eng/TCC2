@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-
+const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cnpj_Academia: {
@@ -46,7 +46,12 @@ const GymModel = sequelize.define('Gym', {
 );
 
 
-
+GymModel.hasMany(requerimentsModel, {
+    constraint: false,
+    foreignKey: 'gymId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+});
 
 GymModel.sync({ alter: true });
 

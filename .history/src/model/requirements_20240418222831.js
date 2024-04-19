@@ -5,6 +5,7 @@ const Student = require('./student');
 const { StudentModel } = require('./student');
 const { GymModel } = require('./gym');
 
+
 const requerimentsModel = sequelize.define('Requirements', {
 
     id: {
@@ -30,7 +31,6 @@ const requerimentsModel = sequelize.define('Requirements', {
 );
 
 //ondelete cascade
-
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
     foreignKey: 'idStudent',
@@ -39,21 +39,25 @@ requerimentsModel.belongsTo(StudentModel, {
     //unique: true
 });
 
-requerimentsModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'gymId',
-    onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
-    onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
-    //unique: true
-});
+
+// GymModel.hasMany(requerimentsModel, {
+//     constraint: false,
+//     foreignKey: 'gymId',
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE',
+// });
 
 
-GymModel.hasMany(requerimentsModel, {
-    constraint: false,
-    foreignKey: 'gymId',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-});
+// requerimentsModel.belongsTo(GymModel, {
+//     constraint: true,
+//     foreignKey: 'gymId',
+//     onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
+//     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
+//     unique: true
+// });
+
+
+
 
 
 requerimentsModel.sync();
@@ -82,7 +86,7 @@ module.exports = {
             data: data,
             aproved: aproved,
             idStudent: idStudent,
-            gymId: gymId
+            idGym: gymId
         });
 
         return requirement;
@@ -110,8 +114,6 @@ module.exports = {
 
         console.log('gymModel  listRequirmentsByGym ');
         console.log(requirement);
-        console.log('Elencando todas as academia atraledas a essa solicitacao ')
-        console.warn(await requerimentsModel.findAll({ include: GymModel }).toJSON());
 
         return requirement;
     },

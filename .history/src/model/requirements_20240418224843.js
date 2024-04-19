@@ -30,7 +30,6 @@ const requerimentsModel = sequelize.define('Requirements', {
 );
 
 //ondelete cascade
-
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
     foreignKey: 'idStudent',
@@ -46,7 +45,6 @@ requerimentsModel.belongsTo(GymModel, {
     onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
     //unique: true
 });
-
 
 GymModel.hasMany(requerimentsModel, {
     constraint: false,
@@ -82,7 +80,7 @@ module.exports = {
             data: data,
             aproved: aproved,
             idStudent: idStudent,
-            gymId: gymId
+            idGym: gymId
         });
 
         return requirement;

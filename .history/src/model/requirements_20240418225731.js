@@ -30,7 +30,6 @@ const requerimentsModel = sequelize.define('Requirements', {
 );
 
 //ondelete cascade
-
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
     foreignKey: 'idStudent',

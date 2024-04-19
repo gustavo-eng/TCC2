@@ -31,7 +31,7 @@ const StudentModel = sequelize.define('Student',
             allowNull: true
         },
         role: {
-            type: DataTypes.STRING, //todo  tirar
+            type: DataTypes.ENUM("student", "gym"), //todo  tirar
             allowNull: true,
             //defaultValue: "student"
         }, // admin é o responsável por cadastrar os usuários e realiz
