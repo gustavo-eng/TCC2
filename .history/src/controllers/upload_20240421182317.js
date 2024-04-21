@@ -21,8 +21,6 @@ const uploadFiles = async (req, res) => {
 
         console.log("****** newFiel ")
         console.log(newFiel)
-        console.log('reeeeq')
-        console.log(req.body.newField)
         Image.create({
             type: req.file.mimetype,
             //name: req.file.originalname,
@@ -32,8 +30,7 @@ const uploadFiles = async (req, res) => {
                 //"C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + `${Date.now()}-bezkoder-${req.file.filename}`
                 //"../uploads/" + req.file.filename
             ),
-            newFiel: req.body.newField || "Not informed"
-            //newFiel: eq.body.newField
+            newFiel: newFiel || ""
         }).then((image) => {
             console.log('deu certo dentro de imageCreate')
 

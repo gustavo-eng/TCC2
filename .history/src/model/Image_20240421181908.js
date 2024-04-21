@@ -25,7 +25,9 @@ const Image = sequelize.define("image", {
 }); // Colocar formato padrao
 
 
-Image.sync({ alter: true });
+
+
+
 
 module.exports = {
     findSpecific: async (id) => {

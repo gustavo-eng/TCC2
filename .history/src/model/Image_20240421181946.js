@@ -27,6 +27,8 @@ const Image = sequelize.define("image", {
 
 Image.sync({ alter: true });
 
+
+
 module.exports = {
     findSpecific: async (id) => {
         return await Image.findByPk(id);
