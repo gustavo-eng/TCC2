@@ -1,6 +1,6 @@
 const multer = require("multer");
 //require('../uploads')
-/*
+
 const imageFilter = (req, file, cb) => {
     // filtro para permitir apenas a passagem de imagem
     if (file.mimetype.startsWith("image")) {
@@ -12,8 +12,6 @@ const imageFilter = (req, file, cb) => {
         cb('Please upload only images ', false);
     }
 }
-
-*/
 
 
 //C:\Users\diasg\Desktop\TCC2\app\src\uploads
@@ -42,6 +40,6 @@ var storage = multer.diskStorage({
 
 });
 //todo compreender este imageFilter
-var uploadFile = multer({ storage: storage /*, fileFilter: imageFilter */ });
+var uploadFile = multer({ storage: storage, fileFilter: imageFilter });
 module.exports = uploadFile;
 

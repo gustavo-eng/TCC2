@@ -14,7 +14,6 @@ router.get("/:id", (req, res) => {
     imageDAO.findSpecific(id).then(img => {
         res.status(200).json(success(img, "payload", "Sucesso ao listar imagem"))
     }).catch(err => {
-        console.log("errooo imageemmm")
         res.status(500).json(fail("Erro ao listar image. Erro ->  " + err))
     })
 })

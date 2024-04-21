@@ -20,11 +20,9 @@ const uploadFiles = async (req, res) => {
 
         Image.create({
             type: req.file.mimetype,
-            //name: req.file.originalname,
-            name: `${Date.now()}-${req.file.originalname}`,
+            name: req.file.originalname,
             data: fs.readFileSync(
-                "C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + req.file.filename
-                //"C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + `${Date.now()}-bezkoder-${req.file.filename}`
+                "C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + `${Date.now()}-bezkoder-${file.originalname}`
                 //"../uploads/" + req.file.filename
             ),
         }).then((image) => {

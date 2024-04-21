@@ -3,18 +3,16 @@ var router = express.Router();
 const upload = require("../middleware/upload");
 const uploadController = require("../controllers/upload");
 const imageDAO = require('../model/Image');
-const { success, fail } = require('../helpers/response');
+const { success } = require('../helpers/response');
 
 router.get("/:id", (req, res) => {
     const { id } = req.params;
-    console.log('id ', id)
     //res.render('index.html')
-    console.log('rota de BUSCAAA ESPECIFICA')
-    //res.send("<h1>Acessou a rota de upload de arquios</h1>");
+
+    res.send("<h1>Acessou a rota de upload de arquios</h1>");
     imageDAO.findSpecific(id).then(img => {
         res.status(200).json(success(img, "payload", "Sucesso ao listar imagem"))
     }).catch(err => {
-        console.log("errooo imageemmm")
         res.status(500).json(fail("Erro ao listar image. Erro ->  " + err))
     })
 })

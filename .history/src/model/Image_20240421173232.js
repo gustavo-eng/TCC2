@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
-
 const Image = sequelize.define("image", {
     id: {
         type: DataTypes.INTEGER,
@@ -25,9 +24,6 @@ const Image = sequelize.define("image", {
 
 
 module.exports = {
-    findSpecific: async (id) => {
-        return await Image.findByPk(id);
-    },
     Image: Image
 
 };
