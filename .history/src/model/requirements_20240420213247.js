@@ -102,39 +102,31 @@ module.exports = {
             where: { 'idStudent': id }
         });
 
-        //console.log('requirement');
-        //console.log(requirement);
+        console.log('requirement');
+        console.log(requirement);
         //console.log('requirement.dataValues.Student.dataValues');
         //console.log(requirement.dataValues.Student.dataValues);
 
-        //console.log('10101010 requirement.getStudentModel()');
-        //console.log(requirement);
+        console.log('10101010 requirement.getStudentModel()');
+        console.log(requirement);
 
         //return requirement.dataValues;
 
         return requirement;
     },
     listRequirmentsByGym: async (id) => {
-        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel });
-        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel, where: { 'StudentId': id } });
         const requirement = await requerimentsModel.findAll({
-            //include: GymModel,
             include: StudentModel,
             where: { 'gymId': id }
         });
 
-        //console.log('gymModel  requirement.requirement.dataValues ');
-        //console.log(requirement.dataValues);
-
-        //console.log('Elencando todas as academia atraledas a essa solicitacao ')
-        //console.warn(await requerimentsModel.findAll({ include: GymModel }));
-        //console.log('10101010 requirement.getGymModel()')
-        //console.log(requirement)
         return requirement;
     },
 
     requerimentsModel: requerimentsModel,
-
+    //todo colocar chave strangeira para pesquisar por academia
+    // findByAcademia
+    //listRequirementsByGym
 
 }
 

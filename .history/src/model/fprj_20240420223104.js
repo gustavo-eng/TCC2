@@ -59,7 +59,6 @@ module.exports = {
     save: async (nomePresidente, rua, numero, telefone, email, password) => {
 
         //todo adicionar logica para verificar se ja existe federecao cadastrada
-        //todo deixar para o final para nao dar nenhum problema
 
         const fprj = FprjModel.create({
             nome_Presidente: nomePresidente,

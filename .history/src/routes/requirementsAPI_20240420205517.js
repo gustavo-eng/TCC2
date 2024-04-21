@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
     requirementsDAO.list().then(requirements => {
         res.status(200).json(success(requirements, "payload", "Solicitacoes"));
     }).catch(err => {
+        //console.log('dasf');
         res.status(500).json(fail("Erro ao listar solicitacoes do banco. erro - " + err));
-    });
-
+    })
 
 });
 
@@ -42,12 +42,14 @@ router.get('/gym/:gymId', (req, res) => {
 
 //Create a
 router.post('/', (req, res) => {
+
     const { data, aproved, idStudent, gymId } = req.body;
     requirementsDAO.save(data, aproved, idStudent, gymId).then(requirements => {
         res.status(200).json(success(requirements, "payload", "Solicitacoes salvas"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao listar solicitacoes do banco. erro - " + err));
     });
+
 });
 
 // esta esta serve para o desenvolvedor. Fazer rotina para deletar
@@ -55,12 +57,9 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    requirementsDAO.delete(id).then(requirement => {
-        res.status(200).json(success(requirement, "payload", "Solicitacao deletada com successo"));
-    }).catch(err => {
-        res.status(500).json(fail("Erro ao deletar  solicitacao do banco. erro - " + err));
-    });
+    requirementsDAO.delete(id).then(el => {
 
+    })
 });
 //todo rotina de deletar sob demanda
 // fazer

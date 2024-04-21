@@ -3,14 +3,10 @@ const sequelize = require('../config/db');
 
 
 const GymModel = sequelize.define('Gym', {
-    cod_gym: {
+    gymId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    },
-    cnpj_Academia: {
-        type: DataTypes.STRING,
-        allowNull: true
     },
     telefone: {
         type: DataTypes.STRING,

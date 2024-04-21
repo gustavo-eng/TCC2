@@ -133,7 +133,14 @@ module.exports = {
         return requirement;
     },
 
+
+
+
     requerimentsModel: requerimentsModel,
+    //todo colocar chave strangeira para pesquisar por academia
+    // findByAcademia
+    //listRequirementsByGym
+
 
 
 }

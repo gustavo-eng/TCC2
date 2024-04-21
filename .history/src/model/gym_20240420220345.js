@@ -3,53 +3,53 @@ const sequelize = require('../config/db');
 
 
 const GymModel = sequelize.define('Gym', {
-    cod_gym: {
+    gymId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    cnpj_Academia: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    cnpj_Academia: : {
+    type: DataTypes.STRING,
+    allowNull: true
+},
     telefone: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     senha: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     email: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     bairro: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     numero: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     nomeProfessor: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     nomeAcademia: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    type: DataTypes.STRING,
+    allowNull: true
+},
     role: {
-        type: DataTypes.STRING,
-        allowNull: true
-    }
+    type: DataTypes.STRING,
+    allowNull: true
+}
 
 
 }, {
     freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+        createdAt: true,
+            updatedAt: true,
 }
 );
 

@@ -55,6 +55,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
+    //404 solicitacao nao encontrada
     requirementsDAO.delete(id).then(requirement => {
         res.status(200).json(success(requirement, "payload", "Solicitacao deletada com successo"));
     }).catch(err => {

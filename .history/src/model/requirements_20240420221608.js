@@ -135,7 +135,8 @@ module.exports = {
 
     requerimentsModel: requerimentsModel,
 
-
+    // findByAcademia
+    //listRequirementsByGym
 }
 
 

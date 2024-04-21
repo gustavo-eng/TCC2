@@ -3,7 +3,7 @@ const sequelize = require('../config/db');
 
 
 const GymModel = sequelize.define('Gym', {
-    cod_gym: {
+    gymId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -56,7 +56,7 @@ const GymModel = sequelize.define('Gym', {
 
 
 
-GymModel.sync({ alter: true });
+GymModel.sync();
 
 
 module.exports = {

@@ -128,12 +128,19 @@ module.exports = {
 
         //console.log('Elencando todas as academia atraledas a essa solicitacao ')
         //console.warn(await requerimentsModel.findAll({ include: GymModel }));
-        //console.log('10101010 requirement.getGymModel()')
-        //console.log(requirement)
+        console.log('10101010 requirement.getGymModel()')
+        console.log(requirement)
         return requirement;
     },
 
+
+
+
     requerimentsModel: requerimentsModel,
+    //todo colocar chave strangeira para pesquisar por academia
+    // findByAcademia
+    //listRequirementsByGym
+
 
 
 }
