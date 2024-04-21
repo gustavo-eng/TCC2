@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+
+<body>
+    <h1>Image Upload</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="imageInput">
+        <button type="submit">Upload</button>
+    </form>
+    <div id="imageContainer"></div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // script.js
+        const uploadForm = document.getElementById('uploadForm');
+        const imageInput = document.getElementById('imageInput');
+        const imageContainer = document.getElementById('imageContainer');
+
+        uploadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('image', imageInput.files[0]);
+
+            try {
+                const response = await axios.post('http://localhost:3000/img/upload', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                const imageUrl = URL.createObjectURL(imageInput.files[0]);
+                const imageElement = document.createElement('img');
+                imageElement.src = imageUrl;
+                imageContainer.appendChild(imageElement);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

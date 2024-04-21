@@ -1,6 +1,6 @@
 // models/image.js
-const { DataTypes } = require('sequelize');
-const sequelize = require('../sequelize');
+const { Sequelize, DataTypes, where } = require('sequelize');
+const sequelize = require('../config/db')
 
 const Image = sequelize.define('Image', {
     name: {
@@ -19,5 +19,7 @@ const Image = sequelize.define('Image', {
     }
 );
 
+
+Image.sync({ alter: true });
 
 module.exports = Image;
