@@ -5,8 +5,6 @@ const uploadController = require("../controllers/upload");
 const imageDAO = require('../model/Image');
 const { success, fail } = require('../helpers/response');
 
-const fs = require("fs")
-
 router.get("/:id", (req, res) => {
     const { id } = req.params;
     console.log('id ', id)
@@ -27,45 +25,11 @@ router.post("/", upload.single("file"), uploadController.uploadFiles, (req, res)
     //res.json(req.file);
 })
 //C:\Users\diasg\Desktop\TCC2\app\src\uploads\podcastr.png
-/*
 router.get('/sendFile/t', (req, res) => {
     console.log('rota sendFile 2525')
     //res.send('<h1>test sendFile</h1>')
     res.sendFile('C:/Users/diasg/Desktop/TCC2/app/src/uploads/podcastr.png')
 });
-*/
-
-
-router.get('/sendFile/t', (req, res) => {
-    console.log('rota sendFile 2525');
-
-    // Caminho do arquivo
-    const filePath = 'C:/Users/diasg/Desktop/TCC2/app/src/uploads/podcastr.png';
-
-    // Lê o arquivo
-    fs.readFile(filePath, (err, data) => {
-        if (err) {
-            console.error('Erro ao ler o arquivo:', err);
-            return res.status(500).json({ message: 'Erro ao ler o arquivo' });
-        }
-
-        // Codifica o arquivo em base64
-        const base64Data = Buffer.from(data).toString('base64');
-
-        // Objeto a ser enviado como JSON
-        const responseObj = {
-            message: 'Arquivo enviado com sucesso',
-            file: {
-                filename: 'podcastr.png',
-                data: base64Data
-            }
-        };
-
-        // Envia o objeto como JSON
-        res.json(responseObj);
-    });
-});
-
 
 module.exports = router;
 

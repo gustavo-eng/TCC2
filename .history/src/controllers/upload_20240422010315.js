@@ -44,7 +44,7 @@ const uploadFiles = async (req, res) => {
 
             fs.writeFileSync(
                 //image.name
-                path.join(uploadDir, image.name),
+                path.join(uploadDir, "image.name"),
                 //"C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + image.name,
                 //"../uploads/" + image.name,
                 image.data

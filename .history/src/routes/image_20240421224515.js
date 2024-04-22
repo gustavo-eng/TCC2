@@ -5,8 +5,6 @@ const uploadController = require("../controllers/upload");
 const imageDAO = require('../model/Image');
 const { success, fail } = require('../helpers/response');
 
-const fs = require("fs")
-
 router.get("/:id", (req, res) => {
     const { id } = req.params;
     console.log('id ', id)

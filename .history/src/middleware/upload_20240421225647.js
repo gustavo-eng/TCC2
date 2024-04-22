@@ -18,6 +18,8 @@ const imageFilter = (req, file, cb) => {
 //C:\Users\diasg\Desktop\TCC2\app\src\uploads
 //src\uploads
 
+console.log('dirname')
+console.log(__dirname)
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         //todo trocar esse uploads utilizando o dirname
@@ -28,9 +30,12 @@ var storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         //determina o nome do arquivo dentro da pasta de destino
-
-        cb(null, `${Date.now()}-${req.body.description ? req.body.description : "naoExisteName"}-${file.originalname}`)
-
+        console.log("filename chegou aqui")
+        cb(null, `${Date.now()}-bezkoder-${file.originalname}`)
+        console.log("passou de filename")
+        console.log('NOME DO ARQUIVO')
+        console.log(`${Date.now()}-bezkoder-${file.originalname} \n \n `)
+        //cb(null, `${Date.now()}-bezkoder-${file.originalname}`)
     }
 
 

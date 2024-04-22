@@ -16,15 +16,13 @@ module.exports = {
         }
 
         jwt.verify(token, process.env.SECRET_JWT, (err, obj) => {
-
+            console.log('verifyyy')
             if (err) {
                 return res.status(403).json({ msg: "Invalid token" });
 
             } else {
                 req.user = obj.user;
                 req.userPermission = obj.userPermission;
-                console.log('verifyyy')
-                console.log(req.userPermission)
                 next();
             }
         });

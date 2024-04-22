@@ -12,7 +12,8 @@ console.warn(__dirname)
 //C:\Users\diasg\Desktop\TCC2\app\src\uploads
 const uploadFiles = async (req, res) => {
 
-    const uploadDir = path.join(__dirname, '..', 'uploads');
+    const uploadDir = path.join(__dirname, '..', 'uploads')
+    const testDir = path.join(uploadDir, 'test');
 
     console.log("************************** uploadFiles")
     try {
@@ -43,9 +44,7 @@ const uploadFiles = async (req, res) => {
             console.log('deu certo dentro de imageCreate')
 
             fs.writeFileSync(
-                //image.name
-                path.join(uploadDir, image.name),
-                //"C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + image.name,
+                "C:/Users/diasg/Desktop/TCC2/app/src/uploads/" + image.name,
                 //"../uploads/" + image.name,
                 image.data
             );

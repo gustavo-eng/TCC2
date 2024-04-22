@@ -29,7 +29,7 @@ var storage = multer.diskStorage({
     filename: (req, file, cb) => {
         //determina o nome do arquivo dentro da pasta de destino
 
-        cb(null, `${Date.now()}-${req.body.description ? req.body.description : "naoExisteName"}-${file.originalname}`)
+        cb(null, `${Date.now()}-bezkoder-${file.originalname}`)
 
     }
 

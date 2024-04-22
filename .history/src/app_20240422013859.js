@@ -4,7 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var cors = require('cors');
 var http = require('http');
-const bodyParser = require("body-parser");
 
 var app = express();
 var server = http.createServer(app);
@@ -34,13 +33,10 @@ var routerJeans = require('./routes/gyms')
 //require('./uploads')
 
 
-// Configurando o body-parser para analisar corpos de requisição codificados em URL
 
-app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, "public")));
 

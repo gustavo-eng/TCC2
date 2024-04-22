@@ -1,11 +1,10 @@
 const multer = require("multer");
-//require('../uploads')
-/*
+
+
 const imageFilter = (req, file, cb) => {
-    // filtro para permitir apenas a passagem de imagem
     if (file.mimetype.startsWith("image")) {
         console.log("Nome do arquivo comeca com Image (startsWith)");
-        // cb(null, true);
+        cb(null, true);
 
     } else {
         console.log("NOT startsWith");
@@ -13,10 +12,6 @@ const imageFilter = (req, file, cb) => {
     }
 }
 
-*/
-
-//C:\Users\diasg\Desktop\TCC2\app\src\uploads
-//src\uploads
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -28,14 +23,14 @@ var storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         //determina o nome do arquivo dentro da pasta de destino
+        console.log("filename chegou aqui")
+        //cb(null, `${Date.now()}-${file.originalname}`)
+        cb(null, `${Date.now()}-${file.originalname}`)
 
-        cb(null, `${Date.now()}-${req.body.description ? req.body.description : "naoExisteName"}-${file.originalname}`)
-
+        //cb(null, `${Date.now()}-bezkoder-${file.originalname}`)
     }
-
 
 });
 //todo compreender este imageFilter
-var uploadFile = multer({ storage: storage /*, fileFilter: imageFilter */ });
-module.exports = uploadFile;
-
+var uploadFilePayment = multer({ storage: storage, fileFilter: imageFilter });
+module.exports = uploadFilePayment;
