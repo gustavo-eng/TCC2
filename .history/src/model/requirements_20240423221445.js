@@ -133,7 +133,6 @@ module.exports = {
         //console.log(requirement)
 
         return requirement;
-
     },
 
     requerimentsModel: requerimentsModel,

@@ -131,9 +131,7 @@ module.exports = {
         //console.warn(await requerimentsModel.findAll({ include: GymModel }));
         //console.log('10101010 requirement.getGymModel()')
         //console.log(requirement)
-
         return requirement;
-
     },
 
     requerimentsModel: requerimentsModel,
