@@ -116,7 +116,6 @@ module.exports = {
         return requirement;
     },
     verifyAuthenticationStudent: async (email) => {
-        console.log("email ", email)
         const requirement = await requerimentsModel.findAll({
             include: [{
                 model: StudentModel,
@@ -124,20 +123,13 @@ module.exports = {
             }]
         });
         console.log("++++ requirement ++++ ")
-        try {
-            console.log(requirement[0].dataValues)
-            return requirement[0].dataValues
-
-        } catch (e) {
-            throw new Error('Não existe solicitacao atrelada a este aluno');
-        }
+        console.log(requirement.dataValues)
         /*
         const requirement = await requerimentsModel.findAll({
             include: StudentModel,
 
         });
         */
-        return requirement[0].dataValues
 
     },
     listRequirmentsByGym: async (id) => {

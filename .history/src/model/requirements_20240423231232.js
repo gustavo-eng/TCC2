@@ -115,29 +115,14 @@ module.exports = {
 
         return requirement;
     },
-    verifyAuthenticationStudent: async (email) => {
-        console.log("email ", email)
+    verifyAuthenticationStudent: async () => {
         const requirement = await requerimentsModel.findAll({
             include: [{
-                model: StudentModel,
-                where: { email: email } // Substitua 'nome_do_aluno' pelo nome que deseja buscar
+                model: StudentModel // Especifique o modelo associado que deseja incluir
             }]
         });
-        console.log("++++ requirement ++++ ")
-        try {
-            console.log(requirement[0].dataValues)
-            return requirement[0].dataValues
-
-        } catch (e) {
-            throw new Error('Não existe solicitacao atrelada a este aluno');
-        }
-        /*
-        const requirement = await requerimentsModel.findAll({
-            include: StudentModel,
-
-        });
-        */
-        return requirement[0].dataValues
+        console.log(' verification requirement ')
+        console.log(requirement[0].Requirements)
 
     },
     listRequirmentsByGym: async (id) => {

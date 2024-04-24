@@ -48,8 +48,6 @@ router.post('/login', (req, res) => {
 
     requirementsDAO.verifyAuthenticationStudent(email).then(obj => {
         res.status(200).json(success(obj, "payload", "d"))
-    }).catch(err => {
-        res.status(500).json(fail("verifyAuthenticationStudent " + err));
     });
 
 
@@ -62,7 +60,6 @@ router.post('/login', (req, res) => {
     })
     //res.send("<h1>Solicitacao enviada</h1>")
     */
-
 });
 
 

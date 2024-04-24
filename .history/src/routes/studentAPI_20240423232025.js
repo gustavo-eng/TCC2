@@ -12,6 +12,10 @@ router.get('/', (req, res) => {
     })
     //res.send(`<h1>Ola mundo studentAPI </h1>`)
 });
+// eu deletar usuario
+// ao inves de cancelar solicitacao
+// o btn cancelar automaticamente vai deletar o usuario
+
 //name, email, password, cpf
 router.post('/', (req, res) => {
 
@@ -21,7 +25,7 @@ router.post('/', (req, res) => {
 
         let idStudent = student.dataValues.id;
         let dateFromDB = student.dataValues.createdAt;
-        let month = (new Date(dateFromDB.toString()).getMonth() + 1).toString() < 10 ? '0' + (new Date(dateFromDB.toString()).getMonth() + 1).toString() : new Date(dateFromDB.toString().getMonth() + 1);
+        let month = (new Date(dateFromDB.toString()).getMonth() + 1).toString() < 10 ? '0' + (new Date(dateFromDB.toString()).getMonth()).toString() : new Date(dateFromDB.toString()).getMonth();
         let day = new Date(dateFromDB.toString()).getDate()
         let data = `${day}/${month}`
 
@@ -39,20 +43,10 @@ router.post('/', (req, res) => {
 
 
 //todo rota para login
-//todo tenta, se econtrar retorn userStudent, caso contrario retorna
-//todo null ou undefined
-//todo automaticamente quando o professor excluir o aluno
-//todo sera excluido a solicitacao da tabela
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
-
-    requirementsDAO.verifyAuthenticationStudent(email).then(obj => {
-        res.status(200).json(success(obj, "payload", "d"))
-    }).catch(err => {
-        res.status(500).json(fail("verifyAuthenticationStudent " + err));
-    });
-
-
+    requirementsDAO.verifyAuthenticationStudent();
+    res.send(message("certo"))
     //studentDAO.verifyAuthenticationStudent();
     /*
     studentDAO.getStudentByEmailAndPassword(email, password).then(student => {
@@ -62,7 +56,6 @@ router.post('/login', (req, res) => {
     })
     //res.send("<h1>Solicitacao enviada</h1>")
     */
-
 });
 
 

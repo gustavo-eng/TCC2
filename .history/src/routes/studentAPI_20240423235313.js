@@ -62,7 +62,6 @@ router.post('/login', (req, res) => {
     })
     //res.send("<h1>Solicitacao enviada</h1>")
     */
-
 });
 
 

@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes, where } = require('sequelize');
 const sequelize = require('../config/db');
-//const { requerimentsModel } = require("./requirements");
-//const { requerimentsModel } = require('./requirements')
+const { requerimentsModel } = require("./requirements");
+
 // Role  - Do aluno será preenchido automaticamente
 const StudentModel = sequelize.define('Student',
     {
@@ -43,7 +43,8 @@ const StudentModel = sequelize.define('Student',
 );
 
 
-StudentModel.sync({ alter: true });
+StudentModel.sync();
+
 
 module.exports = {
     list: async () => {
@@ -72,6 +73,15 @@ module.exports = {
     },
     findSpecific: async (id) => { // para teste
         return await StudentModel.findByPk(id);
+    },
+
+    verifyAuthenticationStudent: async () => {
+        //const requirement = await requerimentsModel.findAll({
+        //   include: StudentModel
+        //});
+        console.log(' verification requirement ')
+        //console.log(requirement)
+
     },
     getStudentByEmailAndPassword: async (email, password) => {
         const student = await StudentModel.findOne({ where: { email: email, password: password } });

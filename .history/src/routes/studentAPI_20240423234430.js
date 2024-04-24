@@ -41,18 +41,11 @@ router.post('/', (req, res) => {
 //todo rota para login
 //todo tenta, se econtrar retorn userStudent, caso contrario retorna
 //todo null ou undefined
-//todo automaticamente quando o professor excluir o aluno
-//todo sera excluido a solicitacao da tabela
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
-
     requirementsDAO.verifyAuthenticationStudent(email).then(obj => {
-        res.status(200).json(success(obj, "payload", "d"))
-    }).catch(err => {
-        res.status(500).json(fail("verifyAuthenticationStudent " + err));
+        res.status(200).json(success(obj, "payload"))
     });
-
-
     //studentDAO.verifyAuthenticationStudent();
     /*
     studentDAO.getStudentByEmailAndPassword(email, password).then(student => {
@@ -62,7 +55,6 @@ router.post('/login', (req, res) => {
     })
     //res.send("<h1>Solicitacao enviada</h1>")
     */
-
 });
 
 

@@ -58,7 +58,7 @@ GymModel.hasMany(requerimentsModel, {
 
 
 //requerimentsModel.sync({ alter: true });
-requerimentsModel.sync();
+requerimentsModel.sync({ alter: true });
 
 
 // todo SE DELETAR O ALUNO ASSOCIADO, A TUPLA DA TABELA DEVE SER DELETADO TBM
@@ -114,31 +114,6 @@ module.exports = {
         //return requirement.dataValues;
 
         return requirement;
-    },
-    verifyAuthenticationStudent: async (email) => {
-        console.log("email ", email)
-        const requirement = await requerimentsModel.findAll({
-            include: [{
-                model: StudentModel,
-                where: { email: email } // Substitua 'nome_do_aluno' pelo nome que deseja buscar
-            }]
-        });
-        console.log("++++ requirement ++++ ")
-        try {
-            console.log(requirement[0].dataValues)
-            return requirement[0].dataValues
-
-        } catch (e) {
-            throw new Error('Não existe solicitacao atrelada a este aluno');
-        }
-        /*
-        const requirement = await requerimentsModel.findAll({
-            include: StudentModel,
-
-        });
-        */
-        return requirement[0].dataValues
-
     },
     listRequirmentsByGym: async (id) => {
         //const requirement = await requerimentsModel.findByPk(id, { include: GymModel });

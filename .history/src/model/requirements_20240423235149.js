@@ -129,7 +129,7 @@ module.exports = {
             return requirement[0].dataValues
 
         } catch (e) {
-            throw new Error('Não existe solicitacao atrelada a este aluno');
+            // lancar erro
         }
         /*
         const requirement = await requerimentsModel.findAll({
