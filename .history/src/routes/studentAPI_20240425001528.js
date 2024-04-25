@@ -37,6 +37,8 @@ router.post('/', (req, res) => {
 
 });
 
+
+
 //todo sera excluido a solicitacao da tabela
 
 router.post('/login', (req, res) => {
@@ -90,7 +92,7 @@ router.put('/:id', (req, res) => {
         }).catch((error) => {
 
             res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
-        });
+        })
 
 });
 

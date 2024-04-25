@@ -160,17 +160,12 @@ module.exports = {
         return requirement;
 
     },
-    acceptStudent: async (id) => {
-        let requirement = await requerimentsModel.findByPk(id);
-        if (!requirement) throw new Error("Requirement not exist");
-
-        requirement.update({ aproved: true });
-        requirement.save();
-        return requirement;
+    acceptStudent: () => {
 
     },
     requerimentsModel: requerimentsModel,
 
 
 }
+
 

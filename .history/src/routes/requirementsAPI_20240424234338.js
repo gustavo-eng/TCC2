@@ -74,6 +74,10 @@ router.delete('/:id', (req, res) => {
 });
 
 
+
+
+
+
 //todo rotina de deletar sob demanda
 // fazer
 //todo rota update

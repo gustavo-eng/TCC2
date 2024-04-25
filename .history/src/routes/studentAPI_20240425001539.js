@@ -37,6 +37,8 @@ router.post('/', (req, res) => {
 
 });
 
+
+
 //todo sera excluido a solicitacao da tabela
 
 router.post('/login', (req, res) => {

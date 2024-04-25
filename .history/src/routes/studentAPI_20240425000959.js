@@ -37,7 +37,13 @@ router.post('/', (req, res) => {
 
 });
 
+
+//todo rota para login
+//todo tenta, se econtrar retorn userStudent, caso contrario retorna
+//todo null ou undefined
+//todo automaticamente quando o professor excluir o aluno
 //todo sera excluido a solicitacao da tabela
+
 
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
@@ -90,7 +96,7 @@ router.put('/:id', (req, res) => {
         }).catch((error) => {
 
             res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
-        });
+        })
 
 });
 

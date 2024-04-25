@@ -164,8 +164,8 @@ module.exports = {
         let requirement = await requerimentsModel.findByPk(id);
         if (!requirement) throw new Error("Requirement not exist");
 
-        requirement.update({ aproved: true });
-        requirement.save();
+        requirement.update({ aproved: true }).save();
+
         return requirement;
 
     },

@@ -37,20 +37,36 @@ router.post('/', (req, res) => {
 
 });
 
-//todo sera excluido a solicitacao da tabela
 
+//todo rota para login
+//todo tenta, se econtrar retorn userStudent, caso contrario retorna
+//todo null ou undefined
+//todo automaticamente quando o professor excluir o aluno
+//todo sera excluido a solicitacao da tabela
 router.post('/login', (req, res) => {
     const { email, password } = req.body;
 
     requirementsDAO.verifyAuthenticationStudent(email, password).then(requirement => {
-        if (requirement.aproved) {
+        if (requirement.payload.aproved) {
             res.status(200).json(success(requirement, "payload", "Usuario devidamente autenticado"));
         } else {
-            res.status(500).json(fail("Usuario nao autenticado"));
+            res.status(500).json(success(requirement, "payload", "Usuario devidamente autenticado"));
         }
+        //res.status(200).json(success(obj, "payload", "d"))
     }).catch(err => {
         res.status(500).json(fail(" verifyAuthenticationStudent " + err));
     });
+
+
+    //studentDAO.verifyAuthenticationStudent();
+    /*
+    studentDAO.getStudentByEmailAndPassword(email, password).then(student => {
+        res.status(200).json(success(student, "payload", "aluno recuperado com successo"));
+    }).catch(err => {
+        res.status(500).json(fail("Erro ao verificar aluno. ERRO = " + err));
+    })
+    //res.send("<h1>Solicitacao enviada</h1>")
+    */
 
 });
 
@@ -90,7 +106,7 @@ router.put('/:id', (req, res) => {
         }).catch((error) => {
 
             res.status(400).json(fail("Erro ao atualizar o Evento -> ", error))
-        });
+        })
 
 });
 
