@@ -97,8 +97,7 @@ module.exports = {
     },
     authenticateGym: async (email, senha) => {
         try {
-            const gym = await GymModel.findOne({ where: { email: email, senha: senha } });
-            return gym;
+            const gym = await GymModel.findOne({ where: { cnpj_Academia: cnpj_Academia } });
         } catch (err) {
             throw new Error('Nao existe aluno cadastrado para essa academia. Erro -> ' + err);
         }

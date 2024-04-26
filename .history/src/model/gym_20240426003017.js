@@ -95,23 +95,8 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    authenticateGym: async (email, senha) => {
-        try {
-            const gym = await GymModel.findOne({ where: { email: email, senha: senha } });
-            return gym;
-        } catch (err) {
-            throw new Error('Nao existe aluno cadastrado para essa academia. Erro -> ' + err);
-        }
+    authenticateGym: () => {
+
     },
     GymModel,
 }
-
-/*
-const project = await Project.findOne({ where: { title: 'My Title' } });
-if (project === null) {
-  console.log('Not found!');
-} else {
-  console.log(project instanceof Project); // true
-  console.log(project.title); // 'My Title'
-}
-*/

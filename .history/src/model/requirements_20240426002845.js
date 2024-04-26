@@ -1,5 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const moment = require('moment');
+const Student = require('./student');
 const { StudentModel } = require('./student');
 const { GymModel } = require('./gym');
 
@@ -27,6 +29,8 @@ const requerimentsModel = sequelize.define('Requirements', {
 }
 );
 
+//ondelete cascade
+
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
     foreignKey: 'idStudent',
@@ -51,6 +55,8 @@ GymModel.hasMany(requerimentsModel, {
 });
 
 
+
+//requerimentsModel.sync({ alter: true });
 requerimentsModel.sync();
 
 
@@ -60,8 +66,10 @@ module.exports = {
         const requeriments = await requerimentsModel.findAll();
         return requeriments;
     },
+    //todo neste sava vai o id do aluno e cnpj da academia
     save: async (data, aproved, idStudent, gymId) => {
         const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
+        //todo tratar este erro.
         if (existingRequirement) {
             throw new Error('Já existe um requerimento associado a este estudante.');
         }
@@ -75,13 +83,16 @@ module.exports = {
         return requirement;
     },
     listRequerimentByStudentsAndGym: async (gymId) => {
+        //return await StudentModel.destroy({ where: { id: id } });
+        console.log("Entrou na funcao  listRequerimentByStudentsAndGym")
         try {
-            const students = await requerimentsModel.findAll({
+            const student = await requerimentsModel.findAll({
                 include: StudentModel,
                 where: { gymId: gymId }
+                //where: { idStudent: idStudent, gymId: gymId }
             });
 
-            return students;
+            return student;
         } catch (err) {
             throw new Error('Nao existe aluno cadastrado para essa academia');
         }
@@ -105,6 +116,7 @@ module.exports = {
         const requirement = await requerimentsModel.findAll({
             include: [{
                 model: StudentModel,
+                where: { email: email, password: password } // Substitua 'nome_do_aluno' pelo nome que deseja buscar
             }]
         });
         try {

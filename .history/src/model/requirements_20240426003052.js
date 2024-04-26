@@ -57,11 +57,14 @@ requerimentsModel.sync();
 module.exports = {
 
     list: async () => {
+
         const requeriments = await requerimentsModel.findAll();
         return requeriments;
+
     },
     save: async (data, aproved, idStudent, gymId) => {
         const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
+        //todo tratar este erro.
         if (existingRequirement) {
             throw new Error('Já existe um requerimento associado a este estudante.');
         }

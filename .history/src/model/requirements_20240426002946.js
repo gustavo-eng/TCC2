@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { StudentModel } = require('./student');
 const { GymModel } = require('./gym');
@@ -26,6 +26,7 @@ const requerimentsModel = sequelize.define('Requirements', {
     updatedAt: true,
 }
 );
+
 
 requerimentsModel.belongsTo(StudentModel, {
     constraint: false,
@@ -62,6 +63,7 @@ module.exports = {
     },
     save: async (data, aproved, idStudent, gymId) => {
         const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
+        //todo tratar este erro.
         if (existingRequirement) {
             throw new Error('Já existe um requerimento associado a este estudante.');
         }
@@ -105,6 +107,7 @@ module.exports = {
         const requirement = await requerimentsModel.findAll({
             include: [{
                 model: StudentModel,
+                where: { email: email, password: password } // Substitua 'nome_do_aluno' pelo nome que deseja buscar
             }]
         });
         try {
