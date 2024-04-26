@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes, where } = require('sequelize');
 const sequelize = require('../config/db');
-const { GymModel } = require('./gym')
-
+//const { requerimentsModel } = require("./requirements");
+//const { requerimentsModel } = require('./requirements')
+// Role  - Do aluno será preenchido automaticamente
 const StudentModel = sequelize.define('Student',
     {
 
@@ -16,6 +17,7 @@ const StudentModel = sequelize.define('Student',
         },
         email: {
             type: DataTypes.STRING,
+            //unique: true,
             allowNull: true
         },
         password: {
@@ -23,15 +25,13 @@ const StudentModel = sequelize.define('Student',
             allowNull: true
         },
         cpf: {
-
             type: DataTypes.STRING,
-            //unique: true,
             allowNull: true
         },
         role: {
             type: DataTypes.STRING, //todo  tirar
             allowNull: true,
-            //defaultValue: "student"
+
         }, // admin é o responsável por cadastrar os usuários e realiz
     }, {
     freezeTableName: true,
@@ -41,23 +41,10 @@ const StudentModel = sequelize.define('Student',
 );
 
 
-StudentModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-});
 
 
-GymModel.hasMany(StudentModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-})
+StudentModel.sync({ alter: true });
 
-
-StudentModel.sync();
 
 module.exports = {
     list: async () => {

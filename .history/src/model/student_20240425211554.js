@@ -48,16 +48,7 @@ StudentModel.belongsTo(GymModel, {
     onUpdate: 'CASCADE',
 });
 
-
-GymModel.hasMany(StudentModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-})
-
-
-StudentModel.sync();
+StudentModel.sync({ alter: true });
 
 module.exports = {
     list: async () => {

@@ -47,6 +47,8 @@ requerimentsModel.belongsTo(GymModel, {
     //unique: true
 });
 
+
+
 GymModel.hasMany(requerimentsModel, {
     constraint: false,
     foreignKey: 'gymId',
@@ -55,9 +57,11 @@ GymModel.hasMany(requerimentsModel, {
 });
 
 
-
 //requerimentsModel.sync({ alter: true });
 requerimentsModel.sync();
+
+
+// todo SE DELETAR O ALUNO ASSOCIADO, A TUPLA DA TABELA DEVE SER DELETADO TBM
 
 
 module.exports = {
@@ -114,9 +118,18 @@ module.exports = {
         } catch (e) {
             throw new Error('Não existe solicitacao atrelada a este aluno');
         }
+        /*
+        const requirement = await requerimentsModel.findAll({
+            include: StudentModel,
+
+        });
+        */
+        return requirement[0].dataValues
 
     },
     listRequirmentsByGym: async (id) => {
+        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel });
+        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel, where: { 'StudentId': id } });
         const requirement = await requerimentsModel.findAll({
             include: StudentModel,
             where: { 'gymId': id }
@@ -133,6 +146,7 @@ module.exports = {
 
     },
     requerimentsModel: requerimentsModel,
+
 
 }
 

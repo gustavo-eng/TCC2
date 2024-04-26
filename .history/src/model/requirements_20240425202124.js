@@ -47,6 +47,8 @@ requerimentsModel.belongsTo(GymModel, {
     //unique: true
 });
 
+
+
 GymModel.hasMany(requerimentsModel, {
     constraint: false,
     foreignKey: 'gymId',
@@ -55,9 +57,11 @@ GymModel.hasMany(requerimentsModel, {
 });
 
 
-
 //requerimentsModel.sync({ alter: true });
 requerimentsModel.sync();
+
+
+// todo SE DELETAR O ALUNO ASSOCIADO, A TUPLA DA TABELA DEVE SER DELETADO TBM
 
 
 module.exports = {
@@ -91,10 +95,23 @@ module.exports = {
         return await requerimentsModel.findByPk(id);
     },
     listRequirementsByStudent: async (id) => {
+        //console.log('teste solicicatacao por aluno')
+        //console.log('15 15 14 solicitacao por aluno')
+        //const requirement = await requerimentsModel.findByPk(id, { include: StudentModel });
         const requirement = await requerimentsModel.findAll({
             include: StudentModel,
             where: { 'idStudent': id }
         });
+
+        //console.log('requirement');
+        //console.log(requirement);
+        //console.log('requirement.dataValues.Student.dataValues');
+        //console.log(requirement.dataValues.Student.dataValues);
+
+        //console.log('10101010 requirement.getStudentModel()');
+        //console.log(requirement);
+
+        //return requirement.dataValues;
 
         return requirement;
     },
@@ -114,9 +131,18 @@ module.exports = {
         } catch (e) {
             throw new Error('Não existe solicitacao atrelada a este aluno');
         }
+        /*
+        const requirement = await requerimentsModel.findAll({
+            include: StudentModel,
+
+        });
+        */
+        return requirement[0].dataValues
 
     },
     listRequirmentsByGym: async (id) => {
+        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel });
+        //const requirement = await requerimentsModel.findByPk(id, { include: GymModel, where: { 'StudentId': id } });
         const requirement = await requerimentsModel.findAll({
             include: StudentModel,
             where: { 'gymId': id }
@@ -133,6 +159,7 @@ module.exports = {
 
     },
     requerimentsModel: requerimentsModel,
+
 
 }
 

@@ -57,7 +57,10 @@ GymModel.hasMany(requerimentsModel, {
 
 
 //requerimentsModel.sync({ alter: true });
-requerimentsModel.sync();
+requerimentsModel.sync({ alter: true });
+
+
+// todo SE DELETAR O ALUNO ASSOCIADO, A TUPLA DA TABELA DEVE SER DELETADO TBM
 
 
 module.exports = {

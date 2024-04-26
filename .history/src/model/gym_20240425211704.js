@@ -67,7 +67,7 @@ StudentModel.belongsTo(GymModel, {
 
 
 //GymModel.hasMany(StudentModel, { foreignKey: 'gymId' });
-GymModel.sync();
+GymModel.sync({ alter: true });
 
 
 module.exports = {

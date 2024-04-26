@@ -47,17 +47,12 @@ requerimentsModel.belongsTo(GymModel, {
     //unique: true
 });
 
-GymModel.hasMany(requerimentsModel, {
-    constraint: false,
-    foreignKey: 'gymId',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-});
-
-
 
 //requerimentsModel.sync({ alter: true });
 requerimentsModel.sync();
+
+
+// todo SE DELETAR O ALUNO ASSOCIADO, A TUPLA DA TABELA DEVE SER DELETADO TBM
 
 
 module.exports = {

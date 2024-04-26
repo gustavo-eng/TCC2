@@ -54,19 +54,24 @@ const GymModel = sequelize.define('Gym', {
 );
 
 /*
-*/
-/*
-StudentModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
+.belongsTo(StudentModel, {
+    constraint: false,
+    foreignKey: 'idStudent',
+    onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
+    onUpdate: 'CASCADE', // Isso garante que, se o id do aluno em requirementsModel for atualizado, o id correspondente em StudentModel também será atualizado.
+    //unique: true
 });
 */
 
 
 
-//GymModel.hasMany(StudentModel, { foreignKey: 'gymId' });
+GymModel.hasMany(StudentModel, {
+    constraint: false,
+    foreignKey: 'gymId',
+    onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
+    onUpdate: 'CASCADE',
+})
+
 GymModel.sync();
 
 
@@ -106,7 +111,7 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    GymModel,
+    GymModel: GymModel,
 }
 
 

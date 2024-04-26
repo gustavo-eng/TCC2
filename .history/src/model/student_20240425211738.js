@@ -57,7 +57,7 @@ GymModel.hasMany(StudentModel, {
 })
 
 
-StudentModel.sync();
+StudentModel.sync({ alter: true });
 
 module.exports = {
     list: async () => {

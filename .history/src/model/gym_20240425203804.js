@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { StudentModel } = require('./student');
+const { requerimentsModel } = require("./requirements")
 
 const GymModel = sequelize.define('Gym', {
     cod_gym: {
@@ -53,21 +54,17 @@ const GymModel = sequelize.define('Gym', {
 }
 );
 
-/*
-*/
-/*
-StudentModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
+
+GymModel.hasMany(requerimentsModel, {
+    constraint: false,
+    foreignKey: 'gymId',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
 });
-*/
 
 
-
-//GymModel.hasMany(StudentModel, { foreignKey: 'gymId' });
 GymModel.sync();
+//GymModel.sync({ alter: true });
 
 
 module.exports = {
@@ -106,7 +103,7 @@ module.exports = {
     delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },
-    GymModel,
+    GymModel: GymModel,
 }
 
 

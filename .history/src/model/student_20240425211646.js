@@ -51,13 +51,13 @@ StudentModel.belongsTo(GymModel, {
 
 GymModel.hasMany(StudentModel, {
     constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
+    foreignKey: 'gymId',
+    onDelete: 'CASCADE', // Isso garante que, ao deletar um registro de requirementsModel, o registro correspondente em StudentModel também será deletado.
     onUpdate: 'CASCADE',
 })
 
 
-StudentModel.sync();
+StudentModel.sync({ alter: true });
 
 module.exports = {
     list: async () => {

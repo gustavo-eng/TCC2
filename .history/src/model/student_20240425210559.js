@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes, where } = require('sequelize');
 const sequelize = require('../config/db');
-const { GymModel } = require('./gym')
+
 
 const StudentModel = sequelize.define('Student',
     {
@@ -39,22 +39,6 @@ const StudentModel = sequelize.define('Student',
     updatedAt: true,
 }
 );
-
-
-StudentModel.belongsTo(GymModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-});
-
-
-GymModel.hasMany(StudentModel, {
-    constraint: true,
-    foreignKey: 'gymId', // Usar a mesma chave estrangeira definida em GymModel
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-})
 
 
 StudentModel.sync();
