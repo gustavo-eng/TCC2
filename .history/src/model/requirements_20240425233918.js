@@ -92,10 +92,6 @@ module.exports = {
                 //where: { idStudent: idStudent, gymId: gymId }
             });
 
-            //return student;
-            //.payload.filter(item => item.aproved === true);
-            // para filter
-
             return student;
         } catch (err) {
 

@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { StudentModel } = require('./student');
-//const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cod_gym: {
@@ -78,9 +77,7 @@ module.exports = {
         });
 
         return gym;
-
     },
-
     findSpecific: async (cnpj_Academia) => {
         return await GymModel.findByPk(cnpj_Academia);
     },

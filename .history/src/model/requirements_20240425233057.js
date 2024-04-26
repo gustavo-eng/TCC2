@@ -91,14 +91,13 @@ module.exports = {
                 where: { gymId: gymId }
                 //where: { idStudent: idStudent, gymId: gymId }
             });
-
-            //return student;
-            //.payload.filter(item => item.aproved === true);
-            // para filter
-
+            console.log("Sudentss ")
+            console.log(student)
             return student;
         } catch (err) {
-
+            console.log("student nao encontrado")
+            const student = await requerimentsModel.findAll({ where: { idStudent: idStudent, gymId: gymId } });
+            console.log(student)
             throw new Error('Nao existe aluno cadastrado para essa academia');
         }
 

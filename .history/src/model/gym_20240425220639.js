@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { StudentModel } = require('./student');
-//const { requerimentsModel } = require('./requirements');
+const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cod_gym: {
@@ -80,7 +80,15 @@ module.exports = {
         return gym;
 
     },
-
+    listRequerimentByStudentsAndGym: async (idStudent, gymId) => {
+        //return await StudentModel.destroy({ where: { id: id } });
+        try {
+            const student = await requerimentsModel.findAll({ idStudent: idStudent, gymId: gymId });
+            return student;
+        } catch (err) {
+            throw new Error('Nao existe aluno cadastrado para essa academia');
+        }
+    },
     findSpecific: async (cnpj_Academia) => {
         return await GymModel.findByPk(cnpj_Academia);
     },

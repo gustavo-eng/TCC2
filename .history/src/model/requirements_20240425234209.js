@@ -93,10 +93,7 @@ module.exports = {
             });
 
             //return student;
-            //.payload.filter(item => item.aproved === true);
-            // para filter
-
-            return student;
+            return student.payload.filter(item => item.aproved === true);;
         } catch (err) {
 
             throw new Error('Nao existe aluno cadastrado para essa academia');

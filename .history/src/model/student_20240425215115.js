@@ -71,8 +71,7 @@ module.exports = {
             email: email,
             password: password,
             cpf: cpf,
-            role: "student",
-            gymId: gymId,
+            role: "student" //todo tiar isso e ver como colocar depois
         });
         return student;
     },
@@ -100,6 +99,4 @@ module.exports = {
     },
     StudentModel: StudentModel,
 }
-
-
 

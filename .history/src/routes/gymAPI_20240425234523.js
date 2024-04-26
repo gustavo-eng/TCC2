@@ -87,9 +87,9 @@ router.get('/students/:gymId', (req, res) => {
 
     const { gymId } = req.params;
     requerimentDAO.listRequerimentByStudentsAndGym(gymId).then(students => {
-        const response = success(students, "payload", "Alunos listados com sucesso")
-        const data = response.payload.filter(item => item.aproved === true);
-        res.status(200).json(success(data, "payload", "Alunos listados com sucesso"));
+        console.log("students per gym")
+        console.log(students)
+        res.status(200).json(success(students, "payload", "Alunos listados com sucesso"));
     }).catch(err => {
         res.status(500).json(fail("Nao foi possivel listar os alunos. Erro => " + err));
     })
@@ -100,6 +100,7 @@ router.get('/:cnpj_Academia', (req, res) => {
     const { cnpj_Academia } = req.params;
     gymDAO.findSpecific(cnpj_Academia).then(gym => {
         //payload.filter(item => item.aproved === true)
+
         res.status(200).json(success(gym, "payload", "Academia listada com sucesso"))
     }).catch(err => {
         res.status(404).json(fail("Academia não encontrada"));

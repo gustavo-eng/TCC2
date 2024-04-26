@@ -87,9 +87,9 @@ router.get('/students/:gymId', (req, res) => {
 
     const { gymId } = req.params;
     requerimentDAO.listRequerimentByStudentsAndGym(gymId).then(students => {
-        const response = success(students, "payload", "Alunos listados com sucesso")
-        const data = response.payload.filter(item => item.aproved === true);
-        res.status(200).json(success(data, "payload", "Alunos listados com sucesso"));
+        console.log("students per gym")
+        console.log(success(students, "payload", "Alunos listados com sucesso"))
+        res.status(200).json(success(students, "payload", "Alunos listados com sucesso"));
     }).catch(err => {
         res.status(500).json(fail("Nao foi possivel listar os alunos. Erro => " + err));
     })

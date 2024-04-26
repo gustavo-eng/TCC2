@@ -95,7 +95,8 @@ module.exports = {
             //return student;
             //.payload.filter(item => item.aproved === true);
             // para filter
-
+            console.log("student filter")
+            console.log(student)
             return student;
         } catch (err) {
 

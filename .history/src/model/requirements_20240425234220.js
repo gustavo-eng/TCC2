@@ -93,9 +93,6 @@ module.exports = {
             });
 
             //return student;
-            //.payload.filter(item => item.aproved === true);
-            // para filter
-
             return student;
         } catch (err) {
 

@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const { StudentModel } = require('./student');
-//const { requerimentsModel } = require('./requirements');
 
 const GymModel = sequelize.define('Gym', {
     cod_gym: {
@@ -78,9 +77,11 @@ module.exports = {
         });
 
         return gym;
-
     },
+    listRequerimentByStudentsAndGym: (idStudent, gymId) => {
 
+        console.log("funcao para listar solicitacoes pela academia e aluno ")
+    },
     findSpecific: async (cnpj_Academia) => {
         return await GymModel.findByPk(cnpj_Academia);
     },

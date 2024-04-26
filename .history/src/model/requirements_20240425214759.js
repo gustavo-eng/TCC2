@@ -66,6 +66,7 @@ module.exports = {
         const requeriments = await requerimentsModel.findAll();
         return requeriments;
     },
+
     //todo neste sava vai o id do aluno e cnpj da academia
     save: async (data, aproved, idStudent, gymId) => {
         const existingRequirement = await requerimentsModel.findOne({ where: { idStudent: idStudent } });
@@ -81,27 +82,6 @@ module.exports = {
         });
 
         return requirement;
-    },
-    listRequerimentByStudentsAndGym: async (gymId) => {
-        //return await StudentModel.destroy({ where: { id: id } });
-        console.log("Entrou na funcao  listRequerimentByStudentsAndGym")
-        try {
-            const student = await requerimentsModel.findAll({
-                include: StudentModel,
-                where: { gymId: gymId }
-                //where: { idStudent: idStudent, gymId: gymId }
-            });
-
-            //return student;
-            //.payload.filter(item => item.aproved === true);
-            // para filter
-
-            return student;
-        } catch (err) {
-
-            throw new Error('Nao existe aluno cadastrado para essa academia');
-        }
-
     },
     delete: async (id) => {
         return await requerimentsModel.destroy({ where: { id: id } });
