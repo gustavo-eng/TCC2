@@ -1,0 +1,3 @@
+returnType = (req, res, next) => {
+
+}
