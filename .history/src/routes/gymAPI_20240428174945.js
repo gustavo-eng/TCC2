@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.post("/", (req, res) => {
+router.post("/", permissionFRPj, (req, res) => {
     const {
         email,
         senha,
@@ -40,7 +40,7 @@ router.post("/", (req, res) => {
 });
 
 
-router.put('/:Cnpj_Academia', (req, res) => {
+router.put('/:Cnpj_Academia', globalEntitiesPermission, (req, res) => {
     const { Cnpj_Academia } = req.params;
     const {
         email,

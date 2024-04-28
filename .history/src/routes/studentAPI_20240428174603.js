@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
 });
 //name, email, password, cpf
 router.post('/', (req, res) => {
-    //res.send('<h1>Post login</h1>')
 
     let { name, email, password, cpf, gymId } = req.body;
 
@@ -36,10 +35,8 @@ router.post('/', (req, res) => {
         });
         //res.status(201).json(success(student, 'payload', "Student salvo com sucesso"));
     }).catch(erro => {
-        console.log('erro -> ' + erro)
         res.status(500).json(fail("Internal Server Error", erro));
     });
-
 
 });
 
@@ -62,7 +59,7 @@ router.post('/login', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', controllAccess, globalEntitiesPermission, (req, res) => {
     const { id } = req.params;
     studentDAO.delete(id).then((event) => {
         res.status(200).json(success(event, "payload"));
@@ -74,7 +71,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', controllAccess, (req, res) => {
     const { id } = req.params;
     const { name, email, password, cpf } = req.body;
 
@@ -101,6 +98,8 @@ router.put('/:id', (req, res) => {
         });
 
 });
+
+
 
 
 module.exports = router;

@@ -74,7 +74,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', controllAccess, (req, res) => {
     const { id } = req.params;
     const { name, email, password, cpf } = req.body;
 
@@ -101,6 +101,8 @@ router.put('/:id', (req, res) => {
         });
 
 });
+
+
 
 
 module.exports = router;

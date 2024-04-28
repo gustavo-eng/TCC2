@@ -104,7 +104,7 @@ module.exports = {
         return student;
     },
     delete: async (id) => {
-        return await StudentModel.destroy({ where: { cod_student: id } });
+        return await StudentModel.destroy({ where: { id: id } });
     },
     findSpecific: async (id) => { // para teste
         return await StudentModel.findByPk(id);

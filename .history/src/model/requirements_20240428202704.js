@@ -104,24 +104,22 @@ module.exports = {
 
         return requirement;
     },
-    verifyAuthenticationStudent: async (id) => {
-        console.log('entrou na função verify do requirement');
-        try {
-            const requirement = await requerimentsModel.findOne({
-                include: [{
-                    model: StudentModel,
-                }],
-                where: { idStudent: id }
-            });
-            if (!requirement) {
-                throw new Error('Não existe solicitação atrelada a este aluno');
-            }
-            return requirement;
-        } catch (error) {
-            throw new Error('Erro ao verificar autenticação do aluno:', error);
-        }
-    },
+    verifyAuthenticationStudent: async (email, password) => {
+        const requirement = await requerimentsModel.findOne({
+            include: [{
+                model: StudentModel,
+            }],
+            where: { email: email, password: password }
 
+        });
+        try {
+            return requirement[0].dataValues
+
+        } catch (e) {
+            throw new Error('Não existe solicitacao atrelada a este aluno');
+        }
+
+    },
     listRequirmentsByGym: async (id) => {
         const requirement = await requerimentsModel.findAll({
             include: StudentModel,

@@ -40,7 +40,7 @@ router.post("/", uploadPayment.single("file"), (req, res) => {
 });
 
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", Auth.controllAccess, (req, res) => {
 
     const { id } = req.params;
     paymentDAO.delete(id).then((payment) => {
@@ -52,7 +52,7 @@ router.delete("/:id", (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', Auth.controllAccess, (req, res) => {
     const { id } = req.params;
     const { aproved, yearCategory, weight, description } = req.body;
 

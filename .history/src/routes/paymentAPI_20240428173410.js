@@ -25,12 +25,15 @@ router.get("/", (req, res) => {
 
 
 
-router.post("/", uploadPayment.single("file"), (req, res) => {
-    console.log('req.userId dentro da rota post de pagamento')
-    console.log(req.userId)
+
+router.post("/:id", Auth.controllAccess, uploadPayment.single("file"), (req, res) => {
+
+
+
     let nameFile = `${req.user}_${req.userId}_${req.file.originalname}`;
 
     const { aproved, yearCategory, weight, description } = req.body;
+
     paymentDAO.save(aproved, nameFile, yearCategory, weight, description).then(payment => {
         res.status(200).json(success(payment, "payload", ""));
     }).catch(err => {
@@ -40,8 +43,7 @@ router.post("/", uploadPayment.single("file"), (req, res) => {
 });
 
 
-router.delete("/:id", (req, res) => {
-
+router.delete("/:id", Auth.controllAccess, (req, res) => {
     const { id } = req.params;
     paymentDAO.delete(id).then((payment) => {
         res.status(200).json(success(payment, "payload", "pagamento deletado com successo"));
@@ -52,7 +54,7 @@ router.delete("/:id", (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', Auth.controllAccess, (req, res) => {
     const { id } = req.params;
     const { aproved, yearCategory, weight, description } = req.body;
 

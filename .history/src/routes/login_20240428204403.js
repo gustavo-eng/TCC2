@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
     let { email, password } = req.body;
     try {
+
         // Chamar a função returnUser e aguardar o resultado usando async/await
         const user = await returnUser(email, password);
         // Se o usuário existir, definir a permissão e criar o token JWT

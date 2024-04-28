@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 });
 
 // CREATE one object
-router.post('/', (req, res) => {
+router.post('/', permissionFRPj, (req, res) => {
     const { nome, rua, numero, cidade, preco, data } = req.body;
     eventDAO.save(nome, rua, numero, cidade, preco, data).then(event => {
         res.status(200).json(success(event, "payload"));
@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', permissionFRPj, (req, res) => {
     const { id } = req.params;
     eventDAO.delete(id).then((event) => {
         res.status(200).json(success(event, "payload"));

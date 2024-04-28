@@ -54,11 +54,10 @@ app.use('/students', routeStudent);
 app.use('/requirements', routeRequirements);
 app.use('/payment', routePayment);
 app.use('/gym', routeGym);
-app.use('/upload', routeImage);
-app.use('/jeans', controllAccess, routerJeans);
+app.use('/upload', controllAccess, routeImage);
+app.use('/jeans', routerJeans);
 app.use('/fprj', routeFprj);
-app.use('/category', routeCategory);
-
+app.use('/category', controllAccess, routeCategory);
 
 
 
