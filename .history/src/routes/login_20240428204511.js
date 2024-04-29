@@ -3,9 +3,12 @@ var router = express.Router();
 const requirementsDAO = require('../model/requirements');
 const { returnUser } = require('../controllers/verifyTypeOfUser');
 
+
 require('dotenv').config();
+
 // jwt
 const jwt = require('jsonwebtoken');
+
 
 router.get('/', (req, res) => {
     res.send('<h1>Ola mundo !</h1>');
@@ -30,7 +33,6 @@ router.post('/', async (req, res) => {
                         return res.status(401).json({ isLogged: false, msg: 'Solicitation pending. . .' });
                     }
                 }).catch(err => {
-                    console.log('Erro ao utilizar a funcao verifyAuthenticationStudent')
                     return res.status(401).json({ isLogged: false, msg: 'User not authenticated!!' });
                 });
             } else {
