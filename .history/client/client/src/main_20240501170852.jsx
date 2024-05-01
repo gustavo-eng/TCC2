@@ -1,22 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import Event from "./screens/Events.jsx";
+import './index.css';
 import Login from "./screens/Login.jsx";
 
-import './index.css';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
+    loader: true,
   },
-  {
-    path: '/events',
-    element: <Event />
-
-  }
 ])
 
 
