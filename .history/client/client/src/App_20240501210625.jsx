@@ -1,0 +1,28 @@
+
+import './App.css';
+import Footer from "./components/Footer";
+import Header from './components/Header';
+
+const App = ({ children, name }) => {
+
+  return (
+
+    <div className='App'>
+      {
+        window.location.href.toString().endsWith('/') ? null : <Header />
+      }
+      {children}
+      {
+        window.location.href.toString().endsWith('/') ? null : <Footer />
+      }
+
+
+    </div>
+
+  )
+
+
+}
+
+
+export default App;
