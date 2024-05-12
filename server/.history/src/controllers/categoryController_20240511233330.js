@@ -49,34 +49,34 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
 
-  let { idCategory } = req.params;
+  console.log("Entrou no controller to update ")
+
+  let { idCategpry } = req.params;
+
+  console.log("req.params ", req.params)
   const { gender, classCategory, weight } = req.body;
 
-  let category = await Category.findByPk(idCategory);
+
+  let category = await Category.findByPk(idCategpry);
   if (!category) return res.json(fail("Category not fount to update"));
 
   let obj = {};
-  if (gender) obj.gender = gender;
-  if (classCategory) obj.classCategory = classCategory;
-  if (weight) obj.weight = weight;
 
-  if (Object.keys(obj).length === 0) {
+  if (gender) return obj.gender = gender;
+  if (classCategory) return obj.classCategory = classCategory;
+  if (weight) return obj.weight = weight;
+
+  if (obj == {}) {
     return res.status(500).json(fail("Modify at least one field!"));
   };
 
+
   Object.keys(obj).forEach(key => category[key] = obj[key])
   await category.save().then(data => {
-    console.log("saving")
     return res.status(200).json(success(data, "payload", "Category updated successfully"))
   }).catch(err => {
     return res.status(500).json(fail("Fail to update category. Error => " + err.message));
   });
-
-
-}
-
-
-exports.delete = async (req, res) => {
 
 
 }

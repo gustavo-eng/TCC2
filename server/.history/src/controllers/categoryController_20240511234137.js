@@ -49,34 +49,44 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
 
+  console.log("Entrou no controller to update ")
+
   let { idCategory } = req.params;
+
+  console.log("req.params ", req.params)
   const { gender, classCategory, weight } = req.body;
+  console.log("depois de req.body")
 
   let category = await Category.findByPk(idCategory);
   if (!category) return res.json(fail("Category not fount to update"));
 
-  let obj = {};
-  if (gender) obj.gender = gender;
-  if (classCategory) obj.classCategory = classCategory;
-  if (weight) obj.weight = weight;
+  try {
+    console.log("dentro do try")
 
-  if (Object.keys(obj).length === 0) {
-    return res.status(500).json(fail("Modify at least one field!"));
-  };
+    let obj = {};
 
-  Object.keys(obj).forEach(key => category[key] = obj[key])
-  await category.save().then(data => {
-    console.log("saving")
-    return res.status(200).json(success(data, "payload", "Category updated successfully"))
-  }).catch(err => {
-    return res.status(500).json(fail("Fail to update category. Error => " + err.message));
-  });
+    if (gender) obj.gender = gender;
+    if (classCategory) obj.classCategory = classCategory;
+    if (weight) obj.weight = weight;
+
+    if (Object.keys(obj).length === 0) {
+      return res.status(500).json(fail("Modify at least one field!"));
+    };
 
 
-}
+    console.log("depois de obj")
 
+    Object.keys(obj).forEach(key => category[key] = obj[key])
+    await category.save().then(data => {
+      console.log("saving")
+      return res.status(200).json(success(data, "payload", "Category updated successfully"))
+    }).catch(err => {
+      return res.status(500).json(fail("Fail to update category. Error => " + err.message));
+    });
 
-exports.delete = async (req, res) => {
+  } catch (err) {
+    console.log("erro do catch => " + err);
+  }
 
 
 }

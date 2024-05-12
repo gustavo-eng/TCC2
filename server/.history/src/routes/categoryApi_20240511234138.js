@@ -21,8 +21,6 @@ router.post("/", categories.create);
 router.put("/:idCategory", categories.update);
 
 
-//Delete category
-route
 
 /*
 router.get('/', (req, res) => {
