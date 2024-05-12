@@ -14,11 +14,9 @@ let { fail, success } = require("../helpers/response"); // utilizado para padron
 router.get("/", categories.findAll);
 
 //Create Category
-router.post("/", categories.create);
+router.post("/",)
 
 
-//Update category
-router.put("/:idCategpry", categories.update);
 
 
 

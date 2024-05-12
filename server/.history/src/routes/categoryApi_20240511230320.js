@@ -17,8 +17,9 @@ router.get("/", categories.findAll);
 router.post("/", categories.create);
 
 
+
 //Update category
-router.put("/:idCategpry", categories.update);
+router.put("/")
 
 
 

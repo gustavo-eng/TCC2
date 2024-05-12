@@ -10,7 +10,6 @@ const Op = db.Sequelize.Op;
 
 
 exports.findAll = async (req, res) => {
-  console.log("entrou no controller findAll --> ")
   await Category.findAll().then(category => {
     return res.status(200).json(success(category, "payload", "Categoria lista com sucesso"));
   }).catch(err => {

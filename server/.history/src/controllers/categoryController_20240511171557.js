@@ -10,7 +10,6 @@ const Op = db.Sequelize.Op;
 
 
 exports.findAll = async (req, res) => {
-  console.log("entrou no controller findAll --> ")
   await Category.findAll().then(category => {
     return res.status(200).json(success(category, "payload", "Categoria lista com sucesso"));
   }).catch(err => {
@@ -28,63 +27,18 @@ exports.create = async (req, res) => {
 
   // TODO Zod
 
+  //const allValid = [gender, classCategory, weight].every(prop => prop !== "" && prop !== undefined);
 
   const newCategory = {
     gender: gender,
-    classCategory: classCategory,
+    class_category: classCategory,
     weight: weight
   };
 
-  // Category
-  await Category.create(newCategory).then(data => {
-    console.log('Categoria salva com sucesso ')
-    res.status(200).json(success(data, "payload", "Category saved successfully"));
-  }).catch(err => {
-    console.log('Erro -> ' + err)
-    res.status(500).json(fail("Fail to create category. Erro -> ", err));
-  });
+  //  Category
+
   //await Category.
 }
-
-
-exports.update = async (req, res) => {
-
-  console.log("Entrou no controller to update ")
-
-  let { idCategpry } = req.params;
-  const { gender, classCategory, weight } = req.body;
-
-
-  let category = await Category.findByPk(idCategpry);
-  if (!category) return res.json(fail("Category not fount to update"));
-
-  let obj = {};
-
-  if (gender) return obj.gender = gender;
-  if (classCategory) return obj.classCategory = classCategory;
-  if (weight) return obj.weight = weight;
-
-  if (obj == {}) {
-    return res.status(500).json(fail("Modify at least one field!"));
-  };
-
-
-  Object.keys(obj).forEach(key => category[key] = obj[key])
-  await category.save().then(data => {
-    return res.status(200).json(success(data, "payload", "Category updated successfully"))
-  }).catch(err => {
-    return res.status(500).json(fail("Fail to update category. Error => " + err.message));
-  });
-
-
-}
-
-/*
-exports.delete = async () => {
-
-};
-*/
-
 
 
 /*

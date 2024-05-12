@@ -10,7 +10,6 @@ const Op = db.Sequelize.Op;
 
 
 exports.findAll = async (req, res) => {
-  console.log("entrou no controller findAll --> ")
   await Category.findAll().then(category => {
     return res.status(200).json(success(category, "payload", "Categoria lista com sucesso"));
   }).catch(err => {
@@ -49,13 +48,11 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
 
-  console.log("Entrou no controller to update ")
-
   let { idCategpry } = req.params;
   const { gender, classCategory, weight } = req.body;
 
 
-  let category = await Category.findByPk(idCategpry);
+  let category = await Category.findByPk(id);
   if (!category) return res.json(fail("Category not fount to update"));
 
   let obj = {};
@@ -75,6 +72,8 @@ exports.update = async (req, res) => {
   }).catch(err => {
     return res.status(500).json(fail("Fail to update category. Error => " + err.message));
   });
+
+
 
 
 }
