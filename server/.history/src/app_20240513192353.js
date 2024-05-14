@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 const db = require('../src/config/db');
 
 //{ force: true }
-db.sequelize.sync({ alter: true })
+db.sequelize.sync({ force: true })
     .then(() => {
         console.log('Synced db.')
     }).catch(err => {

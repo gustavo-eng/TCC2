@@ -1,6 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const categories = require("../controllers/categoryController");
+const { permissionFRPj, permissionGym, globalEntitiesPermission } = require("../middleware/permission")
+// todo DAO ?
+const categoryDAO = require('../model/category');
+
+let { fail, success } = require("../helpers/response"); // utilizado para padronizar respostas
+
 
 
 

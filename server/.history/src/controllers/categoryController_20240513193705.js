@@ -72,13 +72,11 @@ exports.update = async (req, res) => {
     return res.status(500).json(fail("Fail to update category. Error => " + err.message));
   });
 
-
 }
 
 
 
 exports.delete = async (req, res) => {
-
   let { idCategory } = req.params;
 
   try {
@@ -103,6 +101,8 @@ exports.delete = async (req, res) => {
 
 
 
+
+
 /*
 const { Op } = require('sequelize');
 Post.findAll({
@@ -110,5 +110,7 @@ Post.findAll({
     [Op.and]: [{ authorId: 12 }, { status: 'active' }],
   },
 });
+
+
 */
 
