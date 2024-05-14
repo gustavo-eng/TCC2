@@ -21,12 +21,6 @@ module.exports = (sequelize, Sequelize) => {
             //defaultValue: 60,
             allowNull: true
         }
-    }, {
-
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-
     });
 
     return Category;

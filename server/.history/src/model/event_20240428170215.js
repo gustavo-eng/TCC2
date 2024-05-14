@@ -2,56 +2,9 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
 
-
 //const Fabricante = require('./fabricante');
 //todo Mudar o nome da tabela la na modelagem para Event
 //todo Caso for necessario eh possivel inserir novos campos
-
-
-
-
-module.exports = (sequelize, Sequelize) => {
-    const Event = sequelize.define("Event", {
-        idEvent: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        price: {
-            type: DataTypes.FLOAT,
-            allowNull: true,
-
-        },
-        date: {
-            type: DataTypes.DATE,
-            //defaultValue: "Masculino",
-
-        },
-
-
-    }, {
-
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-
-    });
-}
-
-
-/*
-idEvent
-description
-price
-date
-startDate
-endTime
-type
-*/
 
 
 
@@ -149,9 +102,6 @@ module.exports = {
 
 
 }
-
-
-
 
 /*
 const jane = await User.create({ name: "Jane" });
