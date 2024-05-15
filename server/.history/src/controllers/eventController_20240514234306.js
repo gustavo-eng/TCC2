@@ -14,7 +14,7 @@ exports.findAll = async (req, res) => {
 }
 
 
-//TODO adicionar imagem para upload de imagem de fundo
+
 exports.create = async (req, res) => {
 
     const { description, price, startDate, endDate, type } = req.body;
@@ -39,7 +39,7 @@ exports.create = async (req, res) => {
 
 }
 
-
+//TODO adicionar imagem para upload de imagem de fundo
 exports.delete = async (req, res) => {
 
     const { idEvent } = req.params;
@@ -95,6 +95,7 @@ exports.update = async (req, res) => {
     }
 
 }
+
 
 
 

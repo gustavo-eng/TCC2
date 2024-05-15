@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
   const isValidAllFields = [gender, classCategory, weight].every(prop => prop !== "" && prop !== undefined && prop !== null);
   if (!isValidAllFields) return res.json(fail("All fields on the form must be filled in with values"));
 
-
+  // TODO Zod
 
   const newCategory = {
     gender: gender,
@@ -56,7 +56,12 @@ exports.update = async (req, res) => {
   if (classCategory) obj.classCategory = classCategory;
   if (weight) obj.weight = weight;
 
-  if (Object.keys(obj).length != 0) Object.keys(obj).forEach(key => category[key] = obj[key]);
+  if (Object.keys(obj).length === 0) {
+
+    return res.status(500).json(fail("Modify at least one field!"));
+  };
+
+  Object.keys(obj).forEach(key => category[key] = obj[key])
 
   await category.save().then(data => {
     console.log("saving")

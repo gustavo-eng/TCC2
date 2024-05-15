@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
   const isValidAllFields = [gender, classCategory, weight].every(prop => prop !== "" && prop !== undefined && prop !== null);
   if (!isValidAllFields) return res.json(fail("All fields on the form must be filled in with values"));
 
-
+  // TODO Zod
 
   const newCategory = {
     gender: gender,
