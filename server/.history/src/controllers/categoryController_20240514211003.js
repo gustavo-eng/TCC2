@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 exports.findAll = async (req, res) => {
   console.log("entrou no controller findAll --> ")
   await Category.findAll().then(category => {
-    return res.status(200).json(success(category, "payload", "Category listed successfully"));
+    return res.status(200).json(success(category, "payload", "Categoria lista com sucesso"));
   }).catch(err => {
     return res.status(404).json('Categories not found');
   });
@@ -24,6 +24,7 @@ exports.create = async (req, res) => {
   if (!isValidAllFields) return res.json(fail("All fields on the form must be filled in with values"));
 
   // TODO Zod
+
 
   const newCategory = {
     gender: gender,

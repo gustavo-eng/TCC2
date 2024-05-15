@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const events = require("../controllers/eventController");
+const eventDAO = require('../model/event');
+const { permissionFRPj } = require("../middleware/permission");
 
+// DTO ?
+// Lista todos os eventos
+let { fail, success } = require("../helpers/response");
 
 //todo fazer rota para buscar por data
 
-//Retrieve all Events
-router.get("/", events.findAll);
-
-
-//Create event
-router.post("/", events.create);
-
+router.get("/", (req, res) => {
+    res.send('Ola vc esta na rota event')
+})
 
 
 /*

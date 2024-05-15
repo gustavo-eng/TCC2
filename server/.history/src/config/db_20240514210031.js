@@ -24,9 +24,11 @@ const setConnection = async (sequelize) => {
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
+
 }
 
 setConnection(sequelize);
+
 
 const db = {};
 
@@ -35,8 +37,6 @@ db.sequelize = sequelize;
 
 db.Category = require('../model/category')(sequelize, Sequelize);
 db.Event = require('../model/event')(sequelize, Sequelize);
-
-
 
 
 module.exports = db;

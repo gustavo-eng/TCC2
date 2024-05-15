@@ -9,9 +9,6 @@ const events = require("../controllers/eventController");
 router.get("/", events.findAll);
 
 
-//Create event
-router.post("/", events.create);
-
 
 
 /*

@@ -35,15 +35,14 @@ db.sequelize.sync({ alter: true })
 var routeRequirements = require('./routes/requirementsAPI');
 var routeLogin = require('./routes/login');
 var routeGym = require('./routes/gymAPI');
+var routeEvent = require('./routes/eventAPI');
 var routeStudent = require('./routes/studentAPI');
 var routeCategory = require('./routes/categoryApi');
 var routeFprj = require('./routes/fprjAPI');
 var routeImage = require('./routes/image');
 var routePayment = require('./routes/paymentAPI');
 */
-
 var routeCategory = require('./routes/categoryApi');
-var routeEvent = require('./routes/eventAPI');
 
 
 var routerJeans = require('./routes/gyms');
@@ -78,9 +77,8 @@ app.use('/fprj', routeFprj);
 app.use('/category', routeCategory);
 */
 
-
 app.use('/category', routeCategory);
-app.use('/events', routeEvent);
+app.use('/events', controllAccess, routeEvent);
 
 // error handler
 app.use(function (err, req, res, next) {

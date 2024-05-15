@@ -25,6 +25,7 @@ exports.create = async (req, res) => {
 
   // TODO Zod
 
+
   const newCategory = {
     gender: gender,
     classCategory: classCategory,

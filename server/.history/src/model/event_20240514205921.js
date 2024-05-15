@@ -1,4 +1,14 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
+
+
+
+//const Fabricante = require('./fabricante');
+//todo Mudar o nome da tabela la na modelagem para Event
+//todo Caso for necessario eh possivel inserir novos campos
+
+
+
 
 module.exports = (sequelize, Sequelize) => {
 

@@ -37,8 +37,6 @@ db.Category = require('../model/category')(sequelize, Sequelize);
 db.Event = require('../model/event')(sequelize, Sequelize);
 
 
-
-
 module.exports = db;
 
 

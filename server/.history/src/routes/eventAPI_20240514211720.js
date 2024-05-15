@@ -5,13 +5,7 @@ const events = require("../controllers/eventController");
 
 //todo fazer rota para buscar por data
 
-//Retrieve all Events
 router.get("/", events.findAll);
-
-
-//Create event
-router.post("/", events.create);
-
 
 
 /*

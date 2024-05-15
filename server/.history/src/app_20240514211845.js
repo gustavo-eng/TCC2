@@ -41,7 +41,6 @@ var routeFprj = require('./routes/fprjAPI');
 var routeImage = require('./routes/image');
 var routePayment = require('./routes/paymentAPI');
 */
-
 var routeCategory = require('./routes/categoryApi');
 var routeEvent = require('./routes/eventAPI');
 
@@ -80,7 +79,7 @@ app.use('/category', routeCategory);
 
 
 app.use('/category', routeCategory);
-app.use('/events', routeEvent);
+app.use('/events', controllAccess, routeEvent);
 
 // error handler
 app.use(function (err, req, res, next) {

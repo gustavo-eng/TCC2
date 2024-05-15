@@ -1,4 +1,14 @@
-const { DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
+
+
+
+//const Fabricante = require('./fabricante');
+//todo Mudar o nome da tabela la na modelagem para Event
+//todo Caso for necessario eh possivel inserir novos campos
+
+
+
 
 module.exports = (sequelize, Sequelize) => {
 
@@ -16,22 +26,21 @@ module.exports = (sequelize, Sequelize) => {
         price: {
             type: DataTypes.FLOAT,
             allowNull: true,
+
         },
-        startDate: { // Obligate Field
+        startDate: { // Optional Field
+
             type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
+            //defaultValue: DataTypes.NOW,
             allowNull: true,
+
         },
         endDate: { //Optional Field
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
-            allowNull: true,
-        },
-        type: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        }
 
+            type: DataTypes.DATE,
+            allowNull: true,
+
+        }
 
     }, {
 
@@ -45,8 +54,18 @@ module.exports = (sequelize, Sequelize) => {
 }
 
 
-
 /*
+idEvent
+description
+price
+date
+startDate
+endTime
+type
+*/
+
+
+
 
 const EventModel = sequelize.define('Event', {
 
@@ -83,7 +102,15 @@ const EventModel = sequelize.define('Event', {
         //defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
         allowNull: true
     }
-
+    /*
+        testDate: {
+            type: DataTypes.DATE,
+            defaultValue: moment.utc().format('YYYY-MM-DD HH:mm:ss'),
+            defaultValue: DataTypes.NOW,
+            allowNull: true
+            // This way, the current date/time will be used to populate this column (at the moment of insertion)
+        },
+    */
 }, {
     freezeTableName: true,
     createdAt: true,
@@ -91,8 +118,7 @@ const EventModel = sequelize.define('Event', {
 }
 
 );
-*/
-/*
+
 
 EventModel.sync();
 

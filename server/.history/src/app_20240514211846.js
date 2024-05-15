@@ -80,7 +80,7 @@ app.use('/category', routeCategory);
 
 
 app.use('/category', routeCategory);
-app.use('/events', routeEvent);
+app.use('/events', controllAccess, routeEvent);
 
 // error handler
 app.use(function (err, req, res, next) {
