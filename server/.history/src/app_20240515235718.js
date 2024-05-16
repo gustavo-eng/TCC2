@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var cors = require('cors');
 var http = require('http');
 const bodyParser = require("body-parser");
-const compression = require('compression');
 
 var app = express();
 var server = http.createServer(app);
