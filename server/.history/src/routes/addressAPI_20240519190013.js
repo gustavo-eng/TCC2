@@ -5,22 +5,12 @@ const address = require('../controllers/addressController');
 //Retrievel all Adress
 router.get("/", address.findAll);
 
-//router.delete("/:id", address.delete);
-
-//Get specific address from gym
-//router.get("/gym/:id")
 
 //todo adicionar a rota para listar incluindo os responsaveis pelo relacionamento
-
-//todo deixar essa rota por este modelo msmo. Ex address/gym/id
-
+//todo deixar essa rota a corgo do modelo. Ex gym/address/idGym
 
 
 module.exports = router;
-
-
-
-
 
 
 

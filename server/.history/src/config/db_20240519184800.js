@@ -40,17 +40,14 @@ db.Gym = require('../model/gym')(sequelize, Sequelize);
 
 
 // ======= Associations =======
-//One to One (Gym <<>> Address)
-db.Address.hasOne(db.Gym, { as: "Gym", foreignKey: "idAddress" });
-db.Gym.belongsTo(db.Address, {
-    foreignKey: "idAddress",
-    onDelete: "CASCADE",
-    as: "Address",
-    onUpdate: "CASCADE"
+
+db.Gym.hasOne(db.Address, {
+    foreignKey: 'idGym',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 });
 
-
-
+db.Address.belongsTo(db.Gym)
 
 
 

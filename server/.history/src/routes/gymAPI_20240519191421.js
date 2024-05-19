@@ -4,21 +4,11 @@ const gym = require("../controllers/gymController");
 
 router.get("/", gym.findAll);
 
-router.post("/", gym.create);
-
-router.get("/address/:id", gym.getAdrress);
-
-router.delete("/:id", gym.delete);
-
-
-
-
 // fazer o post antes e capturar o id correspondente
-//router.post("/address/:id",)
+router.post("/address/:id",)
 
 
 module.exports = router;
-
 
 //const gym = require('')
 

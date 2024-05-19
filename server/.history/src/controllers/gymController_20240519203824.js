@@ -71,25 +71,14 @@ exports.getAdrress = async (req, res) => {
 
 
 exports.delete = async (req, res) => {
-
     const { id } = req.params;
 
-    const gym = await Gym.findByPk(id);
-
-    await gym.destroy().then(() => {
-        return res.status(200).json(success({}, "payload", "Gym deleted successfully"));
-    }).catch(err => {
-        return res.status(500).json(fail("Server Error: " + err.message));
-    });
 
 
 }
 
 
 /*
-
-const book = await BookModel.findByPk(id)
-        return book.destroy()
  delete: async (cnpj_Academia) => {
         await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
     },

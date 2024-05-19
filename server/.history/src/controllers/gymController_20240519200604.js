@@ -12,7 +12,7 @@ exports.findAll = async (req, res) => {
     }
 }
 
-
+// todo apenas federacao cria...
 exports.create = async (req, res) => {
     const {
         cnpj,
@@ -60,37 +60,39 @@ exports.create = async (req, res) => {
     }
 }
 
-exports.getAdrress = async (req, res) => {
-    const { id } = req.params;
-    const address = await Address.findByPk(id, { include: ['Gym'] });
-
-    if (!address) return res.status(404).json(fail("Address not found"));
-
-    return res.status(200).json(success(address, "payload", "Address found"));
-}
-
-
-exports.delete = async (req, res) => {
-
-    const { id } = req.params;
-
-    const gym = await Gym.findByPk(id);
-
-    await gym.destroy().then(() => {
-        return res.status(200).json(success({}, "payload", "Gym deleted successfully"));
-    }).catch(err => {
-        return res.status(500).json(fail("Server Error: " + err.message));
-    });
-
-
-}
-
 
 /*
+ const Gym = sequelize.define("Gym", {
+        idGym: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        cnpj: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        sensei: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: true
 
-const book = await BookModel.findByPk(id)
-        return book.destroy()
- delete: async (cnpj_Academia) => {
-        await GymModel.destroy({ where: { cnpj_Academia: cnpj_Academia } });
-    },
+        },
+        phone: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        role: {
+            type: DataTypes.STRING,
+            //defaultValue: "gym",
+            allowNull: true
+        }
+
 */

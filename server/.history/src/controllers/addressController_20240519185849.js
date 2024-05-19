@@ -48,20 +48,6 @@ exports.create = async (req, res) => {
 }
 
 
-exports.delete = async (req, res) => {
-
-    const { id } = req.params;
-
-    const address = await Address.findByPk(id);
-
-    await address.destroy().then(() => {
-        return res.status(200).json(success({}, "payload", "Address deleted successfully"));
-    }).catch(err => {
-        return res.status(500).json(fail("Server Error: " + err.message));
-    });
-
-
-}
 
 //return specific address
 

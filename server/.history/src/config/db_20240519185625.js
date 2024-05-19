@@ -49,10 +49,19 @@ db.Gym.belongsTo(db.Address, {
     onUpdate: "CASCADE"
 });
 
+/*
 
 
+db.Gym.hasOne(db.Address, {
+    foreignKey: 'idGym',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+
+db.Address.belongsTo(db.Gym)
 
 
+*/
 
 
 // ======= Associations =======

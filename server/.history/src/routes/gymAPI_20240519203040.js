@@ -8,9 +8,6 @@ router.post("/", gym.create);
 
 router.get("/address/:id", gym.getAdrress);
 
-router.delete("/:id", gym.delete);
-
-
 
 
 // fazer o post antes e capturar o id correspondente

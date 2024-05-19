@@ -5,7 +5,8 @@ const address = require('../controllers/addressController');
 //Retrievel all Adress
 router.get("/", address.findAll);
 
-//router.delete("/:id", address.delete);
+
+
 
 //Get specific address from gym
 //router.get("/gym/:id")

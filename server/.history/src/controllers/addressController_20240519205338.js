@@ -48,6 +48,7 @@ exports.create = async (req, res) => {
 }
 
 
+
 exports.delete = async (req, res) => {
 
     const { id } = req.params;
@@ -59,7 +60,6 @@ exports.delete = async (req, res) => {
     }).catch(err => {
         return res.status(500).json(fail("Server Error: " + err.message));
     });
-
 
 }
 

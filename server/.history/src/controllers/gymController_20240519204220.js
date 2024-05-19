@@ -71,7 +71,6 @@ exports.getAdrress = async (req, res) => {
 
 
 exports.delete = async (req, res) => {
-
     const { id } = req.params;
 
     const gym = await Gym.findByPk(id);
@@ -80,11 +79,9 @@ exports.delete = async (req, res) => {
         return res.status(200).json(success({}, "payload", "Gym deleted successfully"));
     }).catch(err => {
         return res.status(500).json(fail("Server Error: " + err.message));
-    });
-
+    })
 
 }
-
 
 /*
 

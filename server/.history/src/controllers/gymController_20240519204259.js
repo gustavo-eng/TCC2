@@ -77,11 +77,14 @@ exports.delete = async (req, res) => {
     const gym = await Gym.findByPk(id);
 
     await gym.destroy().then(() => {
-        return res.status(200).json(success({}, "payload", "Gym deleted successfully"));
-    }).catch(err => {
-        return res.status(500).json(fail("Server Error: " + err.message));
-    });
 
+        return res.status(200).json(success({}, "payload", "Gym deleted successfully"));
+
+    }).catch(err => {
+
+        return res.status(500).json(fail("Server Error: " + err.message));
+
+    });
 
 }
 

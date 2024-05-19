@@ -6,10 +6,10 @@ module.exports = (sequelize, Sequelize) => {
         idGym: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: tru,
         },
         cnpj: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.NUMBER,
             allowNull: true
         },
         sensei: {
@@ -22,7 +22,7 @@ module.exports = (sequelize, Sequelize) => {
 
         },
         phone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.NUMBER,
             allowNull: true
         },
         password: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         role: {
             type: DataTypes.STRING,
-            //defaultValue: "gym",
+            defaultValue: "gym",
             allowNull: true
         }
     }, {

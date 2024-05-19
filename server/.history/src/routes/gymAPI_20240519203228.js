@@ -8,7 +8,7 @@ router.post("/", gym.create);
 
 router.get("/address/:id", gym.getAdrress);
 
-router.delete("/:id", gym.delete);
+//router.delete("/:id");
 
 
 

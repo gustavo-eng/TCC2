@@ -53,8 +53,6 @@ db.Gym.belongsTo(db.Address, {
 
 
 
-
-
 // ======= Associations =======
 
 module.exports = db;
