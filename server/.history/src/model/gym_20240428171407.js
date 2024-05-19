@@ -1,70 +1,9 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize, Sequelize) => {
-
-    const Gym = sequelize.define("Gym", {
-        idGym: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        cnpj: {
-            type: DataTypes.NUMBER,
-            allowNull: true
-        },
-        sensei: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: true
-
-        },
-        phone: {
-            type: DataTypes.NUMBER,
-            allowNull: true
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        role: {
-            type: DataTypes.STRING,
-            defaultValue: "gym",
-            allowNull: true
-        }
-    }, {
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-    });
-
-    return Gym;
-
-}
-
-
-
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
 
 
 //const { requerimentsModel } = require('./requirements');
 
-
-
-/*
-
-    idAcademia
-    sensei
-    role
-    name
-    cnpj
-    phone
-    password
-
-*/
-
-/*
 const GymModel = sequelize.define('Gym', {
     cod_gym: {
         type: DataTypes.INTEGER,
@@ -115,12 +54,12 @@ const GymModel = sequelize.define('Gym', {
     updatedAt: true,
 }
 );
-*/
 
 
 
 
-/*
+
+
 GymModel.sync();
 
 module.exports = {
@@ -172,4 +111,3 @@ module.exports = {
     GymModel,
 }
 
-*/

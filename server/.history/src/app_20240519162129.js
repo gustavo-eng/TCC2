@@ -43,10 +43,10 @@ var routeImage = require('./routes/image');
 var routePayment = require('./routes/paymentAPI');
 */
 
-var routeEvent = require('./routes/eventAPI');
 var routeCategory = require('./routes/categoryApi');
+var routeEvent = require('./routes/eventAPI');
 var routeAddress = require('./routes/addressAPI');
-var routeGym = require('./routes/gymAPI');
+
 
 var routerJeans = require('./routes/gyms');
 const { controllAccess } = require('./middleware/Auth');
@@ -69,7 +69,6 @@ app.use(cookieParser());
 
 
 /*
-
 app.use('/login', routeLogin);
 app.use('/events', controllAccess, routeEvent);
 app.use('/students', routeStudent);
@@ -80,13 +79,12 @@ app.use('/upload', routeImage);
 app.use('/jeans', controllAccess, routerJeans);
 app.use('/fprj', routeFprj);
 app.use('/category', routeCategory);
-
 */
 
 
 app.use('/category', routeCategory);
 app.use('/events', routeEvent);
-app.use('/address', routeAddress);
+//app.use('/address', routeAddress);
 
 // error handler
 app.use(function (err, req, res, next) {

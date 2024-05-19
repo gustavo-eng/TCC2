@@ -43,10 +43,10 @@ var routeImage = require('./routes/image');
 var routePayment = require('./routes/paymentAPI');
 */
 
-var routeEvent = require('./routes/eventAPI');
 var routeCategory = require('./routes/categoryApi');
+var routeEvent = require('./routes/eventAPI');
 var routeAddress = require('./routes/addressAPI');
-var routeGym = require('./routes/gymAPI');
+
 
 var routerJeans = require('./routes/gyms');
 const { controllAccess } = require('./middleware/Auth');

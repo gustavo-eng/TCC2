@@ -23,6 +23,7 @@ exports.findAll = async (req, res) => {
 }
 
 
+
 exports.create = async (req, res) => {
     try {
 
@@ -36,20 +37,10 @@ exports.create = async (req, res) => {
             city: city
         }
 
-        await Address.create(newAddress).then(address => {
-            res.status(200).json(success(address, "payload", "Address registered successfully"));
-        }).catch(err => {
-            res.status(500).json(fail("Failt to create category"));
-        })
-
     } catch (err) {
-        res.status(500).json(fail("Error server"));
+
     }
 }
-
-
-
-//return specific address
 
 
 //create

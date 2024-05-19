@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         cnpj: {
             type: DataTypes.NUMBER,
-            allowNull: true
+            allowNull: true,
         },
         sensei: {
             type: DataTypes.STRING,
@@ -18,16 +18,16 @@ module.exports = (sequelize, Sequelize) => {
         },
         name: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
 
         },
         phone: {
             type: DataTypes.NUMBER,
-            allowNull: true
+            allowNull: true,
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
         },
         role: {
             type: DataTypes.STRING,
@@ -39,8 +39,6 @@ module.exports = (sequelize, Sequelize) => {
         createdAt: true,
         updatedAt: true,
     });
-
-    return Gym;
 
 }
 

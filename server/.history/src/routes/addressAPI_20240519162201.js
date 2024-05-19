@@ -6,17 +6,5 @@ const address = require('../controllers/addressController');
 router.get("/", address.findAll);
 
 
-//todo adicionar a rota create. Mas com relacionamentos
-
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-

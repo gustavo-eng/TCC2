@@ -40,7 +40,7 @@ db.Gym = require('../model/gym')(sequelize, Sequelize);
 
 
 // ======= Associations =======
-/*
+
 db.Gym.hasOne(db.Address, {
     //foreignKey: 'idGym',
     as: 'Gym',
@@ -54,10 +54,13 @@ db.Address.belongsTo(db.Gym, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
-*/
+
+
+
 
 
 
 // ======= Associations =======
+
 
 module.exports = db;

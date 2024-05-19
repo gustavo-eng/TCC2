@@ -23,6 +23,7 @@ exports.findAll = async (req, res) => {
 }
 
 
+
 exports.create = async (req, res) => {
     try {
 
@@ -46,6 +47,13 @@ exports.create = async (req, res) => {
         res.status(500).json(fail("Error server"));
     }
 }
+
+
+
+
+
+
+
 
 
 

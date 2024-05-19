@@ -40,24 +40,12 @@ db.Gym = require('../model/gym')(sequelize, Sequelize);
 
 
 // ======= Associations =======
-/*
-db.Gym.hasOne(db.Address, {
-    //foreignKey: 'idGym',
-    as: 'Gym',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-});
-
-db.Address.belongsTo(db.Gym, {
-    foreignKey: 'idGym',
-    as: 'Address',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE'
-})
-*/
 
 
 
 // ======= Associations =======
 
+
 module.exports = db;
+
+

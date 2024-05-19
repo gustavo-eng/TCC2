@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-//const gym = require('')
+const gymDAO = require('../model/gym');
+const requerimentDAO = require("../model/requirements");
+const { permissionFRPj, permissionGym, globalEntitiesPermission } = require("../middleware/permission");
+const { controllAccess } = require("../middleware/Auth");
+let { fail, success } = require('../helpers/response');
+
 
 /*
 router.get('/', (req, res) => {
