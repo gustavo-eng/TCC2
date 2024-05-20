@@ -16,7 +16,6 @@ exports.findAll = async (req, res) => {
 exports.create = async (req, res) => {
 
     console.log("create gymmmm ")
-
     const {
         cnpj,
         sensei,
@@ -42,7 +41,6 @@ exports.create = async (req, res) => {
 
         const address = await Address.create(newAddress);
 
-
         const newGym = {
             cnpj,
             sensei,
@@ -50,7 +48,7 @@ exports.create = async (req, res) => {
             phone,
             password,
             role: "gym",
-            idAddress: address.idAddress
+            idAddress: address.id
         };
 
         const gym = await Gym.create(newGym);
@@ -78,11 +76,7 @@ exports.delete = async (req, res) => {
 
     const { id } = req.params;
 
-
-
     const gym = await Gym.findByPk(id);
-
-
 
     await gym.destroy().then(() => {
         return res.status(200).json(success({}, "payload", "Gym deleted successfully"));

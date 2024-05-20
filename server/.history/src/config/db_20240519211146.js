@@ -42,19 +42,18 @@ db.Gym = require('../model/gym')(sequelize, Sequelize);
 // ======= Associations =======
 //One to One (Gym <<>> Address)
 db.Address.hasOne(db.Gym, {
-    as: "Gym",  // 'as' define um alias para a associação
-    foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
-    onDelete: "CASCADE",  // define o comportamento na exclusão
-    onUpdate: "CASCADE",  // define o comportamento na atualização
+    as: "Gym",
+    foreignKey: "idAddress",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
 });
 
 db.Gym.belongsTo(db.Address, {
-    as: "Address",  // 'as' define um alias para a associação
-    foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
-    onDelete: "CASCADE",  // define o comportamento na exclusão
-    onUpdate: "CASCADE",  // define o comportamento na atualização
+    foreignKey: "idAddress",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    as: "Address",
 });
-
 
 // ======= Associations =======
 

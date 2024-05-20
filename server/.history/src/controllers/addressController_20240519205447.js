@@ -51,6 +51,7 @@ exports.create = async (req, res) => {
 exports.delete = async (req, res) => {
 
     const { id } = req.params;
+
     const address = await Address.findByPk(id);
 
     await address.destroy().then(() => {
