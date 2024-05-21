@@ -42,6 +42,7 @@ exports.create = async (req, res) => {
 
         const address = await Address.create(newAddress);
 
+
         const newGym = {
             cnpj,
             sensei,

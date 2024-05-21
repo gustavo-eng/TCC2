@@ -87,7 +87,7 @@ app.use('/category', routeCategory);
 app.use('/events', routeEvent);
 app.use('/address', routeAddress);
 app.use('/gym', routeGym);
-app.use('/athlets', routeAthlet);
+app.use('/athlets')
 
 // error handler
 app.use(function (err, req, res, next) {
