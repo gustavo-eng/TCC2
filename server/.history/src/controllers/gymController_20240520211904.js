@@ -90,8 +90,6 @@ exports.delete = async (req, res) => {
 
 
 
-
-
 /*
 
 const book = await BookModel.findByPk(id)
