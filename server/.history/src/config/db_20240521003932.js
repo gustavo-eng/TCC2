@@ -56,21 +56,25 @@ db.Gym.belongsTo(db.Address, {
     onUpdate: "CASCADE",
 });
 
+
+
+
+
 //One to Many (Athlet <<>> Gym)
 //db.Athlet
 db.Gym.hasMany(db.Athlet, {
     as: "Athlet",
-    foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
-
+console.log("relacionamentosss")
 db.Athlet.belongsTo(db.Gym, {
     as: "Gym",
     foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
+
+})
 
 
 

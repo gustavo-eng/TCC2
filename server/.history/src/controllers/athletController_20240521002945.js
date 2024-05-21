@@ -37,10 +37,9 @@ exports.create = async (req, res) => {
         };
 
         await Athlet.create(newAthlet).then(athlet => {
-            return res.status(200).json(success(athlet, "payload", "Athlet created successfully"));
-        }).catch(err => {
-            return res.status(404).json(fail("Athlet not created. Error -> " + err));
 
+        }).catch(err => {
+            console.log()
         })
 
 

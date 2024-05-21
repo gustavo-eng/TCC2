@@ -60,7 +60,6 @@ db.Gym.belongsTo(db.Address, {
 //db.Athlet
 db.Gym.hasMany(db.Athlet, {
     as: "Athlet",
-    foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
@@ -70,7 +69,8 @@ db.Athlet.belongsTo(db.Gym, {
     foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
+
+})
 
 
 

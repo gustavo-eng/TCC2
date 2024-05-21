@@ -70,7 +70,8 @@ db.Athlet.belongsTo(db.Gym, {
     foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
+
+})
 
 
 

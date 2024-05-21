@@ -67,10 +67,10 @@ db.Gym.hasMany(db.Athlet, {
 
 db.Athlet.belongsTo(db.Gym, {
     as: "Gym",
-    foreignKey: "idGym",
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
+
+})
 
 
 
