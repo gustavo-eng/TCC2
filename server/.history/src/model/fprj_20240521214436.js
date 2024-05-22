@@ -1,9 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize, Sequelize) => {
-
     const Fprj = sequelize.define("Fprj", {
-
         idFprj: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -14,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true
         },
         phone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true
         },
         role: {

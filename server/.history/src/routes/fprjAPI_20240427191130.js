@@ -1,13 +1,8 @@
 
 const express = require("express");
 const router = express.Router();
-
-
-router.get("/", (req, res) => {
-    res.send('<h1>Hello World!</h1>')
-});
-
-/*
+const fprjDAO = require('../model/fprj');
+let { fail, success } = require('../helpers/response');
 
 
 // lista todas as federacoes cadastradas
@@ -49,8 +44,6 @@ router.post('/', (req, res) => {
 
 
 });
-
-*/
 
 
 

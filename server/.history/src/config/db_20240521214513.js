@@ -41,10 +41,8 @@ db.Athlet = require('../model/athlet')(sequelize, Sequelize);
 db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 
 
-
 // ======= Associations =======
 //One to One (Gym <<>> Address)
-
 db.Address.hasOne(db.Gym, {
     as: "Gym",  // 'as' define um alias para a associação
     foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
@@ -77,9 +75,6 @@ db.Athlet.belongsTo(db.Gym, {
 
 
 
-
-
-
 /*
 db.tutorials.hasMany(db.comments, { as: "comments" });
 db.comments.belongsTo(db.tutorials, {
@@ -89,5 +84,7 @@ db.comments.belongsTo(db.tutorials, {
 */
 
 
+
 // ======= Associations =======
+
 module.exports = db;

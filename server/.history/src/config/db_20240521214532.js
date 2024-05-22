@@ -77,9 +77,6 @@ db.Athlet.belongsTo(db.Gym, {
 
 
 
-
-
-
 /*
 db.tutorials.hasMany(db.comments, { as: "comments" });
 db.comments.belongsTo(db.tutorials, {
@@ -89,5 +86,7 @@ db.comments.belongsTo(db.tutorials, {
 */
 
 
+
 // ======= Associations =======
+
 module.exports = db;

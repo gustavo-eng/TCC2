@@ -2,6 +2,7 @@
 const { fail } = require('../helpers/response');
 
 
+
 module.exports = {
     permissionGym: (req, res, next) => {
         if (req.userPermission == 'gym') {
