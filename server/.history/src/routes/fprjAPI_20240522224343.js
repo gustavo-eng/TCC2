@@ -1,14 +1,12 @@
 
 const express = require("express");
 const router = express.Router();
-const fprj = require('../controllers/fprjController');
-const { message } = require("../helpers/response");
 
-router.get("/", fprj.findAll);
 
-router.post("/", fprj.create);
+router.get("/", (req, res) => {
+    res.send('<h1>Hello World!</h1>')
+});
 
-router.delete("/:idFprj", fprj.delete);
 /*
 
 

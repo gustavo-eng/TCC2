@@ -35,6 +35,7 @@ exports.create = async (req, res) => {
         return res.status(201).json(success(fprj, "payload", "Federação cadastrada com sucesso."));
 
     } catch (err) {
+        console.error("Erro no servidor ao criar Federação:", err);
         return res.status(500).json(fail("Erro no servidor: " + err.message));
     }
 };

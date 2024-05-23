@@ -8,7 +8,11 @@ router.get("/", fprj.findAll);
 
 router.post("/", fprj.create);
 
-router.delete("/:idFprj", fprj.delete);
+router.delete("/:idFprj", (req, res) => {
+    console.log('entrou na rota para deletar ')
+    res.json(message("Ola mundo"))
+});
+
 /*
 
 
