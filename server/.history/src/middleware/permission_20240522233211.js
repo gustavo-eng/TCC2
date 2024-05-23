@@ -1,10 +1,7 @@
 
 const { fail } = require('../helpers/response');
 
-//todo tirar esse formato de verificacao.
-//todo eu verifico se o usuario com id tal, tem a propriedade role com a.
-// todo permissao adequada para aquela rota.
-
+//todo tirar esse formato de verificacao
 
 module.exports = {
     permissionGym: (req, res, next) => {
@@ -31,4 +28,4 @@ module.exports = {
 }
 
 
-//const [user, products] = await Promise.all([getUser(), getProducts()]);
+

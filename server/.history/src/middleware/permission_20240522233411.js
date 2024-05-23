@@ -6,6 +6,7 @@ const { fail } = require('../helpers/response');
 // todo permissao adequada para aquela rota.
 
 
+
 module.exports = {
     permissionGym: (req, res, next) => {
         if (req.userPermission == 'gym') {
@@ -31,4 +32,6 @@ module.exports = {
 }
 
 
-//const [user, products] = await Promise.all([getUser(), getProducts()]);
+
+
+

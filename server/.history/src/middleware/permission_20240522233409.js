@@ -31,4 +31,6 @@ module.exports = {
 }
 
 
-//const [user, products] = await Promise.all([getUser(), getProducts()]);
+
+
+
