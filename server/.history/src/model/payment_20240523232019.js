@@ -42,8 +42,6 @@ module.exports = (sequelize, Sequelize) => {
         createdAt: true,
         updatedAt: true,
     });
-
-    return Payment;
 }
 
 

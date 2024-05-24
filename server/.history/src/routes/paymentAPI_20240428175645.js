@@ -1,19 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const payment = require('../controllers/paymentController');
-
-
-router.get("/", payment.findAll);
-
-
-
-
-
-module.exports = router;
-
-
-
-/*
 const path = require('path');
 const paymentDAO = require('../model/payment');
 const uploadPayment = require('../middleware/uploadPayment');
@@ -24,8 +10,6 @@ const permission = require('../middleware/permission');
 const { success, fail } = require('../helpers/response');
 
 const uploadDir = path.join(__dirname, '..', 'uploads');
-*/
-/*
 
 router.get("/", (req, res) => {
     console.log('req.userPermission')
@@ -89,4 +73,4 @@ router.put('/:id', (req, res) => {
 //todo fazer rota para listagem de pagamento
 //todo voltado apenas para usuarios gym
 
-*/
+module.exports = router;

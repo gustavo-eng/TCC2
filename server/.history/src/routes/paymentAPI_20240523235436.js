@@ -3,8 +3,9 @@ var router = express.Router();
 const payment = require('../controllers/paymentController');
 
 
-router.get("/", payment.findAll);
+console.log("APIII  paymenttt")
 
+router.get("/", payment.findAll);
 
 
 

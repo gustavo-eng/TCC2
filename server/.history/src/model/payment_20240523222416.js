@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
 //const { StudentModel } = require("./student");
 //const { StudentModel } = require("../model/student");
 
@@ -16,40 +16,7 @@ description
 */
 
 
-module.exports = (sequelize, Sequelize) => {
-    const Payment = sequelize.define("Payment", {
-        idPayment: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        voucher: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        aproved: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
-
-    }, {
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-    });
-
-    return Payment;
-}
-
-
-
-
-/*
+console.log('model payment ---');
 const paymentModel = sequelize.define('Payment', {
     Cod_Payment: {
         type: DataTypes.INTEGER,
@@ -64,6 +31,12 @@ const paymentModel = sequelize.define('Payment', {
         type: DataTypes.STRING,
         allowNull: true
     },
+    /*
+    blobVoucher: {
+        type: DataTypes.BLOB("long"),
+        allowNull: true
+    },
+    */
     yearCategory: {
         type: DataTypes.STRING,
         allowNull: true
@@ -76,6 +49,17 @@ const paymentModel = sequelize.define('Payment', {
         type: DataTypes.STRING,
         allowNull: true
     },
+    /*
+    studentId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: StudentModel,
+            key: 'cod_student',
+            onDelete: 'CASCADE', // Define a ação de cascade para delete
+            onUpdate: 'CASCADE' // Define a ação de cascade para update
+        }
+    }
+    */
 
 }, {
     freezeTableName: true,
@@ -119,7 +103,6 @@ module.exports = {
 
 }
 
-*/
 /*
  1.No pagamento eu posso passar o id da academia e listar todas as academias atreladas
  a este pagamento
@@ -127,3 +110,4 @@ module.exports = {
  depois inserir logica de relacionamento)
 
 */
+

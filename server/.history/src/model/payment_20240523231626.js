@@ -22,28 +22,8 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
-        },
-        voucher: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        aproved: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
-
-    }, {
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-    });
-
-    return Payment;
+        }
+    })
 }
 
 

@@ -23,6 +23,7 @@ exports.findAll = async (req, res) => {
 
 }
 
+//todo  - Este create vai ser feito por outros modelos
 
 exports.create = async (req, res) => {
     try {

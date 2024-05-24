@@ -11,7 +11,7 @@ var app = express();
 var server = http.createServer(app);
 var port = 3001;
 app.set('port', port);
-//app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 
 // Sincronizacao com o banco de dados
@@ -38,9 +38,9 @@ var routeGym = require('./routes/gymAPI');
 var routeStudent = require('./routes/studentAPI');
 var routeCategory = require('./routes/categoryApi');
 var routeImage = require('./routes/image');
+var routePayment = require('./routes/paymentAPI');
 */
 
-var routePayment = require('./routes/paymentAPI');
 var routeFprj = require('./routes/fprjAPI');
 var routeEvent = require('./routes/eventAPI');
 var routeCategory = require('./routes/categoryApi');
@@ -62,9 +62,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "uploads")));
-//app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "..uploads")));
 
+console.log('=====================x')
+console.log('path')
+console.log('=====================x')
 
 //todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
 
@@ -75,6 +78,7 @@ app.use('/login', routeLogin);
 app.use('/events', controllAccess, routeEvent);
 app.use('/students', routeStudent);
 app.use('/requirements', routeRequirements);
+app.use('/payment', routePayment);
 app.use('/upload', routeImage);
 app.use('/jeans', controllAccess, routerJeans);
 app.use('/fprj', routeFprj);
@@ -83,7 +87,6 @@ app.use('/category', routeCategory);
 */
 
 
-app.use('/payment', routePayment);
 app.use('/category', routeCategory);
 app.use('/events', routeEvent);
 app.use('/address', routeAddress);

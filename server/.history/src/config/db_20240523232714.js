@@ -77,7 +77,6 @@ db.Athlet.belongsTo(db.Gym, {
 });
 
 
-module.exports = db;
 
 
 
@@ -92,3 +91,4 @@ db.comments.belongsTo(db.tutorials, {
 
 
 // ======= Associations =======
+module.exports = db;

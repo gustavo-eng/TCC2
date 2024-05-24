@@ -28,22 +28,10 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true,
         },
         aproved: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
 
+        }
 
-    }, {
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-    });
-
-    return Payment;
+    })
 }
 
 

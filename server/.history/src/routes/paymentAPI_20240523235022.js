@@ -2,12 +2,7 @@ var express = require('express');
 var router = express.Router();
 const payment = require('../controllers/paymentController');
 
-
-router.get("/", payment.findAll);
-
-
-
-
+router.get("/",)
 
 module.exports = router;
 

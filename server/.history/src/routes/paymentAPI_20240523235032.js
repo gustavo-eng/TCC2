@@ -6,9 +6,6 @@ const payment = require('../controllers/paymentController');
 router.get("/", payment.findAll);
 
 
-
-
-
 module.exports = router;
 
 

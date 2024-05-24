@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../config/db');
 //const { StudentModel } = require("./student");
 //const { StudentModel } = require("../model/student");
 
@@ -14,38 +14,6 @@ aproved
 description
 
 */
-
-
-module.exports = (sequelize, Sequelize) => {
-    const Payment = sequelize.define("Payment", {
-        idPayment: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        voucher: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-        aproved: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
-
-    }, {
-        freezeTableName: true,
-        createdAt: true,
-        updatedAt: true,
-    });
-
-    return Payment;
-}
-
 
 
 

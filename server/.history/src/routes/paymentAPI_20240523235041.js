@@ -7,8 +7,6 @@ router.get("/", payment.findAll);
 
 
 
-
-
 module.exports = router;
 
 

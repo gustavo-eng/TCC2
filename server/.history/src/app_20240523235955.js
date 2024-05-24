@@ -11,7 +11,7 @@ var app = express();
 var server = http.createServer(app);
 var port = 3001;
 app.set('port', port);
-//app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 
 // Sincronizacao com o banco de dados

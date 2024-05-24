@@ -7,7 +7,6 @@ require('dotenv').config();
 // Essa rota apenas esta verificando se o token esta valido ou nao
 
 module.exports = {
-
     controllAccess: (req, res, next) => {
 
         let bearToken = req.headers['authorization'] || ""

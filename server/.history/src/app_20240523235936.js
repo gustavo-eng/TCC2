@@ -11,7 +11,7 @@ var app = express();
 var server = http.createServer(app);
 var port = 3001;
 app.set('port', port);
-//app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 
 // Sincronizacao com o banco de dados
@@ -62,9 +62,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "uploads")));
-//app.use(express.static(path.join(__dirname, "public")));
 
+console.log('=====================x')
+console.log('path')
+console.log(path.join(__dirname, "uploads"));
+console.log('=====================x')
 
 //todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
 
