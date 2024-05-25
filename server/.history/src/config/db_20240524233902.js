@@ -77,8 +77,6 @@ db.Athlet.belongsTo(db.Gym, {
 });
 
 
-
-//  ============== Payment relationship ===================
 db.Athlet.hasOne(db.Payment, {
     as: "Payment",
     foreignKey: {

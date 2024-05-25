@@ -23,8 +23,9 @@ module.exports = {
                 return res.status(403).json({ msg: "Invalid token" });
 
             } else {
-
                 //req.userId
+                //req.
+
                 req.user = decode.user;
                 req.userPermission = decode.userPermission;
                 req.userId = decode.userId;

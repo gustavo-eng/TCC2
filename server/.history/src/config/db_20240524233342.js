@@ -46,12 +46,13 @@ db.Payment = require('../model/payment')(sequelize, Sequelize);
 // ======= Associations =======
 //One to One (Gym <<>> Address)
 
-db.Address.hasOne(db.Gym, {
+db.Address.hasOne(db.Gym, { // Unecessary
     as: "Gym",  // 'as' define um alias para a associação
     foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
+
 
 db.Gym.belongsTo(db.Address, {
     as: "Address",  // 'as' define um alias para a associação
@@ -76,39 +77,40 @@ db.Athlet.belongsTo(db.Gym, {
     onUpdate: "CASCADE",
 });
 
+// relationship payments ...
 
 
-//  ============== Payment relationship ===================
-db.Athlet.hasOne(db.Payment, {
+db.Athlet.hasMany(db.Payment, {
     as: "Payment",
-    foreignKey: {
-        name: 'idAthlet',
-        allowNull: true
-    },
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
 
-db.Payment.belongsTo(db.Athlet, {
-    as: "Athlet",
-    foreignKey: {
-        name: 'idAthlet',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
+// Automatização da configuração dos relacionamentos
+let modelList = ["Category", "Athlet", "Event"];
+let fkList = ["idCategory", "idAthlet", "idEvent"];
+
+for (let i = 0; i < modelList.length; i++) {
+
+    let model = modelList[i];
+    let foreignKeyName = fkList[i];
+
+    db[model].belongsTo(db[model], {
+        as: model,
+        foreignKey: {
+            name: foreignKeyName,  // Aqui utilizamos o valor de fkList
+            allowNull: true
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    });
+}
+
+
+
 
 
 /*
-
-db.Athlet.hasOne(db.Payment, {
-    as: "Payment",
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
 db.Payment.belongsTo(db.Athlet, {
     as: "Athlet",
     foreignKey: {
@@ -120,6 +122,10 @@ db.Payment.belongsTo(db.Athlet, {
     //idAthlete
 });
 */
+
+
+
+
 
 module.exports = db;
 

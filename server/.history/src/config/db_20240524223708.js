@@ -76,50 +76,17 @@ db.Athlet.belongsTo(db.Gym, {
     onUpdate: "CASCADE",
 });
 
+// relationship payments ...
+let modelList = ["Category", "Athlet", "Event"];
 
-
-//  ============== Payment relationship ===================
-db.Athlet.hasOne(db.Payment, {
+db.Athlet.hasMany(db.Payment, {
     as: "Payment",
     foreignKey: {
-        name: 'idAthlet',
+        name: '',
         allowNull: true
     },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
+})
 
-db.Payment.belongsTo(db.Athlet, {
-    as: "Athlet",
-    foreignKey: {
-        name: 'idAthlet',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-/*
-
-db.Athlet.hasOne(db.Payment, {
-    as: "Payment",
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-db.Payment.belongsTo(db.Athlet, {
-    as: "Athlet",
-    foreignKey: {
-        name: 'idAthlet',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-    //idAthlete
-});
-*/
 
 module.exports = db;
 

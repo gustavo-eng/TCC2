@@ -39,7 +39,7 @@ var routeCategory = require('./routes/categoryApi');
 var routeImage = require('./routes/image');
 */
 
-var routeLogin = require('./routes/login');
+
 var routePayment = require('./routes/paymentAPI');
 var routeFprj = require('./routes/fprjAPI');
 var routeEvent = require('./routes/eventAPI');
@@ -90,7 +90,7 @@ app.use('/address', routeAddress);
 app.use('/gym', routeGym);
 app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
-app.use('/login', routeLogin);
+//app.use('/login', routeLogin);
 
 // error handler
 app.use(function (err, req, res, next) {

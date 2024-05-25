@@ -6,7 +6,6 @@ const uploadDir = path.join(__dirname, '..', 'uploads');
 const imageFilter = (req, file, cb) => {
     if (file.mimetype.startsWith("image")) {
         cb(null, true);
-        throw new Error('Image error type')
 
     } else {
         cb('Please upload only images ', false);

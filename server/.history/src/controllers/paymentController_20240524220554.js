@@ -17,7 +17,7 @@ exports.findAll = async (req, res) => {
 
 };
 
-//todo create precisa especificar  o evento, o aluno e a categoria como chave estrangeira
+
 
 
 

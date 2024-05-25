@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+const requirementsDAO = require('../model/requirements');
+const { returnUser } = require('../controllers/verifyTypeOfUser');
 
 require('dotenv').config();
 // jwt
@@ -11,16 +12,6 @@ router.get('/', (req, res) => {
 });
 
 
-//Rota teste para pagamento
-router.post("/", (req, res) => {
-    // let { email, password } = req.body;
-    res.status(200).json({ msg: "Rota de login para teste" })
-
-})
-
-module.exports = router;
-
-/*
 router.post('/', async (req, res) => {
     let { email, password } = req.body;
     try {
@@ -58,5 +49,5 @@ router.post('/', async (req, res) => {
     }
 
 });
-*/
 
+module.exports = router;

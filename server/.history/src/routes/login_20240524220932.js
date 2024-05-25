@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+const requirementsDAO = require('../model/requirements');
+const { returnUser } = require('../controllers/verifyTypeOfUser');
 
 require('dotenv').config();
 // jwt
@@ -9,16 +10,6 @@ const jwt = require('jsonwebtoken');
 router.get('/', (req, res) => {
     res.send('<h1>Ola mundo !</h1>');
 });
-
-
-//Rota teste para pagamento
-router.post("/", (req, res) => {
-    // let { email, password } = req.body;
-    res.status(200).json({ msg: "Rota de login para teste" })
-
-})
-
-module.exports = router;
 
 /*
 router.post('/', async (req, res) => {
@@ -60,3 +51,11 @@ router.post('/', async (req, res) => {
 });
 */
 
+//Rota teste para pagamento
+router.post("/", (req, res) => {
+    // let { email, password } = req.body;
+    res.status(200).json({ msg: "Rota de login para teste" })
+
+})
+
+module.exports = router;

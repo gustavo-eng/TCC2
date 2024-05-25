@@ -90,7 +90,7 @@ app.use('/address', routeAddress);
 app.use('/gym', routeGym);
 app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
-app.use('/login', routeLogin);
+
 
 // error handler
 app.use(function (err, req, res, next) {
