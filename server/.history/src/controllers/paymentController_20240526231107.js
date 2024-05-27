@@ -23,8 +23,6 @@ exports.create = async (req, res) => {
 
     try {
 
-        const file = req.file;
-
         const {
             //voucherPath,
             idAthlet,

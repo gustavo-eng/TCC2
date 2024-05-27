@@ -1,5 +1,4 @@
 const multer = require("multer");
-const path = require('path')
 //require('../uploads')
 /*
 const imageFilter = (req, file, cb) => {
@@ -28,9 +27,9 @@ var storage = multer.diskStorage({
 
     },
     filename: (req, file, cb) => {
-
         //determina o nome do arquivo dentro da pasta de destino
-        //+ path.extname(file.originalname)
+        console.log('path.extname(file.originalname)')
+        console.log(path.extname(file.originalname))
         cb(null, req.user + path.extname(file.originalname));
         //cb(null, `${Date.now()}-${req.body.description ? req.body.description : "naoExisteName"}-${file.originalname}`)
 

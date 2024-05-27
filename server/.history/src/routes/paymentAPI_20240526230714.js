@@ -4,13 +4,14 @@ const payment = require('../controllers/paymentController');
 
 //Middlewares
 const { controllAccess } = require('../middleware/Auth');
-const upload = require('../middleware/upload');
+
 
 router.get("/", payment.findAll);
 
 
 
-router.post("/", controllAccess, upload.single('file'), payment.create);
+router.post("/", controllAccess, payment.create);
+
 
 module.exports = router;
 

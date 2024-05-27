@@ -10,7 +10,8 @@ router.get("/", payment.findAll);
 
 
 
-router.post("/", controllAccess, upload.single('file'), payment.create);
+router.post("/", controllAccess, upload.fields('file'), payment.create);
+
 
 module.exports = router;
 
