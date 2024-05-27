@@ -7,7 +7,8 @@ router.get("/", payment.findAll);
 
 
 
-router.post("/", controllAccess, payment.create);
+router.post("/", payment.create);
+
 
 
 module.exports = router;

@@ -20,7 +20,6 @@ exports.findAll = async (req, res) => {
 
 
 exports.create = async (req, res) => {
-
     try {
 
         const {
@@ -28,7 +27,6 @@ exports.create = async (req, res) => {
             idAthlet,
             idEvent,
             idCategory,
-
         } = req.body;
 
         const newPayment = {
@@ -40,20 +38,16 @@ exports.create = async (req, res) => {
             description: '' //Apenas FPRJ pode alterar
         };
 
-        console.log('\n newPayment ');
-        console.log(newPayment)
-
         await Payment.create(newPayment).then(payment => {
             return res.status(200).json(success(payment, "payload", "Address registered successfully"));
         }).catch(err => {
-            return res.status(500).json(fail("Failt to create payment. ERROR -->" + err));
+            return res.status(500).json(fail("Failt to create payment"));
         });
 
     } catch (err) {
         return res.status(200).json(fail("Error server. Error --> " + err))
     }
-};
-
+}
 //todo create precisa especificar  o evento, o aluno e a categoria como chave estrangeira
 
 
@@ -75,6 +69,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
 module.exports = upload;
 
 */

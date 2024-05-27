@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 //Rota teste para pagamento
 router.post("/", (req, res) => {
     // let { email, password } = req.body;
-    //res.status(200).json({ msg: "Rota de login para teste" })
+    res.status(200).json({ msg: "Rota de login para teste" })
     let { name, password } = req.body;
 
     if (name != '' && password != '') {

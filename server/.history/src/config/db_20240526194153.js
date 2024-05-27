@@ -133,25 +133,6 @@ db.Event.hasOne(db.Payment, {
 });
 
 
-db.Payment.belongsTo(db.Event, {
-    as: "Event",
-    foreignKey: {
-        name: 'idEvent',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-/*
-idCategory
-idEvent
-idAthlet
-*/
-
-
-
 
 
 /*

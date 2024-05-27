@@ -25,7 +25,6 @@ exports.findAll = async (req, res) => {
 
 
 exports.create = async (req, res) => {
-
     try {
 
         const { state, neighborhood, street, number, city } = req.body;

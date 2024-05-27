@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize, Sequelize) => {
     //todo unique ?
-    const Athlet = sequelize.define("Athlet", {
+    const Athlete = sequelize.define("Athlet", {
         idAthlete: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -15,9 +15,9 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true,
 
         },
-        birth: { //2021-07-06
+        birth: {
             type: DataTypes.DATEONLY,
-            //defaultValue: Date.now(),
+            defaultValue: Date.now(),
             allowNull: true,
 
         },
@@ -50,7 +50,7 @@ module.exports = (sequelize, Sequelize) => {
     });
 
 
-    return Athlet;
+    return Athlete;
 }
 
 

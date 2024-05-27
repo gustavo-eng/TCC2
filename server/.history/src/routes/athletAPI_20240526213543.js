@@ -3,15 +3,11 @@ const router = express.Router();
 
 const athlets = require("../controllers/athletController");
 
-console.log('Athlet route!!');
-
-
 //Retrieve all athlets
 router.get("/", athlets.findAll);
 
 
-//POST
-router.post("/", athlets.create);
+router.post("/", athlets.create)
 
 
 module.exports = router;

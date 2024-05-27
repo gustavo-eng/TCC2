@@ -31,6 +31,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true,
         },
 
+
     }, {
         freezeTableName: true,
         createdAt: true,

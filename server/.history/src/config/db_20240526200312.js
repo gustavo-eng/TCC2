@@ -144,14 +144,6 @@ db.Payment.belongsTo(db.Event, {
 });
 
 
-/*
-idCategory
-idEvent
-idAthlet
-*/
-
-
-
 
 
 /*

@@ -46,7 +46,7 @@ exports.create = async (req, res) => {
         await Payment.create(newPayment).then(payment => {
             return res.status(200).json(success(payment, "payload", "Address registered successfully"));
         }).catch(err => {
-            return res.status(500).json(fail("Failt to create payment. ERROR -->" + err));
+            return res.status(500).json(fail("Failt to create payment"));
         });
 
     } catch (err) {

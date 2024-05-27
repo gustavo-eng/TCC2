@@ -14,12 +14,11 @@ router.get('/', (req, res) => {
 //Rota teste para pagamento
 router.post("/", (req, res) => {
     // let { email, password } = req.body;
-    //res.status(200).json({ msg: "Rota de login para teste" })
+    res.status(200).json({ msg: "Rota de login para teste" })
     let { name, password } = req.body;
 
     if (name != '' && password != '') {
-        let token = jwt.sign({ user: name }, process.env.SECRET_JWT, { expiresIn: '24h' });
-        return res.json({ isLogged: true, token: token });
+
     } else {
         return res.status(200).json({ msg: 'Empty data' });
     }

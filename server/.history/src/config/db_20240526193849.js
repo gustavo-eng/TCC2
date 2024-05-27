@@ -78,7 +78,7 @@ db.Athlet.belongsTo(db.Gym, {
 
 
 
-//  ============== Pagamento e Atleta ===================
+//  ============== Payment relationship ===================
 db.Athlet.hasOne(db.Payment, {
     as: "Payment",
     foreignKey: {
@@ -99,7 +99,7 @@ db.Payment.belongsTo(db.Athlet, {
     onUpdate: "CASCADE",
 });
 
-// =============== Categoria e Pagamento ===============
+// Categoria e Evento
 db.Category.hasOne(db.Payment, {
     as: "Payment",
     foreignKey: {
@@ -119,38 +119,7 @@ db.Payment.belongsTo(db.Category, {
     },
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
-
-// =============== Categoria e Pagamento ===============
-db.Event.hasOne(db.Payment, {
-    as: "Payment",
-    foreignKey: {
-        name: 'idEvent',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-db.Payment.belongsTo(db.Event, {
-    as: "Event",
-    foreignKey: {
-        name: 'idEvent',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-/*
-idCategory
-idEvent
-idAthlet
-*/
-
-
+})
 
 
 

@@ -3,13 +3,14 @@ const { DataTypes } = require('sequelize');
 //const { StudentModel } = require("../model/student");
 
 /*
+
 idAthlet
 idEvent
 voucher
 aproved
 description
-*/
 
+*/
 
 module.exports = (sequelize, Sequelize) => {
     const Payment = sequelize.define("Payment", {
@@ -30,6 +31,7 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
+
 
     }, {
         freezeTableName: true,

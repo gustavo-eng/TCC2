@@ -20,7 +20,6 @@ exports.findAll = async (req, res) => {
 
 
 exports.create = async (req, res) => {
-
     try {
 
         const {
@@ -28,7 +27,6 @@ exports.create = async (req, res) => {
             idAthlet,
             idEvent,
             idCategory,
-
         } = req.body;
 
         const newPayment = {
@@ -46,7 +44,7 @@ exports.create = async (req, res) => {
         await Payment.create(newPayment).then(payment => {
             return res.status(200).json(success(payment, "payload", "Address registered successfully"));
         }).catch(err => {
-            return res.status(500).json(fail("Failt to create payment. ERROR -->" + err));
+            return res.status(500).json(fail("Failt to create payment"));
         });
 
     } catch (err) {
@@ -73,7 +71,6 @@ const storage = multer.diskStorage({
         cb(null, `${userName}-${Date.now()}${ext}`);
     }
 });
-
 const upload = multer({ storage: storage });
 module.exports = upload;
 

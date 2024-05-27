@@ -119,37 +119,9 @@ db.Payment.belongsTo(db.Category, {
     },
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
+})
 
 // =============== Categoria e Pagamento ===============
-db.Event.hasOne(db.Payment, {
-    as: "Payment",
-    foreignKey: {
-        name: 'idEvent',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-db.Payment.belongsTo(db.Event, {
-    as: "Event",
-    foreignKey: {
-        name: 'idEvent',
-        allowNull: true
-    },
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
-/*
-idCategory
-idEvent
-idAthlet
-*/
-
 
 
 

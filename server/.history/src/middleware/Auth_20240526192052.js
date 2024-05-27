@@ -10,8 +10,6 @@ module.exports = {
 
     controllAccess: (req, res, next) => {
 
-        console.log('entrou no middleware controllAccess')
-
         let bearToken = req.headers['authorization'] || ""
         let token = bearToken.split(" ")
 

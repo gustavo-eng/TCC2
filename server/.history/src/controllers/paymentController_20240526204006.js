@@ -1,7 +1,7 @@
 const db = require('../config/db');
 const Payment = db.Payment;
 
-const { success, message, fail } = require('../helpers/response');
+const { success, message } = require('../helpers/response');
 
 exports.findAll = async (req, res) => {
 
@@ -21,39 +21,7 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
-    try {
-
-        const {
-            //voucherPath,
-            idAthlet,
-            idEvent,
-            idCategory,
-
-        } = req.body;
-
-        const newPayment = {
-            voucherPath: req.user, // temporario
-            idAthlet,
-            idEvent,
-            idCategory,
-            aproved: false, //Apenas FPRJ pode alterar
-            description: '' //Apenas FPRJ pode alterar
-        };
-
-        console.log('\n newPayment ');
-        console.log(newPayment)
-
-        await Payment.create(newPayment).then(payment => {
-            return res.status(200).json(success(payment, "payload", "Address registered successfully"));
-        }).catch(err => {
-            return res.status(500).json(fail("Failt to create payment. ERROR -->" + err));
-        });
-
-    } catch (err) {
-        return res.status(200).json(fail("Error server. Error --> " + err))
-    }
-};
-
+}
 //todo create precisa especificar  o evento, o aluno e a categoria como chave estrangeira
 
 
@@ -64,8 +32,8 @@ const path = require('path');
 // Configurar armazenamento do multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        // Use __dirname para criar um ', 'uploacaminho absoluto para a pasta 'uploads'
-        cb(null, path.join(__dirname, '..ds'));
+        // Use __dirname para criar um caminho absoluto para a pasta 'uploads'
+        cb(null, path.join(__dirname, '..', 'uploads'));
     },
     filename: function (req, file, cb) {
         const userName = req.user.name; // Presumindo que o nome do usuário está disponível em req.user
@@ -75,6 +43,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
 module.exports = upload;
 
 */

@@ -53,8 +53,6 @@ var routeAddress = require('./routes/addressAPI');
 var routeGym = require('./routes/gymAPI');
 var routeAthlet = require('./routes/athletAPI');
 
-const routerToken = require('./routes/tokenTest');
-
 var routerJeans = require('./routes/gyms');
 const { controllAccess } = require('./middleware/Auth');
 //require('./uploads')
@@ -98,11 +96,6 @@ app.use('/gym', routeGym);
 app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
 app.use('/login', routeLogin);
-app.use('/athlet', routeAthlet);
-
-
-app.use('/token', routerToken);
-
 
 // error handler
 app.use(function (err, req, res, next) {

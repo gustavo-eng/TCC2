@@ -10,8 +10,6 @@ module.exports = {
 
     controllAccess: (req, res, next) => {
 
-        console.log('entrou no middleware controllAccess')
-
         let bearToken = req.headers['authorization'] || ""
         let token = bearToken.split(" ")
 
@@ -31,7 +29,6 @@ module.exports = {
                 //req.user = decode.user;
                 //req.userPermission = decode.userPermission;
                 //req.userId = decode.userId;
-                console.log('middleware/auth. user --> ', req.user);
 
                 next();
             }

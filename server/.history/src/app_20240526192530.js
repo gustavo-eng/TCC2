@@ -98,7 +98,6 @@ app.use('/gym', routeGym);
 app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
 app.use('/login', routeLogin);
-app.use('/athlet', routeAthlet);
 
 
 app.use('/token', routerToken);

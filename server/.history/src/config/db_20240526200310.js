@@ -141,15 +141,7 @@ db.Payment.belongsTo(db.Event, {
     },
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
-});
-
-
-/*
-idCategory
-idEvent
-idAthlet
-*/
-
+})
 
 
 
