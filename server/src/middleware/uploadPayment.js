@@ -10,7 +10,7 @@ const imageFilter = (req, file, cb) => {
         // retornar uma resposta ou res. ou o erro mesmos
 
     } else {
-        cb('Please upload only images ', false);
+        return cb('Please upload only images ', false);
     }
 }
 

@@ -93,3 +93,34 @@ router.put('/:id', (req, res) => {
 //todo voltado apenas para usuarios gym
 
 */
+
+/*
+const multer = require("multer");
+
+router.post('/upload', function(req, res) {
+    upload.single('field name')(req, res, function(err) {
+
+        // FILE SIZE ERROR
+        if (err instanceof multer.MulterError) {
+            return res.end("Max file size 2MB allowed!");
+        }
+
+        // INVALID FILE TYPE, message will return from fileFilter callback
+        else if (err) {
+            return res.end(err.message);
+        }
+
+        // FILE NOT SELECTED
+        else if (!req.file) {
+            return res.end("File is required!");
+        }
+
+        // SUCCESS
+        else {
+            console.log("File uploaded successfully!");
+            console.log("File response", req.file);
+        }
+
+    )}
+})
+*/

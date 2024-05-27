@@ -1,44 +1,49 @@
+
 const multer = require("multer");
 const path = require('path')
-//require('../uploads')
-/*
-const imageFilter = (req, file, cb) => {
-    // filtro para permitir apenas a passagem de imagem
-    if (file.mimetype.startsWith("image")) {
-        console.log("Nome do arquivo comeca com Image (startsWith)");
-        // cb(null, true);
 
+const uploadDir = path.join(__dirname, '..', 'uploads');
+
+
+
+var filterImage = (req, file, cb) => { // Melhorar
+
+    const allowedExtensions = ['.jpeg', '.jpg', '.png'];
+
+    const fileExtension = path.extname(file.originalname).toLowerCase();
+
+    if (allowedExtensions.includes(fileExtension)) {
+        cb(null, true);
     } else {
-        console.log("NOT startsWith");
-        cb('Please upload only images ', false);
+        const error = new Error('Invalid file type');
+        error.code = 'INVALID_FILE_TYPE';
+        cb('Erro neee', false);
     }
-}
 
-*/
 
-//C:\Users\diasg\Desktop\TCC2\app\src\uploads
-//src\uploads
+};
+
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        //todo trocar esse uploads utilizando o dirname
-        //todo trocar no final
-        console.log("destination chegou aqui")
-        cb(null, "src/uploads/");
+        //cb(null, "src/uploads");
+        cb(null, uploadDir);
 
-    },
-    filename: (req, file, cb) => {
-
-        //determina o nome do arquivo dentro da pasta de destino
-        //+ path.extname(file.originalname)
+    }, // file name - Adicionar nome, evento e categoria (se necessario)
+    filename: (req, file, cb) => { // caso nao tiver categoria mandar (prefix indicativo)
         cb(null, req.user + path.extname(file.originalname));
         //cb(null, `${Date.now()}-${req.body.description ? req.body.description : "naoExisteName"}-${file.originalname}`)
-
     }
-
 
 });
 //todo compreender este imageFilter
-var uploadFile = multer({ storage: storage /*, fileFilter: imageFilter */ });
+var uploadFile = multer({
+    storage: storage,
+    fileFilter: filterImage,
+    limits: { fileSize: 1000000 } //1MB
+});
+
 module.exports = uploadFile;
+//https://stackoverflow.com/questions/47673533/how-to-catch-the-error-when-i-am-using-file-filter-in-multer
+
 
