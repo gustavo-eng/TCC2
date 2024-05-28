@@ -25,6 +25,5 @@ var storage = multer.diskStorage({
 });
 
 var uploadFilePayment = multer({ storage: storage, fileFilter: imageFilter });
-
 module.exports = uploadFilePayment;
 

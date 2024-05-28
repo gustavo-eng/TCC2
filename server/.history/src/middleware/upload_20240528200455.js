@@ -33,7 +33,7 @@ var uploadFile = multer({
     storage: storage,
     fileFilter: filterImage,
     limits: { fileSize: 1 * 1024 * 1024 } // Limite de tamanho de 1MB
-}); // Defina o campo que você espera que o arquivo seja enviado
+}).single('file'); // Defina o campo que você espera que o arquivo seja enviado
 
 module.exports = uploadFile;
 

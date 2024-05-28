@@ -112,8 +112,7 @@ app.use((err, req, res, next) => {
         //return res.status(400).json({ msg: 'Erro no tipo da imagem' });
     }
     if (err.code === 'LIMIT_FILE_SIZE') {
-        return res.status(400).json(fail("Limit size of image"));
-        //return res.status(400).json({ msg: 'Arquivo muito grande. O limite é de 1MB.' });
+        return res.status(400).json({ msg: 'Arquivo muito grande. O limite é de 1MB.' });
     }
     next(err);
 });

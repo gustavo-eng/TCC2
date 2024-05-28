@@ -57,7 +57,6 @@ const routerToken = require('./routes/tokenTest');
 
 var routerJeans = require('./routes/gyms');
 const { controllAccess } = require('./middleware/Auth');
-const { fail } = require('./helpers/response');
 //require('./uploads')
 
 
@@ -108,12 +107,10 @@ app.use('/token', routerToken);
 // Middleware para captura de erros do Multer
 app.use((err, req, res, next) => {
     if (err.code === 'INVALID_FILE_TYPE') {
-        return res.status(400).json(fail("Error type of image"));
-        //return res.status(400).json({ msg: 'Erro no tipo da imagem' });
+        return res.status(400).json({ msg: 'Erro no tipo da imagem' });
     }
     if (err.code === 'LIMIT_FILE_SIZE') {
-        return res.status(400).json(fail("Limit size of image"));
-        //return res.status(400).json({ msg: 'Arquivo muito grande. O limite é de 1MB.' });
+        return res.status(400).json({ msg: 'Arquivo muito grande. O limite é de 1MB.' });
     }
     next(err);
 });
