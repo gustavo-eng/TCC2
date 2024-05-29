@@ -122,9 +122,12 @@ exports.findAllPayments = async (req, res) => {
                 }
             });
 
-
             payment.then(el => {
                 //let payment = JSON.stringify(el, null, 2);
+                //let payment = JSON.stringify(el, null, 2);
+                //console.log('ppp')
+                //console.log(payment)
+                console.log(el)
                 return res.status(200).json(success(el, "payload", "Listado com sucesso"))
             });
 

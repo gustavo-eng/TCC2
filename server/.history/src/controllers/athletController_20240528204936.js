@@ -22,7 +22,7 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
-    const { cpf, birth, phone, name, email, password, rg, idGym } = req.body;
+    const { cpf, birth, phone, name, email, password, rg } = req.body;
 
     try {
 
@@ -34,8 +34,7 @@ exports.create = async (req, res) => {
             phone,
             name,
             email,
-            password,
-            idGym
+            password
         };
 
         await Athlet.create(newAthlet).then(athlet => {
@@ -49,9 +48,8 @@ exports.create = async (req, res) => {
         return res.status(500).json(fail("Error server"));
     }
 
+
 };
-
-
 
 /*
  const Athlete = sequelize.define("Athlete", {
@@ -98,13 +96,4 @@ exports.create = async (req, res) => {
         updatedAt: true,
     });
 */
-
-
-
-
-
-
-
-
-
 

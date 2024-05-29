@@ -3,8 +3,6 @@ const { success, fail } = require('../helpers/response');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
 const Address = db.Address;
-const Payment = db.Payment;
-
 
 exports.findAll = async (req, res) => {
     try {
@@ -100,44 +98,29 @@ exports.findAllPayments = async (req, res) => {
         const { idGym } = req.params;
 
         let athlets = Athlet.findAll({
-            attributes: ["idAthlete"],
             where: {
                 idGym: idGym,
             },
-            //idAthlete
-        })
+        });
 
-
-        //athlets = JSON.stringify(athlets)
-        let athletsIds = [];
+        console.log('athlett')
+        console.log(athlets)
 
         athlets.then(el => {
-
-            let payload = JSON.parse(JSON.stringify(el))
-            athletsIds = payload.map(athlet => athlet.idAthlete);
-
-            let payment = Payment.findAll({
-                where: {
-                    idAthlet: athletsIds
-                }
-            });
-
-
-            payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
-            });
-
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
-
+            console.log('Athlets:', JSON.stringify(el, null, 200)); // Formata os dados em uma string legível
         }).catch(err => {
             console.error('Error fetching athlets:', err);
         });
 
-        //Proximo passo estabelecer uma lista para busca
-        //https://stackoverflow.com/questions/24920427/sequelize-error-when-using-where-and-in-on-a-subarray
+        //Retorna uma lista dos ids dos alunos daquela academia especifica
+        //const athletsIds = athlets["payload"].filter(el => el['idGym'] === idGym).map(athlet => athlet.idAthlete);
+        //const array1 = obj.payload.filter(el => el['idAtleta']  === 1).map(atlhetId => atlhetId.idAtleta)
 
+        return res.status(200).json({ message: 'Lista dos ids dos atleas', list: athlets });
+        //let athletsIds =
 
+        //retornar todos os alunos que possuem o  mesmo id que o id da
+        //academia que estou loggado.
 
 
     } catch (err) {
@@ -146,7 +129,6 @@ exports.findAllPayments = async (req, res) => {
 
 }
 
-//const athletsIds = athlets["payload"].filter(el => el['idGym'] === idGym).map(athlet => athlet.idAthlete);
 /*
 Post.findAll({
   where: {

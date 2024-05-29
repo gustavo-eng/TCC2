@@ -122,13 +122,14 @@ exports.findAllPayments = async (req, res) => {
                 }
             });
 
-
             payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
+                let payment = JSON.parse(JSON.stringify(el, null, 2));
+                console.log('ppp')
+                console.log(payment)
+                return res.status(200).json(success(payload))
             });
 
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
+            return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
 
         }).catch(err => {
             console.error('Error fetching athlets:', err);

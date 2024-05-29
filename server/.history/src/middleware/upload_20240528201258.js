@@ -6,12 +6,10 @@ const uploadDir = path.join(__dirname, '..', 'uploads');
 
 // Função para filtrar arquivos com extensão jpeg, jpg ou png
 const filterImage = (req, file, cb) => {
-
     const allowedExtensions = ['.jpeg', '.jpg', '.png'];
-
     const fileExtension = path.extname(file.originalname).toLowerCase();
 
-    if (file.mimetype.startsWith("image") && allowedExtensions.includes(fileExtension)) {
+    if (allowedExtensions.includes(fileExtension)) {
         cb(null, true);
     } else {
         const error = new Error('Invalid file type');

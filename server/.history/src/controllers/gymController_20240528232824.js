@@ -3,8 +3,6 @@ const { success, fail } = require('../helpers/response');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
 const Address = db.Address;
-const Payment = db.Payment;
-
 
 exports.findAll = async (req, res) => {
     try {
@@ -114,29 +112,16 @@ exports.findAllPayments = async (req, res) => {
         athlets.then(el => {
 
             let payload = JSON.parse(JSON.stringify(el))
-            athletsIds = payload.map(athlet => athlet.idAthlete);
+            console.log('JSON.stringify(el)')
+            console.log(JSON.stringify(el))
+            //athletsIds = payload.map(athlet => athlet.idAthlete);
+            athletsIds = Object.values(JSON.stringify(el))
 
-            let payment = Payment.findAll({
-                where: {
-                    idAthlet: athletsIds
-                }
-            });
-
-
-            payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
-            });
-
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
+            return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
 
         }).catch(err => {
             console.error('Error fetching athlets:', err);
         });
-
-        //Proximo passo estabelecer uma lista para busca
-        //https://stackoverflow.com/questions/24920427/sequelize-error-when-using-where-and-in-on-a-subarray
-
 
 
 

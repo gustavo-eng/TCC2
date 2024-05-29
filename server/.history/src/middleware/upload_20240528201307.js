@@ -11,7 +11,7 @@ const filterImage = (req, file, cb) => {
 
     const fileExtension = path.extname(file.originalname).toLowerCase();
 
-    if (file.mimetype.startsWith("image") && allowedExtensions.includes(fileExtension)) {
+    if (allowedExtensions.includes(fileExtension)) {
         cb(null, true);
     } else {
         const error = new Error('Invalid file type');

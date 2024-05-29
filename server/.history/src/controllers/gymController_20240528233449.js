@@ -3,8 +3,6 @@ const { success, fail } = require('../helpers/response');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
 const Address = db.Address;
-const Payment = db.Payment;
-
 
 exports.findAll = async (req, res) => {
     try {
@@ -116,19 +114,7 @@ exports.findAllPayments = async (req, res) => {
             let payload = JSON.parse(JSON.stringify(el))
             athletsIds = payload.map(athlet => athlet.idAthlete);
 
-            let payment = Payment.findAll({
-                where: {
-                    idAthlet: athletsIds
-                }
-            });
-
-
-            payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
-            });
-
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
+            return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
 
         }).catch(err => {
             console.error('Error fetching athlets:', err);

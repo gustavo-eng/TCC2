@@ -1,10 +1,7 @@
 const db = require('../config/db');
-const { success, fail } = require('../helpers/response');
 const Gym = db.Gym;
-const Athlet = db.Athlet;
 const Address = db.Address;
-const Payment = db.Payment;
-
+const { success, fail } = require('../helpers/response');
 
 exports.findAll = async (req, res) => {
     try {
@@ -68,7 +65,6 @@ exports.create = async (req, res) => {
 }
 
 exports.getAdrress = async (req, res) => {
-
     const { id } = req.params;
     const address = await Address.findByPk(id, { include: ['Gym'] });
 
@@ -95,67 +91,12 @@ exports.delete = async (req, res) => {
 
 exports.findAllPayments = async (req, res) => {
 
-    try {
+    const { idGym } = req.params;
 
-        const { idGym } = req.params;
-
-        let athlets = Athlet.findAll({
-            attributes: ["idAthlete"],
-            where: {
-                idGym: idGym,
-            },
-            //idAthlete
-        })
-
-
-        //athlets = JSON.stringify(athlets)
-        let athletsIds = [];
-
-        athlets.then(el => {
-
-            let payload = JSON.parse(JSON.stringify(el))
-            athletsIds = payload.map(athlet => athlet.idAthlete);
-
-            let payment = Payment.findAll({
-                where: {
-                    idAthlet: athletsIds
-                }
-            });
-
-
-            payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
-            });
-
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
-
-        }).catch(err => {
-            console.error('Error fetching athlets:', err);
-        });
-
-        //Proximo passo estabelecer uma lista para busca
-        //https://stackoverflow.com/questions/24920427/sequelize-error-when-using-where-and-in-on-a-subarray
-
-
-
-
-    } catch (err) {
-        return res.status(500).json({ msg: "Erro no JSON. Error --> " + err });
-    }
 
 }
 
-//const athletsIds = athlets["payload"].filter(el => el['idGym'] === idGym).map(athlet => athlet.idAthlete);
-/*
-Post.findAll({
-  where: {
-    authorId: 2,
-  },
-});
-// SELECT * FROM post WHERE authorId = 2;
 
-*/
 
 
 

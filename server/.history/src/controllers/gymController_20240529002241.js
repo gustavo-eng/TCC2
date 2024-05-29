@@ -121,14 +121,17 @@ exports.findAllPayments = async (req, res) => {
                     idAthlet: athletsIds
                 }
             });
-
-
+            console.log('***')
+            console.log(payment)
+            console.log('Gym')
+            console.log('toJSON ')
+            console.log(payment.toJSON())
             payment.then(el => {
-                //let payment = JSON.stringify(el, null, 2);
-                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
+                console.log('olha o payment aqui')
+                console.log(el)
             });
 
-            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
+            return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
 
         }).catch(err => {
             console.error('Error fetching athlets:', err);

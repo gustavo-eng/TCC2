@@ -18,6 +18,7 @@ module.exports = (sequelize, Sequelize) => {
         rg: {
             type: DataTypes.STRING,
             allowNull: true,
+
         },
         birth: { //2021-07-06
             type: DataTypes.DATEONLY,
