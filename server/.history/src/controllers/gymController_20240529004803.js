@@ -18,6 +18,8 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    console.log("create gymmmm ")
+
     const {
         cnpj,
         sensei,
@@ -93,7 +95,6 @@ exports.delete = async (req, res) => {
 exports.findAllPayments = async (req, res) => {
 
     try {
-
         const { idGym } = req.params;
         // Encontre os IDs dos atletas na academia especificada
         const athlets = await Athlet.findAll({
@@ -113,16 +114,15 @@ exports.findAllPayments = async (req, res) => {
             },
         });
 
-        if (!athlets || !payments) return res.status(404).json(fail("Payment not found"));
+
 
         // Retorne os pagamentos
         return res.status(200).json(success(payments, "payload", "Listado com sucesso"));
 
     } catch (err) {
         // Se houver um erro, retorne uma resposta de erro
-        return res.status(500).json(fail("Server error -> " + err));
+        return res.status(500).json({ status: false, msg: "Erro no servidor: " + err });
     }
-
 }
 
 

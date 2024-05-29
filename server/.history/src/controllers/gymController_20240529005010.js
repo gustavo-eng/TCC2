@@ -18,6 +18,8 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    console.log("create gymmmm ")
+
     const {
         cnpj,
         sensei,
@@ -93,7 +95,6 @@ exports.delete = async (req, res) => {
 exports.findAllPayments = async (req, res) => {
 
     try {
-
         const { idGym } = req.params;
         // Encontre os IDs dos atletas na academia especificada
         const athlets = await Athlet.findAll({

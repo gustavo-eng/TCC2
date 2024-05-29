@@ -18,6 +18,8 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    console.log("create gymmmm ")
+
     const {
         cnpj,
         sensei,

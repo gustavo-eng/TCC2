@@ -18,6 +18,8 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    console.log("create gymmmm ")
+
     const {
         cnpj,
         sensei,
@@ -90,45 +92,55 @@ exports.delete = async (req, res) => {
 
 }
 
+
 exports.findAllPayments = async (req, res) => {
 
     try {
 
         const { idGym } = req.params;
-        // Encontre os IDs dos atletas na academia especificada
-        const athlets = await Athlet.findAll({
+
+        let athlets = Athlet.findAll({
             attributes: ["idAthlete"],
             where: {
                 idGym: idGym,
             },
+        })
+
+        //athlets = JSON.stringify(athlets)
+        let athletsIds = [];
+        athlets.then(payload => {
+            //let payload = JSON.parse(JSON.stringify(el))
+            athletsIds = payload.map(athlet => athlet.idAthlete);
+
+            let payment = Payment.findAll({
+                where: {
+                    idAthlet: athletsIds
+                }
+            });
+
+
+            payment.then(el => {
+                //let payment = JSON.stringify(el, null, 2);
+                return res.status(200).json(success(el, "payload", "Listado com sucesso"))
+            });
+
+            //return res.status(200).json({ message: 'Lista dos ids dos atleas', list: [...athletsIds] });
+
+        }).catch(err => {
+            console.error('Error fetching athlets:', err);
         });
 
-        // Mapeie os IDs dos atletas em uma lista
-        const athletIds = athlets.map(athlet => athlet.idAthlete);
+        //Proximo passo estabelecer uma lista para busca
+        //https://stackoverflow.com/questions/24920427/sequelize-error-when-using-where-and-in-on-a-subarray
 
-        // Encontre os pagamentos dos atletas com os IDs mapeados
-        const payments = await Payment.findAll({
-            where: {
-                idAthlet: athletIds,
-            },
-        });
 
-        if (!athlets || !payments) return res.status(404).json(fail("Payment not found"));
 
-        // Retorne os pagamentos
-        return res.status(200).json(success(payments, "payload", "Listado com sucesso"));
 
     } catch (err) {
-        // Se houver um erro, retorne uma resposta de erro
-        return res.status(500).json(fail("Server error -> " + err));
+        return res.status(500).json({ msg: "Erro no JSON. Error --> " + err });
     }
 
 }
-
-
-
-//Proximo passo estabelecer uma lista para busca
-//https://stackoverflow.com/questions/24920427/sequelize-error-when-using-where-and-in-on-a-subarray
 
 //const athletsIds = athlets["payload"].filter(el => el['idGym'] === idGym).map(athlet => athlet.idAthlete);
 /*
