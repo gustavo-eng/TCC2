@@ -3,6 +3,8 @@ const router = express.Router();
 
 const athlets = require("../controllers/athletController");
 
+console.log('Athlet route!!');
+
 //Retrieve all athlets
 router.get("/", athlets.findAll);
 
