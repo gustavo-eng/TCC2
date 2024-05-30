@@ -52,23 +52,7 @@ exports.create = async (req, res) => {
 };
 
 
-exports.findMyPayments = async (req, res) => {
 
-    try {
-        const { idAthlet } = req.params;
-        const payments = await Payment.findAll({
-            where: { idAthlet: idAthlet },
-            include: ['Event'],
-        });
-
-        if (!payments) return res.status(404).fail("Payment not found")
-
-        return res.status(200).json(success(payments, "payload"))
-
-    } catch (err) {
-        return res.status(500).json(fail("Server error --> " + err));
-    }
-}
 
 
 

@@ -10,7 +10,7 @@ router.get("/", athlets.findAll);
 router.post("/", athlets.create);
 
 //Return pagamentos pessoais
-router.get("/myPayments/:idAthlet", athlets.findMyPayments)
+//router.get("/myPayments/:idAthlet", athlets.findMyPayments)
 
 module.exports = router;
 

@@ -20,7 +20,6 @@ router.get('/athlets/:idGym', gym.findAllPayments);
 //todo passar para a rota de pagamento
 router.get('/athlets/payment/:idEvent', gym.findPaymentsOfEvent);
 
-router.get('')
 
 
 module.exports = router;

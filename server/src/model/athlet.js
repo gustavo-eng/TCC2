@@ -5,7 +5,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize, Sequelize) => {
     //todo unique ?
     const Athlet = sequelize.define("Athlet", {
-        idAthlet: {
+        idAthlete: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true

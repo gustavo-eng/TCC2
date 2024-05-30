@@ -19,6 +19,9 @@ const filterImage = (req, file, cb) => {
     idEvent: '1'
     */
 
+
+
+
     const allowedExtensions = ['.jpeg', '.jpg', '.png'];
 
     const fileExtension = path.extname(file.originalname).toLowerCase();

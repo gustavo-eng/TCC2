@@ -97,6 +97,8 @@ exports.findAllPayments = async (req, res) => {
 
         const { idGym } = req.params;
         // Encontre os IDs dos atletas na academia especificada
+        console.log('hahaha')
+        console.log(JSON.stringify(Athlet.findAll()))
         const athlets = await Athlet.findAll({
             attributes: ["idAthlete"],
             where: {
@@ -104,6 +106,7 @@ exports.findAllPayments = async (req, res) => {
             },
         });
 
+        console.log('retorna todos os pagamentos')
         // Mapeie os IDs dos atletas em uma lista
         const athletIds = athlets.map(athlet => athlet.idAthlete);
 
@@ -135,6 +138,7 @@ exports.findPaymentsOfEvent = async (req, res) => {
         const { idGym } = req.body;
 
         // Obtém os IDs dos atletas daquela academia
+        //Obtem todos os alunos daquela academia
         const athlets = await Athlet.findAll({
             attributes: ["idAthlete"],
             where: {
