@@ -126,38 +126,7 @@ exports.findAllPaymentsOfGym = async (req, res) => {
 
 exports.findAllPaymentsOfEventAndGym = async (req, res) => {
 
-    try {
-
-        const { idGym } = req.body;
-        const { idEvent } = req.params;
-
-        const athlets = await Athlet.findAll({
-            attributes: ["idAthlete"],
-            where: {
-                idGym: idGym,
-            },
-        });
-
-        const athletIds = athlets.map(athlet => athlet.idAthlete);
-
-        const payments = await Payment.findAll({
-            where: { idEvent: idEvent, idAthlet: athletIds },
-            include: ['Event', 'Athlet'],
-        });
-
-
-        if (!payments || payments.length === 0) {
-            return res.status(404).json(fail("No payments found for the given event and gym."));
-        };
-
-        return res.status(200).json(success(payments, "payload", "Payment listed successfully"));
-
-    } catch (err) {
-        return res.status(500).json(fail("Server error -> " + err));
-    }
-
 }
-
 
 
 

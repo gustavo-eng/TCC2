@@ -17,10 +17,9 @@ router.post("/", controllAccess, upload.single('file'), payment.create);
 router.get("/myPayments/:idAthlet", payment.findMyPayments)
 
 //Retorna todos os pagamentos daquela academia
-router.get('/gym/:idGym', payment.findAllPaymentsOfGym);
-
-//Retorna todos os pagamentos daquela academia de acordo com o evento escolhido
-router.get('/gym/event/:idEvent', payment.findAllPaymentsOfEventAndGym);
+router.get('/gym/:idGym', (req, res) => {
+    res.json({ msg: "Retorna todos os pagamentos dessa academia " })
+});
 
 
 module.exports = router;

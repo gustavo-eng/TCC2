@@ -1,8 +1,5 @@
 const db = require('../config/db');
-
-//Models
 const Payment = db.Payment;
-const Athlet = db.Athlet;
 
 const { success, message, fail } = require('../helpers/response');
 
@@ -72,8 +69,6 @@ exports.create = async (req, res) => {
 // === Rota para o atleta
 exports.findMyPayments = async (req, res) => {
 
-    console.log('entrou na rota myPaymentss')
-
     try {
         const { idAthlet } = req.params;
         const payments = await Payment.findAll({
@@ -89,77 +84,6 @@ exports.findMyPayments = async (req, res) => {
         return res.status(500).json(fail("Server error --> " + err));
     }
 }
-
-//Funcao que retorna todos os pagamentos daquela academia
-exports.findAllPaymentsOfGym = async (req, res) => {
-    try {
-
-        const { idGym } = req.params;
-
-        const athlets = await Athlet.findAll({
-            attributes: ["idAthlete"],
-            where: {
-                idGym: idGym,
-            },
-        });
-
-        // Mapeia os IDs dos atletas em uma lista
-        const athletIds = athlets.map(athlet => athlet.idAthlete);
-
-        const payments = await Payment.findAll({
-            where: { idAthlet: athletIds },
-            include: ['Event', 'Athlet'],
-        });
-
-        if (!payments || payments.length === 0) {
-            return res.status(404).json(fail("No payments found for the given event and gym."));
-        }
-
-        return res.status(200).json(success(payments, "payload", "Payments listed successfully"));
-
-        //  (async () => {})();
-
-    } catch (err) {
-        return res.status(500).json(fail("Server error -> " + err));
-    }
-}
-
-exports.findAllPaymentsOfEventAndGym = async (req, res) => {
-
-    try {
-
-        const { idGym } = req.body;
-        const { idEvent } = req.params;
-
-        const athlets = await Athlet.findAll({
-            attributes: ["idAthlete"],
-            where: {
-                idGym: idGym,
-            },
-        });
-
-        const athletIds = athlets.map(athlet => athlet.idAthlete);
-
-        const payments = await Payment.findAll({
-            where: { idEvent: idEvent, idAthlet: athletIds },
-            include: ['Event', 'Athlet'],
-        });
-
-
-        if (!payments || payments.length === 0) {
-            return res.status(404).json(fail("No payments found for the given event and gym."));
-        };
-
-        return res.status(200).json(success(payments, "payload", "Payment listed successfully"));
-
-    } catch (err) {
-        return res.status(500).json(fail("Server error -> " + err));
-    }
-
-}
-
-
-
 
 /*
 const multer = require('multer');

@@ -150,14 +150,15 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
             return res.status(404).json(fail("No payments found for the given event and gym."));
         };
 
-        return res.status(200).json(success(payments, "payload", "Payment listed successfully"));
+
+        return res.status(200).json({ msg: "Teste" })
 
     } catch (err) {
+
         return res.status(500).json(fail("Server error -> " + err));
+
     }
-
 }
-
 
 
 

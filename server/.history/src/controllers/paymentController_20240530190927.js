@@ -155,9 +155,7 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
     } catch (err) {
         return res.status(500).json(fail("Server error -> " + err));
     }
-
 }
-
 
 
 

@@ -6,24 +6,16 @@ const payment = require('../controllers/paymentController');
 const { controllAccess } = require('../middleware/Auth');
 const upload = require('../middleware/upload');
 
-
 router.get("/", payment.findAll);
 
 
 router.post("/", controllAccess, upload.single('file'), payment.create);
 
 
-//Esse rota retorna todos os pagamentos de cada aluno
 router.get("/myPayments/:idAthlet", payment.findMyPayments)
 
-//Retorna todos os pagamentos daquela academia
-router.get('/gym/:idGym', payment.findAllPaymentsOfGym);
-
-//Retorna todos os pagamentos daquela academia de acordo com o evento escolhido
-router.get('/gym/event/:idEvent', payment.findAllPaymentsOfEventAndGym);
-
-
 module.exports = router;
+
 
 
 /*
