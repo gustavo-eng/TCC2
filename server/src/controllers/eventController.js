@@ -98,6 +98,19 @@ exports.update = async (req, res) => {
 
 
 
+exports.findOne = async (req, res) => {
+    const { idEvent } = req.params;
+    try {
+        const event = await Event.findByPk(idEvent);
+        if (!event) {
+            return res.status(404).json(fail("Event not found")); // Adicionado 'return' para interromper a execução
+        }
+        return res.status(200).json(success(event, "payload", "Event found successfully"));
+    } catch (err) {
+        return res.status(500).json(fail("Server error. Error: " + err));
+    }
+};
+
 
 /*
  description: {

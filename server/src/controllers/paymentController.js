@@ -18,7 +18,6 @@ exports.findAll = async (req, res) => {
 };
 
 
-
 exports.create = async (req, res) => {
 
     try {
@@ -52,9 +51,6 @@ exports.create = async (req, res) => {
             description: '' //Apenas FPRJ pode alterar
         };
 
-        console.log('\n newPayment ');
-        console.log(newPayment)
-
         await Payment.create(newPayment).then(payment => {
             return res.status(200).json(success(payment, "payload", "Address registered successfully"));
         }).catch(err => {
@@ -65,7 +61,6 @@ exports.create = async (req, res) => {
         return res.status(200).json(fail("Error server. Error --> " + err))
     }
 };
-
 
 
 //todo create precisa especificar  o evento, o aluno e a categoria como chave estrangeira

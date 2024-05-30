@@ -9,8 +9,9 @@ const upload = require('../middleware/upload');
 router.get("/", payment.findAll);
 
 
-
 router.post("/", controllAccess, upload.single('file'), payment.create);
+
+
 
 module.exports = router;
 

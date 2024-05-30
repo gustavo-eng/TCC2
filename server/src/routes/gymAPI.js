@@ -4,19 +4,21 @@ const gym = require("../controllers/gymController");
 
 router.get("/", gym.findAll);
 
+
 router.post("/", gym.create);
+
 
 router.get("/address/:id", gym.getAdrress);
 
+
 router.delete("/:id", gym.delete);
 
+//Essa rota lista todos os pagamentos daquela academia
+router.get('/athlets/:idGym', gym.findAllPayments);
 
-//teste para listar os ids dos atletas de tal academia
-router.get('/athletIds/:idGym', gym.findAllPayments);
+//Essa rota lista todos os pagamentos daquela academia de acordo com o evento
+router.get('/athlets/payment/:idEvent', gym.findPaymentsOfEvent);
 
-
-// fazer o post antes e capturar o id correspondente
-//router.post("/address/:id",)
 
 
 module.exports = router;

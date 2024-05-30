@@ -13,6 +13,9 @@ router.get("/", athlets.findAll);
 //POST
 router.post("/", athlets.create);
 
+//Return pagamentos pessoais
+router.get("/myPayments/:idAthlet", athlets.findMyPayments)
+
 
 module.exports = router;
 

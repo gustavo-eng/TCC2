@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { success, fail } = require('../helpers/response');
+const payment = require('../model/payment');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
 const Address = db.Address;
@@ -124,6 +125,48 @@ exports.findAllPayments = async (req, res) => {
     }
 
 }
+
+// Esse middleware retorna todos os pagamentos dos alunos daquela academia
+//de um deterterminado evento
+exports.findPaymentsOfEvent = async (req, res) => {
+    try {
+
+        const { idEvent } = req.params;
+        const { idGym } = req.body;
+
+        // Obtém os IDs dos atletas daquela academia
+        const athlets = await Athlet.findAll({
+            attributes: ["idAthlete"],
+            where: {
+                idGym: idGym,
+            },
+        });
+
+        // Mapeia os IDs dos atletas em uma lista
+        const athletIds = athlets.map(athlet => athlet.idAthlete);
+
+        // Consulta os pagamentos com os IDs dos atletas e ID do evento
+        const payments = await Payment.findAll({
+            where: { idEvent: idEvent, idAthlet: athletIds },
+            include: ['Event', 'Athlet'],
+        });
+
+        if (!payments || payments.length === 0) {
+            return res.status(404).json(fail("No payments found for the given event and gym."));
+        }
+        /*
+        console.log('Pagamentos listados com sucesso');
+        console.log('ID dos Atletas:', athletIds);
+        console.log('Pagamentos:', JSON.stringify(payments, null, 2));
+        */
+
+        return res.status(200).json(success(payments, "payload", "Payments found successfully"));
+
+    } catch (err) {
+        return res.status(500).json(fail("Server error -> " + err));
+    }
+};
+
 
 
 
