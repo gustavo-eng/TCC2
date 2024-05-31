@@ -6,42 +6,15 @@ var cors = require('cors');
 var http = require('http');
 const bodyParser = require("body-parser");
 const compression = require('compression');
+const morgan = require('morgan');
 
 var app = express();
 var server = http.createServer(app);
 var port = 3001;
 app.set('port', port);
-//app.set('view engine', 'ejs');
 
 
-// Sincronizacao com o banco de dados
-const db = require('../src/config/db');
-//{ force: true }
-db.sequelize.sync({ alter: true })
-    .then(() => {
-        console.log('Syncked db.');
-        null;
-    }).catch(err => {
-        return res.status(502).json(fail("Error connection database. Error -> " + err));
-    })
-
-
-//require('./config/db')
-//todo retirar e estudar melhor forma para isso
-// todo nao quero ficar executando toda hora esse comando
-
-
-// Routes
-
-/*
-var routeRequirements = require('./routes/requirementsAPI');
-var routeGym = require('./routes/gymAPI');
-var routeStudent = require('./routes/studentAPI');
-var routeCategory = require('./routes/categoryApi');
-var routeImage = require('./routes/image');
-*/
-
-
+//Routes
 var routeLogin = require('./routes/login');
 var routePayment = require('./routes/paymentAPI');
 var routeFprj = require('./routes/fprjAPI');
@@ -51,17 +24,27 @@ var routeAddress = require('./routes/addressAPI');
 var routeGym = require('./routes/gymAPI');
 var routeAthlet = require('./routes/athletAPI');
 var routerVoucher = require('./routes/voucherAPI');
+var routerToken = require('./routes/tokenTest');
 
-const routerToken = require('./routes/tokenTest');
-
-
+//Midleware Controll And Response
 const { controllAccess } = require('./middleware/Auth');
 const { fail } = require('./helpers/response');
+
+// Sincronizacao com o banco de dados
+const db = require('../src/config/db');
+//{ force: true }
+db.sequelize.sync({ alter: true })
+    .then(() => {
+        console.log('Syncked db.');
+        null;
+    }).catch(err => {
+        console.log("Error connection database. Error -> " + err)
+        process.exit(1)
+        return res.status(502).json(fail("Error connection database. Error -> " + err));
+    })
+
 //require('./uploads')
-
-
-// Configurando o body-parser para analisar corpos de requisição codificados em URL
-
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(compression());
@@ -71,23 +54,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "uploads")));
 //app.use(express.static(path.join(__dirname, "public")));
-
-
-//todo 1. Posso colocar os middlewares diretos aqui. (ROTAS COM TODOS middlewares)
-
-
-/*
-
-app.use('/login', routeLogin);
-app.use('/events', controllAccess, routeEvent);
-app.use('/students', routeStudent);
-app.use('/requirements', routeRequirements);
-app.use('/upload', routeImage);
-app.use('/jeans', controllAccess, routerJeans);
-app.use('/fprj', routeFprj);
-app.use('/category', routeCategory);
-
-*/
 
 
 app.use('/payment', routePayment);
@@ -101,38 +67,29 @@ app.use('/login', routeLogin);
 app.use('/athlet', routeAthlet);
 app.use('/voucher', routerVoucher);
 
-
 app.use('/token', routerToken);
 
 // Middleware para captura de erros do Multer
 app.use((err, req, res, next) => {
     if (err.code === 'INVALID_FILE_TYPE') {
-        return res.status(400).json(fail("Error type of image"));
-        //return res.status(400).json({ msg: 'Erro no tipo da imagem' });
+        return res.status(400).json(fail("Invalid file type"));
     }
     if (err.code === 'LIMIT_FILE_SIZE') {
-        return res.status(400).json(fail("Limit size of image"));
-        //return res.status(400).json({ msg: 'Arquivo muito grande. O limite é de 1MB.' });
+        return res.status(400).json(fail("File size limit exceeded"));
     }
     next(err);
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-    // set locals, only providing error in development
+// Middleware de tratamento de erros
+app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+    res.status(err.status || 500).json(fail("Internal server error"));
 });
 
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
 });
-
-
 
 module.exports = app;
 

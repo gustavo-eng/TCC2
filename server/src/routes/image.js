@@ -9,9 +9,7 @@ const fs = require("fs")
 
 router.get("/:id", (req, res) => {
     const { id } = req.params;
-    console.log('id ', id)
-    //res.render('index.html')
-    console.log('rota de BUSCAAA ESPECIFICA')
+
     //res.send("<h1>Acessou a rota de upload de arquios</h1>");
     imageDAO.findSpecific(id).then(img => {
         res.status(200).json(success(img, "payload", "Sucesso ao listar imagem"))

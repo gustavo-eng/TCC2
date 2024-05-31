@@ -13,7 +13,6 @@ const sequelize = new Sequelize('fprjsystem',
     },
 );
 
-
 //Establishing connection
 const setConnection = async (sequelize) => {
     try {
@@ -40,8 +39,6 @@ db.Gym = require('../model/gym')(sequelize, Sequelize);
 db.Athlet = require('../model/athlet')(sequelize, Sequelize);
 db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
-
-
 
 // ======= Associations =======
 //One to One (Gym <<>> Address)
@@ -75,7 +72,6 @@ db.Athlet.belongsTo(db.Gym, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
-
 
 
 //  ============== Pagamento e Atleta ===================
@@ -149,9 +145,6 @@ idCategory
 idEvent
 idAthlet
 */
-
-
-
 
 
 /*

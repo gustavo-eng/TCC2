@@ -20,8 +20,6 @@ router.get('/gym/:idGym', payment.findAllPaymentsOfGym);
 //Retorna todos os pagamentos daquela academia de acordo com o evento escolhido
 router.get('/gym/event/:idEvent', payment.findAllPaymentsOfEventAndGym);
 
-
-
 module.exports = router;
 
 
