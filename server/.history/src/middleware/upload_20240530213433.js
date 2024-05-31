@@ -4,6 +4,9 @@ const path = require('path');
 
 const uploadDir = path.join(__dirname, '..', 'uploads');
 
+
+//name image - userId_EventId.extname
+
 // Função para filtrar arquivos com extensão jpeg, jpg ou png
 const filterImage = (req, file, cb) => {
 

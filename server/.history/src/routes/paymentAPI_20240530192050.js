@@ -9,6 +9,7 @@ const upload = require('../middleware/upload');
 
 router.get("/", payment.findAll);
 
+
 router.post("/", controllAccess, upload.single('file'), payment.create);
 
 //Esse rota retorna todos os pagamentos de cada aluno

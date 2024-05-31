@@ -104,6 +104,7 @@ app.use('/voucher', routerVoucher);
 
 app.use('/token', routerToken);
 
+
 // Middleware para captura de erros do Multer
 app.use((err, req, res, next) => {
     if (err.code === 'INVALID_FILE_TYPE') {

@@ -50,7 +50,6 @@ var routeCategory = require('./routes/categoryApi');
 var routeAddress = require('./routes/addressAPI');
 var routeGym = require('./routes/gymAPI');
 var routeAthlet = require('./routes/athletAPI');
-var routerVoucher = require('./routes/voucherAPI');
 
 const routerToken = require('./routes/tokenTest');
 
@@ -99,10 +98,10 @@ app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
 app.use('/login', routeLogin);
 app.use('/athlet', routeAthlet);
-app.use('/voucher', routerVoucher);
 
 
 app.use('/token', routerToken);
+
 
 // Middleware para captura de erros do Multer
 app.use((err, req, res, next) => {
@@ -127,6 +126,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
 
 server.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);

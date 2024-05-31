@@ -4,6 +4,9 @@ const path = require('path');
 
 const uploadDir = path.join(__dirname, '..', 'uploads');
 
+
+//name image - userId_EventId.extname
+
 // Função para filtrar arquivos com extensão jpeg, jpg ou png
 const filterImage = (req, file, cb) => {
 
@@ -27,6 +30,8 @@ var storage = multer.diskStorage({
         //cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
+        console.log('path.extname(file.originalname)')
+        console.log(path.extname(file.originalname))
         //cb(null, req.user + path.extname(file.originalname));
         cb(null, `${req.user}_${req.body.idEvent}` + path.extname(file.originalname));
     }

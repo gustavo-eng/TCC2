@@ -4,8 +4,23 @@ const path = require('path');
 
 const uploadDir = path.join(__dirname, '..', 'uploads');
 
+
+//name image - userId_EventId.extname
+
 // Função para filtrar arquivos com extensão jpeg, jpg ou png
 const filterImage = (req, file, cb) => {
+
+    //console.log('filterImage  - req.body - ');
+    //console.log(req.body)
+
+    /*
+    idAthlet: '14',
+    idCategory: '1',
+    idEvent: '1'
+    */
+
+
+
 
     const allowedExtensions = ['.jpeg', '.jpg', '.png'];
 
@@ -23,10 +38,13 @@ const filterImage = (req, file, cb) => {
 // Configuração do armazenamento com destino usando __dirname
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        //cb(null, '../uploads/');
         cb(null, "./src/uploads");
         //cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
+        console.log('path.extname(file.originalname)')
+        console.log(path.extname(file.originalname))
         //cb(null, req.user + path.extname(file.originalname));
         cb(null, `${req.user}_${req.body.idEvent}` + path.extname(file.originalname));
     }
