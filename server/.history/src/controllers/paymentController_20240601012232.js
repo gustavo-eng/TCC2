@@ -76,9 +76,7 @@ exports.findMyPayments = async (req, res) => {
     console.log('entrou na rota myPaymentss')
 
     try {
-
         const { idAthlet } = req.params;
-
         const payments = await Payment.findAll({
             where: { idAthlet: idAthlet },
             include: ['Event'],
@@ -201,7 +199,7 @@ exports.reprovePayment = async (req, res) => {
 
 
     } catch (err) {
-        return res.status(500).json(fail("Error server. Error -> " + err));
+
     }
 }
 
