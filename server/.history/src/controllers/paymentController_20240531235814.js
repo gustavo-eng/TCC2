@@ -187,12 +187,11 @@ exports.reprovePayment = async (req, res) => {
 
         const { idPayment } = req.params;
 
-        const { description } = req.body;
         const payment = await Payment.findOne({ where: { idPayment: idPayment } });
 
         if (!payment) return res.status(404).json(fail("Payment not found"));
 
-        payment.update({ aproved: false, description: description || "" });
+        payment.update({ aproved: false });
 
         return res.status(200).json(success(payment, "payload", "Payment reproved successfully"));
 

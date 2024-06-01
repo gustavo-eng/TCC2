@@ -6,7 +6,6 @@ const Athlet = db.Athlet;
 
 const { success, message, fail } = require('../helpers/response');
 
-
 exports.findAll = async (req, res) => {
 
     try {
@@ -151,7 +150,6 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
             return res.status(404).json(fail("No payments found for the given event and gym."));
         };
 
-
         return res.status(200).json(success(payments, "payload", "Payment listed successfully"));
 
     } catch (err) {
@@ -161,40 +159,10 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
 }
 
 exports.aprovePayment = async (req, res) => {
-
     try {
 
-        const { idPayment } = req.params;
+        const { idEvent } = req.body;
 
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
-
-        if (!payment) return res.status(404).json(fail("Payment not found"));
-
-        payment.update({ aproved: true });
-
-        return res.status(200).json(success(payment, "payload", "Payment aproved successfully"));
-
-    } catch (err) {
-        return res.status(500).json(fail("Error server. Error -> " + err));
-    }
-
-}
-
-//
-exports.reprovePayment = async (req, res) => {
-
-    try {
-
-        const { idPayment } = req.params;
-
-        const { description } = req.body;
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
-
-        if (!payment) return res.status(404).json(fail("Payment not found"));
-
-        payment.update({ aproved: false, description: description || "" });
-
-        return res.status(200).json(success(payment, "payload", "Payment reproved successfully"));
 
 
     } catch (err) {
@@ -203,41 +171,7 @@ exports.reprovePayment = async (req, res) => {
 }
 
 
-//Funcao temporaria
-exports.setDescription = async (req, res) => {
 
-    try {
-
-        const { idPayment } = req.params;
-        const { description } = req.body;
-
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
-
-        if (!payment) return res.status(404).json(fail("Payment not found"));
-
-        payment.update({ description: description });
-
-        return res.status(200).json(success(payment, "payload", "Payment aproved successfully"));
-
-
-    } catch (err) {
-        return res.status(500).json(fail("Error server. Error -> " + err));
-    }
-
-}
-
-
-
-
-/*
-const jane = await User.create({ name: 'Jane' });
-jane.favoriteColor = 'blue';
-await jane.update({ name: 'Ada' });
-// The database now has "Ada" for name, but still has the default "green" for favorite color
-await jane.save();
-// Now the database has "Ada" for name and "blue" for favorite color
-
-*/
 
 /*
 const multer = require('multer');

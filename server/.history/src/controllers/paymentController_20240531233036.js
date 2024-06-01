@@ -180,30 +180,7 @@ exports.aprovePayment = async (req, res) => {
 
 }
 
-//
-exports.reprovePayment = async (req, res) => {
 
-    try {
-
-        const { idPayment } = req.params;
-
-        const { description } = req.body;
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
-
-        if (!payment) return res.status(404).json(fail("Payment not found"));
-
-        payment.update({ aproved: false, description: description || "" });
-
-        return res.status(200).json(success(payment, "payload", "Payment reproved successfully"));
-
-
-    } catch (err) {
-
-    }
-}
-
-
-//Funcao temporaria
 exports.setDescription = async (req, res) => {
 
     try {
@@ -213,6 +190,7 @@ exports.setDescription = async (req, res) => {
 
         const payment = await Payment.findOne({ where: { idPayment: idPayment } });
 
+
         if (!payment) return res.status(404).json(fail("Payment not found"));
 
         payment.update({ description: description });
@@ -221,11 +199,9 @@ exports.setDescription = async (req, res) => {
 
 
     } catch (err) {
-        return res.status(500).json(fail("Error server. Error -> " + err));
+
     }
-
 }
-
 
 
 

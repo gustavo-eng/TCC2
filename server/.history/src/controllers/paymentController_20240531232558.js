@@ -161,7 +161,6 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
 }
 
 exports.aprovePayment = async (req, res) => {
-
     try {
 
         const { idPayment } = req.params;
@@ -172,7 +171,7 @@ exports.aprovePayment = async (req, res) => {
 
         payment.update({ aproved: true });
 
-        return res.status(200).json(success(payment, "payload", "Payment aproved successfully"));
+        return res.status(404).json(success(payment, "payload", "Payment aproved successfully"));
 
     } catch (err) {
         return res.status(500).json(fail("Error server. Error -> " + err));
@@ -180,52 +179,26 @@ exports.aprovePayment = async (req, res) => {
 
 }
 
-//
-exports.reprovePayment = async (req, res) => {
+
+exports.setComment = async (req, res) => {
 
     try {
 
         const { idPayment } = req.params;
+        const { comment } = req.body;
 
-        const { description } = req.body;
         const payment = await Payment.findOne({ where: { idPayment: idPayment } });
+
 
         if (!payment) return res.status(404).json(fail("Payment not found"));
 
-        payment.update({ aproved: false, description: description || "" });
 
-        return res.status(200).json(success(payment, "payload", "Payment reproved successfully"));
 
 
     } catch (err) {
 
     }
 }
-
-
-//Funcao temporaria
-exports.setDescription = async (req, res) => {
-
-    try {
-
-        const { idPayment } = req.params;
-        const { description } = req.body;
-
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
-
-        if (!payment) return res.status(404).json(fail("Payment not found"));
-
-        payment.update({ description: description });
-
-        return res.status(200).json(success(payment, "payload", "Payment aproved successfully"));
-
-
-    } catch (err) {
-        return res.status(500).json(fail("Error server. Error -> " + err));
-    }
-
-}
-
 
 
 

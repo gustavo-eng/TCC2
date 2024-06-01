@@ -9,16 +9,10 @@ const sequelize = new Sequelize('fprjsystem',
     {
         host: process.env.HOST_DATABASE,
         dialect: "mysql",
-        logging: false,
-        pool: {
-            max: 5, // max number of connection in pool
-            min: 0,// max number of connection in pool
-            acquire: 30000, // max time in ms that pull will try to get connection before throwing error
-            idle: 10000 // max time in ms, that a conneciton can be idle before being released
-        }
-
+        logging: false
     },
 );
+
 
 //Establishing connection
 const setConnection = async (sequelize) => {
@@ -47,8 +41,11 @@ db.Athlet = require('../model/athlet')(sequelize, Sequelize);
 db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
 
+
+
 // ======= Associations =======
 //One to One (Gym <<>> Address)
+
 
 db.Address.hasOne(db.Gym, {
     as: "Gym",  // 'as' define um alias para a associação
@@ -79,6 +76,7 @@ db.Athlet.belongsTo(db.Gym, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
+
 
 
 //  ============== Pagamento e Atleta ===================

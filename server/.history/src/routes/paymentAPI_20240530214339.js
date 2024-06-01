@@ -15,20 +15,10 @@ router.post("/", controllAccess, upload.single('file'), payment.create);
 router.get("/myPayments/:idAthlet", payment.findMyPayments)
 
 //Retorna todos os pagamentos daquela academia
-router.get("/gym/:idGym", payment.findAllPaymentsOfGym);
+router.get('/gym/:idGym', payment.findAllPaymentsOfGym);
 
 //Retorna todos os pagamentos daquela academia de acordo com o evento escolhido
-router.get("/gym/event/:idEvent", payment.findAllPaymentsOfEventAndGym);
-
-// Rota para aprovar pagamento
-router.post("/aprove/:idPayment", payment.aprovePayment);
-
-//router.put("/reprove/:idPayment", payment.reprovePayment);
-
-//Rota direcionada para colocar comentarios de pagamentos reprovados
-router.put("/reprove/:idPayment", payment.reprovePayment);
-
-
+router.get('/gym/event/:idEvent', payment.findAllPaymentsOfEventAndGym);
 
 
 module.exports = router;

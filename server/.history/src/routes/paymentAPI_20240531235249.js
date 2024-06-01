@@ -23,11 +23,8 @@ router.get("/gym/event/:idEvent", payment.findAllPaymentsOfEventAndGym);
 // Rota para aprovar pagamento
 router.post("/aprove/:idPayment", payment.aprovePayment);
 
-//router.put("/reprove/:idPayment", payment.reprovePayment);
-
 //Rota direcionada para colocar comentarios de pagamentos reprovados
-router.put("/reprove/:idPayment", payment.reprovePayment);
-
+router.post("/comment/:idPayment", payment.setDescription);
 
 
 
