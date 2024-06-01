@@ -23,7 +23,7 @@ var routeCategory = require('./routes/categoryApi');
 var routeAddress = require('./routes/addressAPI');
 var routeGym = require('./routes/gymAPI');
 var routeAthlet = require('./routes/athletAPI');
-var routeVoucher = require('./routes/voucherAPI');
+var routerVoucher = require('./routes/voucherAPI');
 var routerToken = require('./routes/tokenTest');
 var routeTypeEvent = require('./routes/typeEventAPI');
 
@@ -66,8 +66,7 @@ app.use('/athlets', routeAthlet);
 app.use('/fprj', routeFprj);
 app.use('/login', routeLogin);
 app.use('/athlet', routeAthlet);
-app.use('/voucher', routeVoucher);
-app.use('/typeEvent', routeTypeEvent);
+app.use('/voucher', routerVoucher);
 
 app.use('/token', routerToken);
 
