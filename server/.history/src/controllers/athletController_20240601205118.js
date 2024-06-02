@@ -1,4 +1,3 @@
-const { where } = require('sequelize');
 const db = require('../config/db');
 const Athlet = db.Athlet;
 const Payment = db.Payment;
@@ -63,16 +62,18 @@ exports.delete = async (req, res) => {
 
         if (!athlet) return res.status(404).json(fail("Ahlet not found"));
 
-        await athlet.destroy({ where: { idAthlete: idAthlete } });
-        return res.status(200).json(message("Athlet deleted !"));
+        return res.status(200).json(success(message, "Athlet deleted"));
 
     } catch (err) {
-
         return res.status(500).json(fail(" Error server. Error -> " + err));
-
     }
 
 }
+
+
+
+
+
 
 
 

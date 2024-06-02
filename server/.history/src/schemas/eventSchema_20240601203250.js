@@ -12,7 +12,7 @@ const eventSchema = z.object({
     description: z.string(objectErrorString)
         .min(5, { message: "Must be at least 5 characteres" })
         .max(255, { message: "This field must contain a maximum of 255 characters" })
-        .nullable().optional(),
+    ,
 
     price: z.number({ invalid_type_error: "Field must be a valid number" }).positive({ message: "Must be a positive value" }),
     startDate: z.string()

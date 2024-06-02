@@ -6,6 +6,7 @@ const athlets = require("../controllers/athletController");
 //Retrieve all athlets
 router.get("/", athlets.findAll);
 
+//POST
 router.post("/", athlets.create);
 
 router.delete("/:idAthlete", athlets.delete);
