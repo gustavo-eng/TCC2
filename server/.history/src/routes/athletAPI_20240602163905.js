@@ -10,4 +10,9 @@ router.post("/", athlets.create);
 
 router.delete("/:idAthlete", athlets.delete);
 
+
+
+module.exports = router;
+
+
 module.exports = router;

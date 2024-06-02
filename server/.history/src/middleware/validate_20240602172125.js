@@ -1,5 +1,4 @@
 const validate = (schema) => (req, res, next) => {
-
     try {
 
         if (req.method === 'POST') {

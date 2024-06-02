@@ -49,12 +49,9 @@ db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 
-require('../associations/addressGym')(db);
-
-
 // ======= Associations =======
 //One to One (Gym <<>> Address)
-/*
+
 db.Address.hasOne(db.Gym, {
     as: "Gym",  // 'as' define um alias para a associação
     foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
@@ -68,7 +65,6 @@ db.Gym.belongsTo(db.Address, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
-*/
 
 //One to Many (Athlet <<>> Gym)
 //db.Athlet

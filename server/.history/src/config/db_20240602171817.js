@@ -51,7 +51,6 @@ db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 
 require('../associations/addressGym')(db);
 
-
 // ======= Associations =======
 //One to One (Gym <<>> Address)
 /*

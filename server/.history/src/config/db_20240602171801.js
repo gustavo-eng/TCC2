@@ -49,9 +49,6 @@ db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 
-require('../associations/addressGym')(db);
-
-
 // ======= Associations =======
 //One to One (Gym <<>> Address)
 /*

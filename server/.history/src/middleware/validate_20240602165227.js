@@ -1,5 +1,4 @@
 const validate = (schema) => (req, res, next) => {
-
     try {
 
         if (req.method === 'POST') {
@@ -7,9 +6,7 @@ const validate = (schema) => (req, res, next) => {
         } else if (req.method === 'PUT') {
             schema.partial().parse(req.body);
         }
-
         next();
-
     } catch (err) {
         return res.status(500).json({ status: false, errors: err });
 
@@ -17,4 +14,3 @@ const validate = (schema) => (req, res, next) => {
 }
 
 module.exports = validate;
-

@@ -63,6 +63,7 @@ exports.update = async (req, res) => {
     return res.status(500).json(fail("Fail to update category. Error => " + err.message));
   });
 
+
 }
 
 exports.delete = async (req, res) => {

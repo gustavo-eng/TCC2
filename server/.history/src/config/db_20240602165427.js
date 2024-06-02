@@ -49,12 +49,9 @@ db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 
-require('../associations/addressGym')(db);
-
-
 // ======= Associations =======
 //One to One (Gym <<>> Address)
-/*
+
 db.Address.hasOne(db.Gym, {
     as: "Gym",  // 'as' define um alias para a associação
     foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
@@ -68,7 +65,6 @@ db.Gym.belongsTo(db.Address, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
 });
-*/
 
 //One to Many (Athlet <<>> Gym)
 //db.Athlet
@@ -123,22 +119,6 @@ db.Athlet.belongsTo(db.Address, {
     onUpdate: "CASCADE",
 });
 
-// =============== Evento e Endereco ===============
-db.Address.hasOne(db.Event, {
-    as: "Event",  // 'as' define um alias para a associação
-    foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-db.Event.belongsTo(db.Address, {
-    as: "Address",  // 'as' define um alias para a associação
-    foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-});
-
-
 // =============== Categoria e Pagamento ===============
 db.Category.hasOne(db.Payment, {
     as: "Payment",
@@ -185,3 +165,45 @@ db.Payment.belongsTo(db.Event, {
 
 module.exports = db;
 
+/*
+idCategory
+idEvent
+idAthlet
+*/
+
+
+/*
+
+db.Athlet.hasOne(db.Payment, {
+    as: "Payment",
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+});
+
+
+db.Payment.belongsTo(db.Athlet, {
+    as: "Athlet",
+    foreignKey: {
+        name: 'idAthlet',
+        allowNull: true
+    },
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    //idAthlete
+});
+*/
+
+
+
+
+
+/*
+db.tutorials.hasMany(db.comments, { as: "comments" });
+db.comments.belongsTo(db.tutorials, {
+  foreignKey: "tutorialId",
+  as: "tutorial",
+});
+*/
+
+
+// ======= Associations =======
