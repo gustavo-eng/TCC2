@@ -20,7 +20,7 @@ const eventSchema = z.object({
 
     endDate: z.string()
         .regex(isoDateRegex, { message: "Date must be in ISO 8601 format: YYYY-MM-DDTHH:mm:ss.sssZ" })
-        .optional(),
+        .nullable(),
     type: z.string(objectErrorString)
         .min(5, { message: "Must be at least 5 characteres" })
         .max(50, { message: "This field must contain a maximum of 255 characters" })
@@ -28,5 +28,4 @@ const eventSchema = z.object({
 
 });
 
-
-module.exports = eventSchema;
+module.exports = eventSchema.partial();

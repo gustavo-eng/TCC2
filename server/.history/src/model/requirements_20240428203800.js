@@ -12,12 +12,12 @@ const requerimentsModel = sequelize.define('Requirements', {
     },
     data: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
 
     },
     aproved: {
         type: DataTypes.BOOLEAN,
-        allowNull: true,
+        allowNull: false,
     }
 
 }, {

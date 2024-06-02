@@ -8,7 +8,6 @@ const objectErrorString = {
 
 const paymentSchema = z.object({
     aproved: z.boolean().optional(),
-
     description: z.string(objectErrorString)
         .min(5, { message: "Must be at most 5 characteres" })
         .max(255, { message: "Must contain a maximum of 255 characters" })

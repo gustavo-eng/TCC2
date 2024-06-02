@@ -1,5 +1,7 @@
 const validate = (schema) => (req, res, next) => {
     try {
+        console.log('Entrou na funcao validate ')
+        console.log(req.method)
         if (req.method === 'POST') {
             schema.parse(req.body);
         } else if (req.method === 'PUT') {

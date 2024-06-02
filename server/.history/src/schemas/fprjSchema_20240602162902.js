@@ -8,7 +8,7 @@ const fprjSchema = z.object({
         .min(4, { message: "This field must contain at least 5 characters" })
         .max(15, { message: "This field must contain a maximum of 5 characters" }),
 
-    phone: z.number({ message: "Field must be a number type" }),
+    phone: z.number({ message: "Field must be a number type" }).optional(),
 
 });
 
