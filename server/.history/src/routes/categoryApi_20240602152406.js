@@ -4,7 +4,7 @@ const categories = require("../controllers/categoryController");
 
 //Middlewares
 const validate = require('../middleware/validate');
-const categorySchema = require('../schemas/categorySchema');
+const categorySchema = require('');
 
 //Retrieve all Categories
 router.get("/", categories.findAll);

@@ -26,4 +26,5 @@ const eventSchema = z.object({
 
 });
 
+
 module.exports = eventSchema.partial();

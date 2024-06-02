@@ -9,10 +9,9 @@ const validate = require('../middleware/validate');
 const paymentSchema = require('../schemas/paymentSchema');
 
 
-
 router.get("/", payment.findAll);
 
-router.post("/", controllAccess, upload.single('file'), validate(paymentSchema), payment.create);
+router.post("/", controllAccess, upload.single('file'), payment.create);
 
 //Esse rota retorna todos os pagamentos de cada aluno
 router.get("/myPayments/:idAthlet", payment.findMyPayments)
@@ -29,7 +28,7 @@ router.post("/aprove/:idPayment", validate(paymentSchema), payment.aprovePayment
 //router.put("/reprove/:idPayment", payment.reprovePayment);
 
 //Rota direcionada para colocar comentarios de pagamentos reprovados
-router.put("/reprove/:idPayment", validate(paymentSchema), payment.reprovePayment);
+router.put("/reprove/:idPayment", payment.reprovePayment);
 
 
 

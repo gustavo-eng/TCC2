@@ -4,18 +4,19 @@ const categories = require("../controllers/categoryController");
 
 //Middlewares
 const validate = require('../middleware/validate');
-const categorySchema = require('../schemas/categorySchema');
+const categorySchema = require('');
 
 //Retrieve all Categories
 router.get("/", categories.findAll);
 
 //Create Category
-router.post("/", validate(categorySchema), categories.create);
+router.post("/", categories.create);
 
 //Update category
-router.put("/:idCategory", validate(categorySchema), categories.update);
+router.put("/:idCategory", categories.update);
 
 //Delete category
 router.delete("/:idCategory", categories.delete);
+
 
 module.exports = router;
