@@ -1,32 +1,28 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-    const Payment = sequelize.define("Payment", {
+    const Requests = sequelize.define('Requests', {
 
-        idPayment: {
+        idRequest: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        voucherPath: {
-            type: DataTypes.STRING,
+        data: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW,
             allowNull: true,
         },
         aproved: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
         },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
-
     }, {
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
     });
 
-    return Payment;
-}
+    return Requests;
 
+}

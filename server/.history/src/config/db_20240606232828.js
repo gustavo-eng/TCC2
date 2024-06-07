@@ -1,5 +1,6 @@
 // O banco de competicao vai depender
 require('dotenv').config();
+
 const Sequelize = require('sequelize');
 
 //Config
@@ -47,6 +48,7 @@ db.Fprj = require('../model/fprj')(sequelize, Sequelize);
 db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 db.Requests = require('../model/requests')(sequelize, Sequelize);
+
 
 // ==== Associations ====
 require('../associations/addressGym')(db);

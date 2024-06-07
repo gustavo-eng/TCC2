@@ -7,7 +7,7 @@ module.exports = (db) => {
     });
     db.Gym.belongsTo(db.Address, {
         as: "Address",
-        foreignKey: "idAddress",
+        foreignKey: "idAddress",  // define a chave estrangeira na tabela 'Gym'
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
     });

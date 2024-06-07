@@ -33,7 +33,7 @@ const { fail } = require('./helpers/response');
 // Sincronizacao com o banco de dados
 const db = require('../src/config/db');
 //{ force: true }
-db.sequelize.sync({ alter: true })
+db.sequelize.sync({ force: true })
     .then(() => {
         console.log('Syncked db.');
         null;

@@ -1,5 +1,6 @@
 // O banco de competicao vai depender
 require('dotenv').config();
+
 const Sequelize = require('sequelize');
 
 //Config
@@ -48,6 +49,7 @@ db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 db.Requests = require('../model/requests')(sequelize, Sequelize);
 
+
 // ==== Associations ====
 require('../associations/addressGym')(db);
 require('../associations/addressAthlet')(db);
@@ -59,9 +61,6 @@ require('../associations/paymentCategory')(db);
 require('../associations/requestsAthlet')(db);
 
 module.exports = db;
-
-
-
 
 
 
