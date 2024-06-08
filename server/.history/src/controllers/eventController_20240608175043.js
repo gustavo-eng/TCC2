@@ -50,7 +50,7 @@ exports.delete = async (req, res) => {
         const event = await Event.findByPk(idEvent);
         if (!event) res.status(404).json(fail("Event not found"));
 
-        await Event.destroy({ where: { idEvent: idEvent } }).then(_ => {
+        await Event.destroy({ where: { idEvent: idEvent } }).then(() => {
             res.status(200).json(success("Event deleted successfully"));
         }).catch(err => {
             res.status(500).json(fail("Fail to delete event. Erro -> ", err));
