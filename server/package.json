@@ -20,6 +20,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-generator": "^4.2.0",
+    "express-rate-limit": "^7.3.1",
     "http-errors": "~1.6.3",
     "jade": "^0.31.2",
     "joi": "^17.9.2",
