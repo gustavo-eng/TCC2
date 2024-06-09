@@ -39,10 +39,10 @@ exports.create = async (req, res) => {
         };
 
         await Athlet.create(newAthlet).then(athlet => {
-
             let idAthlete = athlet.get({ plain: true }).idAthlete;
-
             Requests.create({ aproved: false, idAthlete: idAthlete, idGym: idGym }).then(request => {
+                console.log("Requisicao criada com successo ")
+                //res.status(201).json(success(request, "payload", "Request created successfully"))
                 return res.status(200).json(success(athlet, "payload", "Solicitacao enviada com successo"));
             }).catch(err => {
                 res.status(400).json(fail("Error ao enviar solicitacao . Error -> " + err));

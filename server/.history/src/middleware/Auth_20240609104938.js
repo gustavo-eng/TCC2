@@ -1,6 +1,10 @@
+//import { JsonWebTokenError } from "jsonwebtoken"
+
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+
+// Essa rota apenas esta verificando se o token esta valido ou nao
 
 module.exports = {
 
