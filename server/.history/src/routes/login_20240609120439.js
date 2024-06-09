@@ -34,7 +34,7 @@ router.post('/signIn', (req, res) => {
     try {
 
         //let user = verifyUser({ email: email, password: password });
-        let user = db.Athlet.findAll({ where: { email: email, password: password } });
+
         console.log('user em login.post(/login)')
         //const user
         console.log(user)

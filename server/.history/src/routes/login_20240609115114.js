@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../config/db')
 
 const verifyUser = require('../middleware/verifyTypeUser');
 
@@ -26,18 +25,16 @@ router.post("/", (req, res) => {
 });
 
 
-router.post('/signIn', (req, res) => {
-    console.log("Entrou na rota signIn")
-
+router.post('/login', (req, res) => {
     let { email, password } = req.body;
 
     try {
 
-        //let user = verifyUser({ email: email, password: password });
-        let user = db.Athlet.findAll({ where: { email: email, password: password } });
+        let user = verifyUser({ email: email, password: password });
+
         console.log('user em login.post(/login)')
         //const user
-        console.log(user)
+
 
         // implementar rota
     } catch (err) {
