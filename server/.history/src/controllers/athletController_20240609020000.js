@@ -41,9 +41,10 @@ exports.create = async (req, res) => {
         await Athlet.create(newAthlet).then(athlet => {
             console.log('---------- Athleta criado ----------');
             console.log(JSON.stringify(athlet).idAthlete)
+
             Requests.create({ aproved: false, idAthlete: JSON.stringify(athlet).idAthlete, idGym: idGym }).then(request => {
                 console.log("Requisicao criada com successo ")
-                //res.status(201).json(success(request, "payload", "Request created successfully"))
+                res.status(201).json(success(request, "payload", "Request created successfully"))
                 return res.status(200).json(success(athlet, "payload", "Athlet created successfully"));
             }).catch(err => {
                 res.status(400).json(fail("Error ao criar atleta. Error -> " + err));

@@ -106,7 +106,7 @@ exports.findAllPayments = async (req, res) => {
             },
         });
 
-
+        console.log('retorna todos os pagamentos')
         // Mapeie os IDs dos atletas em uma lista
         const athletIds = athlets.map(athlet => athlet.idAthlete);
 
