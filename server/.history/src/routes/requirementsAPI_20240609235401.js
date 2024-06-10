@@ -54,14 +54,12 @@ router.post('/', (req, res) => {
 
 
 router.put("/:idRequeriment", (req, res) => {
-
     const { idRequeriment } = req.params;
     requirementsDAO.acceptStudent(idRequeriment).then(requirement => {
         res.status(200).json(success(requirement, "payload", "Solicitacao aceita com successo"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao aceitar aluno. erro - " + err));
     });
-
 });
 
 // esta esta serve para o desenvolvedor. Fazer rotina para deletar

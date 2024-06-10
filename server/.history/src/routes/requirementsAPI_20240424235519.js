@@ -42,26 +42,22 @@ router.get('/gym/:gymId', (req, res) => {
 
 //Create a
 router.post('/', (req, res) => {
-
     const { data, aproved, idStudent, gymId } = req.body;
     requirementsDAO.save(data, aproved, idStudent, gymId).then(requirements => {
         res.status(200).json(success(requirements, "payload", "Solicitacoes salvas"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao listar solicitacoes do banco. erro - " + err));
     });
-
 });
 
 
 router.put("/:idRequeriment", (req, res) => {
-
     const { idRequeriment } = req.params;
     requirementsDAO.acceptStudent(idRequeriment).then(requirement => {
         res.status(200).json(success(requirement, "payload", "Solicitacao aceita com successo"));
     }).catch(err => {
         res.status(500).json(fail("Erro ao aceitar aluno. erro - " + err));
     });
-
 });
 
 // esta esta serve para o desenvolvedor. Fazer rotina para deletar
