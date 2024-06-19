@@ -38,26 +38,28 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.Category = require('../model/category')(sequelize, Sequelize);
-db.Event = require('../model/event')(sequelize, Sequelize);
-db.Address = require('../model/address')(sequelize, Sequelize);
+//db.Category = require('../model/category')(sequelize, Sequelize);
+//db.Event = require('../model/event')(sequelize, Sequelize);
+//db.Address = require('../model/address')(sequelize, Sequelize);
 db.Gym = require('../model/gym')(sequelize, Sequelize);
 db.Athlet = require('../model/athlet')(sequelize, Sequelize);
 db.Fprj = require('../model/fprj')(sequelize, Sequelize);
-db.Payment = require('../model/payment')(sequelize, Sequelize);
-db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
+//db.Payment = require('../model/payment')(sequelize, Sequelize);
+//db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 db.Requests = require('../model/requests')(sequelize, Sequelize);
 
+
 // ==== Associations ====
-require('../associations/addressGym')(db);
-require('../associations/addressAthlet')(db);
-require('../associations/addressEvent')(db);
+
+//require('../associations/addressGym')(db);
+//require('../associations/addressAthlet')(db);
+//require('../associations/addressEvent')(db);
 require('../associations/athletGym')(db);
-require('../associations/eventPayment')(db);
-require('../associations/paymentAthlet')(db);
-require('../associations/paymentCategory')(db);
+//require('../associations/eventPayment')(db);
+//require('../associations/paymentAthlet')(db);
+//require('../associations/paymentCategory')(db);
 require('../associations/requestsAthlet')(db);
-require('../associations/gymRequest')(db);
+//require('../associations/gymRequest')(db);
 
 module.exports = db;
 

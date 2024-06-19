@@ -1,6 +1,8 @@
 const { DataTypes } = require("sequelize");
+const { SELECT } = require("sequelize/lib/query-types");
 
 module.exports = (sequelize, Sequelize) => {
+
     const Requests = sequelize.define("Request", {
         idRequest: {
             type: DataTypes.INTEGER,
@@ -8,8 +10,8 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true
         },
         data: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
+            type: DataTypes.STRING,
+            defaultValue: new Date().toLocaleDateString('pt-br'), // pega a data atual de criacao
             allowNull: true,
         },
         aproved: {
@@ -23,7 +25,6 @@ module.exports = (sequelize, Sequelize) => {
         createdAt: true,
         updatedAt: true,
     });
-
     return Requests;
 
 }

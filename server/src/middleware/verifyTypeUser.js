@@ -17,7 +17,6 @@ const returnUser = async ({ email, password }) => {
         const Athlet = await db.Athlet.findOne({ where: { email: email, password: password } });
         if (Athlet) return Athlet.get({ plain: true });
 
-
         return false; // Se nenhum dos registros foi encontrado
 
     } catch (err) {

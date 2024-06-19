@@ -70,18 +70,18 @@ app.use(express.static(path.join(__dirname, "uploads")));
 //app.use(express.static(path.join(__dirname, "public")));
 
 
-app.use('/payment', controllAccess, routePayment);
-app.use('/category', routeCategory);
-app.use('/events', controllAccess, routeEvent);
-app.use('/address', controllAccess, routeAddress);
-app.use('/gym', controllAccess, routeGym);
-app.use('/athlets', controllAccess, routeAthlet);
-app.use('/fprj', controllAccess, routeFprj);
-app.use('/login', routeLogin);
-app.use('/athlet', routeAthlet);
-app.use('/voucher', controllAccess, routeVoucher);
-app.use('/request', routeRequest);
-app.use('/typeEvent', controllAccess, routeTypeEvent);
+//app.use('/payment', controllAccess, routePayment);
+//app.use('/category', routeCategory);
+//app.use('/events', controllAccess, routeEvent);
+//app.use('/address', controllAccess, routeAddress); // caiu fora
+//app.use('/gym', controllAccess, routeGym);
+//app.use('/athlets', controllAccess, routeAthlet);
+app.use('/fprj', routeFprj); // controllAcess
+//app.use('/login', routeLogin);
+//app.use('/athlet', routeAthlet);
+//app.use('/voucher', controllAccess, routeVoucher);
+//app.use('/request', routeRequest);
+//app.use('/typeEvent', controllAccess, routeTypeEvent);
 
 app.use('/token', routerToken);
 

@@ -3,7 +3,6 @@ const { DataTypes } = require('sequelize');
 
 
 module.exports = (sequelize, Sequelize) => {
-    //todo unique ?
     const Athlet = sequelize.define("Athlet", {
         idAthlete: {
             type: DataTypes.INTEGER,
@@ -23,10 +22,9 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.DATEONLY,
             //defaultValue: Date.now(),
             allowNull: true,
-
         },
         phone: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true
         },
         name: {
@@ -45,6 +43,22 @@ module.exports = (sequelize, Sequelize) => {
         password: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        neighborhood: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        street: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        number: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        city: {
+            type: DataTypes.STRING,
+            allowNull: true
         }
 
     }, {

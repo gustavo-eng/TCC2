@@ -2,7 +2,6 @@
 module.exports = (db) => {
 
     try {
-
         db.Athlet.hasOne(db.Requests, {
             as: 'Requests',
             foreignKey: "idAthlete",  // define a chave estrangeira na tabela 'Gym'
@@ -17,10 +16,7 @@ module.exports = (db) => {
             onUpdate: "CASCADE",
         });
 
-        console.log('successs 989898');
-
     } catch (e) {
-
         console.log('Error association (Athlet and Requests)' + e);
     }
 }

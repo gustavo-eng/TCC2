@@ -12,6 +12,7 @@ const jwt = require('jsonwebtoken');
 const { fail } = require('../helpers/response');
 
 router.post("/signIn", async (req, res) => {
+
     let { email, password } = req.body;
 
     try {
@@ -44,18 +45,6 @@ router.post("/signIn", async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
