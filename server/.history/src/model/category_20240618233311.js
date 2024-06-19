@@ -20,9 +20,11 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true
         }
     }, {
+
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
+
     });
 
     return Category;

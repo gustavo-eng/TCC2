@@ -39,12 +39,12 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.Category = require('../model/category')(sequelize, Sequelize);
-db.Event = require('../model/event')(sequelize, Sequelize);
+//db.Event = require('../model/event')(sequelize, Sequelize);
 //db.Address = require('../model/address')(sequelize, Sequelize);
 db.Gym = require('../model/gym')(sequelize, Sequelize);
 db.Athlet = require('../model/athlet')(sequelize, Sequelize);
 db.Fprj = require('../model/fprj')(sequelize, Sequelize);
-db.Registration = require('../model/registration')(sequelize, Sequelize);
+//db.Payment = require('../model/payment')(sequelize, Sequelize);
 db.typeEvent = require('../model/typeEvent')(sequelize, Sequelize);
 db.Requests = require('../model/requests')(sequelize, Sequelize);
 

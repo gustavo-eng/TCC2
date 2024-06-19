@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 module.exports = (sequelize, Sequelize) => {
     const Category = sequelize.define("Category", {
-
         idCategory: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -20,9 +19,11 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: true
         }
     }, {
+
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
+
     });
 
     return Category;

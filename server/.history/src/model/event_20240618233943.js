@@ -46,9 +46,11 @@ module.exports = (sequelize, Sequelize) => {
 
 
     }, {
+
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
+
     });
 
     return Event;

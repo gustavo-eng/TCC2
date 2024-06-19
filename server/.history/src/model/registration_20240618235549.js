@@ -1,23 +1,32 @@
-const { allow } = require('joi');
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize, Sequelize) => {
-    const typeEvent = sequelize.define("typeEvent", {
-        idTypeEvent: {
+    const Registration = sequelize.define("Registration", {
+
+        idPayment: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        type: {
+        voucherPath: {
             type: DataTypes.STRING,
             allowNull: true,
-        }
+        },
+        aproved: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+
     }, {
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
     });
 
-    return typeEvent;
-
+    return Registration;
 }
+

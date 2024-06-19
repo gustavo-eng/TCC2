@@ -27,6 +27,10 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: DataTypes.NOW,
             allowNull: true,
         },
+        type: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         neighborhood: {
             type: DataTypes.STRING,
             allowNull: true
@@ -46,9 +50,11 @@ module.exports = (sequelize, Sequelize) => {
 
 
     }, {
+
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
+
     });
 
     return Event;
