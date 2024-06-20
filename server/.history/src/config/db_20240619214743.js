@@ -50,18 +50,14 @@ db.Requests = require('../model/requests')(sequelize, Sequelize);
 
 
 // ==== Associations ====
-require('../associations/eventTypeEvent')(db);
-require('../associations/athletGym')(db);
-require('../associations/requestsAthlet')(db);
-require('../associations/registrationAthlet')(db);
-require('../associations/registrationCategory')(db);
-require('../associations/registrationEvent')(db);
 //require('../associations/addressGym')(db);
 //require('../associations/addressAthlet')(db);
 //require('../associations/addressEvent')(db);
+require('../associations/athletGym')(db);
 //require('../associations/eventPayment')(db);
 //require('../associations/paymentAthlet')(db);
 //require('../associations/paymentCategory')(db);
+require('../associations/requestsAthlet')(db);
 //require('../associations/gymRequest')(db);
 
 module.exports = db;

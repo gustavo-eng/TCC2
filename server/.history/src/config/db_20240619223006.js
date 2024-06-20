@@ -54,8 +54,6 @@ require('../associations/eventTypeEvent')(db);
 require('../associations/athletGym')(db);
 require('../associations/requestsAthlet')(db);
 require('../associations/registrationAthlet')(db);
-require('../associations/registrationCategory')(db);
-require('../associations/registrationEvent')(db);
 //require('../associations/addressGym')(db);
 //require('../associations/addressAthlet')(db);
 //require('../associations/addressEvent')(db);

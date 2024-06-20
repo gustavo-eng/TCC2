@@ -1,19 +1,20 @@
 module.exports = (db) => {
     try {
 
-        db.Gym.hasMany(db.Athlet, {
-            as: "Athlet",
-            foreignKey: "idGym",
+        db.Athlet.hasMany(db.Registration, {
+            as: "Registration",
+            foreignKey: "idAthlete",
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
         });
 
-        db.Athlet.belongsTo(db.Gym, {
-            as: "Gym",
-            foreignKey: "idGym",
+        db.Registration.belongsTo(db.Athlet, {
+            as: "Registration",
+            foreignKey: "idAthlete",
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
         });
+
 
     } catch (err) {
         console.log('Error Gym and Athlet. Error ' + err);
