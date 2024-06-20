@@ -54,9 +54,9 @@ exports.create = async (req, res) => {
 
     } catch (err) {
         if (err.name === 'SequelizeValidationError') {
-            return res.status(statusCode.BAD_REQUEST).json(fail("Validation Error: " + err.message));
+            return res.status(400).json(fail("Validation Error: " + err.message));
         }
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Server Error: " + err.message));
+        return res.status(500).json(fail("Server Error: " + err.message));
     }
 }
 

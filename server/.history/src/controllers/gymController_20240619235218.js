@@ -5,7 +5,6 @@ const Gym = db.Gym;
 const Athlet = db.Athlet;
 const Address = db.Address;
 const Payment = db.Payment;
-const statusCode = require('../utils/statusCode.json');
 
 
 exports.findAll = async (req, res) => {
@@ -20,20 +19,24 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
 
+    const {
+        cnpj,
+        sensei,
+        name,
+        phone,
+        password,
+        email,
+        neighborhood,
+        street,
+        number,
+        city
+    } = req.body;
+
+
+
     try {
 
-        const {
-            cnpj,
-            sensei,
-            name,
-            phone,
-            password,
-            email,
-            neighborhood,
-            street,
-            number,
-            city
-        } = req.body;
+
 
         const newGym = {
             cnpj,
@@ -50,13 +53,13 @@ exports.create = async (req, res) => {
         };
 
         const gym = await Gym.create(newGym);
-        return res.status(statusCode.CREATED).json(success(gym, "payload", "Gym created successfully"));
+        return res.status(200).json(success(gym, "payload", "Gym created successfully"));
 
     } catch (err) {
         if (err.name === 'SequelizeValidationError') {
-            return res.status(statusCode.BAD_REQUEST).json(fail("Validation Error: " + err.message));
+            return res.status(400).json(fail("Validation Error: " + err.message));
         }
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Server Error: " + err.message));
+        return res.status(500).json(fail("Server Error: " + err.message));
     }
 }
 
