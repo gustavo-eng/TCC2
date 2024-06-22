@@ -1,16 +1,21 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../config/db')
-
-const verifyUser = require('../middleware/verifyTypeUser');
+const returnUser = require('../middleware/verifyTypeUser');
 const isAcceptedAthlet = require('../middleware/verifyAcceptAthlet');
-
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+
+var db = require('../config/db')
+const statusCode = require('../utils/statusCode.json');
+
 
 // jwt
 const jwt = require('jsonwebtoken');
-const { fail } = require('../helpers/response');
+const { fail, message, success } = require('../helpers/response');
 
+
+let SECRET = "ABC";
+/*
 router.post("/signIn", async (req, res) => {
 
     let { email, password } = req.body;
@@ -19,21 +24,23 @@ router.post("/signIn", async (req, res) => {
 
         let user = await verifyUser({ email: email, password: password });
 
-        if (!user) res.status(404).json(fail("User not found !"));
+        if (!user) res.status(404).json(fail("User not found !")); 
 
         if (user.role.includes('athlet')) {
 
             let isAccepted = await isAcceptedAthlet(user.idAthlete);
 
             if (isAccepted) {
-                let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
+                //let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
+                //bcrypt.compareSync(password, email)
+                let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
                 return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
             } else {
                 res.status(401).json(fail("Request pending..."));
             }
-
+ 
         } else { // Gym or FPRJ
-            let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
+            let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
             return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
         }
 
@@ -43,6 +50,54 @@ router.post("/signIn", async (req, res) => {
 
 
 });
+*/
+
+router.post("/signIn", async (req, res) => {
+
+    let { email, password } = req.body;
+
+    try {
+
+        let user = await returnUser({ email: email});
+      
+
+        let passwordIsValid = bcrypt.compareSync(password, user.password);
+
+        if(!passwordIsValid) return res.status(statusCode.UNAUTHORIZED).json(fail("Invalid Credentials"));
+
+        if (!user) res.status(404).json(fail("User not found !")); 
+
+        // Verify type of User 
+        if (user.role.includes('athlet')) {
+
+            let isAccepted = await isAcceptedAthlet(user.idAthlete);
+
+            if (isAccepted) {
+                //let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
+                let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
+                return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
+
+            } else {
+
+                res.status(401).json(fail("Request pending..."));
+
+            }
+        } else { 
+
+            let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
+            return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
+        
+        }
+
+    } catch (err) {
+
+        res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error -> " + err));
+    
+    }
+
+
+});
+
 
 module.exports = router;
 

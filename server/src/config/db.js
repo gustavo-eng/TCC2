@@ -3,6 +3,7 @@ require('dotenv').config();
 const Sequelize = require('sequelize');
 
 //Config
+/*
 const sequelize = new Sequelize('fprjsystem',
     process.env.USER_DATABASE, process.env.PASSWORD_DATABASE,
     {
@@ -18,7 +19,13 @@ const sequelize = new Sequelize('fprjsystem',
 
     },
 );
-
+*/
+ 
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database.sqlite',
+    logging: false,
+  })
 //Estou na branch develop 
 
 //Establishing connection
