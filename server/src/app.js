@@ -78,9 +78,9 @@ app.use('/gym', routeGym);
 //app.use('/athlets', controllAccess, routeAthlet);
 app.use('/fprj', routeFprj); // controllAcess
 //app.use('/login', routeLogin);
-//app.use('/athlet', routeAthlet);
+app.use('/athlet', routeAthlet);
 //app.use('/voucher', controllAccess, routeVoucher);
-//app.use('/request', routeRequest);
+app.use('/request', routeRequest);
 app.use('/typeEvent', routeTypeEvent);
 
 app.use('/token', routerToken);

@@ -98,7 +98,11 @@ exports.accept = async (req, res) => {
 }
 
 
+// Get Athlet by gym
+exports.getRequestByGym = async (req, res) => {
 
+
+}
 
 //refuse (deleta o atleta)
 exports.refuse = async (req, res) => {
