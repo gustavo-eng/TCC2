@@ -19,6 +19,8 @@ const sequelize = new Sequelize('fprjsystem',
     },
 );
 
+//Estou na branch develop 
+
 //Establishing connection
 const setConnection = async (sequelize) => {
     try {
