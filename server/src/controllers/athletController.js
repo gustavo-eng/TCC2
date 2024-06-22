@@ -2,10 +2,14 @@ const db = require('../config/db');
 const Athlet = db.Athlet;
 const Requests = db.Requests;
 const statusCode = require('../utils/statusCode.json');
+const bcrypt = require('bcrypt');
+
 const { success, fail, message } = require('../helpers/response');
 const { hasDuplicateAthlet } = require('../helpers/hasDuplicateAthlet');
+const { getRequestByGym } = require('./requestsController');
 
 exports.findAll = async (req, res) => {
+    console.log('Entrou em findAll +++=')
 
     try {
         await Athlet.findAll().then(athlet => {
@@ -20,6 +24,7 @@ exports.findAll = async (req, res) => {
 }
 
 exports.create = async (req, res) => {
+
     try {
         const {
             cpf,
@@ -40,17 +45,28 @@ exports.create = async (req, res) => {
             rg,
             cpf,
             birth,
-            phone,
-            name,
-            email,
-            password,
+            phone,   
+            name, 
+            email,    
+            password: bcrypt.hashSync(password, 10),
             neighborhood,
             street,
             number,
             city,
-            idGym
-        };
-
+            idGym 
+        }; 
+           
+        /*
+        bcrypt.hash(newAthlet.password, 10, (error, hasedPassword) => {
+            if(error) {
+                console.log('Error in hash password --> ' + error); 
+            } else {
+                console.log('Hashed password: ' + hasedPassword);
+            }
+        });
+        */ 
+        
+ 
         // Correção: uso de await ao chamar hasDuplicateAthlet
         if (await hasDuplicateAthlet(name, email, cpf, rg)) {
             return res.status(statusCode.UNAUTHORIZED).json(fail("Athlet already exists"));
@@ -64,10 +80,10 @@ exports.create = async (req, res) => {
             } catch (err) {
                 await Athlet.destroy({ where: { idAthlete } });
                 return res.status(statusCode.BAD_REQUEST).json(fail("Erro ao enviar solicitação. Erro -> " + err));
-            }
+            }   
         }
-    } catch (err) {
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server"));
+    } catch (err) { 
+        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error gserver. Err  -> " +err));
     }
 };
 

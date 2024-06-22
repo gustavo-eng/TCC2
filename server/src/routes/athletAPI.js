@@ -18,3 +18,4 @@ router.delete("/:idAthlete", athlets.delete);
 router.put("/:idAthlete", athlets.update);
 
 module.exports = router;
+   
