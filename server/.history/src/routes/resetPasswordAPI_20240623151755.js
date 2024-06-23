@@ -14,6 +14,7 @@ router.post("/", async (req, res) => {
         tls: {//todo analisar este tls
             rejectUnauthorized: false // Ignorar verificação do certificado SSL
         }
+
     });
 
     let mailOptions = {
