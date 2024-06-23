@@ -29,6 +29,7 @@ var routeVoucher = require('./routes/voucherAPI');
 var routerToken = require('./routes/tokenTest');
 var routeTypeEvent = require('./routes/typeEventAPI');
 var routeRequest = require('./routes/requestAPI');
+var routerResetPassword = require('./routes/resetPasswordAPI');
 
 //Midleware Controll And Response
 const { fail } = require('./helpers/response');
@@ -77,12 +78,12 @@ app.use('/events', routeEvent);
 app.use('/gym', routeGym);
 //app.use('/athlets', controllAccess, routeAthlet);
 app.use('/fprj', routeFprj); // controllAcess
-//app.use('/login', routeLogin);
+app.use('/login', routeLogin);
 app.use('/athlet', routeAthlet);
 //app.use('/voucher', controllAccess, routeVoucher);
 app.use('/request', routeRequest);
 app.use('/typeEvent', routeTypeEvent);
-
+app.use('/resetPasswprd', routerResetPassword);
 app.use('/token', routerToken);
 
 // Middleware para captura de erros do Multer

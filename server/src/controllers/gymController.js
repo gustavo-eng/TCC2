@@ -6,6 +6,7 @@ const Athlet = db.Athlet;
 const Address = db.Address;
 const Payment = db.Payment;
 const statusCode = require('../utils/statusCode.json');
+const bcrypt = require('bcrypt');
 
 
 exports.findAll = async (req, res) => {
@@ -40,7 +41,7 @@ exports.create = async (req, res) => {
             sensei,
             name,
             phone,
-            password,
+            password: bcrypt.hashSync(password, 10),
             email,
             neighborhood,
             street,

@@ -2,8 +2,11 @@ const db = require('../config/db');
 const Athlet = db.Athlet;
 const Requests = db.Requests;
 const statusCode = require('../utils/statusCode.json');
+const bcrypt = require('bcrypt');
+
 const { success, fail, message } = require('../helpers/response');
 const { hasDuplicateAthlet } = require('../helpers/hasDuplicateAthlet');
+const { getRequestByGym } = require('./requestsController');
 
 exports.findAll = async (req, res) => {
 
@@ -43,7 +46,7 @@ exports.create = async (req, res) => {
             phone,
             name,
             email,
-            password,
+            password: bcrypt.hashSync(password, 10),
             neighborhood,
             street,
             number,
