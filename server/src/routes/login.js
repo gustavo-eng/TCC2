@@ -8,13 +8,12 @@ require('dotenv').config();
 var db = require('../config/db')
 const statusCode = require('../utils/statusCode.json');
 
-
 // jwt
 const jwt = require('jsonwebtoken');
 const { fail, message, success } = require('../helpers/response');
 
-
 let SECRET = "ABC";
+
 /*
 router.post("/signIn", async (req, res) => {
 
@@ -24,7 +23,7 @@ router.post("/signIn", async (req, res) => {
 
         let user = await verifyUser({ email: email, password: password });
 
-        if (!user) res.status(404).json(fail("User not found !")); 
+        if (!user) res.status(404).json(fail("User not found !"));
 
         if (user.role.includes('athlet')) {
 
@@ -38,7 +37,7 @@ router.post("/signIn", async (req, res) => {
             } else {
                 res.status(401).json(fail("Request pending..."));
             }
- 
+
         } else { // Gym or FPRJ
             let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
             return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
@@ -47,7 +46,6 @@ router.post("/signIn", async (req, res) => {
     } catch (err) {
         res.status(500).json(fail("Error server. Error -> " + err));
     }
-
 
 });
 */
@@ -58,16 +56,17 @@ router.post("/signIn", async (req, res) => {
 
     try {
 
-        let user = await returnUser({ email: email});
-      
+        let user = await returnUser({ email: email });
+
 
         let passwordIsValid = bcrypt.compareSync(password, user.password);
 
-        if(!passwordIsValid) return res.status(statusCode.UNAUTHORIZED).json(fail("Invalid Credentials"));
+        if (!passwordIsValid) return res.status(statusCode.UNAUTHORIZED).json(fail("Invalid Credentials"));
 
-        if (!user) res.status(404).json(fail("User not found !")); 
+        //todo colocar depois de user la faz mais sentido
+        if (!user) res.status(404).json(fail("User not found !"));
 
-        // Verify type of User 
+        // Verify type of User
         if (user.role.includes('athlet')) {
 
             let isAccepted = await isAcceptedAthlet(user.idAthlete);
@@ -82,19 +81,16 @@ router.post("/signIn", async (req, res) => {
                 res.status(401).json(fail("Request pending..."));
 
             }
-        } else { 
+        } else {
 
             let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, SECRET, { expiresIn: '24h' });
             return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
-        
+
         }
 
     } catch (err) {
-
         res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error -> " + err));
-    
     }
-
 
 });
 

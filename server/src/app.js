@@ -8,9 +8,6 @@ const compression = require('compression');
 const morgan = require('morgan');
 const { rateLimit } = require('express-rate-limit');
 
-const { controllAccess } = require('./middleware/Auth');
-const { permissionBothEntities, permissionFRPj, permissionGym } = require('./middleware/permission');
-
 var app = express();
 var server = http.createServer(app);
 var port = 3001;
@@ -27,8 +24,10 @@ var routeGym = require('./routes/gymAPI');
 var routeAthlet = require('./routes/athletAPI');
 var routeVoucher = require('./routes/voucherAPI');
 var routerToken = require('./routes/tokenTest');
-var routeTypeEvent = require('./routes/typeEventAPI'); 
+var routeTypeEvent = require('./routes/typeEventAPI');
 var routeRequest = require('./routes/requestAPI');
+
+//Nova feature
 
 //Midleware Controll And Response
 const { fail } = require('./helpers/response');
@@ -55,7 +54,7 @@ const limiter = rateLimit({
     limit: 100,
     message: "Too many requests from this IP, please try again later."
 });
-
+//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 //require('./uploads')
 app.use(limiter);
 app.use(morgan('dev'));
@@ -71,7 +70,7 @@ app.use(express.static(path.join(__dirname, "uploads")));
 
 
 //app.use('/payment', controllAccess, routePayment);
-app.use('/category', routeCategory); 
+app.use('/category', routeCategory);
 app.use('/events', routeEvent);
 //app.use('/address', controllAccess, routeAddress); // caiu fora
 app.use('/gym', routeGym);
@@ -89,12 +88,13 @@ app.get('/', (req, res) => {
     res.send("<h1>Teste WEG</h1>")
 })
 
+app.use("/email", require('../src/routes/emailAPI'))
 // Middleware para captura de erros do Multer
 app.use((err, req, res, next) => {
     if (err.code === 'INVALID_FILE_TYPE') {
         return res.status(400).json(fail("Invalid file type"));
     }
-    if (err.code === 'LIMIT_FILE_SIZE') { 
+    if (err.code === 'LIMIT_FILE_SIZE') {
         return res.status(400).json(fail("File size limit exceeded"));
     }
     next(err);
@@ -104,7 +104,7 @@ app.use((err, req, res, next) => {
 app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-    console.log('Erro --> ' + err);
+    console.log(' app.use Erro --> ' + err);
     res.status(err.status || 500).json(fail("Internal server error"));
 });
 

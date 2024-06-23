@@ -20,16 +20,17 @@ const sequelize = new Sequelize('fprjsystem',
     },
 );
 */
- 
+
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.sqlite',
     logging: false,
-  })
-//Estou na branch develop 
+})
+//Estou na branch develop
 
 //Establishing connection
 const setConnection = async (sequelize) => {
+
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
@@ -74,10 +75,5 @@ require('../associations/registrationEvent')(db);
 //require('../associations/gymRequest')(db);
 
 module.exports = db;
-
-
-
-
-
 
 
