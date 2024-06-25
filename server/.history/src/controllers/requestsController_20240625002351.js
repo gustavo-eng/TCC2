@@ -1,6 +1,6 @@
 const db = require('../config/db');
 const Requests = db.Requests;
-const Athlet = db.Athlet
+
 const { success, fail, message } = require('../helpers/response');
 const statusCode = require('../utils/statusCode.json');
 
@@ -103,16 +103,14 @@ exports.getRequestByGym = async (req, res) => {
 
     const { idGym } = req.query;
 
+    res.status(200).json({ msg: `Parametro -  ${idGym}` });
+    console.log('_________----')
+    /*
     try {
 
         const requests = await Requests.findAll({
-            include: [{
-                model: Athlet,
-                as: 'Athlet',
-                where: {
-                    idGym: idGym
-                }
-            }]
+            where: { idGym },
+            include: ['Athlet']
         });
 
         if (!requests) return res.status(statusCode.NOT_FOUND).json(fail("Requests not found"));
@@ -121,7 +119,8 @@ exports.getRequestByGym = async (req, res) => {
 
     } catch (err) {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error " + err));
-    };
+    }
+    */
 
 }
 

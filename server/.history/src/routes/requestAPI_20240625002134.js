@@ -16,8 +16,14 @@ router.post('/', controllerRequest.create);
 router.put('/:idAthlete', controllerRequest.accept);
 
 
-router.get('/gym', controllerRequest.getRequestByGym);
+router.get('/gym/', controllerRequest.getRequestByGym);
+
+
+
 
 // Exclude athlete
 //router.delete('/', controllerRequest.delete);
+
+
+
 module.exports = router;

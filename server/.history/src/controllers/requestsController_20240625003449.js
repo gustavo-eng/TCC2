@@ -103,6 +103,7 @@ exports.getRequestByGym = async (req, res) => {
 
     const { idGym } = req.query;
 
+
     try {
 
         const requests = await Requests.findAll({

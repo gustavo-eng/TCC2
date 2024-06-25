@@ -103,11 +103,12 @@ exports.getRequestByGym = async (req, res) => {
 
     const { idGym } = req.query;
 
+
     try {
 
         const requests = await Requests.findAll({
             include: [{
-                model: Athlet,
+                //model: Athlet,
                 as: 'Athlet',
                 where: {
                     idGym: idGym
