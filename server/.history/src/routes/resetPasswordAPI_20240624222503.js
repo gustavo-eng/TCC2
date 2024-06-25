@@ -8,4 +8,3 @@ router.post("/", controllerResetPassword.sendRequestEmail);
 router.put("/newPassword/:resetToken", controllerResetPassword.resetPassword);
 
 module.exports = router;
-

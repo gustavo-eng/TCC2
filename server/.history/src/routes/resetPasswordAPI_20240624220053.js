@@ -9,3 +9,7 @@ router.put("/newPassword/:resetToken", controllerResetPassword.resetPassword);
 
 module.exports = router;
 
+/*
+// =================== CASO FEITO APENAS PARA ATLETAS ALTERAR PARA FPRJ E ACADEMIA (ADICIONAR TOKEN NO MODEL FPRJ E GYM)  ===================
+// =================== ADICIONAR ESSA LOGICA NO CONTROLER DA APLICACAO  ===================
+*/

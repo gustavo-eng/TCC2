@@ -36,7 +36,9 @@ const sendEmail = async (
         })
     } catch (err) {
         throw new Error("Error try send email");
-    };
+    }
+
+
 };
 
 module.exports = sendEmail;

@@ -91,7 +91,9 @@ exports.delete = async (req, res) => {
 
 
     } catch (err) {
+
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail(" Error server. Error -> " + err));
+
     }
 
 }
