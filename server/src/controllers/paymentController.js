@@ -1,7 +1,7 @@
 const db = require('../config/db');
 
 //Models
-const Payment = db.Payment;
+const Registration = db.Registration;
 const Athlet = db.Athlet;
 
 const { success, message, fail } = require('../helpers/response');
@@ -10,12 +10,9 @@ const { success, message, fail } = require('../helpers/response');
 exports.findAll = async (req, res) => {
 
     try {
-        const payments = await Payment.findAll();
-        return res.status(200).json(success(payments, "payload", "Payment list successfully"));
+        const registrations = await Registration.findAll();
+        return res.status(200).json(success(registrations, "payload", "Payment list successfully"));
     } catch (err) {
-        if (err instanceof SomeSpecificError) { // Especifique o tipo de erro relevante, se aplicável
-            return res.status(404).json(fail("No Payment found. Error -> " + err.message));
-        }
         return res.status(500).json(fail("Server error. Error: " + err.message));
     }
 
@@ -55,7 +52,7 @@ exports.create = async (req, res) => {
             description: '' //Apenas FPRJ pode alterar
         };
 
-        await Payment.create(newPayment).then(payment => {
+        await Registration.create(newPayment).then(payment => {
             return res.status(200).json(success(payment, "payload", "Address registered successfully"));
         }).catch(err => {
             return res.status(500).json(fail("Failt to create payment. ERROR -->" + err));
@@ -79,7 +76,7 @@ exports.findMyPayments = async (req, res) => {
 
         const { idAthlet } = req.params;
 
-        const payments = await Payment.findAll({
+        const payments = await Registration.findAll({
             where: { idAthlet: idAthlet },
             include: ['Event'],
         });
@@ -109,7 +106,7 @@ exports.findAllPaymentsOfGym = async (req, res) => {
         // Mapeia os IDs dos atletas em uma lista
         const athletIds = athlets.map(athlet => athlet.idAthlete);
 
-        const payments = await Payment.findAll({
+        const payments = await Registration.findAll({
             where: { idAthlet: athletIds },
             include: ['Event', 'Athlet'],
         });
@@ -143,7 +140,7 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
 
         const athletIds = athlets.map(athlet => athlet.idAthlete);
 
-        const payments = await Payment.findAll({
+        const payments = await Registration.findAll({
             where: { idEvent: idEvent, idAthlet: athletIds },
             include: ['Event', 'Athlet'],
         });
@@ -168,7 +165,7 @@ exports.aprovePayment = async (req, res) => {
 
         const { idPayment } = req.params;
 
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
+        const payment = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!payment) return res.status(404).json(fail("Payment not found"));
 
@@ -191,7 +188,7 @@ exports.reprovePayment = async (req, res) => {
 
         const { description } = req.body;
 
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
+        const payment = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!payment) return res.status(404).json(fail("Payment not found"));
 
@@ -214,7 +211,7 @@ exports.setDescription = async (req, res) => {
         const { idPayment } = req.params;
         const { description } = req.body;
 
-        const payment = await Payment.findOne({ where: { idPayment: idPayment } });
+        const payment = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!payment) return res.status(404).json(fail("Payment not found"));
 

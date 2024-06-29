@@ -19,16 +19,14 @@ const filterImage = (req, file, cb) => {
     }
 };
 
-
-
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "./src/uploads");
         //cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
-
-        cb(null, `${req.user}_${req.body.idEvent}${req.body.idCategory ? `_${req.body.idCategory}` : ''}` + path.extname(file.originalname));
+        console.log('req.user --> ' + req.user)
+        cb(null, `${req.userId}_${req.body.idEvent}${req.body.idCategory ? `_${req.body.idCategory}` : ''}` + path.extname(file.originalname));
     }
 });
 

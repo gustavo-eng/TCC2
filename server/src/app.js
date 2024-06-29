@@ -6,7 +6,10 @@ var http = require('http');
 const bodyParser = require("body-parser");
 const compression = require('compression');
 const morgan = require('morgan');
+const cron = require('node-cron');
+
 const { rateLimit } = require('express-rate-limit');
+
 
 const { controllAccess } = require('./middleware/Auth');
 const { permissionBothEntities, permissionFRPj, permissionGym } = require('./middleware/permission');
@@ -71,7 +74,7 @@ app.use(express.static(path.join(__dirname, "uploads")));
 //app.use(express.static(path.join(__dirname, "public")));
 
 
-//app.use('/payment', controllAccess, routePayment);
+app.use('/registration', routePayment);
 app.use('/category', routeCategory);
 app.use('/events', routeEvent);
 //app.use('/address', controllAccess, routeAddress); // caiu fora
@@ -95,6 +98,14 @@ app.use((err, req, res, next) => {
         return res.status(400).json(fail("File size limit exceeded"));
     }
     next(err);
+});
+
+
+//Tarefa a ser executa a cada minuto
+//Payment
+
+cron.schedule('* * * * *', () => {
+    console.log('Running a task every minute');
 });
 
 // Middleware de tratamento de erros

@@ -50,10 +50,7 @@ exports.create = async (req, res) => {
     }
 
 }
-
-
 //Deletar pela chave estranjeira do aluno
-
 exports.delete = async (req, res) => {
 
     try {
