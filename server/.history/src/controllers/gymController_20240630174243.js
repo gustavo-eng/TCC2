@@ -1,5 +1,6 @@
 const db = require('../config/db');
 const { success, fail } = require('../helpers/response');
+const payment = require('../model/registration');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
 
@@ -161,6 +162,8 @@ exports.update = async (req, res) => {
 }
 
 
+// Esse middleware retorna todos os pagamentos dos alunos daquela academia
+//de um deterterminado evento
 exports.findPaymentsOfEvent = async (req, res) => {
 
     try {
