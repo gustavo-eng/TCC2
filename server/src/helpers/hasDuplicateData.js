@@ -1,8 +1,10 @@
 const db = require('../config/db');
 const Athlet = db.Athlet;
 const Registration = db.Registration;
+const Gym = db.Gym;
 
 module.exports = {
+
     hasDuplicateAthlet: async (name, email, cpf, rg) => {
         try {
             //todo adicionar ou
@@ -21,14 +23,11 @@ module.exports = {
             }
 
         } catch (err) {
-            console.error("Error checking duplicate athlete:", err);
             throw err;
         }
     },
     hasDuplicateRegistration: async ({ athletId, eventId, categoryId }) => {
         try {
-
-            console.log('Parameters:', { athletId, eventId, categoryId });
 
             const registration = await Registration.findOne({
                 where: {
@@ -38,17 +37,34 @@ module.exports = {
                 }
             });
 
-            console.log('Registration:', registration);
-            if (registration == null || registration == undefined) {
+            if (registration == null || registration == undefined || !registration) {
                 return false;
             } else {
                 return true;
-            }
+            };
 
-
-            //return !!registration; // Retorna true se o registro existir, caso contrário, false
         } catch (err) {
             console.error("Error checking duplicate registration:", err);
+            throw err; // Lança o erro para ser tratado pelo chamador
+        }
+
+    },
+    hasDuplicateGym: async ({ email, cnpj, name, }) => {
+        try {
+            const gym = await Gym.findOne({
+                where: {
+                    email: email,
+                    cnpj: cnpj,
+                    name: name
+                }
+            });
+            if (gym == null || gym == undefined || !gym) {
+                return false;
+            } else {
+                return true;
+            };
+        } catch (err) {
+            console.error("Error checking duplicate gym:", err);
             throw err; // Lança o erro para ser tratado pelo chamador
         }
 

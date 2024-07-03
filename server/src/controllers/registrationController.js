@@ -28,7 +28,7 @@ exports.create = async (req, res) => {
 
         if (!req.file) {
             console.log("No file received or invalid file type");
-            return res.status(400).send({
+            return res.status(statusCode.BAD_REQUEST).send({
                 message: "No file received or invalid file type",
                 success: false
             });
@@ -272,38 +272,3 @@ exports.delete = async (req, res) => {
 };
 
 
-
-
-
-
-/*
-const jane = await User.create({ name: 'Jane' });
-jane.favoriteColor = 'blue';
-await jane.update({ name: 'Ada' });
-// The database now has "Ada" for name, but still has the default "green" for favorite color
-await jane.save();
-// Now the database has "Ada" for name and "blue" for favorite color
-
-*/
-
-/*
-const multer = require('multer');
-const path = require('path');
-
-// Configurar armazenamento do multer
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        // Use __dirname para criar um ', 'uploacaminho absoluto para a pasta 'uploads'
-        cb(null, path.join(__dirname, '..ds'));
-    },
-    filename: function (req, file, cb) {
-        const userName = req.user.name; // Presumindo que o nome do usuário está disponível em req.user
-        const ext = path.extname(file.originalname);
-        cb(null, `${userName}-${Date.now()}${ext}`);
-    }
-});
-
-const upload = multer({ storage: storage });
-module.exports = upload;
-
-*/
