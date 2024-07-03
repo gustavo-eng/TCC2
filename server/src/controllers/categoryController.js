@@ -114,12 +114,3 @@ exports.delete = async (req, res) => {
 
 
 
-/*
-const { Op } = require('sequelize');
-Post.findAll({
-  where: {
-    [Op.and]: [{ authorId: 12 }, { status: 'active' }],
-  },
-});
-*/
-

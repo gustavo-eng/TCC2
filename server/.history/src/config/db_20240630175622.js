@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
 require('dotenv').config();
+const Sequelize = require('sequelize');
 
 //Config
 const sequelize = new Sequelize('fprjsystem',

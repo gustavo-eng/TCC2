@@ -1,5 +1,4 @@
 const db = require('../config/db');
-const { hasDuplicateGym } = require('../helpers/hasDuplicateData');
 const { success, fail } = require('../helpers/response');
 const Gym = db.Gym;
 const Athlet = db.Athlet;
@@ -49,8 +48,6 @@ exports.create = async (req, res) => {
             city,
             role: "gym",
         };
-        //await hasDuplicateRegistration({ athletId: idAthlete, categoryId: idCategory, eventId: idEvent })
-        if (await hasDuplicateGym({ cnpj, email, name })) return res.status(statusCode.CONFLICT).json(fail("Gym already exist"));
 
         const gym = await Gym.create(newGym);
         return res.status(statusCode.CREATED).json(success(gym, "payload", "Gym created successfully"));
@@ -58,7 +55,7 @@ exports.create = async (req, res) => {
     } catch (err) {
         if (err.name === 'SequelizeValidationError') {
             return res.status(statusCode.BAD_REQUEST).json(fail("Validation Error: " + err.message));
-        };
+        }
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Server Error: " + err.message));
     }
 }
@@ -120,6 +117,7 @@ exports.update = async (req, res) => {
 
         const gym = await Gym.findByPk(idGym);
         if (!gym) return res.status(statusCode.NOT_FOUND).json(fail("Gym not found"));
+
 
         const {
             cnpj,

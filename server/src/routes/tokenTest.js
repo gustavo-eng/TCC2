@@ -17,10 +17,11 @@ router.get('/', controllAccess, async (req, res) => {
 
         let dateEvent = String(data['Event.endDate'] ? data['Event.endDate'] : data['Event.startDate']);
         let datePayment = String(data.createdAt);
-
+        /*
         if (diffIsBiggherThanXDays({ paymentDate: datePayment, endEventDate: dateEvent, X: 6 })) {
             await db.Event.destroy({ where: { idEvent: data['Event.idEvent'] } });
         };
+        */
     });
 
     //res.status(200).json(success(registrationsAndEvent, "payload"))

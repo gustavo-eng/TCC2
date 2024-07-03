@@ -58,7 +58,6 @@ const initServer = async () => {
     var routeFprj = require('./routes/fprjAPI');
     var routeEvent = require('./routes/eventAPI');
     var routeCategory = require('./routes/categoryApi');
-    var routeAddress = require('./routes/addressAPI');
     var routeGym = require('./routes/gymAPI');
     var routeAthlet = require('./routes/athletAPI');
     var routeVoucher = require('./routes/voucherAPI');
