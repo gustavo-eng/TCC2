@@ -10,7 +10,9 @@ router.get('/', controllAccess, async (req, res) => {
         include: ['Event'],
         raw: true
     });
-    //cleanObsoletAthlets({ XDays: 9 });
+
+    cleanObsoletAthlets({ XDays: 3 });
+
     //console.log(Array(...registrationsAndEvent))
 
     /*

@@ -16,7 +16,6 @@ const { fail } = require('./helpers/response');
 
 // Synchronize with the database
 const db = require('../src/config/db');
-const { cleanObsoletAthlets } = require('./utils/cleanForgetAndCrashData');
 db.sequelize.sync({ alter: true })
     .then(() => {
         console.log('Syncked db.');
@@ -94,8 +93,9 @@ const initServer = async () => {
 
     // Schedule task to run every minute
     cron.schedule('* * * * *', () => {
-        console.log('Running task every minute')
-        cleanObsoletAthlets({ XDays: 1 });
+
+        console.log('Running a task every minute');
+
     });
 
     // Error handling middleware

@@ -10,7 +10,6 @@ router.get('/', controllAccess, async (req, res) => {
         include: ['Event'],
         raw: true
     });
-    //cleanObsoletAthlets({ XDays: 9 });
     //console.log(Array(...registrationsAndEvent))
 
     /*
@@ -22,7 +21,6 @@ router.get('/', controllAccess, async (req, res) => {
 
 
         if (diffIsBiggherThanXDays({ paymentDate: datePayment, endEventDate: dateEvent, X: 6 })) {
-            //Destroy the registration
             await db.Event.destroy({ where: { idEvent: data['Event.idEvent'] } });
         };
 
