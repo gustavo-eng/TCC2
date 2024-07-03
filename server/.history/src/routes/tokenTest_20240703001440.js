@@ -10,9 +10,9 @@ router.get('/', controllAccess, async (req, res) => {
         include: ['Event'],
         raw: true
     });
-    //cleanObsoletAthlets({ XDays: 9 });
     //console.log(Array(...registrationsAndEvent))
-
+    console.log('cleeeeannn')
+    console.log(cleanObsoletAthlets)
     /*
     Array(...registrationsAndEvent).forEach(async data => {
 
@@ -20,16 +20,16 @@ router.get('/', controllAccess, async (req, res) => {
         let datePayment = String(data.createdAt);
 
 
-
+        /*
         if (diffIsBiggherThanXDays({ paymentDate: datePayment, endEventDate: dateEvent, X: 6 })) {
-            //Destroy the registration
             await db.Event.destroy({ where: { idEvent: data['Event.idEvent'] } });
         };
+        */
+});
+//
 
-    });
-    */
-    //res.status(200).json(success(registrationsAndEvent, "payload"))
-    res.send(`<h1>Nome do usuario: ${req.user} e user id ${req.userId} </h1>`)
+//res.status(200).json(success(registrationsAndEvent, "payload"))
+res.send(`<h1>Nome do usuario: ${req.user} e user id ${req.userId} </h1>`)
 });
 
 /*

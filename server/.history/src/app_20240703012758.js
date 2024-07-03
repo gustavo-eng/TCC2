@@ -94,8 +94,7 @@ const initServer = async () => {
 
     // Schedule task to run every minute
     cron.schedule('* * * * *', () => {
-        console.log('Running task every minute')
-        cleanObsoletAthlets({ XDays: 1 });
+        cleanObsoletAthlets({ XDays: 4 });
     });
 
     // Error handling middleware
