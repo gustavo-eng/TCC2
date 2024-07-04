@@ -40,6 +40,7 @@ const eventSchema = z.object({
         .min(3, { message: "Must be at least 3 characteres" })
         .max(45, { message: "This field must contain a maximum of 45 characters" }),
 
+
 });
 
 

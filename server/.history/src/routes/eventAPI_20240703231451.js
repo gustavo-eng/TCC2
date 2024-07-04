@@ -20,7 +20,7 @@ router.post("/", validate(schemaEvent), events.create);
 router.delete("/:idEvent", events.delete);
 
 //Update event
-router.put("/:idEvent", validate(schemaEvent), events.update);
+router.put("/:idEvent", events.update);
 
 
 router.get("/typeEvent/:idTypeEvent", events.findByTypeEvent);

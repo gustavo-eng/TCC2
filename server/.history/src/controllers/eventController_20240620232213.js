@@ -57,8 +57,8 @@ exports.create = async (req, res) => {
         const newEvent = {
             description,
             price,
-            startDate: startDate,
-            endDate: endDate,
+            startDate: startDate || new Date(),
+            endDate: endDate || new Date(),
             neighborhood,
             street,
             number,

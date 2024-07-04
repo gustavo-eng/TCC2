@@ -25,6 +25,7 @@ exports.findAll = async (req, res) => {
 exports.create = async (req, res) => {
 
     try {
+        console.log('create request')
 
         const { idAthlete, idGym } = req.body;
 
