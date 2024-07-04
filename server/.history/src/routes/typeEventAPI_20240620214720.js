@@ -14,4 +14,5 @@ router.post("/", validate(typeEventSchema), typeEventController.create);
 router.delete("/:idTypeEvent", typeEventController.delete);
 
 
+
 module.exports = router;

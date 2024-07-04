@@ -92,9 +92,6 @@ exports.findAllPayments = async (req, res) => {
             },
         });
 
-
-        if (!athlets || athlets.length < 1) return res.status(404).json(fail("Payment not found"));
-
         // Mapeie os IDs dos atletas em uma lista
         const athletIds = athlets.map(athlet => athlet.idAthlete);
 
@@ -105,7 +102,7 @@ exports.findAllPayments = async (req, res) => {
             },
         });
 
-        if (!payments) return res.status(404).json(fail("Payment not found"));
+        if (!athlets || !payments) return res.status(404).json(fail("Payment not found"));
         // Retorne os pagamentos
         return res.status(200).json(success(payments, "payload", "Listado com sucesso"));
 

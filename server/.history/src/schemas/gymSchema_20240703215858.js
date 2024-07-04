@@ -13,7 +13,7 @@ const gymSchema = z.object({
         .min(3, { message: "Must be at least 3 characteres" })
         .max(15, { message: "This field must contain a maximum of 15 characters" }),
 
-    password: z.string({ invalid_type_error: "Must be a string" })
+    passward: z.string({ invalid_type_error: "Must be a string" })
         .min(3, { message: "Must be at least 3 characteres" })
         .max(25, { message: "This field must contain a maximum of 25 characters" }),
 
@@ -33,13 +33,11 @@ const gymSchema = z.object({
         .min(3, { message: "Must be at least 3 characteres" })
         .max(25, { message: "This field must contain a maximum of 25 characters" }),
 
-    neighborhood: z.string({ invalid_type_error: "Must be a string" })
-        .min(3, { message: "Must be at least 3 characteres" })
-        .max(45, { message: "This field must contain a maximum of 45 characters" }),
-
     cnpj: z.string({ invalid_type_error: "Must be a string" })
         .min(3, { message: "Must be at least 3 characteres" })
         .max(25, { message: "This field must contain a maximum of 25 characters" }),
+
+
 
 });
 

@@ -17,3 +17,10 @@ router.put("/:idGym", validate(gymSchema), gym.update);
 module.exports = router;
 
 
+
+
+
+
+
+
+

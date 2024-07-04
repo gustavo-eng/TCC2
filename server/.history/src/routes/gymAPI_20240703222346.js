@@ -12,8 +12,16 @@ router.post("/", validate(gymSchema), gym.create);
 
 router.delete("/:id", gym.delete);
 
-router.put("/:idGym", validate(gymSchema), gym.update);
+router.put("/:idGym", gym.update);
+
 
 module.exports = router;
+
+
+
+
+
+
+
 
 

@@ -28,6 +28,10 @@ const eventSchema = z.object({
         .min(3, { message: "Must be at least 3 characteres" })
         .max(25, { message: "This field must contain a maximum of 25 characters" }),
 
+    email: z.string({ invalid_type_error: "Must be a string" })
+        .min(3, { message: "Must be at least 3 characteres" })
+        .max(25, { message: "This field must contain a maximum of 25 characters" }),
+
     number: z.number({ invalid_type_error: "Must be a number" })
         .nonnegative()
         .max(10000),
@@ -39,6 +43,7 @@ const eventSchema = z.object({
     neighborhood: z.string({ invalid_type_error: "Must be a string" })
         .min(3, { message: "Must be at least 3 characteres" })
         .max(45, { message: "This field must contain a maximum of 45 characters" }),
+
 
 });
 

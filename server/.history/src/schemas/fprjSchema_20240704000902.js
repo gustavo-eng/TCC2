@@ -9,8 +9,8 @@ const fprjSchema = z.object({
         .max(15, { message: "This field must contain a maximum of 5 characters" }),
 
     phone: z.string({ invalid_type_error: "Field must be a string type" })
-        .min(8)
-        .max(20),
+        .min(2)
+        .max(80),
 
     password: z.string({ invalid_type_error: "Field must be a string type" })
         .min(4)
