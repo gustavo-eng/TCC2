@@ -16,3 +16,15 @@ const isAccepted = async (idAthlete) => {
 
 module.exports = isAccepted;
 
+/*
+not accept
+{
+    "email": "gustavo@hotmail.com",
+    "password": "diasgustavodias"
+}
+
+accept
+weg@hotmail.com
+diasgustavodias
+
+*/

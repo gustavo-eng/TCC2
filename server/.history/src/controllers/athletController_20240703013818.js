@@ -83,7 +83,7 @@ exports.delete = async (req, res) => {
         const { idAthlete } = req.params;
         const athlet = await Athlet.findByPk(idAthlete);
 
-        if (!athlet) return res.status(404).json(fail("Athlet not found"));
+        if (!athlet) return res.status(404).json(fail("Ahlet not found"));
 
         await athlet.destroy({ where: { idAthlete: idAthlete } });
 
