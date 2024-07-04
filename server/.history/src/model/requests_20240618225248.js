@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-
+const { SELECT } = require("sequelize/lib/query-types");
 
 module.exports = (sequelize, Sequelize) => {
 

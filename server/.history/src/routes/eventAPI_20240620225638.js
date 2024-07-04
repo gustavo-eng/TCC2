@@ -3,6 +3,9 @@ const router = express.Router();
 const events = require("../controllers/eventController");
 
 
+//Validations middlewares
+const validate = require('../middleware/validate');
+const eventSchema = require('../schemas/eventSchema');
 
 //Retrieve all Events
 router.get("/", events.findAll);
