@@ -35,6 +35,6 @@ router.put("/reprove/:idPayment", validate(registrationSchema), registration.rep
 router.delete("/:idPayment", controllAccess, registration.delete)
 
 //Tela
-router.put("/:idPayment", controllAccess, upload.single('file'), validate(registrationSchema), registration.update);
+router.put("/:idPayment", controllAccess, upload.single('file'), registration.update);
 
 module.exports = router;

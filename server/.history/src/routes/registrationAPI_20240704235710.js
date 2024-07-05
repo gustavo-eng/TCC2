@@ -29,12 +29,11 @@ router.post("/aprove/:idPayment", registration.aprovePayment);
 //router.put("/reprove/:idPayment", payment.reprovePayment);
 
 //Rota direcionada para colocar comentarios de pagamentos reprovados
-router.put("/reprove/:idPayment", validate(registrationSchema), registration.reprovePayment);
+router.put("/reprove/:idPayment", registration.reprovePayment);
 
 //Delete payment
 router.delete("/:idPayment", controllAccess, registration.delete)
 
-//Tela
-router.put("/:idPayment", controllAccess, upload.single('file'), validate(registrationSchema), registration.update);
+router.put("/:idPayment", controllAccess, upload.single('file'), registration.update);
 
 module.exports = router;

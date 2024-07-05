@@ -6,13 +6,13 @@ const registration = require('../controllers/registrationController');
 const { controllAccess } = require('../middleware/Auth');
 const upload = require('../middleware/upload');
 const validate = require('../middleware/validate');
-const registrationSchema = require('../schemas/registrationSchema');
+const paymentSchema = require('../schemas/paymentSchema');
 
 
 
 router.get("/", registration.findAll);
 
-router.post("/", controllAccess, upload.single('file'), validate(registrationSchema), registration.create);
+router.post("/", controllAccess, upload.single('file'), validate(paymentSchema), registration.create);
 
 //Esse rota retorna todos os pagamentos de cada aluno
 router.get("/myPayments/:idAthlete", registration.findMyPayments)
@@ -29,12 +29,12 @@ router.post("/aprove/:idPayment", registration.aprovePayment);
 //router.put("/reprove/:idPayment", payment.reprovePayment);
 
 //Rota direcionada para colocar comentarios de pagamentos reprovados
-router.put("/reprove/:idPayment", validate(registrationSchema), registration.reprovePayment);
+router.put("/reprove/:idPayment", registration.reprovePayment);
+
 
 //Delete payment
 router.delete("/:idPayment", controllAccess, registration.delete)
 
-//Tela
-router.put("/:idPayment", controllAccess, upload.single('file'), validate(registrationSchema), registration.update);
+router.put("/:idPayment", controllAccess, upload.single('file'), registration.update);
 
 module.exports = router;
