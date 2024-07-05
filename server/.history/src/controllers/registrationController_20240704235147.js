@@ -24,7 +24,8 @@ exports.create = async (req, res) => {
 
     try {
 
-
+        // Verify duplicate information.
+        /*
         if (!req.file) {
             console.log("No file received or invalid file type");
             return res.status(statusCode.BAD_REQUEST).send({
@@ -32,7 +33,7 @@ exports.create = async (req, res) => {
                 success: false
             });
         }
-
+        */
 
         const file = req.file;
 

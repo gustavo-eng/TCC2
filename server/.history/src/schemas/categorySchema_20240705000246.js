@@ -6,7 +6,6 @@ const objectErrorString = {
 }
 
 const categorySchema = z.object({
-
     gender: z.enum(['Feminino', 'Masculino']),
     classCategory: z.string(objectErrorString)
         .min(5, { message: "Must be at least 5 characteres" })
