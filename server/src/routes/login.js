@@ -32,7 +32,9 @@ router.post("/signIn", async (req, res) => {
                 let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
                 return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
             } else {
-                return res.status(401).json(fail("Request pending..."));
+
+                return res.status(statusCode.NOT_FOUND).json(fail("Request pending..."));
+
             }
 
         } else { // Gym or FPRJ
@@ -46,7 +48,9 @@ router.post("/signIn", async (req, res) => {
         }
 
     } catch (err) {
+
         return res.status(statusCode.UNAUTHORIZED).json(fail("Error server. Error -> " + err));
+
     }
 
 });

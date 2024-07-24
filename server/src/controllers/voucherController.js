@@ -1,5 +1,6 @@
 var path = require('path');
 const statusCode = require('../utils/statusCode.json');
+const fs = require('fs');
 //Response
 const { fail } = require('../helpers/response');
 
@@ -14,7 +15,17 @@ exports.getImage = (req, res) => {
         if (err) return res.status(404).json(fail("Image not found."));
     });
 
-
 };
+
+exports.deleteImage = ({ idAthlete }) => {
+    const directoryPath = path.join(__dirname, '..', 'uploads', `${idAthlete}`);
+    if (fs.existsSync(directoryPath)) {
+        try {
+            fs.rmSync(directoryPath, { recursive: true, force: true });
+        } catch (error) {
+            throw new Error(' Error to delete image! ');
+        }
+    }
+}
 
 

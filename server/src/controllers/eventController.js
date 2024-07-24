@@ -3,6 +3,7 @@ const Event = db.Event;
 const { success, fail } = require('../helpers/response');
 const statusCode = require('../utils/statusCode.json');
 
+
 exports.findAll = async (req, res) => {
 
     await Event.findAll({ include: ["typeEvent"] }).then(event => {
@@ -12,6 +13,8 @@ exports.findAll = async (req, res) => {
     });
 
 };
+
+
 
 exports.findByTypeEvent = async (req, res) => {
 
@@ -94,16 +97,16 @@ exports.delete = async (req, res) => {
     try {
 
         const event = await Event.findByPk(idEvent);
-        if (!event) res.status(404).json(fail("Event not found"));
+        if (!event) res.status(statusCode.NOT_FOUND).json(fail("Event not found"));
 
         await Event.destroy({ where: { idEvent: idEvent } }).then(_ => {
-            res.status(200).json(success("Event deleted successfully"));
+            return res.status(statusCode.OK).json(success("Event deleted successfully"));
         }).catch(err => {
-            res.status(500).json(fail("Fail to delete event. Erro -> ", err));
+            return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Fail to delete event. Erro -> ", err));
         });
 
     } catch (err) {
-        res.status(500).json(fail("Error server. Error: " + err));
+        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error: " + err));
     }
 
 }
