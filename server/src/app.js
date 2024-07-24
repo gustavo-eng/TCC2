@@ -10,7 +10,6 @@ const cron = require('node-cron');
 const { rateLimit } = require('express-rate-limit');
 const { controllAccess } = require('./middleware/Auth');
 
-
 // Middleware Controll And Response
 const { fail } = require('./helpers/response');
 
@@ -93,10 +92,12 @@ const initServer = async () => {
     });
 
     // Schedule task to run every minute
+    /*
     cron.schedule('* * * * *', () => {
         console.log('Running task every minute')
-        cleanObsoletAthlets({ XDays: 1 });
+        cleanObsoletAthlets({ XDays: 10 });
     });
+    */
 
     // Error handling middleware
     app.use((err, req, res, next) => {
@@ -114,8 +115,8 @@ initServer();
 
 module.exports = app;
 
-/*
 
+/*
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -189,7 +190,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "uploads")));
 //app.use(express.static(path.join(__dirname, "public")));
-
 
 app.use('/registration', routePayment);
 app.use('/category', routeCategory);

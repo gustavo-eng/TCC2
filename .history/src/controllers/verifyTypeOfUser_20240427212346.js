@@ -1,3 +1,0 @@
-returnType = (req, res, next) => {
-
-}

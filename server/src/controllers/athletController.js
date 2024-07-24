@@ -3,10 +3,9 @@ const Athlet = db.Athlet;
 const Requests = db.Requests;
 const statusCode = require('../utils/statusCode.json');
 const bcrypt = require('bcrypt');
-
+const voucherController = require("../controllers/voucherController");
 const { success, fail, message } = require('../helpers/response');
 const { hasDuplicateAthlet } = require('../helpers/hasDuplicateData');
-
 
 exports.findAll = async (req, res) => {
 
@@ -83,9 +82,10 @@ exports.delete = async (req, res) => {
         const { idAthlete } = req.params;
         const athlet = await Athlet.findByPk(idAthlete);
 
-        if (!athlet) return res.status(404).json(fail("Athlet not found"));
+        if (!athlet) return res.status(statusCode.NOT_FOUND).json(fail("Athlet not found"));
 
         await athlet.destroy({ where: { idAthlete: idAthlete } });
+        voucherController.deleteImage({ idAthlete });
 
         return res.status(statusCode.OK).json(message("Athlet deleted !"));
 

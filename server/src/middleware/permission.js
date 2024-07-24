@@ -11,7 +11,6 @@ module.exports = {
         }
     },
     permissionFRPj: (req, res, next) => {
-
         if (req.userPermission == 'fprj') {
             return next();
         } else {
@@ -20,7 +19,7 @@ module.exports = {
     },
     permissionBothEntities: (req, res, next) => {
         if (req.userPermission == 'fprj' || req.userPermission == 'gym') {
-            next();
+            return next();
         } else {
             return res.status(403).json(fail('Unauthorized User. This user must be the federation or a gym'));
         }
