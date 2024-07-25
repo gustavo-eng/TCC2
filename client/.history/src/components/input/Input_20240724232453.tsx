@@ -1,5 +1,4 @@
 
-import { Warning } from "@phosphor-icons/react";
 import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -18,7 +17,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 //todo adicionar component title
 const Input = forwardRef<HTMLInputElement, InputProps>(function ({
     placeholder = "Escreva aqui",
-    maxLength = 50,
+    maxLength = 32,
     label,
     errorMessage,
     className,
@@ -44,31 +43,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
                 <input
                     type={type}
                     data-cy={dataCy}
-                    {...rest}
                     ref={ref}
                     placeholder={placeholder}
                     aria-label={placeholder}
                     maxLength={maxLength}
                     className={twMerge(
-                        `w-full h-10 border text-sm text-gray-700 rounded-lg dark:bg-blockDark  brightness-105 px-2 disabled:cursor-not-allowed focus:outline-0 ${errorMessage
+                        `w-full h-10 border text-sm text-gray-700 rounded-lg dark:bg-blockDark dark:text-white brightness-105 px-2 disabled:cursor-not-allowed focus:outline-0 ${errorMessage
                             ? 'border-red-500 focus:border-red-500/70 dark:border-red-400 dark:focus:border-red-400/70'
-                            : 'border-gray-500 hover:border-green-900   focus:outline-none focus:ring-[0.8px] focus:ring-green-300'
+                            : 'border-gray-500 hover:border-green-900   focus:outline-none focus:ring focus:ring-green-300'
                         } ${icon ? 'pl-10 pb-1' : ''}`,
                         inputClassName,
                     )}
                 />
             </div>
-            <span
-                className={
-                    'flex items-center gap-2 px-1 py-1 text-sm font-medium text-red-500 dark:text-red-400'
-                }
-            >
-                {errorMessage && (
-                    <div>
-                        <Warning size={16} weight="bold" /> {errorMessage}
-                    </div>
-                )}
-            </span>
         </div>
     )
 })

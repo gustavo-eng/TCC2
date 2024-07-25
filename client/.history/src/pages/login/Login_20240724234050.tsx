@@ -15,7 +15,7 @@ export default function Login() {
                 onSubmit={() => console.log('submit')}
                 className="flex flex-col w-full gap-4"
             >
-                <Input />
+                <Input placeholder="fasdfaf" />
             </form>
         </>
     )

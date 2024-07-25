@@ -1,5 +1,4 @@
 
-import { Warning } from "@phosphor-icons/react";
 import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -18,7 +17,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 //todo adicionar component title
 const Input = forwardRef<HTMLInputElement, InputProps>(function ({
     placeholder = "Escreva aqui",
-    maxLength = 50,
+    maxLength = 62,
     label,
     errorMessage,
     className,
@@ -63,11 +62,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
                     'flex items-center gap-2 px-1 py-1 text-sm font-medium text-red-500 dark:text-red-400'
                 }
             >
-                {errorMessage && (
-                    <div>
-                        <Warning size={16} weight="bold" /> {errorMessage}
-                    </div>
-                )}
+
             </span>
         </div>
     )

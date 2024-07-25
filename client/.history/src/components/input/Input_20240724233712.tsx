@@ -18,7 +18,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 //todo adicionar component title
 const Input = forwardRef<HTMLInputElement, InputProps>(function ({
     placeholder = "Escreva aqui",
-    maxLength = 50,
+    maxLength = 62,
     label,
     errorMessage,
     className,
@@ -66,6 +66,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
                 {errorMessage && (
                     <div>
                         <Warning size={16} weight="bold" /> {errorMessage}
+
                     </div>
                 )}
             </span>
