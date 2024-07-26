@@ -2,7 +2,6 @@
 //todo Alterar esse codigo
 
 import { EnvelopeSimple, Warning } from "@phosphor-icons/react";
-import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
 
@@ -34,29 +33,13 @@ export default function Login() {
                     className="mb-0"
                     errorMessage={(!true) ? "Error" : ""}
                 />
-                {invalidCredentials && (
+                {!invalidCredentials && (
                     <div className="flex">
                         <label className="flex items-center text-sm mx-1 gap-2 font-normal text-red-500">
-                            <Warning size={23} weight="light" />
+                            <Warning size={23} />
                         </label>
                     </div>
                 )}
-
-                <div className="flex justify-end">
-                    <a
-                        href="/login"
-                        className="text-base font-semibold text-green-900 ms-1"
-                    >
-                        Esqueceu a senha?
-                    </a>
-                </div>
-
-                <ButtonPrimary
-                    // type="submit"
-                    text={true ? 'login' : 'continue'}
-                    loading={false}
-
-                />
 
             </form>
         </>

@@ -33,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
         <div className={twMerge('flex flex-col text-md items-start w-full', className)}>
             {label && (
                 /* Adicionar title*/
-                <label className="text-gray-500 text-sm font-semibold">{label}</label>
+                <label className="text-gray-500 text-sm">{label}</label>
             )}
             <div className="relative w-full rounded-md">
                 {icon && (

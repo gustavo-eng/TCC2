@@ -52,7 +52,7 @@ export default function Login() {
                 </div>
 
                 <ButtonPrimary
-                    // type="submit"
+                    type="submit"
                     text={true ? 'login' : 'continue'}
                     loading={false}
 

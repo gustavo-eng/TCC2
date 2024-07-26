@@ -29,7 +29,7 @@ export default function Login() {
                     errorMessage={(!true) ? "Error" : ""}
                 />
                 <PasswordInput
-                    label="Senha"
+                    label="Senxha"
                     placeholder="**********"
                     className="mb-0"
                     errorMessage={(!true) ? "Error" : ""}
@@ -52,12 +52,11 @@ export default function Login() {
                 </div>
 
                 <ButtonPrimary
-                    // type="submit"
+                    type="submit"
                     text={true ? 'login' : 'continue'}
                     loading={false}
 
                 />
-
             </form>
         </>
     )

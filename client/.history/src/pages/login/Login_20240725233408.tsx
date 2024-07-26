@@ -50,14 +50,13 @@ export default function Login() {
                         Esqueceu a senha?
                     </a>
                 </div>
-
+                dfafda
                 <ButtonPrimary
-                    // type="submit"
+                    type="submit"
                     text={true ? 'login' : 'continue'}
                     loading={false}
 
                 />
-
             </form>
         </>
     )

@@ -2,7 +2,6 @@
 //todo Alterar esse codigo
 
 import { EnvelopeSimple, Warning } from "@phosphor-icons/react";
-import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
 
@@ -13,6 +12,15 @@ export default function Login() {
     // ================ useComponent ================
     return (
         <>
+            <div className="flex lg:flex-shrink-0 lg:w-2/3 justify-center items-center">
+                <img
+                    src='https://scontent.fbnu1-1.fna.fbcdn.net/v/t39.30808-6/326487997_455875243283526_5495169521508801798_n.png?stp=dst-png_s960x960&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeF7D_Gyyjexmxz2bUbb6mnHKij_RnBKVBQqKP9GcEpUFM5GZAFNxtODvnPUwBpXvJZKJSxHeIH1gFM5RKxjqGcg&_nc_ohc=s2bsUQS-AggQ7kNvgHhcY98&_nc_ht=scontent.fbnu1-1.fna&gid=AJ7-QBRAr64SrME4g6vAIW-&oh=00_AYDg5naYWODQW_Xkexh9eBWDiRfBJtHzD5Y5qrEq_KI0Tg&oe=66A8C501'
+                //title="WEG Motion Fleet Management"
+                //description={t('mfm_description')}
+                //link={t('contact_us')}
+                //url="https://www.weg.net/institutional/US/pt/contact/contact-us"
+                />
+            </div>
             <h1 className="text-4xl mb-2">Bem Vindo</h1>
             <label className="text-base text-purple-900">
                 Entre com suas credenciais
@@ -51,12 +59,6 @@ export default function Login() {
                     </a>
                 </div>
 
-                <ButtonPrimary
-                    // type="submit"
-                    text={true ? 'login' : 'continue'}
-                    loading={false}
-
-                />
 
             </form>
         </>

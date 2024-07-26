@@ -2,7 +2,6 @@
 //todo Alterar esse codigo
 
 import { EnvelopeSimple, Warning } from "@phosphor-icons/react";
-import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
 
@@ -47,16 +46,9 @@ export default function Login() {
                         href="/login"
                         className="text-base font-semibold text-green-900 ms-1"
                     >
-                        Esqueceu a senha?
+                        Criar agora
                     </a>
                 </div>
-
-                <ButtonPrimary
-                    // type="submit"
-                    text={true ? 'login' : 'continue'}
-                    loading={false}
-
-                />
 
             </form>
         </>

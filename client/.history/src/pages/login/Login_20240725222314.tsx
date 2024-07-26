@@ -2,7 +2,6 @@
 //todo Alterar esse codigo
 
 import { EnvelopeSimple, Warning } from "@phosphor-icons/react";
-import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
 
@@ -51,14 +50,16 @@ export default function Login() {
                     </a>
                 </div>
 
-                <ButtonPrimary
-                    // type="submit"
-                    text={true ? 'login' : 'continue'}
-                    loading={false}
-
-                />
-
             </form>
+            <div className="flex lg:flex-shrink-0 lg:w-2/3 justify-center items-center">
+                <img
+                    src='https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.facebook.com%2FFPRJUDO%2F&psig=AOvVaw2Hkzf6dQrWN9JtDSpdB2k0&ust=1722043348652000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODwnMLFw4cDFQAAAAAdAAAAABAE'
+                //title="WEG Motion Fleet Management"
+                //description={t('mfm_description')}
+                //link={t('contact_us')}
+                //url="https://www.weg.net/institutional/US/pt/contact/contact-us"
+                />
+            </div>
         </>
     )
 }
