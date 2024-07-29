@@ -1,0 +1,9 @@
+.custom-step-size {
+    width: 1rem; /* Valor customizado */
+    height: 1rem; /* Valor customizado */
+}
+
+.wizard-icon-container {
+    color:  yellow;
+    background-color: yellow;
+}

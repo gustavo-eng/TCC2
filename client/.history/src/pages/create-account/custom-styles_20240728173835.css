@@ -1,0 +1,20 @@
+/*
+.custom-step-size {
+    width: 1rem;
+    height: 1rem;
+}
+*/
+/*wizard-icon-circle */
+.wizard-icon-container {
+    color:  yellow;
+    background-color: yellow;
+    width: 12px; /* Valor customizado */
+    /*height: 12px;*/
+}
+/*
+.wizard-icon-circle {
+    color:  green;
+    width: 12px;
+    background-color: yellow;
+}
+*/
