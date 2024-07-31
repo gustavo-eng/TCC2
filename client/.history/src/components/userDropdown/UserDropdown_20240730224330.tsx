@@ -59,7 +59,7 @@ export default function UserDropDown() {
                             <Link
                                 to={'/login'}
                                 onClick={closeDropDown}
-                                className=' flex items-center font-semibold gap-x-3.5 px-2 py-1 text-sm text-green-900 rounded-sm  bg-gray-100 '
+                                className=' flex items-center font-semibold gap-x-3.5 px-2 py-1 text-sm rounded-sm   bg-green-400 '
                             >
                                 Link
                             </Link>

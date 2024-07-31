@@ -1,6 +1,5 @@
 import { CaretDown } from '@phosphor-icons/react';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function UserDropDown() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -32,6 +31,7 @@ export default function UserDropDown() {
     }
 
 
+
     return (
         <>
             <div className='bg-white relative inline-block'>
@@ -46,24 +46,8 @@ export default function UserDropDown() {
                     <CaretDown size={16} weight='light' className={isOpen ? 'rotate-180' : ''} />
                 </button>
                 {isOpen && (
-                    <div className='transition-[opacity, margin] rounded-t-sm duration absolute right-[0.0rem] mt-1 bg-white shadow-md rounded-sm p-1 min-w-[14rem] z-10'>
-                        <div className='py-1 px-1 bg-gray-100 rounded-t-lg'>
-                            <p className='text-sm font-semibold text-gray-800'>
-                                Gustavo Dias
-                            </p>
-                            <p className='text-xs font-medium text-gray-800 '>
-                                gustavo@weg.net
-                            </p>
-                        </div>
-                        <div className='py-1 first:pt-2 last:pb-1'>
-                            <Link
-                                to={'/login'}
-                                onClick={closeDropDown}
-                                className=' flex items-center font-semibold gap-x-3.5 px-2 py-1 text-sm text-green-900 rounded-sm  bg-gray-100 '
-                            >
-                                Link
-                            </Link>
-                        </div>
+                    <div className='transition-[opacity, margin] duration absolute  mt-2 bg-white'>
+                        fadsf
                     </div>
                 )}
             </div>

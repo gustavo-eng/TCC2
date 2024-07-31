@@ -1,7 +1,6 @@
 import { Tab, TabGroup, TabList } from '@headlessui/react';
 import { Warning } from '@phosphor-icons/react';
 import { useMemo, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import '../components/tabs/styles.css';
 import { useTabs } from '../components/tabs/useTabs';
@@ -57,7 +56,7 @@ export default function LayoutMain({ componentName = 'tab' }) {
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="https://flowbite.com" className="flex items-center">
-                            <img src={'../src/assets/logoFPRJ.webp'} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FPRJ</span>
                         </a>
                         <div className="flex items-center lg:order-2">
@@ -98,11 +97,9 @@ export default function LayoutMain({ componentName = 'tab' }) {
                 <section>
                     <div className="w-full h-full flex justify-center bg-green-600">
                         {tabs[selectedTabIndex].component}
-                        <Outlet />
                     </div>
                 </section>
             </main>
-
         </div>
     );
 }

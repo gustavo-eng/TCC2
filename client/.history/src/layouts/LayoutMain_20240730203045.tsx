@@ -1,7 +1,6 @@
 import { Tab, TabGroup, TabList } from '@headlessui/react';
 import { Warning } from '@phosphor-icons/react';
 import { useMemo, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
 import '../components/tabs/styles.css';
 import { useTabs } from '../components/tabs/useTabs';
@@ -57,10 +56,11 @@ export default function LayoutMain({ componentName = 'tab' }) {
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                         <a href="https://flowbite.com" className="flex items-center">
-                            <img src={'../src/assets/logoFPRJ.webp'} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FPRJ</span>
                         </a>
                         <div className="flex items-center lg:order-2">
+                            <a href="#" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
                             <UserDropDown />
                             <button onClick={toggleMenu} data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded={isMenuOpen ? "true" : "false"}>
                                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
@@ -98,11 +98,9 @@ export default function LayoutMain({ componentName = 'tab' }) {
                 <section>
                     <div className="w-full h-full flex justify-center bg-green-600">
                         {tabs[selectedTabIndex].component}
-                        <Outlet />
                     </div>
                 </section>
             </main>
-
         </div>
     );
 }

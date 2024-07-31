@@ -84,7 +84,7 @@ export default function LayoutMain({ componentName = 'tab' }) {
                                                 }
                                             >
                                                 {tab.icon && tab.icon}
-                                                {tab.title}
+                                                {tab.title}f
                                             </Tab>
                                         ))}
                                     </TabList>

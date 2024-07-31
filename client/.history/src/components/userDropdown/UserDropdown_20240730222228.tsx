@@ -1,6 +1,5 @@
 import { CaretDown } from '@phosphor-icons/react';
 import { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function UserDropDown() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -51,18 +50,9 @@ export default function UserDropDown() {
                             <p className='text-sm font-semibold text-gray-800'>
                                 Gustavo Dias
                             </p>
-                            <p className='text-xs font-medium text-gray-800 '>
-                                gustavo@weg.net
+                            <p className='text-xs font-medium'>
+
                             </p>
-                        </div>
-                        <div className='py-1 first:pt-2 last:pb-1'>
-                            <Link
-                                to={'/login'}
-                                onClick={closeDropDown}
-                                className=' flex items-center font-semibold gap-x-3.5 px-2 py-1 text-sm text-green-900 rounded-sm  bg-gray-100 '
-                            >
-                                Link
-                            </Link>
                         </div>
                     </div>
                 )}

@@ -29,7 +29,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/main",
-        element: <div className=''>Esquece o comp</div>,
+        element: <div className=''></div>,
       },
     ]
   },
