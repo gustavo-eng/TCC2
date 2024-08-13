@@ -95,6 +95,8 @@ export default function TabPayments() {
                     onRemove={() => console.log('Remover')}
                 />
 
+
+
             </div>
 
         </div>
