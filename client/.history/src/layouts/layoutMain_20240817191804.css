@@ -1,0 +1,12 @@
+.bg-custom-image {
+    background-image: url('https://cdn6.campograndenews.com.br/uploads/noticias/2022/10/19/dd6af8b54f66316947c46611fbfa04dd7adbec0e.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    opacity: 0.7; /* Opacidade da imagem */
+  }
+
+  .overlay-content {
+    position: relative;
+    z-index: 1;
+  }

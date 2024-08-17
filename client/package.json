@@ -10,6 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ag-grid-community/client-side-row-model": "latest",
+    "@ag-grid-community/core": "latest",
+    "@ag-grid-community/react": "latest",
+    "@ag-grid-community/styles": "latest",
+    "@ag-grid-enterprise/excel-export": "latest",
+    "@ag-grid-enterprise/master-detail": "latest",
+    "@ag-grid-enterprise/multi-filter": "latest",
+    "@ag-grid-enterprise/set-filter": "latest",
     "@headlessui/react": "^2.1.2",
     "@hilla/react-components": "^2.3.19",
     "@phosphor-icons/react": "^2.1.7",
@@ -28,7 +36,7 @@
     "react-dom": "^18.3.1",
     "react-form-wizard-component": "^0.2.3",
     "react-router-dom": "^6.25.1",
-    "shadcn-ui": "^0.8.0",
+    "shadcn-ui": "^0.2.3",
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.6",
     "tailwindcss-animate": "^1.0.7"
