@@ -1,0 +1,174 @@
+[
+    {
+        "idPayment": 40,
+        "voucherPath": "src\\uploads\\6\\30.png",
+        "aproved": false,
+        "description": "",
+        "createdAt": "2024-07-05T02:30:25.000Z",
+        "updatedAt": "2024-07-05T02:30:25.000Z",
+        "idAthlete": 31,
+        "idCategory": null,
+        "idEvent": 30,
+        "Category": {
+          "idCategory": 3,
+          "gender": "Masculino",
+          "classCategory": "Mirim",
+          "weight": 73,
+          "createdAt": "2024-06-29T00:45:42.000Z",
+          "updatedAt": "2024-06-29T00:45:42.000Z"
+        },
+        "Athlet": {
+          "idAthlete": 7,
+          "cpf": "d0wewr777220398932",
+          "rg": "1.2e.3fref2.4",
+          "birth": null,
+          "phone": null,
+          "name": "lutador3",
+          "email": "gustavodias.2000@alunos.utfpr.edu.br",
+          "role": "athlet",
+          "password": "$2b$10$k/KZ12b8G7MfPj5zIq7Bk.TSqeJW92GSJPScjGnOB4A6l8kHtxo.q",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro de Carvalho",
+          "number": 243,
+          "city": "fasf",
+          "resetPasswordToken": null,
+          "resetPasswordExpires": null,
+          "createdAt": "2024-07-17T00:18:27.000Z",
+          "updatedAt": "2024-07-17T00:18:27.000Z",
+          "idGym": 1
+        },
+        "Event": {
+          "idEvent": 30,
+          "description": "Regional",
+          "price": 567.23,
+          "startDate": "2024-06-21T00:57:42.000Z",
+          "endDate": "2024-06-21T00:57:42.000Z",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro",
+          "number": 23,
+          "city": "Blumenau",
+          "createdAt": "2024-07-04T02:08:25.000Z",
+          "updatedAt": "2024-07-04T02:08:25.000Z",
+          "idTypeEvent": 3,
+          "typeEvent": {
+            "idTypeEvent": 3,
+            "type": "Paranaense",
+            "createdAt": "2024-06-21T00:38:06.000Z",
+            "updatedAt": "2024-06-21T00:38:06.000Z"
+          }
+        }
+      },
+      {
+        "idPayment": 40,
+        "voucherPath": "src\\uploads\\6\\30.png",
+        "aproved": false,
+        "description": "",
+        "createdAt": "2024-07-05T02:30:25.000Z",
+        "updatedAt": "2024-07-05T02:30:25.000Z",
+        "idAthlete": 31,
+        "idCategory": null,
+        "idEvent": 30,
+        "Category": {
+          "idCategory": 3,
+          "gender": "Masculino",
+          "classCategory": "Mirim",
+          "weight": 73,
+          "createdAt": "2024-06-29T00:45:42.000Z",
+          "updatedAt": "2024-06-29T00:45:42.000Z"
+        },
+        "Athlet": {
+          "idAthlete": 7,
+          "cpf": "d0wewr777220398932",
+          "rg": "1.2e.3fref2.4",
+          "birth": null,
+          "phone": null,
+          "name": "lutador3",
+          "email": "gustavodias.2000@alunos.utfpr.edu.br",
+          "role": "athlet",
+          "password": "$2b$10$k/KZ12b8G7MfPj5zIq7Bk.TSqeJW92GSJPScjGnOB4A6l8kHtxo.q",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro de Carvalho",
+          "number": 243,
+          "city": "fasf",
+          "resetPasswordToken": null,
+          "resetPasswordExpires": null,
+          "createdAt": "2024-07-17T00:18:27.000Z",
+          "updatedAt": "2024-07-17T00:18:27.000Z",
+          "idGym": 1
+        },
+        "Event": {
+          "idEvent": 30,
+          "description": "Regional",
+          "price": 567.23,
+          "startDate": "2024-06-21T00:57:42.000Z",
+          "endDate": "2024-06-21T00:57:42.000Z",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro",
+          "number": 23,
+          "city": "Blumenau",
+          "createdAt": "2024-07-04T02:08:25.000Z",
+          "updatedAt": "2024-07-04T02:08:25.000Z",
+          "idTypeEvent": 3,
+          "typeEvent": {
+            "idTypeEvent": 3,
+            "type": "Paranaense",
+            "createdAt": "2024-06-21T00:38:06.000Z",
+            "updatedAt": "2024-06-21T00:38:06.000Z"
+          }
+        }
+      },
+      {
+        "idPayment": 40,
+        "voucherPath": "src\\uploads\\6\\30.png",
+        "aproved": false,
+        "description": "",
+        "createdAt": "2024-07-05T02:30:25.000Z",
+        "updatedAt": "2024-07-05T02:30:25.000Z",
+        "idAthlete": 31,
+        "idCategory": null,
+        "idEvent": 30,
+        "Athlet": {
+          "idAthlete": 7,
+          "cpf": "d0wewr777220398932",
+          "rg": "1.2e.3fref2.4",
+          "birth": null,
+          "phone": null,
+          "name": "lutador3",
+          "email": "gustavodias.2000@alunos.utfpr.edu.br",
+          "role": "athlet",
+          "password": "$2b$10$k/KZ12b8G7MfPj5zIq7Bk.TSqeJW92GSJPScjGnOB4A6l8kHtxo.q",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro de Carvalho",
+          "number": 243,
+          "city": "fasf",
+          "resetPasswordToken": null,
+          "resetPasswordExpires": null,
+          "createdAt": "2024-07-17T00:18:27.000Z",
+          "updatedAt": "2024-07-17T00:18:27.000Z",
+          "idGym": 1
+        },
+        "Event": {
+          "idEvent": 30,
+          "description": "Regional",
+          "price": 567.23,
+          "startDate": "2024-06-21T00:57:42.000Z",
+          "endDate": "2024-06-21T00:57:42.000Z",
+          "neighborhood": "Conjunto Uniao",
+          "street": "Dario Ribeiro",
+          "number": 23,
+          "city": "Blumenau",
+          "createdAt": "2024-07-04T02:08:25.000Z",
+          "updatedAt": "2024-07-04T02:08:25.000Z",
+          "idTypeEvent": 3,
+          "typeEvent": {
+            "idTypeEvent": 3,
+            "type": "Paranaense",
+            "createdAt": "2024-06-21T00:38:06.000Z",
+            "updatedAt": "2024-06-21T00:38:06.000Z"
+          }
+        }
+      }
+
+
+
+]

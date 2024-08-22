@@ -36,6 +36,7 @@
     "react-dom": "^18.3.1",
     "react-form-wizard-component": "^0.2.3",
     "react-router-dom": "^6.25.1",
+    "react-select": "^5.8.0",
     "shadcn-ui": "^0.2.3",
     "tailwind-merge": "^2.4.0",
     "tailwindcss": "^3.4.6",
