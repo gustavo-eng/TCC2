@@ -60,11 +60,7 @@ export default function TabCompetitions() {
                 />
                 <DatePickerSingle date={date} setDate={setDate}/>
                 {isFprj && (
-                    <Button
-                        className="ml-2 mb-0.5 mt-2  lg:mt-0 bg-green-500 hover:bg-green-600 h-[3.6vh] w-fit  lg:w-fit p-2 rounded flex flex-row items-center "
-                         label="Evento"
-                         onClick={openModalEvent}
-                        >
+                    <Button className="ml-2 mb-0.5 mt-2  lg:mt-0 bg-green-500 hover:bg-green-600 h-[3.6vh] w-fit  lg:w-fit p-2 rounded flex flex-row items-center " label="Evento">
                         <Plus  size={18} className="bg-green-600   p-0.5 rounded-xl ml-1"/>
                     </Button>
                 )}

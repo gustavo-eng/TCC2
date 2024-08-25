@@ -6,20 +6,14 @@ import CardAction from "../card/CardAction";
 import DatePickerSingle from "../datePickerSingle/DatePickerSingle";
 import Input from "../input/Input";
 import ModalRegistration from "../modal/modalRegistration/ModalRegistration";
-import ModalRegistrationEvent from "../modal/modalRegistrationEvent/ModalRegistrationEvent";
 import Select from "../select/Select";
 
 
 export default function TabCompetitions() {
 
-    const [isModalEventOpen, setModalEventOpen] = useState(false);
     const [isFprj, setFprj] = useState<boolean>(true);
     const [isModalRegistration, setModalRegistration] = useState<boolean>(false);
     const [idEvent, setIdEvent] = useState<string>('');
-
-    //Event
-    const openModalEvent = () => setModalEventOpen(true);
-    const closeModalEvent = () => setModalEventOpen(false);
 
     const options = [
         { value: 'US', label: 'Todos' },
@@ -43,9 +37,7 @@ export default function TabCompetitions() {
 
     return (
         <div>
-            {/* Modais para cadastro */}
             <ModalRegistration isOpen={isModalRegistration} onClose={closeModalRegistration} idEvent={idEvent?.toString()}/>
-            <ModalRegistrationEvent isOpen={isModalEventOpen} onClose={closeModalEvent}/>
             <div className=" flex flex-col items-center font-medium text-green-700 text-[22px] mt-6">Eventos</div>
             <div className=" flex flex-row   justify-center items-end  mb-5 pr-2 flex-wrap">
                 <Input className=" flex flex-row items-end w-[40%] " inputClassName="h-[35px] rounded" label="Buscar" isOptional />
@@ -60,11 +52,7 @@ export default function TabCompetitions() {
                 />
                 <DatePickerSingle date={date} setDate={setDate}/>
                 {isFprj && (
-                    <Button
-                        className="ml-2 mb-0.5 mt-2  lg:mt-0 bg-green-500 hover:bg-green-600 h-[3.6vh] w-fit  lg:w-fit p-2 rounded flex flex-row items-center "
-                         label="Evento"
-                         onClick={openModalEvent}
-                        >
+                    <Button className="ml-2 mb-0.5 bg-green-500 hover:bg-green-600 h-[3.5vh] w-fit p-2 rounded flex flex-row items-center " label="Evento">
                         <Plus  size={18} className="bg-green-600   p-0.5 rounded-xl ml-1"/>
                     </Button>
                 )}

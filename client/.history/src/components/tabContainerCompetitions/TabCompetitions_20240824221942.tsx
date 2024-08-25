@@ -43,7 +43,7 @@ export default function TabCompetitions() {
 
     return (
         <div>
-            {/* Modais para cadastro */}
+            {/*Modais para cadastro */}
             <ModalRegistration isOpen={isModalRegistration} onClose={closeModalRegistration} idEvent={idEvent?.toString()}/>
             <ModalRegistrationEvent isOpen={isModalEventOpen} onClose={closeModalEvent}/>
             <div className=" flex flex-col items-center font-medium text-green-700 text-[22px] mt-6">Eventos</div>
@@ -60,11 +60,7 @@ export default function TabCompetitions() {
                 />
                 <DatePickerSingle date={date} setDate={setDate}/>
                 {isFprj && (
-                    <Button
-                        className="ml-2 mb-0.5 mt-2  lg:mt-0 bg-green-500 hover:bg-green-600 h-[3.6vh] w-fit  lg:w-fit p-2 rounded flex flex-row items-center "
-                         label="Evento"
-                         onClick={openModalEvent}
-                        >
+                    <Button className="ml-2 mb-0.5 mt-2  lg:mt-0 bg-green-500 hover:bg-green-600 h-[3.6vh] w-fit  lg:w-fit p-2 rounded flex flex-row items-center " label="Evento">
                         <Plus  size={18} className="bg-green-600   p-0.5 rounded-xl ml-1"/>
                     </Button>
                 )}

@@ -11,7 +11,6 @@ import LayoutLogin from '../src/layouts/Login';
 import TabCompetitions from './components/tabContainerCompetitions/TabCompetitions';
 import TabPayments from './components/tabContainerPayments/TabPayments';
 import TabListAthlets from './components/tabListAthlets/TabListAthlets';
-import TabListGyms from './components/TabListGyms/TabListGyms';
 import TabListRegistrations from './components/TabListRegistrations/tabListRegistrations';
 import TabRegisters from './components/tabRegisters/TabRegisters';
 import TabTestModal from './components/tabTestModal/TabTestModal';
@@ -22,10 +21,12 @@ import Login from './pages/login/Login';
 import PrivateRoute from './PrivateRoute';
 
 /*
+
 / rota protegida
 caso o usuario acessar essa rota e ele nao
 estiver autenticado, redireciona-lo para
 a rota /login
+
 */
 
 const router = createBrowserRouter([
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/lisGyms",
-        element: <TabListGyms />,
+        element: <>Tab List Gyms</>,
       },
     ]
   },
