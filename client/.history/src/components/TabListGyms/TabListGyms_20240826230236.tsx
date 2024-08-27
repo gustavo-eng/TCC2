@@ -12,9 +12,9 @@ function TabListGyms() {
     <div className="w-full h-full flex flex-col  items-start p-1">
       <div className=" w-full flex flex-col items-center text-center mb-4 mt-6">
         <h1 className="text-3xl font-bold bg-red text-green-600">Academias</h1>
-        <div className="w-full flex flex-row justify-center items-center mt-5 ">
+        <div className="w-full flex">
             <Input
-            className="w-1/2 h-full text-center"
+            className="w-1/2 text-center mt-5"
             />
             <ButtonAddGym text="Adicionar academia" onClick={handleClick} />
         </div>
