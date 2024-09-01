@@ -1,0 +1,15 @@
+.ag-theme-quartz .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.ag-header-cell-label {
+    justify-content: center;
+  }
+
+
+
+
+
