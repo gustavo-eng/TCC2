@@ -19,7 +19,7 @@ import ModalConfirmation, {
   ModalConfirmationHandle,
 } from "../../../modal/modalConfirmation/ModalConfirmation";
 
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash } from "lucide-react";
 import Input from "../../../input/Input";
 import ModalEditAthlet from "../../../modal/modalEditAthlet/ModalEditAthlet";
 
@@ -42,7 +42,7 @@ function editButtonsTable(onClick: () => void) {
   return (
     <div className="h-full flex flex-row justify-center items-center">
       <Edit
-        width={18}
+        width={20}
         className="text-green-600 font-bold mr-4 cursor-pointer"
         onClick={onClick}
       />
@@ -53,9 +53,9 @@ function editButtonsTable(onClick: () => void) {
 function removeButtonTable(onClick: () => void) {
   return (
     <div className="h-full flex flex-row justify-center items-center">
-      <Trash2
-        width={18}
-        className="text-red-600 cursor-pointer"
+      <Trash
+        width={17}
+        className="text-red-800 cursor-pointer"
         onClick={onClick}
       />
     </div>

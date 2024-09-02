@@ -109,7 +109,7 @@ export default function LayoutMain({ componentName = "tab" }) {
                 onClick={toggleMenu}
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
-                className="inline-flex items-center p-1  text-sm rounded-lg lg:hidden"
+                className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none "
                 aria-controls="mobile-menu-2"
                 aria-expanded={isMenuOpen ? "true" : "false"}
               >

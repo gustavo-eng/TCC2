@@ -60,7 +60,6 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                 </p>
                 <div className="flex justify-center items-center space-x-4">
                   <Button
-                    label='Cancelar'
                     onClick={() => {
                       onCancel();
                       closeModal();
@@ -68,18 +67,18 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-white  rounded-lg border border-gray-200 hover:bg-red-700  focus:outline-none  focus:z-10 bg-red-500"
                   >
-
+                    Cancelar
                   </Button>
-                  <Button
-                    label='Sim'
+                  <button
                     onClick={() => {
                       onConfirm();
                       closeModal();
                     }}
                     type="submit"
-                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700  "
-                  />
-
+                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-red-300 "
+                  >
+                    Sim
+                  </button>
                 </div>
               </div>
             </div>

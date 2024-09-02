@@ -77,7 +77,7 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                       closeModal();
                     }}
                     type="submit"
-                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700  "
+                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-red-300 "
                   />
 
                 </div>

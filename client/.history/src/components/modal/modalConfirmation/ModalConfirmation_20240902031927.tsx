@@ -1,6 +1,5 @@
 import { Trash } from '@phosphor-icons/react';
 import { forwardRef, useImperativeHandle, useState } from 'react';
-import Button from '../../buttons/button';
 
 interface ModalConfirmationProps {
   onConfirm: () => void;
@@ -54,13 +53,25 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                   </svg>
 
                 </button>
-                <Trash size={45}  className="text-red-500  mb-3.5 mx-auto"/>
+                <Trash size={55} className="text-gray-400  mb-3.5 mx-auto"/>
+                {/* <svg
+                  className="text-gray-400  w-11 h-11 mb-3.5 mx-auto"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg> */}
                 <p className="mb-4 text-gray-500 ">
                   Você tem certeza que deseja realizar essa operação ?
                 </p>
                 <div className="flex justify-center items-center space-x-4">
-                  <Button
-                    label='Cancelar'
+                  <button
                     onClick={() => {
                       onCancel();
                       closeModal();
@@ -68,18 +79,18 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-white  rounded-lg border border-gray-200 hover:bg-red-700  focus:outline-none  focus:z-10 bg-red-500"
                   >
-
-                  </Button>
-                  <Button
-                    label='Sim'
+                    Cancelar
+                  </button>
+                  <button
                     onClick={() => {
                       onConfirm();
                       closeModal();
                     }}
                     type="submit"
-                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700  "
-                  />
-
+                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-red-300 "
+                  >
+                    Sim
+                  </button>
                 </div>
               </div>
             </div>

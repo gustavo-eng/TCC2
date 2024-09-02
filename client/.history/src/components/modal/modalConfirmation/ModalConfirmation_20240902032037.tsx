@@ -1,6 +1,5 @@
 import { Trash } from '@phosphor-icons/react';
 import { forwardRef, useImperativeHandle, useState } from 'react';
-import Button from '../../buttons/button';
 
 interface ModalConfirmationProps {
   onConfirm: () => void;
@@ -59,8 +58,7 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                   Você tem certeza que deseja realizar essa operação ?
                 </p>
                 <div className="flex justify-center items-center space-x-4">
-                  <Button
-                    label='Cancelar'
+                  <button
                     onClick={() => {
                       onCancel();
                       closeModal();
@@ -68,18 +66,18 @@ const ModalConfirmation = forwardRef<ModalConfirmationHandle, ModalConfirmationP
                     type="button"
                     className="py-2 px-3 text-sm font-medium text-white  rounded-lg border border-gray-200 hover:bg-red-700  focus:outline-none  focus:z-10 bg-red-500"
                   >
-
-                  </Button>
-                  <Button
-                    label='Sim'
+                    Cancelar
+                  </button>
+                  <button
                     onClick={() => {
                       onConfirm();
                       closeModal();
                     }}
                     type="submit"
-                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700  "
-                  />
-
+                    className="py-2 px-3 text-sm font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-red-300 "
+                  >
+                    Sim
+                  </button>
                 </div>
               </div>
             </div>
