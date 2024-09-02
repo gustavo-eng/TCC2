@@ -40,11 +40,11 @@ interface PropsTableRegisters {
 
 const validateButton = (onClick: () => void) => {
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center ">
+    <div className="h-full w-full flex flex-col items-center justify-center">
       <Button
-        className="h-fit lg:h-[60%] w-fit p-1 rounded-md bg-green-500 hover:bg-green-500/90"
+        className="h-[60%] w-fit p-1 rounded-md bg-green-500 hover:bg-green-500/90"
         label="Inscrição"
-        classNameLabel="text-xs  font-semibold flex flex-col items-center"
+        classNameLabel="text-sm flex flex-col items-center"
         onClick={onClick}
       />
     </div>
@@ -162,7 +162,6 @@ function TableRegisters({
       },
       filter: "agTextColumnFilter",
       flex: 1,
-
     },
     {
       field: "Category.gender",

@@ -1,0 +1,39 @@
+.ag-theme-quartz .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.ag-header-cell-label {
+ justify-content: center;
+}
+
+
+/* style.css */
+
+/* Para dispositivos móveis */
+@media (max-width: 768px) {
+  .ag-theme-quartz .ag-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: auto !important;
+  }
+
+  .ag-theme-quartz .ag-cell {
+
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .ag-theme-quartz .ag-header-cell {
+    display: none; /* Esconder os cabeçalhos de coluna */
+  }
+}
+
+
+
+

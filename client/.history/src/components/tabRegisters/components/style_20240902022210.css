@@ -1,0 +1,34 @@
+.ag-theme-quartz .header-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.ag-header-cell-label {
+ justify-content: center;
+}
+
+
+/* style.css */
+
+/* Para dispositivos móveis */
+@media (max-width: 768px) {
+    .ag-theme-quartz .ag-row {
+
+      flex-direction: row;
+
+    }
+
+    .ag-theme-quartz .ag-cell {
+
+
+      padding: 0px;
+
+    }
+
+  }
+
+
+
+

@@ -88,7 +88,7 @@ export default function LayoutMain({ componentName = "tab" }) {
   //const { selectedTabIndex } = useTabs(tabs, componentName);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
+    <div className="flex flex-col h-screen bg-green-50">
       <header className="h-fit w-full ">
         <nav className="  px-4 lg:px-6 pt-1 pb-0 lg:pb-0  bg-gradient-to-br from-slate-900 to-slate-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">

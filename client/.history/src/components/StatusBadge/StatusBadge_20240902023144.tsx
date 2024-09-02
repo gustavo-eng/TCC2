@@ -22,7 +22,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
     <div className="">
       <div className="p-0 lg:pl-1">
         <span
-          className={`text-[10px] lg:text-xs font-medium me-2 px-1.5  lg:px-2.5 py-0.5 rounded border ${getStatusClasses()}`}
+          className={`text-xs font-medium me-2 px-2 py-0.5 rounded border ${getStatusClasses()}`}
         >
           {status}
         </span>

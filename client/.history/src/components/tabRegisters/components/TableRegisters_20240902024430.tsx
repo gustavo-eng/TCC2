@@ -40,11 +40,11 @@ interface PropsTableRegisters {
 
 const validateButton = (onClick: () => void) => {
   return (
-    <div className="h-full w-full flex flex-col items-center justify-center ">
+    <div className="h-full w-full flex flex-col items-center justify-center bg-red-300">
       <Button
-        className="h-fit lg:h-[60%] w-fit p-1 rounded-md bg-green-500 hover:bg-green-500/90"
+        className="h-[60%] w-fit p-1 rounded-md bg-green-500 hover:bg-green-500/90"
         label="Inscrição"
-        classNameLabel="text-xs  font-semibold flex flex-col items-center"
+        classNameLabel="text-sm flex flex-col items-center"
         onClick={onClick}
       />
     </div>

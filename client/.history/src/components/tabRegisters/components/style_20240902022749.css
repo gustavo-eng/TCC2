@@ -10,34 +10,26 @@
 }
 
 
-.ag-icon-filter {display: none;}
+/* style.css */
 
 /* Para dispositivos móveis */
 @media (max-width: 768px) {
-    /*
     .ag-theme-quartz .ag-row {
 
     }
-    */
+
     .header-center {
         font-size: x-small;
     }
+
     .ag-theme-quartz .ag-cell {
       display: block;
       padding: 0px;
-      font-size: x-small;
+      font-size: smaller;
       box-sizing: border-box;
     }
 
-    .ag-theme-quartz .ag-paging-panel {
-        font-size: 8px; /* Tamanho desejado */
-        color: black;
-        font-weight: 600;
-        padding: 1px;
-        margin: 0;
-        height: auto;
-    }
-}
+  }
 
 
 
