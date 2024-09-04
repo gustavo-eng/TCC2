@@ -30,17 +30,23 @@ export default function LayoutMain({ componentName = "tab" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGym, setIsGym] = useState<boolean>(true);
   const dispatch = useDispatch();
-  const user = useAppSelector(userSelector)
-
+  const user10 = useAppSelector(userSelector)
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [user, setUser] = useState<any>({});
+
 
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
-  }, []);
 
+    dispatch(setRole({"nome": "Gustavo", "role": "admin"}));
+    console.log(`Usseeeeeeer `, user10 )
+    setUser({
+      name: "João",
+      role: "athlet",
+    });
+  }, []);
 
 
   {

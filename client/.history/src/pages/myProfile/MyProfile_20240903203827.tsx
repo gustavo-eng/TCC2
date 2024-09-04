@@ -3,6 +3,7 @@ import Input from "../../components/input/Input";
 
 function MyProfile() {
 
+
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
       <div className="flex flex-col justify-center gap-3 items-center text-center w-full ">
@@ -11,7 +12,7 @@ function MyProfile() {
         </h1>
         {/* Grid */}
         <div className=" w-fit grid grid-cols-2 gap-1 text-sm mx-auto ">
-          <p className="text-gray-500">Rua: Avenida 15 </p>
+          <p className="text-gray-500">Rua: Avenida 15ffff </p>
           <p className="text-gray-500">CPF: 077.703.989 </p>
           <p className="text-gray-500">Numero: 23 </p>
           <p className="text-gray-500">RG: 077.703.989</p>

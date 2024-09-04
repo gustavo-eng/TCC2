@@ -15,9 +15,8 @@ import "../components/tabs/styles.css";
 import Tabs from "../components/tabs/Tabs";
 import TabTestModal from "../components/tabTestModal/TabTestModal";
 import UserDropDown from "../components/userDropdown/UserDropdown";
-import useAppSelector from "../hooks/useAppSelector";
-import { setRole, userSelector } from '../store/user/userReducer';
 import "./layoutMain.css";
+
 export interface TabsProps {
   id: string;
   icon?: React.ReactNode;
@@ -30,17 +29,22 @@ export default function LayoutMain({ componentName = "tab" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGym, setIsGym] = useState<boolean>(true);
   const dispatch = useDispatch();
-  const user = useAppSelector(userSelector)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const [user, setUser] = useState<any>({});
+
 
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
-  }, []);
+    console.log('layout main')
 
+    setUser({
+      name: "João",
+      role: "athlet",
+    });
+  }, []);
 
 
   {

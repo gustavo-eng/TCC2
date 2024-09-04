@@ -3,6 +3,7 @@ import Input from "../../components/input/Input";
 
 function MyProfile() {
 
+
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
       <div className="flex flex-col justify-center gap-3 items-center text-center w-full ">

@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Button from "../../components/buttons/button";
 import Input from "../../components/input/Input";
 
 function MyProfile() {
+
+  const [isGym, setIsGym] = useState<boolean>(true);
+  const [isAthlet, setIsAthlet] = useState<boolean>(false);
 
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
@@ -12,13 +16,13 @@ function MyProfile() {
         {/* Grid */}
         <div className=" w-fit grid grid-cols-2 gap-1 text-sm mx-auto ">
           <p className="text-gray-500">Rua: Avenida 15 </p>
-          <p className="text-gray-500">CPF: 077.703.989 </p>
+          <p className="text-gray-500">{isGym ? 'CNPJ': 'CPF'}: 077.703.989 </p>
           <p className="text-gray-500">Numero: 23 </p>
-          <p className="text-gray-500">RG: 077.703.989</p>
+          { isAthlet && <p className="text-gray-500">RG: 077.703.989</p>}
           <p className="text-gray-500">Cidade: Londrina </p>
           <p className="text-gray-500">Telefone: 43996033944 </p>
           <p className="text-gray-500">Bairro: Centro </p>
-          <p className="text-gray-500">Nascimento: 26/09/2000</p>
+          {isAthlet &&  <p className="text-gray-500">Nascimento: 26/09/2000</p>}
         </div>
       </div>
       <div className="w-full flex flex-col items-center gap-2 ">

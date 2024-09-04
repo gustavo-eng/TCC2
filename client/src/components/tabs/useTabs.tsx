@@ -10,7 +10,6 @@ export function useTabs(tabs: TabsProps[], componentName: string) {
         (id: string) => {
             params.set(componentName, id);
             setParams(params);
-            console.warn('params ', params)
         },
         [params, setParams, componentName],
     );

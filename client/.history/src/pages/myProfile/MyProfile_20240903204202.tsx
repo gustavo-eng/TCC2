@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Button from "../../components/buttons/button";
 import Input from "../../components/input/Input";
 
 function MyProfile() {
+
+  const [isGym, setIsGym] = useState<boolean>(true);
+  const [isAthlet, setIsAthlet] = useState<boolean>(true);
 
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">

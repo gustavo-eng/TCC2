@@ -7,7 +7,6 @@ import {
   RouterProvider
 } from "react-router-dom";
 
-import { Provider } from 'react-redux';
 import LayoutLogin from '../src/layouts/Login';
 import TabCompetitions from './components/tabContainerCompetitions/TabCompetitions';
 import TabPayments from './components/tabContainerPayments/TabPayments';
@@ -20,10 +19,9 @@ import CreateAccount2 from './pages/create-account/CreateAccount';
 import ErrorPage from './pages/error-page/errorPage';
 import ForgotPassword from './pages/forgot-password/ForgotPassword';
 import Login from './pages/login/Login';
-import MyGym from './pages/MyGym/MyGym';
 import MyProfile from './pages/myProfile/MyProfile';
 import PrivateRoute from './PrivateRoute';
-import store from './store/store';
+
 /*
 / rota protegida
 caso o usuario acessar essa rota e ele nao
@@ -69,10 +67,6 @@ const router = createBrowserRouter([
       {
         path: "/myProfile",
         element: <MyProfile />
-      },
-      {
-        path: "/myGym",
-        element: <MyGym />
       }
     ]
   },
@@ -100,8 +94,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router}  />
-    </Provider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

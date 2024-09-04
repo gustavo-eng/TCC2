@@ -1,10 +1,11 @@
 import Button from "../../components/buttons/button";
 import Input from "../../components/input/Input";
 
-function MyProfile() {
 
-  return (
-    <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
+function MyGym() {
+
+    return (
+        <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
       <div className="flex flex-col justify-center gap-3 items-center text-center w-full ">
         <h1 className="text-2xl text-green-500 font-semibold mt-5">
           Gustavo Alexandre Dias
@@ -39,7 +40,7 @@ function MyProfile() {
 
       </div>
     </div>
-  );
+    )
 }
 
-export default MyProfile;
+export default MyGym;

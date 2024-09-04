@@ -23,7 +23,7 @@ import Login from './pages/login/Login';
 import MyGym from './pages/MyGym/MyGym';
 import MyProfile from './pages/myProfile/MyProfile';
 import PrivateRoute from './PrivateRoute';
-import store from './store/store';
+
 /*
 / rota protegida
 caso o usuario acessar essa rota e ele nao
@@ -100,7 +100,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider>
       <RouterProvider router={router}  />
     </Provider>
   </React.StrictMode>,

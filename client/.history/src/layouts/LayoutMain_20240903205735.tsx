@@ -8,16 +8,14 @@ import {
   User,
 } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
-import { useDispatch } from 'react-redux';
 import { Outlet } from "react-router-dom";
 import BellNotifications from "../components/bell-notifications/BellNotifications";
 import "../components/tabs/styles.css";
 import Tabs from "../components/tabs/Tabs";
 import TabTestModal from "../components/tabTestModal/TabTestModal";
 import UserDropDown from "../components/userDropdown/UserDropdown";
-import useAppSelector from "../hooks/useAppSelector";
-import { setRole, userSelector } from '../store/user/userReducer';
 import "./layoutMain.css";
+
 export interface TabsProps {
   id: string;
   icon?: React.ReactNode;
@@ -29,19 +27,18 @@ export default function LayoutMain({ componentName = "tab" }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGym, setIsGym] = useState<boolean>(true);
-  const dispatch = useDispatch();
-  const user = useAppSelector(userSelector)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
+  const [user, setUser] = useState<any>({});
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
+    setUser({
+      name: "João",
+      role: "gym",
+    });
   }, []);
-
-
 
   {
     /* <Building size={22} />*/
@@ -71,6 +68,7 @@ export default function LayoutMain({ componentName = "tab" }) {
           icon: <User size={20} />,
           component: <TabTestModal />,
         },
+
         //{ id: "testModal", icon: <Bird />, component: <TabTestModal /> },
       ];
     } else {
@@ -115,7 +113,7 @@ export default function LayoutMain({ componentName = "tab" }) {
                 className="inline-flex items-center p-1  text-sm rounded-lg lg:hidden"
                 aria-controls="mobile-menu-2"
                 aria-expanded={isMenuOpen ? "true" : "false"}
-              >
+              >fffffffffffffffffffffffff
                 <svg
                   className="w-6 h-6 text-white"
                   fill="currentColor"

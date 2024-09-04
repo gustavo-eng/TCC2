@@ -10,10 +10,10 @@ function TabRegisters() {
     //console.warn('paramsfff ', params)
     //http://localhost:5173/registersAthlets/23/?tab=registersAthlets
     return (
-        <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
+        <div className="w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
             <div className=" flex flex-col items-center font-medium text-green-700 text-[22px]">
                 <h1 className="mt-1 mb-4 text-3xl font-bold  text-green-600">
-                  Incrições
+                  Incriçõesddff
                   { /* Incrições  {idEvent && ` - ${idEvent}`} */}
                 </h1>
             </div>

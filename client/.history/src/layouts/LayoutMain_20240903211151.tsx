@@ -8,16 +8,14 @@ import {
   User,
 } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
-import { useDispatch } from 'react-redux';
 import { Outlet } from "react-router-dom";
 import BellNotifications from "../components/bell-notifications/BellNotifications";
 import "../components/tabs/styles.css";
 import Tabs from "../components/tabs/Tabs";
 import TabTestModal from "../components/tabTestModal/TabTestModal";
 import UserDropDown from "../components/userDropdown/UserDropdown";
-import useAppSelector from "../hooks/useAppSelector";
-import { setRole, userSelector } from '../store/user/userReducer';
 import "./layoutMain.css";
+
 export interface TabsProps {
   id: string;
   icon?: React.ReactNode;
@@ -29,19 +27,18 @@ export default function LayoutMain({ componentName = "tab" }) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isGym, setIsGym] = useState<boolean>(true);
-  const dispatch = useDispatch();
-  const user = useAppSelector(userSelector)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
+  const [user, setUser] = useState<any>({});
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
+    setUser({
+      name: "João",
+      role: "gym",
+    });
   }, []);
-
-
 
   {
     /* <Building size={22} />*/
@@ -71,6 +68,7 @@ export default function LayoutMain({ componentName = "tab" }) {
           icon: <User size={20} />,
           component: <TabTestModal />,
         },
+
         //{ id: "testModal", icon: <Bird />, component: <TabTestModal /> },
       ];
     } else {
@@ -146,7 +144,7 @@ export default function LayoutMain({ componentName = "tab" }) {
       </header>
       <main className=" h-screen flex flex-col overflow-auto ">
         <section className="  w-full h-full flex flex-col items-center  ">
-          <div className=" lg:w-[75%] h-full  w-fit mt-0 lg:mt-3 mb-2 bg-slate-50 shadow  flex justify-center items-start rounded-lg overflow-auto">
+          <div className=" lg:w-[75%] h-screen  w-fit mt-0 lg:mt-3 mb-2 bg-slate-50 shadow  flex justify-center items-start rounded-lg overflow-auto">
             {/* tabs[selectedTabIndex].component */}
             <Outlet />
           </div>
