@@ -26,6 +26,7 @@ const CardsGym: React.FC<CardProps> = ({
 
   const modalRef = useRef<ModalConfirmationHandle>(null);
 
+
   return (
     <div className=" m-1 w-fit h-fit p-2 bg-white rounded-lg shadow-md border-l-[9px] border-l-green-400  border-gray-200 hover:bg-gray-50">
       <ModalConfirmation

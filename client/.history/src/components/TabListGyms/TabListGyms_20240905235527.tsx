@@ -1,5 +1,6 @@
 import GlobalTile from "../GlobalTitle/GlobalTitle";
 import Input from "../input/Input";
+import ModalConfirmation from "../modal/modalConfirmation/ModalConfirmation";
 import ButtonAddGym from "./components/buttonAddGym/buttonAddGym";
 import CardsGym from "./components/CardsGym/CardsGym";
 
@@ -9,17 +10,20 @@ function TabListGyms() {
     alert('Botão clicado!');
   };
 
-
   return (
     <div className="w-full h-full flex flex-col  items-start p-1">
-
+      <ModalConfirmation onConfirm={function (): void {
+        throw new Error("Function not implemented.");
+      } } onCancel={function (): void {
+        throw new Error("Function not implemented.");
+      } } />
       <div className=" w-full flex flex-col items-center text-center mb-4 ">
       <GlobalTile title="Academias"/>
         <div className="w-full flex flex-row justify-center items-center mt-5 ">
             <Input
             className="w-1/2 h-full text-center"
             />
-            <ButtonAddGym text="Adicionar academia" onClick={() => console.log('Create Gym')} />
+            <ButtonAddGym text="Adicionar academia" onClick={handleClick} />
         </div>
       </div>
       <div className="w-full flex flex-row flex-wrap lg:justify-start justify-center">

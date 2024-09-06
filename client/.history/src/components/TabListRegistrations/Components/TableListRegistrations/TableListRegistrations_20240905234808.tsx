@@ -41,7 +41,7 @@ const validateButton = (onClick: () => void) => {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center">
       <Button
-        className="h-[60%] w-fit p-3 flex flex-col justify-center items-center text-center rounded hover:bg-green-500 bg-green-600/80"
+        className="h-[60%] w-fit p-1 flex flex-col justify-center items-center text-center rounded hover:bg-green-500 bg-blue-600/70"
         label="Validar"
         classNameLabel="flex flex-col items-center"
         onClick={onClick}

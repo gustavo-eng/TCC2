@@ -9,6 +9,7 @@ function TabListGyms() {
     alert('Botão clicado!');
   };
 
+  //const modalRef = useRef<ModalConfirmationHandle>(null);
 
   return (
     <div className="w-full h-full flex flex-col  items-start p-1">

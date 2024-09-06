@@ -23,7 +23,6 @@ const CardsGym: React.FC<CardProps> = ({
   telefone,
   titulo,
 }) => {
-
   const modalRef = useRef<ModalConfirmationHandle>(null);
 
   return (

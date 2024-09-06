@@ -23,7 +23,6 @@ const CardsGym: React.FC<CardProps> = ({
   telefone,
   titulo,
 }) => {
-
   const modalRef = useRef<ModalConfirmationHandle>(null);
 
   return (
@@ -69,7 +68,7 @@ const CardsGym: React.FC<CardProps> = ({
             <Button
               className="p-1.5 px-5 bg-red-500/80 text-white rounded-lg hover:bg-red-500/90"
               label="Deletar"
-              onClick={() => modalRef.current?.openModal()}
+              onClick={modalRef.current?.openModal()}
             />
             <Button
               className="p-1.5 px-5 bg-green-500 text-white rounded-lg hover:bg-green-600"
