@@ -13,6 +13,9 @@ function TabListGyms() {
   const closeModalRegisterGym = () => setIsModalGymOpen(false);
 
 
+
+
+
   return (
     <div className="w-full h-full flex flex-col  items-start p-1">
       <ModalRegisterGym

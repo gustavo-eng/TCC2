@@ -3,7 +3,7 @@ import TableListRegistrations from "./Components/TableListRegistrations/TableLis
 import dataMocked from './Components/mock/dataListRegistrations.json';
 function TabListRegistrations(){
     return (
-        <div className="w-screen flex flex-col justify-center items-center p-3">
+        <div className="w-full bg-red-200 flex flex-col justify-center items-center p-3">
             <GlobalTile title="Pagamentos e inscrições"/>
             <TableListRegistrations tableJSON={dataMocked}/>
         </div>

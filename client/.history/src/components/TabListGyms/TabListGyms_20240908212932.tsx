@@ -12,12 +12,24 @@ function TabListGyms() {
   const openModalRegisterGym = () => setIsModalGymOpen(true);
   const closeModalRegisterGym = () => setIsModalGymOpen(false);
 
+  const onCloseModalRegisterGym = () => {
+    setIsModalGymOpen(false);
+  }
+
+  const openModalRegisterGym = () => {
+    setIsModalGymOpen(true);
+  }
+
+  const handleClick = () => {
+    alert('Botão clicado!');
+  };
+
 
   return (
     <div className="w-full h-full flex flex-col  items-start p-1">
       <ModalRegisterGym
         isOpen={isModalGymOpen}
-        onClose={closeModalRegisterGym}
+        onClose={onCloseModalRegisterGym}
       />
       <div className=" w-full flex flex-col items-center text-center mb-4 ">
       <GlobalTile title="Academias"/>

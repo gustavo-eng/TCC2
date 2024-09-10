@@ -37,7 +37,7 @@ export default function LayoutMain({ componentName = "tab" }) {
 
 
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "fprj"}));
+    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
   }, []);
 
 

@@ -41,6 +41,9 @@ export default function LayoutMain({ componentName = "tab" }) {
   }, []);
 
 
+  {
+    /* <Building size={22} />*/
+  }
   const tabs = useMemo(() => {
     if (user.role === "athlet") {
       return [

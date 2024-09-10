@@ -37,10 +37,13 @@ export default function LayoutMain({ componentName = "tab" }) {
 
 
   useEffect(() => {
-    dispatch(setRole({"nome": "Gustavo", "role": "fprj"}));
+    dispatch(setRole({"nome": "Gustavo", "role": "athlet"}));
   }, []);
 
 
+  {
+    /* <Building size={22} />*/
+  }
   const tabs = useMemo(() => {
     if (user.role === "athlet") {
       return [
