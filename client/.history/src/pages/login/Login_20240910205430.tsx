@@ -1,38 +1,16 @@
 
 //todo Alterar esse codigo
 
-import { Warning } from "@phosphor-icons/react";
-import { useState } from "react";
+import { EnvelopeSimple, Warning } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
-import { getCookie, setCookie } from "typescript-cookie";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
-import client from "../../service/client";
 
 export default function Login() {
-
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-
-
     const navigate = useNavigate();
 
     let invalidCredentials = false;
-
-    const handleLogin = async (event: React.FormEvent) => {
-        event.preventDefault();
-        try {
-            const result = await client.auth.post({email, password});
-            console.warn('Result ', result);
-            setCookie('authorization', result.token)
-            let token = getCookie('authorization')
-            console.log('TOKEN GERADO ', token)
-        } catch(err) {
-            console.log('Error no login. Error => ', err)
-        }
-
-    }
 
     return (
         <>
@@ -40,14 +18,14 @@ export default function Login() {
             <label className="text-base font-normal mb-6 w-full  text-center">
             </label>
             <form
-                onSubmit={handleLogin}
+                onSubmit={() => console.log('submit')}
                 className="flex flex-col w-full gap-4"
             >
                 <Input
                     label="Email"
                     type="text"
                     placeholder="Digite seu email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    ;;icon={< EnvelopeSimple size={20} weight="light" />}
                     errorMessage={(!true) ? "Error" : ""}
                 />
 
@@ -55,7 +33,6 @@ export default function Login() {
                     label="Senha"
                     placeholder="**********"
                     className="mb-0"
-                    onChange={(e) => setPassword(e.target.value)}
                     errorMessage={(!true) ? "Error" : ""}
                 />
                 {invalidCredentials && (
@@ -77,7 +54,7 @@ export default function Login() {
 
                 </div>
                 <ButtonPrimary
-                    type="submit"
+                    // type="submit"
                     text={true ? 'Entrar' : 'continue'}
                     loading={false}
                 />

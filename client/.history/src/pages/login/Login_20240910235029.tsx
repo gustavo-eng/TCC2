@@ -4,7 +4,7 @@
 import { Warning } from "@phosphor-icons/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCookie, setCookie } from "typescript-cookie";
+import { setCookie } from "typescript-cookie";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
@@ -26,8 +26,6 @@ export default function Login() {
             const result = await client.auth.post({email, password});
             console.warn('Result ', result);
             setCookie('authorization', result.token)
-            let token = getCookie('authorization')
-            console.log('TOKEN GERADO ', token)
         } catch(err) {
             console.log('Error no login. Error => ', err)
         }
