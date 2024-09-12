@@ -15,28 +15,25 @@ router.post("/signIn", async (req, res) => {
     let { email, password } = req.body;
 
     try {
-
         let user = await returnUser({ email: email });
-        if (!user) res.status(statusCode.NOT_FOUND).json(fail("User not found !"));
+        if (!user) {
+            return res.status(statusCode.NOT_FOUND).json(fail("User not found!"));
+        }
 
         let passwordIsValid = bcrypt.compareSync(password, user.password);
-
-        if (!passwordIsValid) return res.status(statusCode.UNAUTHORIZED).json(fail("Invalid Credentials"));
-
+        if (!passwordIsValid) {
+            return res.status(statusCode.UNAUTHORIZED).json(fail("Invalid Credentials"));
+        }
 
         if (user.role.includes('athlet')) {
-
             let isAccepted = await isAcceptedAthlet(user.idAthlete);
 
             if (isAccepted) {
                 let token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idAthlete }, process.env.SECRET_JWT, { expiresIn: '24h' });
-                return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
+                return res.json({ user: user, status: true, isLogged: true, token: token, msg: 'User successfully authenticated', userPermission: user.role });
             } else {
-
                 return res.status(statusCode.NOT_FOUND).json(fail("Request pending..."));
-
             }
-
         } else { // Gym or FPRJ
             let token = '';
             if (user.role.includes('fprj')) {
@@ -44,22 +41,16 @@ router.post("/signIn", async (req, res) => {
             } else {
                 token = jwt.sign({ user: user.name, userPermission: user.role, userId: user.idGym }, process.env.SECRET_JWT, { expiresIn: '24h' });
             }
-            return res.json({ status: true, isLogged: true, token: token, msg: 'User successfully authenticated' });
+            return res.json({ user: user, status: true, isLogged: true, token: token, msg: 'User successfully authenticated', userPermission: user.role });
         }
 
     } catch (err) {
-
-        return res.status(statusCode.UNAUTHORIZED).json(fail("Error server. Error -> " + err));
-
+        return res.status(statusCode.UNAUTHORIZED).json(fail("Server error: " + err));
     }
 
 });
 
 module.exports = router;
-
-
-
-
 
 
 

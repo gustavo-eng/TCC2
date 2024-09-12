@@ -2,8 +2,7 @@ import { _post } from "./methods";
 
 
 const auth = {
-    //todo colocar tipagem correta
-    post: (data: any): Promise<any> => _post('/login/signIn', data)
+    post: (data: any): Promise<any> => _post('/login/signIn', data, { headers: { 'Cache-Control': 'no-cache' } })
 }
 
 const client = {

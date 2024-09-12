@@ -34,7 +34,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
 }, ref) {
 
     return (
-        <div className={twMerge('flex  text-md items-start w-full', className)}>
+        <div className={twMerge('flex  text-md items-start flex-col w-full', className)}>
             <div className={twMerge("relative w-full rounded  flex  flex-col items-start justify-start", spanInputClassName)}>
                 {label && (
                     <label className="text-gray-500 text-sm font-semibold">{label} {!isOptional && <span className="text-red-700"> *</span>} </label>
@@ -61,17 +61,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function ({
                     )}
                 />
             </div>
-            <span
-                className={
-                    'flex items-center gap-2 px-1 py-1 text-sm font-medium text-red-500 dark:text-red-400'
-                }
-            >
-                {errorMessage && (
-                    <div>
-                        <Warning size={16} weight="light" /> {errorMessage}
-                    </div>
-                )}
-            </span>
+            {errorMessage && (
+                <span
+                    className={
+                        'flex items-center gap-2 px-1 py-1 text-sm font-medium text-red-500 dark:text-red-400'
+                    }
+                >
+                    <Warning size={16} weight="bold" /> {errorMessage} dsfa
+                </span>
+            )}
         </div>
     )
 })

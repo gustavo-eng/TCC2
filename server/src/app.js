@@ -91,6 +91,11 @@ const initServer = async () => {
         next(err);
     });
 
+    // 11/09
+    app.use((req, res, next) => {
+        res.setHeader("Cache-Control", "public, max-age=0"); // 0 segundos
+        next();
+    });
     // Schedule task to run every minute
     /*
     cron.schedule('* * * * *', () => {

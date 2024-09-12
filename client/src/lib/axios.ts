@@ -36,16 +36,18 @@ export const instance = axios.create({
     "Content-Type": "application/json",
     Accept: "application/json",
   },
+
   paramsSerializer: {
     indexes: null,
   },
+
 });
 
 instance.interceptors.response.use(
   (response) => {
-    const method = response.config.method as string;
-    const route = response.config.url as string;
-    const statusCode: number = response.status;
+    //const method = response.config.method as string;
+    //const route = response.config.url as string;
+    //const statusCode: number = response.status;
 
     if (response.config.headers["Cache-Control"]?.includes("max-age=")) {
       const cacheKey = generateHash(
@@ -56,6 +58,7 @@ instance.interceptors.response.use(
         timestamp: Date.now(),
       };
     }
+
     if (response.status == 200) {
       toast.success("Usuário autenticado com sucesso");
     }
@@ -66,7 +69,8 @@ instance.interceptors.response.use(
     if (statusCode != 200) {
       removeCookie("authorization");
       removeSession("user");
-      window.location.href = "/";
+      //window.location.href = "/";
+      //Navigate('/')
       toast.error('Credenciais inválidas')
     }
     toast.error("Error na authenticacao");
