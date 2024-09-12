@@ -20,13 +20,13 @@ export const authLoginSchema = z.object({
 
 export const userSchema = z.object({
     idAthlete: z.number(),
-    cpf: z.string().min(1).max(14),
-    rg: z.string().min(1).max(14),
+    cpf: z.string().min(1).max(104),
+    rg: z.string().min(1).max(140),
     birth: z.any().nullable(),
     phone: z.any().nullable(),
     name: z.string(),
     email: z.string().email({ message: 'Email invalido' }),
-    role: z.enum(['athlete', 'gym', 'fprj']),
+    role: z.enum(['athlet', 'gym', 'fprj']),
     password: z.string(),
     neighborhood: z.string(),
     street: z.string(),

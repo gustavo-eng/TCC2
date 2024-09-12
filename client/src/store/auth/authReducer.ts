@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { removeCookie, setCookie } from "typescript-cookie";
-import { api, removeSession, setSession } from "../../lib/axios";
+import { api, removeSession } from "../../lib/axios";
 import client from "../../service/client";
 import { RootState } from "../store";
 import { AuthRequest, AuthResponse, AuthState, userSchema } from "./authTypes";
@@ -37,20 +37,24 @@ const authSlice = createSlice({
     });
     builder.addCase(login.fulfilled, (state, action) => {
        const {token, user} = action.payload;
+       console.log('tooookenn1111s ', token)
+       console.log('user ', user)
 
        const parsed = userSchema.safeParse(user);
        state.loading = false;
        state.user  = parsed.success ? user : null;
        state.error = null;
+       console.log('parsed', parsed)
        if(!parsed.success) {
             removeCookie('authorization');
             removeSession('user');
             state.error = parsed.error.message;
             return
        }
+       console.log('tooookenn ', token)
        setCookie('authorization', token);
-       setSession('user', user) //todo colocar essa funcao no storageHelpers
-       setInterceptorRequest(token as string);
+       //setSession('user', user) //todo colocar essa funcao no storageHelpers
+       //setInterceptorRequest(token as string);
     });
     builder.addCase(login.rejected, (state) => {
         state.loading = false;

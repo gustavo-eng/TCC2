@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setCookie } from 'typescript-cookie';
 import useAppSelector from '../../hooks/useAppSelector';
 import { authSelector, login } from '../../store/auth/authReducer';
 import { AuthLogin, authLoginSchema } from "../../store/auth/authTypes";
@@ -34,7 +33,7 @@ function useLogin() {
         try {
             const responseAuth = await dispatch(login(data)).unwrap();
             if(responseAuth?.status) {
-                setCookie('authorization',responseAuth.token);
+               // setCookie('authorization',responseAuth.token);
 
             }
             console.warn('responseAuth ', responseAuth)
