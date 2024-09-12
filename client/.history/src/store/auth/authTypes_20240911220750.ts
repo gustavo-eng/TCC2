@@ -10,7 +10,7 @@ export interface AuthState {
 }
 
 export type AuthToken = {
-    token: string | undefined ;
+    token: string;
   };
 
 export const authLoginSchema = z.object({
@@ -44,7 +44,6 @@ export const authResponseSchema = z.object({
     token: z.string().optional(),
     isLogged: z.boolean().optional(),
     msg: z.string().optional(),
-    status: z.boolean().optional(),
     userPermission: z.string().optional()
 });
 

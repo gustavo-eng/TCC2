@@ -1,17 +1,21 @@
 
 //todo Alterar esse codigo
 
-import { Toaster } from "react-hot-toast";
+import { Warning } from "@phosphor-icons/react";
+import 'primeicons/primeicons.css';
+import 'primereact/resources/primereact.min.css'; // Estilos base da PrimeReact
+import 'primereact/resources/themes/saga-blue/theme.css'; // Tema da PrimeReact
+import { Toast } from 'primereact/toast';
+import { useEffect, useRef } from "react";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
 import PasswordInput from "../../components/input/PasswordInput";
 import useLogin from "./useLogin";
 
-
 export default function Login() {
 
     const {
-
+        invalidCredentials,
         navigate,
         register,
         handleSubmit,
@@ -21,11 +25,25 @@ export default function Login() {
     } = useLogin();
 
 
+    const toast = useRef<any>(null);
 
+
+    useEffect(() => {
+        if (invalidCredentials) {
+            toast.current.show({
+                severity: 'error', // Alterado para 'error' para combinar com a mensagem de credenciais inválidas
+                summary: 'Erro',
+                detail: 'Credenciais inválidas',
+                life: 2000, // Exibe o toast por 2 segundos
+            });
+        }
+    }, [invalidCredentials]);
+    console.log('*** errors ', errors)
     return (
         <>
-            <h1 className="text-4xl font-bold mb-4  text-green-700/80  w-full">Bem vindo</h1>
-            <Toaster position="bottom-center" />
+            <h1 className="text-4xl font-bold mb-1  text-green-700/80  w-full">Bem vindo</h1>
+            <label className="text-base font-normal mb-6 w-full  text-center">
+            </label>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col w-full gap-4"
@@ -35,7 +53,7 @@ export default function Login() {
                     type="text"
                     placeholder="Digite seu email"
                     //onChange={(e) => setEmail(e.target.value)}
-                    errorMessage={errors.email?.message && errors.password?.message}
+                    errorMessage={errors.password?.message ?? ''}
                     {...register('email')}
                 />
 
@@ -44,11 +62,17 @@ export default function Login() {
                     placeholder="**********"
                     className="mb-0"
                     //onChange={(e) => setPassword(e.target.value)}
-                    errorMessage={errors.password?.message &&errors.password?.message }
+                    errorMessage={errors.password?.message}
                     {...register('password')}
                 />
-
-
+                <Toast ref={toast} />
+                {invalidCredentials && (
+                    <div className="flex">
+                        <label className="flex items-center text-sm mx-1 gap-2 font-normal text-red-500">
+                            <Warning size={14} weight="light" /> Credenciais invalidas
+                        </label>
+                    </div>
+                )}
 
                 <div className="flex justify-end">
                     <button

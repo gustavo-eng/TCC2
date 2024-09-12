@@ -1,17 +1,13 @@
 import { z } from 'zod';
 
 export interface AuthState {
-    user?:  User | null; //todo Tipar melhor
+    user?:  any | null; //todo Tipar melhor
     loading?: boolean;
     error?: string | null;
     userPermission?: any;
-    permissionError?: boolean | null;
+    permissionError?: boolean;
 
 }
-
-export type AuthToken = {
-    token: string | undefined ;
-  };
 
 export const authLoginSchema = z.object({
     email: z.string().email({message: 'Type email invalid'}),
@@ -44,12 +40,9 @@ export const authResponseSchema = z.object({
     token: z.string().optional(),
     isLogged: z.boolean().optional(),
     msg: z.string().optional(),
-    status: z.boolean().optional(),
     userPermission: z.string().optional()
 });
 
-
-export type AuthRequest = AuthLogin | AuthToken;
 export type User = z.infer<typeof userSchema>;
 export type AuthLogin = z.infer<typeof authLoginSchema>;
 export type AuthResponse = z.infer<typeof authResponseSchema>;

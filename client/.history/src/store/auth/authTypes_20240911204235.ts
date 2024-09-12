@@ -1,55 +1,59 @@
 import { z } from 'zod';
 
+
 export interface AuthState {
-    user?:  User | null; //todo Tipar melhor
+    user?:  any | null; //todo Tipar melhor
     loading?: boolean;
     error?: string | null;
     userPermission?: any;
-    permissionError?: boolean | null;
+    permissionError?: boolean;
 
 }
-
-export type AuthToken = {
-    token: string | undefined ;
-  };
 
 export const authLoginSchema = z.object({
     email: z.string().email({message: 'Type email invalid'}),
     password: z.string({message: 'Type password invalid'})
 });
 
-export const userSchema = z.object({
+const userSchema = z.object({
     idAthlete: z.number(),
     cpf: z.string().min(1).max(14),
     rg: z.string().min(1).max(14),
-    birth: z.any().nullable(),
-    phone: z.any().nullable(),
+    birth: z.any().nullable(), // Pode ser uma string ou null
+    phone: z.any().nullable(), // Pode ser string ou null
     name: z.string(),
     email: z.string().email({ message: 'Email invalido' }),
-    role: z.enum(['athlete', 'gym', 'fprj']),
+    role: z.enum(['athlete', 'gym', 'fprj']), // Ajuste os papéis válidos conforme necessário
     password: z.string(),
     neighborhood: z.string(),
     street: z.string(),
     number: z.number(),
     city: z.string(),
-    resetPasswordToken: z.string().nullable(),
-    resetPasswordExpires: z.string().nullable(),
+    resetPasswordToken: z.string().nullable(), // Pode ser string ou null
+    resetPasswordExpires: z.string().nullable(), // Pode ser string ou null
     createdAt: z.string().optional(),
     updatedAt: z.string().optional(),
     idGym: z.number(),
   });
 
 export const authResponseSchema = z.object({
-    user: userSchema,
+    //user: z.string,
     token: z.string().optional(),
     isLogged: z.boolean().optional(),
     msg: z.string().optional(),
-    status: z.boolean().optional(),
     userPermission: z.string().optional()
 });
 
 
-export type AuthRequest = AuthLogin | AuthToken;
-export type User = z.infer<typeof userSchema>;
 export type AuthLogin = z.infer<typeof authLoginSchema>;
 export type AuthResponse = z.infer<typeof authResponseSchema>;
+
+/*
+{
+	"status": true,
+	"isLogged": true,
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoibHV0YWRvcjMiLCJ1c2VyUGVybWlzc2lvbiI6ImF0aGxldCIsInVzZXJJZCI6NywiaWF0IjoxNzI2MDk2NzQ3LCJleHAiOjE3MjYxODMxNDd9.tmOzSkPx6ziNiixL-WLN22rTgfCFgx3dOTqBQl40RQI",
+	"msg": "User successfully authenticated",
+	"userPermission": "athlet"
+}
+*/

@@ -1,6 +1,7 @@
 
 //todo Alterar esse codigo
 
+import { useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
@@ -11,7 +12,7 @@ import useLogin from "./useLogin";
 export default function Login() {
 
     const {
-
+        invalidCredentials,
         navigate,
         register,
         handleSubmit,
@@ -21,11 +22,14 @@ export default function Login() {
     } = useLogin();
 
 
+    const toast = useRef<any>(null);
+
+
 
     return (
         <>
             <h1 className="text-4xl font-bold mb-4  text-green-700/80  w-full">Bem vindo</h1>
-            <Toaster position="bottom-center" />
+            <Toaster />
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col w-full gap-4"
@@ -35,7 +39,7 @@ export default function Login() {
                     type="text"
                     placeholder="Digite seu email"
                     //onChange={(e) => setEmail(e.target.value)}
-                    errorMessage={errors.email?.message && errors.password?.message}
+                    errorMessage={errors.password?.message ?? ''}
                     {...register('email')}
                 />
 
@@ -44,7 +48,7 @@ export default function Login() {
                     placeholder="**********"
                     className="mb-0"
                     //onChange={(e) => setPassword(e.target.value)}
-                    errorMessage={errors.password?.message &&errors.password?.message }
+                    errorMessage={errors.password?.message}
                     {...register('password')}
                 />
 

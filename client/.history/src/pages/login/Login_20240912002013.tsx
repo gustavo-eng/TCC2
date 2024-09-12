@@ -1,6 +1,7 @@
 
 //todo Alterar esse codigo
 
+import { useRef } from "react";
 import { Toaster } from "react-hot-toast";
 import { ButtonPrimary } from "../../components/buttons/ButtonPrimary";
 import Input from "../../components/input/Input";
@@ -21,6 +22,9 @@ export default function Login() {
     } = useLogin();
 
 
+    const toast = useRef<any>(null);
+
+
 
     return (
         <>
@@ -35,7 +39,7 @@ export default function Login() {
                     type="text"
                     placeholder="Digite seu email"
                     //onChange={(e) => setEmail(e.target.value)}
-                    errorMessage={errors.email?.message && errors.password?.message}
+                    errorMessage={errors.password?.message ?? ''}
                     {...register('email')}
                 />
 
@@ -44,7 +48,7 @@ export default function Login() {
                     placeholder="**********"
                     className="mb-0"
                     //onChange={(e) => setPassword(e.target.value)}
-                    errorMessage={errors.password?.message &&errors.password?.message }
+                    errorMessage={errors.password?.message}
                     {...register('password')}
                 />
 
