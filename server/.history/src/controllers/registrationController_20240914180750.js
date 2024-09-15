@@ -301,8 +301,11 @@ exports.delete = async (req, res) => {
     }
 
     await registration.destroy();
-    return res.status(statusCode.OK).json(message("Registration destroyed successfully"));
-
+    console.log("path to destroy");
+    console.log();
+    return res
+      .status(statusCode.OK)
+      .json(message("Registration destroyed successfully"));
   } catch (err) {
     return res
       .status(statusCode.INTERNAL_SERVER_ERROR)

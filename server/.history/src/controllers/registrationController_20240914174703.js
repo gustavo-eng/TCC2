@@ -24,11 +24,10 @@ exports.create = async (req, res) => {
 
     try {
 
-        // Verify duplicate information.
 
         if (!req.file) {
             console.log("No file received or invalid file type");
-            return res.status(400).send({
+            return res.status(statusCode.BAD_REQUEST).send({
                 message: "No file received or invalid file type",
                 success: false
             });
@@ -237,10 +236,9 @@ exports.reprovePayment = async (req, res) => {
 exports.setDescription = async (req, res) => {
 
     try {
+
         const { idPayment } = req.params;
-
         const { description } = req.body;
-
         const registration = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!registration) return res.status(404).json(fail("Payment not found"));
@@ -264,7 +262,10 @@ exports.delete = async (req, res) => {
         if (!registration) {
             return res.status(statusCode.NOT_FOUND).json(fail("Registration not found"));
         };
-        await registration.destroy();
+        //todo descomentar
+        //await registration.destroy();
+        console.log('path to destroy');
+        console.log()
         return res.status(statusCode.OK).json(message("Registration destroyed successfully"));
     } catch (err) {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Server error. " + err.message));
@@ -272,38 +273,3 @@ exports.delete = async (req, res) => {
 };
 
 
-
-
-
-
-/*
-const jane = await User.create({ name: 'Jane' });
-jane.favoriteColor = 'blue';
-await jane.update({ name: 'Ada' });
-// The database now has "Ada" for name, but still has the default "green" for favorite color
-await jane.save();
-// Now the database has "Ada" for name and "blue" for favorite color
-
-*/
-
-/*
-const multer = require('multer');
-const path = require('path');
-
-// Configurar armazenamento do multer
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        // Use __dirname para criar um ', 'uploacaminho absoluto para a pasta 'uploads'
-        cb(null, path.join(__dirname, '..ds'));
-    },
-    filename: function (req, file, cb) {
-        const userName = req.user.name; // Presumindo que o nome do usuário está disponível em req.user
-        const ext = path.extname(file.originalname);
-        cb(null, `${userName}-${Date.now()}${ext}`);
-    }
-});
-
-const upload = multer({ storage: storage });
-module.exports = upload;
-
-*/

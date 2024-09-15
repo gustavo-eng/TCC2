@@ -24,8 +24,7 @@ exports.create = async (req, res) => {
 
     try {
 
-        // Verify duplicate information.
-        /*
+
         if (!req.file) {
             console.log("No file received or invalid file type");
             return res.status(statusCode.BAD_REQUEST).send({
@@ -33,7 +32,7 @@ exports.create = async (req, res) => {
                 success: false
             });
         }
-        */
+
 
         const file = req.file;
 
@@ -237,10 +236,9 @@ exports.reprovePayment = async (req, res) => {
 exports.setDescription = async (req, res) => {
 
     try {
+
         const { idPayment } = req.params;
-
         const { description } = req.body;
-
         const registration = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!registration) return res.status(404).json(fail("Payment not found"));

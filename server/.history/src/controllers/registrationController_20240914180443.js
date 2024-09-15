@@ -277,12 +277,17 @@ exports.delete = async (req, res) => {
   try {
     const { idPayment } = req.params;
     const registration = await Registration.findByPk(idPayment);
+    console.log("registration");
     let pathImage = String(registration.dataValues.voucherPath);
 
     const filePath = path.resolve(pathImage);
 
     // Verifica se o arquivo existe
     if (fs.existsSync(filePath)) {
+        console.log('Arquivo encontrado ==> ')
+        console.log(filePath);
+        // Deleta o arquivo
+      /*
       fs.unlink(filePath, (err) => {
         if (err) {
           console.error("Erro ao deletar o arquivo:", err);
@@ -290,6 +295,7 @@ exports.delete = async (req, res) => {
           console.log("Arquivo deletado com sucesso");
         }
       });
+      */
     } else {
       console.log("Arquivo não encontrado");
     }
@@ -300,9 +306,13 @@ exports.delete = async (req, res) => {
         .json(fail("Registration not found"));
     }
 
-    await registration.destroy();
-    return res.status(statusCode.OK).json(message("Registration destroyed successfully"));
-
+    //todo descomentar
+    //await registration.destroy();
+    console.log("path to destroy");
+    console.log();
+    return res
+      .status(statusCode.OK)
+      .json(message("Registration destroyed successfully"));
   } catch (err) {
     return res
       .status(statusCode.INTERNAL_SERVER_ERROR)

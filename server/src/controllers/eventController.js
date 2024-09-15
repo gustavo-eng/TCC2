@@ -75,13 +75,13 @@ exports.create = async (req, res) => {
             res.status(statusCode.OK).json(success(event, "payload", "Event created successfully"));
 
         }).catch(err => {
-
+            console.log('Create event err ', err)
             res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Fail to create category. Erro -> ", err));
 
         });
 
     } catch (err) {
-
+        console.log('Create event err ', err)
         res.status(statusCode.BAD_REQUEST).json(fail("Error server. Error: " + err));
 
     };

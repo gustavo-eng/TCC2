@@ -23,7 +23,7 @@ const filterImage = (req, file, cb) => {
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const userUploadDir = `./src/uploads/${req.userId}`;
-        console.log('req.userId ', req.userId)
+        console.log('req.userId', req.userId)
         cb(null, userUploadDir);
         //cb(null, uploadDir);
 

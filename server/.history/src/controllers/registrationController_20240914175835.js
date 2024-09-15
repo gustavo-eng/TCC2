@@ -236,10 +236,9 @@ exports.reprovePayment = async (req, res) => {
 exports.setDescription = async (req, res) => {
 
     try {
+
         const { idPayment } = req.params;
-
         const { description } = req.body;
-
         const registration = await Registration.findOne({ where: { idPayment: idPayment } });
 
         if (!registration) return res.status(404).json(fail("Payment not found"));
@@ -260,10 +259,17 @@ exports.delete = async (req, res) => {
     try {
         const { idPayment } = req.params;
         const registration = await Registration.findByPk(idPayment);
+        console.log('registration');
+        console.log(registration.dataValues.voucherPath);
+
         if (!registration) {
             return res.status(statusCode.NOT_FOUND).json(fail("Registration not found"));
         };
-        await registration.destroy();
+
+        //todo descomentar
+        //await registration.destroy();
+        console.log('path to destroy');
+        console.log()
         return res.status(statusCode.OK).json(message("Registration destroyed successfully"));
     } catch (err) {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Server error. " + err.message));
