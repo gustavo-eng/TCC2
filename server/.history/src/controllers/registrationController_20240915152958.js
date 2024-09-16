@@ -123,7 +123,7 @@ exports.findMyPayments = async (req, res) => {
 
     const registrations = await Registration.findAll({
       where: { idAthlete },
-      include: ["Event", "Category"],
+      include: ["Event"],
     });
 
     if (!registrations)

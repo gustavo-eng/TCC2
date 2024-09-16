@@ -42,7 +42,7 @@ const initServer = async () => {
     limit: 1000,
     message: "Too many requests from this IP, please try again later.",
   });
-  // 15/09 - Futuramente, estabelecer regras de cors.
+  // 15/09
   const corsOptions = {
     origin: "*", // Permite todas as origens. Para mais segurança, especifique as origens.
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Métodos HTTP permitidos

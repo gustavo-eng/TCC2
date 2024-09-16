@@ -54,3 +54,5 @@ module.exports = (sequelize, Sequelize) => {
     return Event;
 }
 
+
+

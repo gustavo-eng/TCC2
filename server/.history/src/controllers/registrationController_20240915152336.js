@@ -25,7 +25,6 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    console.log('req.body ', req.body)
     if (!req.file) {
       console.log("No file received or invalid file type");
       return res.status(statusCode.BAD_REQUEST).send({
@@ -123,7 +122,7 @@ exports.findMyPayments = async (req, res) => {
 
     const registrations = await Registration.findAll({
       where: { idAthlete },
-      include: ["Event", "Category"],
+      include: ["Event"],
     });
 
     if (!registrations)

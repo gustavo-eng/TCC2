@@ -10,7 +10,7 @@ const sequelize = new Sequelize('fprjsystem',
         logging: false,
         pool: {
             max: 5, // max number of connection in pool
-            min: 0,// max number of connection in pool
+            min: 0,// min number of connection in pool
             acquire: 30000, // max time in ms that pull will try to get connection before throwing error
             idle: 10000 // max time in ms, that a conneciton can be idle before being released
         }
