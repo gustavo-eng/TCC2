@@ -4,6 +4,7 @@ const { controllAccess } = require('../middleware/Auth');
 //const  = require('../utils/cleanForgetAndCrashData');
 const db = require('../config/db');
 const { cleanObsoletAthlets } = require('../utils/cleanForgetAndCrashData');
+//essa ROTA É LIXO MAS É USADA PARA TESTE NO INSOMNIA
 router.get('/', controllAccess, async (req, res) => {
 
     let registrationsAndEvent = await db.Registration.findAll({

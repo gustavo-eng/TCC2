@@ -24,6 +24,7 @@ exports.findAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     try {
+
         const {
             president,
             phone,
@@ -31,11 +32,18 @@ exports.create = async (req, res) => {
             password
         } = req.body;
 
+        let setFPRJ = {
+            president,
+            phone,
+            email,
+            password: bcrypt.hashSync(password, 10),
+            role: "fprj"
+        }
         // Verificar se já existe uma federação cadastrada
         if (await Fprj.findOne()) return res.status(statusCode.BAD_GATEWAY).json(fail("There is already a registered FPRJ"));
 
         // Criar nova federação
-        const fprj = await Fprj.create({ president, phone, email, password, role: "fprj" });
+        const fprj = await Fprj.create(setFPRJ);
         return res.status(201).json(success(fprj, "payload", "Federação cadastrada com sucesso."));
 
     } catch (err) {
@@ -44,7 +52,7 @@ exports.create = async (req, res) => {
 };
 
 
-exports.delete = async (req, res) => {
+exports.delete = async (req, res) => {2
 
 
     try {

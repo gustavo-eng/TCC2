@@ -52,7 +52,7 @@ exports.create = async (req, res) => {
 };
 
 
-exports.delete = async (req, res) => {
+exports.delete = async (req, res) => {2
 
 
     try {

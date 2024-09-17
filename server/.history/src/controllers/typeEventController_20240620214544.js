@@ -56,5 +56,6 @@ exports.delete = async (req, res) => {
 
         return res.status(500).json(fail("Error server. Error -> " + err));
     }
+
 }
 

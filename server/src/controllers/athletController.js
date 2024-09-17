@@ -137,7 +137,7 @@ exports.update = async (req, res) => {
 
         await athlet.save().then(athlete => {
 
-            return res.status(statusCode.OK).json(message("Athlet updated!"));
+            return res.status(statusCode.OK).json(success(athlet,"payload","Athlet updated!"));
 
         }).catch(err => {
 
