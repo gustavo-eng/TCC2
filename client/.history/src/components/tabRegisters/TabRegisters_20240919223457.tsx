@@ -6,6 +6,7 @@ import client from "../../service/client";
 import { authSelector } from "../../store/auth/authReducer";
 import GlobalTile from "../GlobalTitle/GlobalTitle";
 import TableRegisters from "./components/TableRegisters";
+import dataMock from './mock/registers.json';
 
 function TabRegisters() {
     const [registrations, setRegistrations] = useState<any>();
@@ -29,8 +30,9 @@ function TabRegisters() {
     return (
 
         <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
+            {JSON.stringify(registrations)}
             <GlobalTile title="Inscricoes"/>
-             {registrations && <TableRegisters tableJSON={registrations} /> }
+             {registrations && <TableRegisters tableJSON={dataMock} /> }
         </div>
     );
 }

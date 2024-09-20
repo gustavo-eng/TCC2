@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { formatSubstring } from "../../helpers/formatSubstring";
 import useAppSelector from "../../hooks/useAppSelector";
 import client from "../../service/client";
@@ -48,7 +48,7 @@ export default function BellNotifications({
   const acceptAthlet = async (id: string | number) => {
     let response = await client.gym.acceptSolicitation(id);
     if(response.status) {
-      toast.success('Atleta Deletado com sucesso', {duration: 4000});
+      toast.success('Atleta aceito com sucesso', {duration: 4000});
     } else {
       toast.error('Erro ao aceitar atleta', {duration: 4000});
     }
@@ -56,28 +56,21 @@ export default function BellNotifications({
   };
 
   const deleteAthlet = async (id: string | number) => {
+    console.log('Ok')
     let response = await client.athlet.delete(String(id));
-    if(response.status) {
-      toast.success('Atleta aceito com sucesso', {duration: 4000});
-    } else {
-      toast.error('Erro ao aceitar atleta', {duration: 4000});
-    }
   }
 
   const getSolicitation = async () => {
     let response = await client.gym.solicitation(String(user?.idGym));
     setSolicitations(response.payload);
-
   };
 
   useEffect(() => {
     getSolicitation();
-    console.log('solicitations ', solicitations)
   }, [isOpen]);
 
   return (
     <div className="text-white mr-1">
-      <Toaster />
       <button
         id="dropdownNotificationButton"
         data-dropdown-toggle="dropdownNotification"
@@ -95,7 +88,7 @@ export default function BellNotifications({
           <path d="M12.133 10.632v-1.8A5.406 5.406 0 0 0 7.979 3.57.946.946 0 0 0 8 3.464V1.1a1 1 0 0 0-2 0v2.364a.946.946 0 0 0 .021.106 5.406 5.406 0 0 0-4.154 5.262v1.8C1.867 13.018 0 13.614 0 14.807 0 15.4 0 16 .538 16h12.924C14 16 14 15.4 14 14.807c0-1.193-1.867-1.789-1.867-4.175ZM3.823 17a3.453 3.453 0 0 0 6.354 0H3.823Z" />
         </svg>
         {hasNotification && (
-          <div className={`absolute w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 left-2.5 dark:border-gray-900`}></div>
+          <div className="absolute w-3 h-3 bg-red-500 border-2 border-white rounded-full -top-0.5 left-2.5 dark:border-gray-900"></div>
         )}
       </button>
 
@@ -106,8 +99,8 @@ export default function BellNotifications({
         } absolute w-screen left-0 lg:left-1/2 lg:w-fit divide-y h-fit rounded-lg mr-0 lg:mr-3 bg-gray-800`}
         aria-labelledby="dropdownNotificationButton"
       >
-        <div className="py-2 font-medium text-center rounded bg-gray-800 p-1 ">
-          {!solicitations ? `Não há solicitações` : `Solicitações`}
+        <div className="py-2 font-medium text-center rounded bg-gray-800">
+          Solicitações
         </div>
         <div
           className={`divide-y divide-gray-600 ${

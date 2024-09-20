@@ -72,7 +72,7 @@ export default function BellNotifications({
 
   useEffect(() => {
     getSolicitation();
-    console.log('solicitations ', solicitations)
+    console.log('notification ', solicitations)
   }, [isOpen]);
 
   return (

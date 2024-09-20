@@ -169,23 +169,21 @@ function TableListAthlet({
     let response = await client.athlet.delete(String(id))
 
     if(response.status) {
-
       toast.success('Atleta deletado com sucesso', {duration: 4000})
-
     } else {
       toast.error('Não foi possível deletar atleta', {duration: 4000})
     }
 
   }
 
-  useEffect(() => {}, [deleteAthlet]);
-//selectedAthlet
+  useEffect(() => {}, [deleteAthlet])
+
   return (
     <div className={`w-full h-[53vh] ${themeClass}`}>
       <Toaster />
       <ModalConfirmation
         ref={modalRef}
-        onConfirm={() => deleteAthlet(selectedAthlet)}
+        onConfirm={() => console.log("Confirmacao id Do Atleta ",selectedAthlet )}
         onCancel={() => console.log("Cancelar")}
       />
       <ModalEditAthlet

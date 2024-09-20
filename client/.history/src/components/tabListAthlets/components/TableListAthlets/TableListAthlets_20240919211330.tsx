@@ -14,14 +14,12 @@ import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 import { MultiFilterModule } from "@ag-grid-enterprise/multi-filter";
 import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
-import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from "react";
 import ModalConfirmation, {
   ModalConfirmationHandle,
 } from "../../../modal/modalConfirmation/ModalConfirmation";
 
 import { Edit, Trash2 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
-import client from "../../../../service/client";
 import Input from "../../../input/Input";
 import ModalEditAthlet from "../../../modal/modalEditAthlet/ModalEditAthlet";
 
@@ -164,28 +162,11 @@ function TableListAthlet({
     []
   );
 
-  const deleteAthlet = async (id: string) => {
-
-    let response = await client.athlet.delete(String(id))
-
-    if(response.status) {
-
-      toast.success('Atleta deletado com sucesso', {duration: 4000})
-
-    } else {
-      toast.error('Não foi possível deletar atleta', {duration: 4000})
-    }
-
-  }
-
-  useEffect(() => {}, [deleteAthlet]);
-//selectedAthlet
   return (
     <div className={`w-full h-[53vh] ${themeClass}`}>
-      <Toaster />
       <ModalConfirmation
         ref={modalRef}
-        onConfirm={() => deleteAthlet(selectedAthlet)}
+        onConfirm={() => console.log("Confirmacao id Do Atleta ",selectedAthlet )}
         onCancel={() => console.log("Cancelar")}
       />
       <ModalEditAthlet

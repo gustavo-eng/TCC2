@@ -171,14 +171,14 @@ function TableListAthlet({
     if(response.status) {
 
       toast.success('Atleta deletado com sucesso', {duration: 4000})
-
+      gridRef!.api.refreshClientSideRowModel()
     } else {
       toast.error('Não foi possível deletar atleta', {duration: 4000})
     }
 
   }
 
-  useEffect(() => {}, [deleteAthlet]);
+  useEffect(() => {}, [deleteAthlet])
 //selectedAthlet
   return (
     <div className={`w-full h-[53vh] ${themeClass}`}>

@@ -20,8 +20,7 @@ const competition = {
 const payments = {
     getByAthlet: (idAthlet: string): Promise<any> => _get(`/registration/myPayments/${idAthlet}`),
     delete: (idPayment?: string | number): Promise<any> => _delete(`/registration/${String(idPayment)}`),
-    post: (data: any) => _post('/registration', data, {headers: {"Content-Type": "multipart/form-data"}}),
-    getByGym: (idGym: string) : Promise<any> => _get(`/registration/gym/${idGym}`),
+    post: (data: any) => _post('/registration', data, {headers: {"Content-Type": "multipart/form-data"}})
 }
 
 const gym = {
