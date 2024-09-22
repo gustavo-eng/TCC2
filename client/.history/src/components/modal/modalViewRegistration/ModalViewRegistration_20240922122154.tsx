@@ -35,6 +35,8 @@ function ModalViewRegistration({
         }
     }, [idRegistration]);
 
+
+
     return (
         <div>
 
@@ -53,8 +55,8 @@ function ModalViewRegistration({
                 </div>
                 <div className="flex flex-row mb-2">
                     <p className="font-medium">Comprovante </p> {status && <StatusBadge status={status} className="ml-1"/>}
-                    {statusPayment && <StatusBadge status={statusPayment?.toString().trim()} /> }
-
+                    <StatusBadge status={statusPayment?.toString().trim()} />
+                    { /* statusPayment && <StatusBadge status={statusPayment?.toString().trim()} /> */}
                 </div>
                 <div className="bg-gray-300 h-[23vh] rounded flex flex-col justify-center items-center">
                 <img
@@ -63,12 +65,11 @@ function ModalViewRegistration({
                     className="h-full w-full rounded"
                 />
                 </div>
-                {status && status == "Rejeitado" || statusPayment.includes("Rejeitado") && (
+                {status && status == "Rejeitado" && (
                     <div className="mt-2 mb-2">
                         <p>Descrição</p>
                         <p className="text-sm">
-                            {String(voucherPath?.description)}
-
+                            {JSON.stringify(voucherPath?.description)}
                         </p>
                     </div>
                 )}

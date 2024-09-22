@@ -67,6 +67,8 @@ function TableRegisters({
   const openModalViewRegistraion = (idPayment: string, data?: any) => {
 
     setSelectedIdPayment(idPayment);
+    console.log('modal Regist')
+    console.warn(data)
     setCurrentStatusPayment(describeStatusPayment(data?.aproved || false, data?.description || ""));
     return setModalViewRegistration(true);
   }
@@ -210,6 +212,7 @@ function TableRegisters({
     []
   );
 
+
   const optionsGender = [
     { value: "Masculino", label: "Masculino" },
     { value: "Feminino", label: "Feminino" },
@@ -243,8 +246,9 @@ function TableRegisters({
         isOpen={isModalViewRegistration}
         onClose={() => setModalViewRegistration(false)}
         idRegistration={selectedIdPayment}
-        statusPayment={String(currentStatusPayment)}
+        //statusPayment={"Pendente"}
       />
+
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none">
           <Select

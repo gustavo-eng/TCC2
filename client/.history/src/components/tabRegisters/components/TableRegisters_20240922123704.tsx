@@ -210,6 +210,7 @@ function TableRegisters({
     []
   );
 
+
   const optionsGender = [
     { value: "Masculino", label: "Masculino" },
     { value: "Feminino", label: "Feminino" },

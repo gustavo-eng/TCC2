@@ -35,6 +35,7 @@ function ModalViewRegistration({
         }
     }, [idRegistration]);
 
+
     return (
         <div>
 

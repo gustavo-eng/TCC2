@@ -34,7 +34,7 @@ function useLogin() {
             // Dispara a ação de login e espera a resposta
             let result = await dispatch(authClient.login(data)).unwrap();
 
-            console.log('result login', result);
+            console.log(result login', result);
 
             // Exibe a notificação de sucesso
             toast.success('Autenticado com sucesso', { duration: 4000 });

@@ -33,7 +33,10 @@ function ModalViewRegistration({
         if(voucherPath) {
             setStatus(describeStatusPayment(voucherPath?.aproved , voucherPath?.description))
         }
-    }, [idRegistration]);
+        status == "Rejeitado"
+    }, [idRegistration, isOpen, idRegistration, statusPayment]);
+
+
 
     return (
         <div>
@@ -63,12 +66,11 @@ function ModalViewRegistration({
                     className="h-full w-full rounded"
                 />
                 </div>
-                {status && status == "Rejeitado" || statusPayment.includes("Rejeitado") && (
+                {status && status == "Rejeitado" && (
                     <div className="mt-2 mb-2">
                         <p>Descrição</p>
                         <p className="text-sm">
-                            {String(voucherPath?.description)}
-
+                            {JSON.stringify(voucherPath?.description)}
                         </p>
                     </div>
                 )}

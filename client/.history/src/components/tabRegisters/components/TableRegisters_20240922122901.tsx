@@ -20,7 +20,6 @@ import Button from "../../buttons/button";
 import Input from "../../input/Input";
 
 //style
-import { describeStatusPayment } from "../../../utils/describeStatusPayment";
 import ModalViewRegistration from "../../modal/modalViewRegistration/ModalViewRegistration";
 import Select from "../../select/Select";
 import StatusBadge from "../../StatusBadge/StatusBadge";
@@ -59,7 +58,6 @@ function TableRegisters({
 
   const [selectedIdPayment, setSelectedIdPayment] = useState<string | undefined>(undefined);
   const [isModalViewRegistration, setModalViewRegistration] = useState<boolean>(false);
-  const [currentStatusPayment, setCurrentStatusPayment] = useState<string>();
 
   const themeClass = gridTheme;
   const [quickFilterText, setQuickFilterText] = useState<string>();
@@ -67,7 +65,8 @@ function TableRegisters({
   const openModalViewRegistraion = (idPayment: string, data?: any) => {
 
     setSelectedIdPayment(idPayment);
-    setCurrentStatusPayment(describeStatusPayment(data?.aproved || false, data?.description || ""));
+    console.log('modal Regist')
+    console.warn(data)
     return setModalViewRegistration(true);
   }
 
@@ -210,6 +209,7 @@ function TableRegisters({
     []
   );
 
+
   const optionsGender = [
     { value: "Masculino", label: "Masculino" },
     { value: "Feminino", label: "Feminino" },
@@ -243,8 +243,9 @@ function TableRegisters({
         isOpen={isModalViewRegistration}
         onClose={() => setModalViewRegistration(false)}
         idRegistration={selectedIdPayment}
-        statusPayment={String(currentStatusPayment)}
+        statusPayment={"Pendente"}
       />
+
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none">
           <Select

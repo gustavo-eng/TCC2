@@ -35,6 +35,8 @@ function ModalViewRegistration({
         }
     }, [idRegistration]);
 
+
+
     return (
         <div>
 
@@ -68,7 +70,7 @@ function ModalViewRegistration({
                         <p>Descrição</p>
                         <p className="text-sm">
                             {String(voucherPath?.description)}
-
+                            {JSON.stringify(voucherPath?.description)}
                         </p>
                     </div>
                 )}

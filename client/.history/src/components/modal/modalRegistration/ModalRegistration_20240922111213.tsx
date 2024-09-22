@@ -47,7 +47,7 @@ export default function ModalRegistration({
 }: ModalRegistrationProps) {
   const [classCategory, setClassCategory] = useState<any>();
   const [classCategoryOptions, setClassCategoryOptions] = useState<any>();
-  const [gender, setGender] = useState<any>();
+  const [gender, setGender] = useState<string>();
   const [category, setCategory] = useState<string>();
   const [file, setFile] = useState<any>(null);
   const [allCategory, setAllCategory] = useState<any>();
@@ -72,15 +72,6 @@ export default function ModalRegistration({
         return Array.from(new Set(combinedWeights));
     }
 
-    function findFirtsIDCategory(gender: any, classCategory: any) {
-        try {
-          return allCategory.find((category: { gender: any; classCategory: any; }) =>
-              category.gender === gender && category.classCategory === classCategory
-          );
-        } catch {
-          return {}
-        }
-      }
 
   useEffect(() => {
     const getOptionsGender = async () => {
@@ -166,9 +157,8 @@ export default function ModalRegistration({
     const formData = new FormData();
     formData.append("idAthlete", user?.idAthlete);
     formData.append("idEvent", idEvent as any);
-    formData.append("idCategory", findFirtsIDCategory(gender,classCategory)?.idCategory as any || '1');
+    formData.append("idCategory", category as any);
     formData.append("file", file);
-    //findFirtsIDCategory(gender,classCategory).idCategory
 
     try {
       const el = await client.payments.post(formData);

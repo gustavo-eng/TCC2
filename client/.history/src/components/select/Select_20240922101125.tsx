@@ -31,8 +31,8 @@ export default function Select({
                 className={twMerge("outline-none font-normal text-gray-700 bg-gray-100 border border-green-700 text-sm rounded focus:ring-green-500 focus:border-green-500 block w-full p-1.5 dark:focus:ring-green-500 dark:focus:border-green-600", classNameSelect)}
                 {...props}
             >
-                {options?.map((option, index) => (
-                    <option key={`${option.value}-${index}`} value={option.value} className="bg-gray-100">
+                {options?.map(option => (
+                    <option key={option.value} value={option.value} className="bg-gray-100">
                         {option.label}
                     </option>
                 ))}

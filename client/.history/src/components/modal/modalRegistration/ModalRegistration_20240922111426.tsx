@@ -166,9 +166,8 @@ export default function ModalRegistration({
     const formData = new FormData();
     formData.append("idAthlete", user?.idAthlete);
     formData.append("idEvent", idEvent as any);
-    formData.append("idCategory", findFirtsIDCategory(gender,classCategory)?.idCategory as any || '1');
+    formData.append("idCategory", category as any);
     formData.append("file", file);
-    //findFirtsIDCategory(gender,classCategory).idCategory
 
     try {
       const el = await client.payments.post(formData);

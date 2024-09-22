@@ -210,6 +210,7 @@ function TableRegisters({
     []
   );
 
+
   const optionsGender = [
     { value: "Masculino", label: "Masculino" },
     { value: "Feminino", label: "Feminino" },
@@ -239,6 +240,7 @@ function TableRegisters({
 
   return (
     <div className={`w-full h-[53vh] ${themeClass}`}>
+
       <ModalViewRegistration
         isOpen={isModalViewRegistration}
         onClose={() => setModalViewRegistration(false)}

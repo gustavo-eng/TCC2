@@ -210,6 +210,7 @@ function TableRegisters({
     []
   );
 
+
   const optionsGender = [
     { value: "Masculino", label: "Masculino" },
     { value: "Feminino", label: "Feminino" },
@@ -245,6 +246,7 @@ function TableRegisters({
         idRegistration={selectedIdPayment}
         statusPayment={String(currentStatusPayment)}
       />
+
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none">
           <Select

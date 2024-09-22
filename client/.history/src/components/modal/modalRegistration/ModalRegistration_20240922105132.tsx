@@ -47,13 +47,11 @@ export default function ModalRegistration({
 }: ModalRegistrationProps) {
   const [classCategory, setClassCategory] = useState<any>();
   const [classCategoryOptions, setClassCategoryOptions] = useState<any>();
-  const [gender, setGender] = useState<any>();
+  const [gender, setGender] = useState<string>();
   const [category, setCategory] = useState<string>();
   const [file, setFile] = useState<any>(null);
   const [allCategory, setAllCategory] = useState<any>();
   const [optionsGenderGenerate, setOptionsGenderGenerate] = useState<any>();
-  const [optionsWeight, setOptionsWeight] = useState<any>();
-
   const { user } = useAppSelector(authSelector);
 
   // Chamar client.category.get() apenas quando o componente for montado
@@ -72,15 +70,6 @@ export default function ModalRegistration({
         return Array.from(new Set(combinedWeights));
     }
 
-    function findFirtsIDCategory(gender: any, classCategory: any) {
-        try {
-          return allCategory.find((category: { gender: any; classCategory: any; }) =>
-              category.gender === gender && category.classCategory === classCategory
-          );
-        } catch {
-          return {}
-        }
-      }
 
   useEffect(() => {
     const getOptionsGender = async () => {
@@ -151,12 +140,6 @@ export default function ModalRegistration({
     if (gender && classCategory) {
       const result = getWeightsByGenderAndClass(gender, classCategory);
       console.log('Result:', result);
-      const transformedArray = result.map((value: any) => ({
-        value: value,
-        label: value.toString(),
-      }));
-      setOptionsWeight(transformedArray);
-
     }
   }, [gender, classCategory]); // Chama quando o gender ou classCategory mudam
 
@@ -166,9 +149,8 @@ export default function ModalRegistration({
     const formData = new FormData();
     formData.append("idAthlete", user?.idAthlete);
     formData.append("idEvent", idEvent as any);
-    formData.append("idCategory", findFirtsIDCategory(gender,classCategory)?.idCategory as any || '1');
+    formData.append("idCategory", category as any);
     formData.append("file", file);
-    //findFirtsIDCategory(gender,classCategory).idCategory
 
     try {
       const el = await client.payments.post(formData);
@@ -266,7 +248,10 @@ export default function ModalRegistration({
               id="weight"
               name="weight"
               isOptional={false}
-              options={optionsWeight}
+              options={[
+                { value: "4", label: "-55" },
+                { value: "5", label: "-60" },
+              ]}
               label="Categoria (Kg)"
               className="mt-2"
               onChange={(e) => setCategory(e?.target?.value)}
