@@ -45,9 +45,9 @@ function MyGym() {
 
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
-      {loading && <Toaster position="bottom-center"/>}
       <div className="flex flex-col justify-center gap-3 items-center text-center w-full ">
         <h1 className="text-2xl text-green-500 font-semibold mt-5">
+         <Toaster position="bottom-center"/>
           Associação Pais e Praticantes de Judô
         </h1>
         {/* Grid */}

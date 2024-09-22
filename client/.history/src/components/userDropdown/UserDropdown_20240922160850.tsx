@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import useAppSelector from "../../hooks/useAppSelector";
 import { authSelector, logOut } from "../../store/auth/authReducer";
 import { AppDispatch } from "../../store/store";
-import { formatName } from "../../utils/formatName";
 
 export default function UserDropDown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -50,7 +49,8 @@ export default function UserDropDown() {
           onClick={toggleDropDown}
         >
           <div className="w-[32px] h-[32px] rounded-full flex flex-col justify-center bg-green-700 text-white">
-            {formatName(user?.name || "") || " "}
+            {" "}
+            {user?.name || ""}
           </div>
           <span className="text-white  font-medium max-w-[7.5rem]">
             {user?.name || ""}

@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import useAppSelector from "../../hooks/useAppSelector";
 import { authSelector, logOut } from "../../store/auth/authReducer";
 import { AppDispatch } from "../../store/store";
-import { formatName } from "../../utils/formatName";
 
 export default function UserDropDown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -50,10 +49,11 @@ export default function UserDropDown() {
           onClick={toggleDropDown}
         >
           <div className="w-[32px] h-[32px] rounded-full flex flex-col justify-center bg-green-700 text-white">
-            {formatName(user?.name || "") || " "}
+            {" "}
+            {false || "GD"}
           </div>
           <span className="text-white  font-medium max-w-[7.5rem]">
-            {user?.name || ""}
+            {false || "Gustavo Dias"}
           </span>
           <CaretDown
             size={16}
@@ -65,7 +65,7 @@ export default function UserDropDown() {
           <div className="transition-[opacity, margin] rounded-t-md duration absolute right-[0.0rem] mt-1 bg-white shadow-md rounded-xl p-1 min-w-[14rem] z-10">
             <div className=" px-1 ">
               <p className="text-sm text-green-600 font-semibold">
-                {user?.name || ""}
+                {user?.name}
               </p>
               <p className="text-xs font-medium text-gray-800 ">
                 {user?.email || "user@hotmail.com"}

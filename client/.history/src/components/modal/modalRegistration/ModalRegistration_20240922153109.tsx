@@ -168,7 +168,7 @@ export default function ModalRegistration({
     formData.append("idEvent", idEvent as any);
     formData.append("idCategory", findFirtsIDCategory(gender,classCategory)?.idCategory as any || '1');
     formData.append("file", file);
-    formData.append("weight", category as string);
+    formData.append("weight", category);
     //findFirtsIDCategory(gender,classCategory).idCategory
 
     try {
@@ -182,6 +182,8 @@ export default function ModalRegistration({
       toast.error("Erro ao enviar inscrição", { duration: 4000 });
     }
   };
+
+
 
   if (!isOpen) {
     return null;

@@ -50,7 +50,8 @@ export default function UserDropDown() {
           onClick={toggleDropDown}
         >
           <div className="w-[32px] h-[32px] rounded-full flex flex-col justify-center bg-green-700 text-white">
-            {formatName(user?.name || "") || " "}
+            {" "}
+            {formatName(user?.name || "") || "DS"}
           </div>
           <span className="text-white  font-medium max-w-[7.5rem]">
             {user?.name || ""}

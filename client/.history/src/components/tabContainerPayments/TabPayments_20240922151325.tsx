@@ -34,10 +34,10 @@ export default function TabPayments() {
      try {
        const response = await  client.payments.delete(idPayment as string);
        if(response.status) {
-         toast.success('Pagamento deletado com sucesso', {duration: 2000})
+         toast.success('Pagamento deletado com sucesso', {duration: 5000})
          setControlFlag(!controlFlag)
         } else {
-         toast.error('Erro ao deletar pagamento', {duration: 2000})
+         toast.error('Erro ao deletar pagamento', {duration: 5000})
        }
       }catch(err) {
         console.log(`Erro ao deletar ==> `, err);

@@ -20,10 +20,8 @@ export default function TabPayments() {
     useState<boolean>(false);
 
   const [myPayments, setMyPayments] = useState<Payment[]>();
-  const [controlFlag, setControlFlag] = useState<boolean>(false);
 
   const modalRef = useRef<ModalConfirmationHandle>(null);
-
 
   const handleOpenModal = (idPayment?: string | number) => {
     setIdPayment(String(idPayment))
@@ -34,10 +32,9 @@ export default function TabPayments() {
      try {
        const response = await  client.payments.delete(idPayment as string);
        if(response.status) {
-         toast.success('Pagamento deletado com sucesso', {duration: 2000})
-         setControlFlag(!controlFlag)
+         toast.success('Pagamento deletado com sucesso', {duration: 5000})
         } else {
-         toast.error('Erro ao deletar pagamento', {duration: 2000})
+         toast.error('Erro ao deletar pagamento', {duration: 5000})
        }
       }catch(err) {
         console.log(`Erro ao deletar ==> `, err);
@@ -66,7 +63,7 @@ export default function TabPayments() {
 
   useEffect(() => {
     getMyPayments();
-  }, [controlFlag]);
+  }, []);
 
   return (
     <div className="w-full h-full  flex  flex-col items-center">

@@ -165,12 +165,15 @@ function TableListAthlet({
   );
 
   const deleteAthlet = async (id: string) => {
+
     let response = await client.athlet.delete(String(id));
+
     if(response.status) {
       toast.success('Atleta deletado com sucesso', {duration: 4000})
     } else {
       toast.error('Não foi possível deletar atleta', {duration: 4000})
     }
+
   }
 
   return (
@@ -217,6 +220,5 @@ function TableListAthlet({
     </div>
   );
 }
-
 
 export default TableListAthlet;

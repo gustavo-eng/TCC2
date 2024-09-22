@@ -31,6 +31,7 @@ function MyGym() {
     setLoading(true);
 
     let response = await client.gym.update(String(user.idGym), data);
+    toast.dismiss()
 
     if (response.status) {
       toast.success("Academia atualizada com sucesso", { duration: 4000 });
@@ -45,7 +46,7 @@ function MyGym() {
 
   return (
     <div className="flex flex-col  items-center gap-4 pl-4  lg:w-full w-screen ">
-      {loading && <Toaster position="bottom-center"/>}
+      <Toaster position="top-center"/>
       <div className="flex flex-col justify-center gap-3 items-center text-center w-full ">
         <h1 className="text-2xl text-green-500 font-semibold mt-5">
           Associação Pais e Praticantes de Judô

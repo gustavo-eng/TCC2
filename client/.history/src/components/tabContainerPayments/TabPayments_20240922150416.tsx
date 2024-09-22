@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { getSession } from "../../lib/axios";
 import client from "../../service/client";
 import { describeStatusPayment } from "../../utils/describeStatusPayment";
@@ -20,10 +20,8 @@ export default function TabPayments() {
     useState<boolean>(false);
 
   const [myPayments, setMyPayments] = useState<Payment[]>();
-  const [controlFlag, setControlFlag] = useState<boolean>(false);
 
   const modalRef = useRef<ModalConfirmationHandle>(null);
-
 
   const handleOpenModal = (idPayment?: string | number) => {
     setIdPayment(String(idPayment))
@@ -33,12 +31,8 @@ export default function TabPayments() {
   const handleConfirm = async () => {
      try {
        const response = await  client.payments.delete(idPayment as string);
-       if(response.status) {
-         toast.success('Pagamento deletado com sucesso', {duration: 2000})
-         setControlFlag(!controlFlag)
-        } else {
-         toast.error('Erro ao deletar pagamento', {duration: 2000})
-       }
+       console.log('response delete payment ', response);
+       toast.success('Pagamento deletado com sucesso', {duration: 5000})
       }catch(err) {
         console.log(`Erro ao deletar ==> `, err);
         toast.error('Erro ao deletar ', {duration: 5000});
@@ -66,11 +60,10 @@ export default function TabPayments() {
 
   useEffect(() => {
     getMyPayments();
-  }, [controlFlag]);
+  }, []);
 
   return (
     <div className="w-full h-full  flex  flex-col items-center">
-      <Toaster />
       <ModalConfirmation
         ref={modalRef}
         onConfirm={handleConfirm}

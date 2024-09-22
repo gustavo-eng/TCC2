@@ -99,7 +99,10 @@ function TabListAthlets() {
     if(user.idGym) {
       let response = await client.gym.listAthlets(user.idGym);
       setAthlets(response.payload)
+
     }
+
+    //console.warn('athlets ', athlets)
   }
 
   useEffect(() => {

@@ -183,6 +183,8 @@ export default function ModalRegistration({
     }
   };
 
+
+
   if (!isOpen) {
     return null;
   }

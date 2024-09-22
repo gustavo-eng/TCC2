@@ -115,13 +115,13 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({
       </div>
       {status !== 'Aprovado' && (
         <div className="flex flex-col items-center justify-end p-1">
-          {edit && (
-            <Button
-              className="w-full h-8 rounded-md bg-green-500 hover:bg-green-600/90 text-white font-normal text-xs lg:text-sm"
-              classNameLabel="text-[14px]"
-              label="Editar"
-              onClick={onEdit}
-            />
+          {!edit && (
+              <Button
+                className="w-full h-8 rounded-md bg-green-500 hover:bg-green-600/90 text-white font-normal text-xs lg:text-sm"
+                classNameLabel="text-[14px]"
+                label="Editar"
+                onClick={onEdit}
+              />
           )}
           <Button
             className="w-full h-8 m-1 rounded-md bg-red-400 hover:bg-red-500/80  text-white font-normal text-xs lg:text-sm"
