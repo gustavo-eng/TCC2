@@ -83,7 +83,7 @@ export default function ModalRegistration({
     const handleRegistration = async () => {
 
         const formData = new FormData();
-
+        console.log('fff')
         formData.append('idAthlete', user?.idAthlete);
         formData.append('idEvent', idEvent as any);
         formData.append('idCategory', category as any);
@@ -100,8 +100,6 @@ export default function ModalRegistration({
 
 
     }
-
-    //useEffect(() => {console.log('fff')}, [])
 
     return (
         <>

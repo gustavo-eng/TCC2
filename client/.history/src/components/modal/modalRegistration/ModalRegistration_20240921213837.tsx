@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import useAppSelector from "../../../hooks/useAppSelector";
 import client from "../../../service/client";
@@ -65,20 +65,22 @@ export default function ModalRegistration({
         return null;
     }
 
+
     const optionsGender = [
         { value: 'Masculino', label: 'Masculino' },
         { value: 'Feminino', label: 'Feminino' },
     ];
 
     const optionsClassCategory = [
-        { value: 'Senior', label: 'Senior' },
-        { value: 'Mirim', label: 'Mirim' },
+        { value: '1', label: 'Senior' },
+        { value: '2', label: 'Mirim' },
     ];
 
     const optionsCategory = [
-        { value: '4', label: '-55' },
-        { value: '5', label: '-60' },
+        { value: '1', label: '-55' },
+        { value: '2', label: '-60' },
     ]
+
 
     const handleRegistration = async () => {
 
@@ -98,10 +100,12 @@ export default function ModalRegistration({
             }
         }).catch(() => toast.error('Erro ao enviar inscrição', {duration: 4000}))
 
-
     }
 
-    //useEffect(() => {console.log('fff')}, [])
+    useEffect(() => {
+        //Criar select personalizado
+
+    }, [])
 
     return (
         <>

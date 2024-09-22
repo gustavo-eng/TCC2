@@ -102,7 +102,6 @@ export default function ModalRegistration({
     }
 
     //useEffect(() => {console.log('fff')}, [])
-
     return (
         <>
             <Toaster />

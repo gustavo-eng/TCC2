@@ -47,7 +47,6 @@ const client = {
     competition,
     payments,
     gym,
-    category,
     athlet
 }
 

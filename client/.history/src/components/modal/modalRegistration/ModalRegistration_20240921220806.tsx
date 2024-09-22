@@ -98,10 +98,8 @@ export default function ModalRegistration({
             }
         }).catch(() => toast.error('Erro ao enviar inscrição', {duration: 4000}))
 
-
     }
 
-    //useEffect(() => {console.log('fff')}, [])
 
     return (
         <>

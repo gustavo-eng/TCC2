@@ -14,7 +14,8 @@ const registrationSlice = createSlice({
             state.registration = action.payload;
         }
     }
-});
+})
+
 
 export const {setRegistration} = registrationSlice.actions;
 export const registrationSelector = (state: RootState) => state.registration;

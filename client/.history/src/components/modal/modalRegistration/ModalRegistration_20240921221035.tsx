@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import useAppSelector from "../../../hooks/useAppSelector";
 import client from "../../../service/client";
@@ -101,8 +101,7 @@ export default function ModalRegistration({
 
     }
 
-    //useEffect(() => {console.log('fff')}, [])
-
+    useEffect(() => {console.log('fff')}, [])
     return (
         <>
             <Toaster />

@@ -80,6 +80,7 @@ export default function ModalRegistration({
         { value: '5', label: '-60' },
     ]
 
+
     const handleRegistration = async () => {
 
         const formData = new FormData();
@@ -98,10 +99,8 @@ export default function ModalRegistration({
             }
         }).catch(() => toast.error('Erro ao enviar inscrição', {duration: 4000}))
 
-
     }
 
-    //useEffect(() => {console.log('fff')}, [])
 
     return (
         <>
