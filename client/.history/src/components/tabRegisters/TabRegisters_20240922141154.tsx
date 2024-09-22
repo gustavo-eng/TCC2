@@ -39,13 +39,13 @@ function TabRegisters() {
 
     useEffect(() => {
         getRegistrations();
-
+        console.log(`Ag Grid `,registrations)
     }, [dispatch]);
 
     return (
 
         <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
-            <GlobalTile title={`${registrations && registrations.length == 1 ?  `Inscrição do evento: ${registrations?.[0]?.Event?.description || ""}` : `Inscricoes`}`}/>
+            <GlobalTile title="Inscricoes"/>
              {registrations && <TableRegisters tableJSON={registrations} /> }
              {!registrations && <TableRegisters tableJSON={[]}/>}
         </div>

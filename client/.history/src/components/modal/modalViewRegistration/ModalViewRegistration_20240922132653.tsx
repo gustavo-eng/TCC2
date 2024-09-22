@@ -49,11 +49,12 @@ function ModalViewRegistration({
                 <div className="flex flex-row font-semibold text-gray-800 mb-3">
                     <p className="  mr-4">Genero: {voucherPath?.Category?.gender || 'Not informed'}</p>
                     <p className=" mr-4">Classe: {voucherPath?.Category?.classCategory || 'Not informed'}</p>
-                     {voucherPath?.weight && <p className="">Categoria: -{voucherPath?.weight || 'XX (Kg)'} Kg </p>}
+                    <p className="">Categoria: {voucherPath?.Category?.weight || 'XX (Kg)'} </p>
                 </div>
                 <div className="flex flex-row mb-2">
-                    <p className="font-medium">Comprovante </p> {statusPayment && <StatusBadge status={statusPayment?.toString().trim()} /> }
-                    {/* status && <StatusBadge status={status} className="ml-1"/> */}
+                    <p className="font-medium">Comprovante </p> {status && <StatusBadge status={status} className="ml-1"/>}
+                    {statusPayment && <StatusBadge status={statusPayment?.toString().trim()} /> }
+
                 </div>
                 <div className="bg-gray-300 h-[23vh] rounded flex flex-col justify-center items-center">
                 <img

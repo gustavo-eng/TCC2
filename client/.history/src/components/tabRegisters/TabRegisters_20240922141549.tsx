@@ -45,9 +45,10 @@ function TabRegisters() {
     return (
 
         <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
-            <GlobalTile title={`${registrations && registrations.length == 1 ?  `Inscrição do evento: ${registrations?.[0]?.Event?.description || ""}` : `Inscricoes`}`}/>
+            <GlobalTile title={`${registrations && registrations.length == 1 ?  `Inscrição do evento: ${registrations?.Event?.description}` : `Inscricoes`}`}/>
              {registrations && <TableRegisters tableJSON={registrations} /> }
              {!registrations && <TableRegisters tableJSON={[]}/>}
+            {JSON.stringify(registrations)}
         </div>
     );
 }

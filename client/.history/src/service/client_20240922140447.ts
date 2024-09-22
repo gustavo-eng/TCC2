@@ -10,6 +10,7 @@ const auth = {
         return _post('/athlet', data)
     },
     update: (data:updateUser, userId?:string): Promise<responseUpdateUser> => _put(`/athlet/${userId}`, data)
+
 }
 
 const competition = {
@@ -17,11 +18,13 @@ const competition = {
 }
 
 const payments = {
+
     getByAthlet: (idAthlet: string): Promise<any> => _get(`/registration/myPayments/${idAthlet}`),
     delete: (idPayment?: string | number): Promise<any> => _delete(`/registration/${String(idPayment)}`),
     post: (data: any) => _post('/registration', data, {headers: {"Content-Type": "multipart/form-data"}}),
     getByGym: (idGym: string) : Promise<any> => _get(`/registration/gym/${idGym}`),
     getSpecificOfGym: (idEvent: string, idGym: string ) => _get(`/registration/gym/event/${idEvent}/${idGym}`),
+
 }
 
 const gym = {
@@ -35,6 +38,8 @@ const gym = {
 const category = {
     get: (): Promise<any> => _get('/category')
 }
+
+
 
 const athlet = {
     delete: (idAthlet: string | number): Promise<any> => _delete(`/athlet/${idAthlet}`)

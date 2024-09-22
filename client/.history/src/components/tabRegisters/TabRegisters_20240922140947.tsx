@@ -5,17 +5,17 @@ import { useParams } from "react-router-dom";
 import useAppSelector from "../../hooks/useAppSelector";
 import client from "../../service/client";
 import { authSelector } from "../../store/auth/authReducer";
-import { registrationSelector, setRegistration } from "../../store/registrations/registrationsReducer";
+import { setRegistration } from "../../store/registrations/registrationsReducer";
 import { AppDispatch } from "../../store/store";
 import { isNumber } from "../../utils/isNumber";
 import GlobalTile from "../GlobalTitle/GlobalTitle";
 import TableRegisters from "./components/TableRegisters";
 
 function TabRegisters() {
-
     const [registrations, setRegistrations] = useState<any>();
     let { user } = useAppSelector(authSelector);
-    let {registration} = useAppSelector(registrationSelector)
+    //let {registration} = useAppSelector(registrationSelector)
+    //const { idEvent } = useParams();
     const { idEvent } = useParams();
     const dispatch = useDispatch<AppDispatch>();
 
@@ -32,22 +32,21 @@ function TabRegisters() {
             //console.log('registrationssss', registration)
         } else {
             dispatch(setRegistration([]))
-        }
 
+        }
 
     }
 
     useEffect(() => {
         getRegistrations();
-
-    }, [dispatch]);
+    }, []);
 
     return (
 
         <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
-            <GlobalTile title={`${registrations && registrations.length == 1 ?  `Inscrição do evento: ${registrations?.[0]?.Event?.description || ""}` : `Inscricoes`}`}/>
+            <GlobalTile title="Inscricoes"/>
              {registrations && <TableRegisters tableJSON={registrations} /> }
-             {!registrations && <TableRegisters tableJSON={[]}/>}
+             {!registrations && <TableRegisters tableJSON={[]} />}
         </div>
     );
 }

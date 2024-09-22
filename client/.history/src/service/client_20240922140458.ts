@@ -10,6 +10,7 @@ const auth = {
         return _post('/athlet', data)
     },
     update: (data:updateUser, userId?:string): Promise<responseUpdateUser> => _put(`/athlet/${userId}`, data)
+
 }
 
 const competition = {
@@ -35,6 +36,8 @@ const gym = {
 const category = {
     get: (): Promise<any> => _get('/category')
 }
+
+
 
 const athlet = {
     delete: (idAthlet: string | number): Promise<any> => _delete(`/athlet/${idAthlet}`)

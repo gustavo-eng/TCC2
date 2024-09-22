@@ -270,18 +270,16 @@ function TableRegisters({
           />
         </div>
         <div className="flex lg:none mt-2 lg:mt-0">
-          {/*
           <Select
             id="gender"
             name="gender"
             options={optionsCategory}
-            label="Categoria (Kg)w"
+            label="Categoria (Kg)"
             isOptional
             className="w-full lg:w-[10vw] mt-0 mr-2 bg-gray-50"
             classNameSelect="bg-white rounded-md border-gray-400 hover:border-green-500"
             onChange={(e) => console.log(e.target.value)}
           />
-          */}
           <Select
             id="gender"
             name="gender"

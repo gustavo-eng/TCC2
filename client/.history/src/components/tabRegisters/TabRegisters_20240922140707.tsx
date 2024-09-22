@@ -12,12 +12,16 @@ import GlobalTile from "../GlobalTitle/GlobalTitle";
 import TableRegisters from "./components/TableRegisters";
 
 function TabRegisters() {
-
     const [registrations, setRegistrations] = useState<any>();
     let { user } = useAppSelector(authSelector);
     let {registration} = useAppSelector(registrationSelector)
+    //const { idEvent } = useParams();
     const { idEvent } = useParams();
     const dispatch = useDispatch<AppDispatch>();
+    console.log('idEvent' , typeof idEvent)
+    // params --> {idEvent: '3'}
+    //idEvent
+    //http://localhost:5173/registersAthlets/23/?tab=registersAthlets
 
     const getRegistrations = async () => {
         let response;
@@ -32,22 +36,21 @@ function TabRegisters() {
             //console.log('registrationssss', registration)
         } else {
             dispatch(setRegistration([]))
-        }
 
+        }
+        console.log('response', response)
 
     }
 
     useEffect(() => {
         getRegistrations();
-
-    }, [dispatch]);
+    }, []);
 
     return (
 
         <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-3 ">
-            <GlobalTile title={`${registrations && registrations.length == 1 ?  `Inscrição do evento: ${registrations?.[0]?.Event?.description || ""}` : `Inscricoes`}`}/>
-             {registrations && <TableRegisters tableJSON={registrations} /> }
-             {!registrations && <TableRegisters tableJSON={[]}/>}
+            <GlobalTile title="Inscricoes"/>
+             {registrations && <TableRegisters tableJSON={registrations || [] } /> }
         </div>
     );
 }
