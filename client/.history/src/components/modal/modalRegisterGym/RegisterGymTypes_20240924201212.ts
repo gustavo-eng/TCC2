@@ -7,7 +7,7 @@ export const registerGymSchema  = z.object({
     password: z.string().min(4, {message: 'Minimo 4 caracteres'}),
     neighborhood: z.string().min(3 , {message: "Minimo 3 caracteres"}),
     street: z.string().min(3, {message: "Minimo 3 caracteres"}),
-    number: z.string({message: "Deve ser um numero"}),
+    number: z.any({message: "Deve ser um numero"}),
     city: z.string({message: "Deve ser um texto"}),
     cnpj: z.string({message: "Deve ser um texto"})
 });

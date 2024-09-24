@@ -38,7 +38,6 @@ export default function ModalRegisterGym({
         console.log('data in submit ', data);
         try {
             // Realizar a lógica de cadastro aqui
-
         } catch (err) {
             // Lidar com erros
         }

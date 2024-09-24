@@ -26,7 +26,7 @@ export default function ModalRegisterGym({
         formState: { errors },
     } = useForm<registerGym>({
         resolver: zodResolver(registerGymSchema),
-        //mode: "onSubmit", // Valida somente no envio do formulário
+        // mode: "onSubmit", // Valida somente no envio do formulário
         reValidateMode: "onBlur" // Valida novamente ao perder o foco do campo
     })
 
@@ -38,7 +38,6 @@ export default function ModalRegisterGym({
         console.log('data in submit ', data);
         try {
             // Realizar a lógica de cadastro aqui
-
         } catch (err) {
             // Lidar com erros
         }

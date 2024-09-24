@@ -16,29 +16,23 @@ export default function ModalRegisterGym({
     onClose
 }: ModalRegisterGymProps) {
 
-
     const [loading, setLoading] = useState<boolean>(false);
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm<registerGym>({
         resolver: zodResolver(registerGymSchema),
-        //mode: "onSubmit", // Valida somente no envio do formulário
+        mode: "onSubmit", // Valida somente no envio do formulário
         reValidateMode: "onBlur" // Valida novamente ao perder o foco do campo
     })
-
-    const formValues = watch();
-    //console.log('formValues', formValues); // Monitora os valores em tempo real
 
     const onSubmit = async (data: registerGym) => { // Corrigido o tipo aqui
         setLoading(true);
         console.log('data in submit ', data);
         try {
             // Realizar a lógica de cadastro aqui
-
         } catch (err) {
             // Lidar com erros
         }
@@ -62,7 +56,6 @@ export default function ModalRegisterGym({
             >
                 <Input
                   label="Nome do professor"
-                  //value={String(errors)}
                   errorMessage={errors?.sensei?.message || ""}
                   {...register("sensei")}
                 />
@@ -87,30 +80,17 @@ export default function ModalRegisterGym({
                     errorMessage={errors?.password?.message || ""}
                     {...register('password')}
                     />
-                <Input
-                    label="Bairro"
-                    errorMessage={errors?.neighborhood?.message || ""}
-                    {...register('neighborhood')}
-                />
+                <Input label="Bairro" />
                 <div className="flex">
                     <Input
                         label="Rua"
                         className="mr-1"
-                        errorMessage={errors?.street?.message || ""}
+                        errorMessage={errors?.password?.message || ""}
                         {...register('street')}
-                        />
-                    <Input
-                        label="Numero"
-                        type="number"
-                        className="w-[40%]"
-                        //errorMessage={errors?.number?.message ?? ""}
-                        {...register('number')}
                     />
+                    <Input label="Numero" type="number" className="w-[40%]" />
                 </div>
-                <Input
-                    label="Cidade"
-                    {...register('city')}
-                />
+                <Input label="Cidade" />
             </Modal>
         </div>
     )
