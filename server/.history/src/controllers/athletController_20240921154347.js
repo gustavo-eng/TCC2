@@ -137,9 +137,9 @@ exports.update = async (req, res) => {
 
         await athlet.save().then(athlete => {
 
-            return res.status(statusCode.OK).json(success( athlet,"payload","Athlet updated!"));
+            //return res.status(statusCode.OK).json(success( athlet,"payload","Athlet updated!"));
             // 21/09/2024
-            //return res.status(statusCode.OK).json(message("Athlet updated!"));
+            return res.status(statusCode.OK).json(message("Athlet updated!"));
 
         }).catch(err => {
 

@@ -1,8 +1,10 @@
 const { DataTypes } = require('sequelize');
 
+
 module.exports = (sequelize, Sequelize) => {
 
     const Registration = sequelize.define("Registration", {
+
         idPayment: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -25,10 +27,13 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
         }
+
     }, {
+
         freezeTableName: true,
         createdAt: true,
         updatedAt: true,
+
     });
 
     return Registration;

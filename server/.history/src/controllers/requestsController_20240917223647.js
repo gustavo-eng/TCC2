@@ -28,6 +28,8 @@ exports.create = async (req, res) => {
 
         const { idAthlete, idGym } = req.body;
 
+
+
         const request = await Requests.findAll({ where: { idAthlete: idAthlete } });
 
         if (request) {
@@ -90,9 +92,6 @@ exports.accept = async (req, res) => {
     }
 
 }
-
-
-
 
 
 // Get Athlet by gym

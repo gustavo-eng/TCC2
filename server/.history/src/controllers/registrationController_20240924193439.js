@@ -10,7 +10,12 @@ const Athlet = db.Athlet;
 
 const { success, message, fail } = require("../helpers/response");
 
-
+/*
+const registrations = await Registration.findAll({
+      where: { idAthlete },
+      include: ["Event", "Category"],
+    });
+*/
 
 exports.findAll = async (req, res) => {
   try {

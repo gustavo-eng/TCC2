@@ -35,7 +35,7 @@ const gymSchema = z.object({
 
     cnpj: z.string({ invalid_type_error: "Must be a string" })
         .min(3, { message: "Must be at least 3 characteres" })
-        .max(255, { message: "This field must contain a maximum of 255 characters" }),
+        .max(25, { message: "This field must contain a maximum of 25 characters" }),
 
 });
 

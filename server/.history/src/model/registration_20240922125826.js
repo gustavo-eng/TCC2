@@ -1,8 +1,10 @@
 const { DataTypes } = require('sequelize');
 
+
 module.exports = (sequelize, Sequelize) => {
 
     const Registration = sequelize.define("Registration", {
+
         idPayment: {
             type: DataTypes.INTEGER,
             primaryKey: true,

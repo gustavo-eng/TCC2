@@ -28,13 +28,18 @@ exports.create = async (req, res) => {
 
         const { idAthlete, idGym } = req.body;
 
+
+
         const request = await Requests.findAll({ where: { idAthlete: idAthlete } });
 
         if (request) {
+            console.log(JSON.stringify(request))
             return res.status(400).json(fail("Request already exist !"));
         }
 
         Requests.create({ aproved: false, idAthlete: idAthlete, idGym: idGym }).then(request => {
+
+            console.log("Requisicao criada com successo ", { aproved: false, idAthlete: idAthlete, idGym: idGym })
             res.status(201).json(success(request, "payload", "Request created successfully"))
         }).catch(err => {
             res.status(400).json(fail("Error ao criar request. Error -> " + err));
@@ -92,13 +97,11 @@ exports.accept = async (req, res) => {
 }
 
 
-
-
-
 // Get Athlet by gym
 exports.getRequestByGym = async (req, res) => {
 
     const { idGym } = req.query;
+    console.log('idGym' , idGym)
 
     try {
 

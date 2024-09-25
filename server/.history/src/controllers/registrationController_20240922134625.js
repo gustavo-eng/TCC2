@@ -10,11 +10,9 @@ const Athlet = db.Athlet;
 
 const { success, message, fail } = require("../helpers/response");
 
-
-
 exports.findAll = async (req, res) => {
   try {
-    const registrations = await Registration.findAll({include: ['Category', 'Event', 'Athlet']});
+    const registrations = await Registration.findAll();
     return res
       .status(statusCode.OK)
       .json(success(registrations, "payload", "Payment list successfully"));
@@ -179,8 +177,8 @@ exports.findAllPaymentsOfGym = async (req, res) => {
 
 exports.findAllPaymentsOfEventAndGym = async (req, res) => {
   try {
-   // const { idGym } = req.body;
-    const { idEvent, idGym } = req.params;
+    const { idGym } = req.body;
+    const { idEvent } = req.params;
 
     const athlets = await Athlet.findAll({
       attributes: ["idAthlete"],

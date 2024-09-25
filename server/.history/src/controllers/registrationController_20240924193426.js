@@ -10,11 +10,16 @@ const Athlet = db.Athlet;
 
 const { success, message, fail } = require("../helpers/response");
 
-
+/*
+const registrations = await Registration.findAll({
+      where: { idAthlete },
+      include: ["Event", "Category"],
+    });
+*/
 
 exports.findAll = async (req, res) => {
   try {
-    const registrations = await Registration.findAll({include: ['Category', 'Event', 'Athlet']});
+    const registrations = await Registration.findAll({include: ['Category', 'Event']});
     return res
       .status(statusCode.OK)
       .json(success(registrations, "payload", "Payment list successfully"));

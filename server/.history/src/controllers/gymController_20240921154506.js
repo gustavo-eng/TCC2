@@ -164,6 +164,8 @@ exports.update = async (req, res) => {
         //Neste caso, mesmo se o usuario nao digitar nada, vai manter o objeto anterior
         if (Object.keys(obj).length != 0) Object.keys(obj).forEach(key => gym[key] = obj[key]);
 
+        console.log('**** entrou na rota  update gym. Obj --> ')
+        console.log(obj)
 
         await gym.save().then(gym => {
             return res.status(statusCode.CREATED).json(success(gym, "payload", "Gym updated"));

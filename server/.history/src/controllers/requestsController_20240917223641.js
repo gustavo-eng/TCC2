@@ -28,9 +28,12 @@ exports.create = async (req, res) => {
 
         const { idAthlete, idGym } = req.body;
 
+
+
         const request = await Requests.findAll({ where: { idAthlete: idAthlete } });
 
         if (request) {
+            console.log(JSON.stringify(request))
             return res.status(400).json(fail("Request already exist !"));
         }
 
@@ -90,9 +93,6 @@ exports.accept = async (req, res) => {
     }
 
 }
-
-
-
 
 
 // Get Athlet by gym

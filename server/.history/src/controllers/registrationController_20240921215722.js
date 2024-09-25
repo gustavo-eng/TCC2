@@ -10,11 +10,9 @@ const Athlet = db.Athlet;
 
 const { success, message, fail } = require("../helpers/response");
 
-
-
 exports.findAll = async (req, res) => {
   try {
-    const registrations = await Registration.findAll({include: ['Category', 'Event', 'Athlet']});
+    const registrations = await Registration.findAll();
     return res
       .status(statusCode.OK)
       .json(success(registrations, "payload", "Payment list successfully"));
@@ -42,7 +40,6 @@ exports.create = async (req, res) => {
       idAthlete,
       idEvent,
       idCategory,
-      weight,
     } = req.body;
 
     if (
@@ -62,7 +59,6 @@ exports.create = async (req, res) => {
       idAthlete,
       idEvent,
       idCategory,
-      weight: weight || " " ,
       aproved: false, //Apenas FPRJ pode alterar
       description: req.body.description ? req.body.description : "", //Apenas FPRJ pode alterar
     };
@@ -86,9 +82,7 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-
   try {
-
     const { idPayment } = req.params;
     const { idAthlete, idEvent, idCategory } = req.body;
     const file = req.file;
@@ -101,7 +95,6 @@ exports.update = async (req, res) => {
     }
 
     const newRegistration = { idAthlete, idEvent, voucherPath: file.path };
-
     if (idCategory) {
       newRegistration.idCategory = idCategory;
     }
@@ -179,8 +172,8 @@ exports.findAllPaymentsOfGym = async (req, res) => {
 
 exports.findAllPaymentsOfEventAndGym = async (req, res) => {
   try {
-   // const { idGym } = req.body;
-    const { idEvent, idGym } = req.params;
+    const { idGym } = req.body;
+    const { idEvent } = req.params;
 
     const athlets = await Athlet.findAll({
       attributes: ["idAthlete"],
@@ -192,8 +185,7 @@ exports.findAllPaymentsOfEventAndGym = async (req, res) => {
     const athletIds = athlets.map((athlet) => athlet.idAthlete);
     const payments = await Registration.findAll({
       where: { idEvent: idEvent, idAthlete: athletIds },
-      include: ["Event", "Athlet", "Category"],
-      //include: ["Event", "Athlet"],
+      include: ["Event", "Athlet"],
     });
 
     if (!payments || payments.length === 0) {

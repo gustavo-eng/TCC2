@@ -21,13 +21,15 @@ exports.findAll = async (req, res) => {
 
 
 exports.findAllEthlets = async (req, res) => {
+
+
     try {
         const {idGym} = req.query;
         const athlets = await Athlet.findAll({where: {idGym: idGym}});
         return res.status(statusCode.OK).json(success(athlets, "payload", "Athlet listed"))
      } catch(err) {
         res.status(statusCode.BAD_REQUEST).json(fail("Error -> " + err));
-    };
+    }
 }
 
 exports.create = async (req, res) => {
@@ -157,16 +159,15 @@ exports.update = async (req, res) => {
         if (email) obj.email = email;
         if (neighborhood) obj.neighborhood = neighborhood;
         if (street) obj.street = street;
-        if (number) obj.number = Number(number);
+        if (number) obj.number = number;
         if (city) obj.city = city;
         // Atualize o pagamento
 
         //Neste caso, mesmo se o usuario nao digitar nada, vai manter o objeto anterior
         if (Object.keys(obj).length != 0) Object.keys(obj).forEach(key => gym[key] = obj[key]);
 
-
         await gym.save().then(gym => {
-            return res.status(statusCode.CREATED).json(success(gym, "payload", "Gym updated"));
+            return res.status(statusCode.CREATED).json(gym, "payload", "Gym updated");
         }).catch(err => {
             return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error updating gym"));
         });

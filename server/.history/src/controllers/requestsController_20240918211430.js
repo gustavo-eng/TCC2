@@ -92,9 +92,6 @@ exports.accept = async (req, res) => {
 }
 
 
-
-
-
 // Get Athlet by gym
 exports.getRequestByGym = async (req, res) => {
 
