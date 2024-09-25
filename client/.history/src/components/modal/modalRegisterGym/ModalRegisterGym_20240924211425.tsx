@@ -11,12 +11,10 @@ import { registerGym, registerGymSchema } from "./RegisterGymTypes";
 interface ModalRegisterGymProps {
     isOpen: boolean;
     onClose: () => void;
-    refresh?: any
 }
 
 export default function ModalRegisterGym({
     isOpen,
-    refresh,
     onClose
 }: ModalRegisterGymProps) {
 
@@ -40,7 +38,6 @@ export default function ModalRegisterGym({
             const response = await client.gym.register(data);
             if(response.status) {
                 toast.success('Academia criada', {duration: 2000})
-                refresh();
             } else {
                 toast.error('Erro', {duration: 2000})
             }

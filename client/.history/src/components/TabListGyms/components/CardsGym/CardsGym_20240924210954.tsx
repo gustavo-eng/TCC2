@@ -17,7 +17,7 @@ interface CardProps {
   titulo?: string;
   className?:string;
   idGym ?: string;
-  refreshGyms?: any;
+  refreshGyms?: () => void;
 }
 
 const CardsGym: React.FC<CardProps> = ({
@@ -29,7 +29,6 @@ const CardsGym: React.FC<CardProps> = ({
   telefone,
   titulo,
   idGym,
-  refreshGyms,
   className
 }) => {
 

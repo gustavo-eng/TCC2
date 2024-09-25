@@ -41,7 +41,7 @@ function TabListGyms() {
 
   useEffect(() => {
     getGyms();
-  }, []);
+  }, [closeModalRegisterGym, isModalGymOpen]);
 
 
   return (
@@ -49,7 +49,7 @@ function TabListGyms() {
       <ModalRegisterGym
         isOpen={isModalGymOpen}
         onClose={closeModalRegisterGym}
-        refresh={getGyms}
+
       />
       <div className=" w-full flex flex-col items-center text-center mb-4 ">
       <GlobalTile title="Academias"/>
@@ -65,16 +65,14 @@ function TabListGyms() {
           return (
             <Fragment key={index}>
               <CardsGym
-                className="min-w-[400px]"
-                titulo={el?.name || ""}
-                professor={el?.sensei || ""}
-                email={el?.email || ""}
-                cidade={el?.city || ""}
-                bairro={el?.neighborhood || ""}
-                numero={String(el?.number) || ""}
-                telefone={el?.phone || " (xx) xxxx-xxxx "}
-                idGym={String(el?.idGym) || ""}
-                refreshGyms={getGyms}
+              className="min-w-[400px]"
+              titulo={el?.name || ""}
+              professor={el?.sensei || ""}
+              email={el?.email || ""}
+              cidade={el?.city || ""}
+              bairro={el?.neighborhood || ""}
+              numero={String(el?.number) || ""}
+              telefone={el?.phone || " (xx) xxxx-xxxx "}
             />
             </Fragment>
           )

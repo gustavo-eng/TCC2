@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import { twMerge } from "tailwind-merge";
-import client from "../../../../service/client";
 import Button from "../../../buttons/button";
 import ModalConfirmation, {
   ModalConfirmationHandle,
@@ -17,7 +15,6 @@ interface CardProps {
   titulo?: string;
   className?:string;
   idGym ?: string;
-  refreshGyms?: any;
 }
 
 const CardsGym: React.FC<CardProps> = ({
@@ -29,29 +26,13 @@ const CardsGym: React.FC<CardProps> = ({
   telefone,
   titulo,
   idGym,
-  refreshGyms,
   className
 }) => {
 
   const modalRef = useRef<ModalConfirmationHandle>(null);
 
-  const deleteGym = async (idGym?: string)  => {
-    try {
-      if (idGym) {
-        const response = await client.gym.delete(String(idGym));
+  const deleteGym = (idGym?: string)  => {
 
-        if(response.status) {
-          toast.success("Academia deletada com sucesso!");
-          refreshGyms();
-        }else {
-          toast.error("Erro ao deletar academia!");
-        }
-      } else {
-        toast.error('Selecione a academia');
-      }
-    }catch(err) {
-      toast.error('Erro ao deletar academia');
-    }
   }
 
   return (
@@ -59,8 +40,8 @@ const CardsGym: React.FC<CardProps> = ({
       <Toaster />
       <ModalConfirmation
         ref={modalRef}
-        onConfirm={() => deleteGym(idGym as string)}
-        onCancel={() => console.log("cancel")}
+        onConfirm={() => console.log("onConfirm Tesste ")}
+        onCancel={() => console.log("onCancel DDDDD")}
       />
       <div className="flex items-start">
         <div className="h-full bg-green-500 rounded-l-lg" />

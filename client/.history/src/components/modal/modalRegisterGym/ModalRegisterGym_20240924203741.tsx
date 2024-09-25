@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
 import client from "../../../service/client";
 import Input from "../../input/Input";
 import Modal from "../Modal";
@@ -11,12 +10,10 @@ import { registerGym, registerGymSchema } from "./RegisterGymTypes";
 interface ModalRegisterGymProps {
     isOpen: boolean;
     onClose: () => void;
-    refresh?: any
 }
 
 export default function ModalRegisterGym({
     isOpen,
-    refresh,
     onClose
 }: ModalRegisterGymProps) {
 
@@ -26,6 +23,8 @@ export default function ModalRegisterGym({
     const {
         register,
         handleSubmit,
+        watch,
+        setValue,
         formState: { errors },
     } = useForm<registerGym>({
         resolver: zodResolver(registerGymSchema),
@@ -33,20 +32,20 @@ export default function ModalRegisterGym({
         reValidateMode: "onBlur" // Valida novamente ao perder o foco do campo
     })
 
+    const formValues = watch();
+    //console.log('formValues', formValues); // Monitora os valores em tempo real
+
     const onSubmit = async (data: registerGym) => { // Corrigido o tipo aqui
         setLoading(true);
+        console.log('data in submit ', data);
         try {
             // Realizar a lógica de cadastro aqui
             const response = await client.gym.register(data);
-            if(response.status) {
-                toast.success('Academia criada', {duration: 2000})
-                refresh();
-            } else {
-                toast.error('Erro', {duration: 2000})
-            }
+            console.log('response', response);
 
         } catch (err) {
-            toast.error('Erro', {duration: 2000})
+            // Lidar com erros
+            console.error('Erro ao cadastrar academia. Error: ', err);
         }
         setLoading(false);
     }
@@ -54,7 +53,6 @@ export default function ModalRegisterGym({
 
     return (
         <div>
-            <Toaster />
             <Modal
                 isOpen={isOpen}
                 onClose={onClose}

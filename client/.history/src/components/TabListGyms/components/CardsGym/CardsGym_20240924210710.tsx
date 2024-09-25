@@ -17,7 +17,6 @@ interface CardProps {
   titulo?: string;
   className?:string;
   idGym ?: string;
-  refreshGyms?: any;
 }
 
 const CardsGym: React.FC<CardProps> = ({
@@ -29,7 +28,6 @@ const CardsGym: React.FC<CardProps> = ({
   telefone,
   titulo,
   idGym,
-  refreshGyms,
   className
 }) => {
 
@@ -42,7 +40,6 @@ const CardsGym: React.FC<CardProps> = ({
 
         if(response.status) {
           toast.success("Academia deletada com sucesso!");
-          refreshGyms();
         }else {
           toast.error("Erro ao deletar academia!");
         }

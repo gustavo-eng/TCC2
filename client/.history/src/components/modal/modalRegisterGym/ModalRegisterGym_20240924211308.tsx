@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import client from "../../../service/client";
 import Input from "../../input/Input";
 import Modal from "../Modal";
@@ -11,12 +11,10 @@ import { registerGym, registerGymSchema } from "./RegisterGymTypes";
 interface ModalRegisterGymProps {
     isOpen: boolean;
     onClose: () => void;
-    refresh?: any
 }
 
 export default function ModalRegisterGym({
     isOpen,
-    refresh,
     onClose
 }: ModalRegisterGymProps) {
 
@@ -38,15 +36,12 @@ export default function ModalRegisterGym({
         try {
             // Realizar a lógica de cadastro aqui
             const response = await client.gym.register(data);
-            if(response.status) {
-                toast.success('Academia criada', {duration: 2000})
-                refresh();
-            } else {
-                toast.error('Erro', {duration: 2000})
-            }
+
 
         } catch (err) {
-            toast.error('Erro', {duration: 2000})
+
+            // Lidar com erros
+            console.error('Erro ao cadastrar academia. Error: ', err);
         }
         setLoading(false);
     }
