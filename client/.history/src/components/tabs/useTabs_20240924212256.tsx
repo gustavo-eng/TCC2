@@ -22,7 +22,7 @@ export function useTabs(tabs: TabsProps[], componentName: string) {
     }, [params, tabs, componentName]);
 
     useEffect(() => {
-        toast.remove();
+        toast.remove()
         if (!params.get(componentName)) {
             setSelectedTab(tabs[0].id);
             navigate(`/${tabs[0].id}`)
