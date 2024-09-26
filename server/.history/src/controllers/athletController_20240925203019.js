@@ -26,6 +26,7 @@ exports.findAll = async (req, res) => {
     } catch (err) {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server"));
     }
+
 }
 
 exports.create = async (req, res) => {

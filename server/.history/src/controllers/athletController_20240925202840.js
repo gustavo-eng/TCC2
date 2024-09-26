@@ -15,6 +15,7 @@ const { hasDuplicateAthlet } = require('../helpers/hasDuplicateData');
 */
 
 exports.findAll = async (req, res) => {
+
     try {
         await Athlet.findAll({
             include: ['Gym'],
@@ -26,6 +27,7 @@ exports.findAll = async (req, res) => {
     } catch (err) {
         return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server"));
     }
+
 }
 
 exports.create = async (req, res) => {
