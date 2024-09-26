@@ -152,7 +152,7 @@ function TableAllUsers({
           <Select
             id="gender"
             name="gender"
-            options={optionsGym}
+            options={optionsGender}
             label="Academia"
             isOptional={true}
             className="w-full lg:w-[10vw] mt-0 mr-2 bg-gray-50"

@@ -141,7 +141,7 @@ function AllUsers() {
     <div className="w-screen  h-full p-2">
       <Toaster />
       <GlobalTile title="Todos os alunos"/>
-      {allUsers  && <TableAllUsers tableJSON={allUsers || []} />}
+      {allUsers  && <TableAllUsers tableJSON={[]} />}
       {!allUsers  && <TableAllUsers tableJSON={[]} />}
 
     </div>

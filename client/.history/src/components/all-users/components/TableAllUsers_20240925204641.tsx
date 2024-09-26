@@ -28,18 +28,12 @@ import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 import { Info } from "@phosphor-icons/react";
 import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { structNestedOptions } from "../../../utils/structNestedOptions";
 import Input from "../../input/Input";
 import Select from "../../select/Select";
 
 interface PropsTableRegisters {
   gridTheme?: string;
   tableJSON?: any;
-}
-
-export interface structOptions {
-  value: string | number;
-  label: string
 }
 
 const info = (onClick: () => void) => {
@@ -70,8 +64,6 @@ function TableAllUsers({
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
-  const [optionsCities, setOptionsCities] = useState<structOptions[]>();
-  const [optionsGym, setOptionsGym] = useState<structOptions[]>();
 
   const openModalInfo = () => setIsModalInfo(true);
 
@@ -81,9 +73,8 @@ function TableAllUsers({
   }, [tableJSON]);
 
   useEffect(() => {
-    setOptionsCities(structNestedOptions(tableJSON, ['city']))
-    setOptionsGym(structNestedOptions(tableJSON, ['Gym', 'name']))
-  }, [tableJSON])
+    setRowData(tableJSON);
+  }, [])
 
   const defaultColDef = useMemo<ColDef>(
     () => ({
@@ -132,7 +123,7 @@ function TableAllUsers({
       flex: 1,
     },
     {
-      field: "city",
+      field: "Gym.city",
       headerName: "Cidade",
       flex: 1,
     },
@@ -152,7 +143,7 @@ function TableAllUsers({
           <Select
             id="gender"
             name="gender"
-            options={optionsGym}
+            options={optionsGender}
             label="Academia"
             isOptional={true}
             className="w-full lg:w-[10vw] mt-0 mr-2 bg-gray-50"
@@ -161,7 +152,7 @@ function TableAllUsers({
           <Select
             id="gender"
             name="gender"
-            options={optionsCities}
+            options={optionsGender}
             label="Cidade"
             isOptional={true}
             className="w-full lg:w-[10vw] mt-0 lg:mr-2 bg-gray-50"

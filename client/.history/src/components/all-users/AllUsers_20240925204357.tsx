@@ -127,10 +127,8 @@ function AllUsers() {
 
   const getAllUsers = async () => {
     const response = await client.athlet.list();
-    if(!response.status) {
+    if(response.status) {
       toast?.error('Não foi possível listar nenhum aluno', {duration: 4000})
-    }else {
-      setAllUsers(response.payload);
     }
   }
   useEffect(() => {
@@ -141,9 +139,7 @@ function AllUsers() {
     <div className="w-screen  h-full p-2">
       <Toaster />
       <GlobalTile title="Todos os alunos"/>
-      {allUsers  && <TableAllUsers tableJSON={allUsers || []} />}
-      {!allUsers  && <TableAllUsers tableJSON={[]} />}
-
+      <TableAllUsers tableJSON={mockData} />
     </div>
   );
 }

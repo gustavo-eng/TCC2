@@ -32,7 +32,6 @@ const CardsGym: React.FC<CardProps> = ({
   idGym,
   refreshGyms,
   className,
-  edit = false,
 
 }) => {
 
@@ -103,12 +102,10 @@ const CardsGym: React.FC<CardProps> = ({
               label="Deletar"
               onClick={() => modalRef.current?.openModal()}
             />
-            {edit && (
-              <Button
-                className="p-1.5 px-5 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                label="Editar"
-              />
-            )}
+            <Button
+              className="p-1.5 px-5 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              label="Editar"
+            />
           </div>
         </div>
       </div>

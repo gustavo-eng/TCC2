@@ -71,7 +71,6 @@ function TableAllUsers({
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
   const [optionsCities, setOptionsCities] = useState<structOptions[]>();
-  const [optionsGym, setOptionsGym] = useState<structOptions[]>();
 
   const openModalInfo = () => setIsModalInfo(true);
 
@@ -82,7 +81,6 @@ function TableAllUsers({
 
   useEffect(() => {
     setOptionsCities(structNestedOptions(tableJSON, ['city']))
-    setOptionsGym(structNestedOptions(tableJSON, ['Gym', 'name']))
   }, [tableJSON])
 
   const defaultColDef = useMemo<ColDef>(
@@ -152,7 +150,7 @@ function TableAllUsers({
           <Select
             id="gender"
             name="gender"
-            options={optionsGym}
+            options={optionsGender}
             label="Academia"
             isOptional={true}
             className="w-full lg:w-[10vw] mt-0 mr-2 bg-gray-50"
