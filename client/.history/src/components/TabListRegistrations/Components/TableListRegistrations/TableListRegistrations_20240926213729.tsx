@@ -57,13 +57,13 @@ function TableListRegistrations({
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [rowData, setRowData] = useState<any>();
-  const [selectedRowData, setSelectedRowData] = useState<any>(null);
+
+
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
-
-
+  const [rowData, setRowData] = useState<any>();
+  const [selectedRowData, setSelectedRowData] = useState<any>(null);
 
   const openModalValidate = useCallback((rowData: any) => {
     // Atualizar o estado primeiro
@@ -157,9 +157,7 @@ function TableListRegistrations({
     {
       headerName: "Acao",
       cellRenderer: (params: any) =>
-        validateButton(() => {
-          openModalValidate(params?.data)
-        }), // Passando params.data para o modal
+        validateButton(() => openModalValidate(params.data)), // Passando params.data para o modal
       cellStyle: { textAlign: "center" },
       flex: 0.4,
     },
@@ -174,11 +172,12 @@ function TableListRegistrations({
     <div className={`w-full h-full  ${themeClass}`}>
         <ModalValidateRegistration
         isOpen={isModalValidade}
-        path={selectedRowData || ''}
+        path={selectedRowData?.Event?.voucherPath as string}
         onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
+          {JSON.stringify(selectedRowData)}
           <Select
             id="gender"
             name="gender"

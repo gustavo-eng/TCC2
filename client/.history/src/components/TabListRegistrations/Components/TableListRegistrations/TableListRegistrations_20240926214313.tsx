@@ -179,6 +179,7 @@ function TableListRegistrations({
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
+          {JSON.stringify(selectedRowData)}
           <Select
             id="gender"
             name="gender"

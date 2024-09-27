@@ -57,13 +57,13 @@ function TableListRegistrations({
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [rowData, setRowData] = useState<any>();
-  const [selectedRowData, setSelectedRowData] = useState<any>(null);
+
+
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
-
-
+  const [rowData, setRowData] = useState<any>();
+  const [selectedRowData, setSelectedRowData] = useState<any>(null);
 
   const openModalValidate = useCallback((rowData: any) => {
     // Atualizar o estado primeiro
@@ -93,7 +93,6 @@ function TableListRegistrations({
     []
   );
 
-  //todo Melhorar essa parte do codigo.
   const getRowHeight = useCallback(
     (params: RowHeightParams): number | undefined | null => {
       return 50;
@@ -107,7 +106,7 @@ function TableListRegistrations({
     []
   );
 
-  // nome, status de pagamento, nomeDaAcademia, gender, class, weight
+  // Colunas da tabela
   const [colDefs] = useState<ColDef[]>([
     {
       field: "Athlet.name",
@@ -123,8 +122,7 @@ function TableListRegistrations({
           status = "Aprovado";
         } else if (
           props.data.aproved == false &&
-          (props?.data?.description == "" ||
-            props?.data?.description.length == 0)
+          (!props?.data?.description || props?.data?.description.length === 0)
         ) {
           status = "Pendente";
         } else {
@@ -146,7 +144,7 @@ function TableListRegistrations({
     },
     {
       field: "Category.classCategory",
-      headerName: "Divisao",
+      headerName: "Divisão",
       flex: 0.2,
     },
     {
@@ -155,11 +153,9 @@ function TableListRegistrations({
       flex: 0.2,
     },
     {
-      headerName: "Acao",
+      headerName: "Ação",
       cellRenderer: (params: any) =>
-        validateButton(() => {
-          openModalValidate(params?.data)
-        }), // Passando params.data para o modal
+        validateButton(() => openModalValidate(params.data)),
       cellStyle: { textAlign: "center" },
       flex: 0.4,
     },
@@ -171,19 +167,24 @@ function TableListRegistrations({
   ];
 
   return (
-    <div className={`w-full h-full  ${themeClass}`}>
-        <ModalValidateRegistration
-        isOpen={isModalValidade}
-        path={selectedRowData || ''}
+    <div className={`w-full h-full ${themeClass}`}>
+      {/* Modal que será aberta */}
+      <ModalValidateRegistration
+        isOpen={isModalValidate}
+        path={selectedRowData?.Event?.voucherPath as string}
         onClose={() => setIsModalValidate(false)}
-    />
+      />
+
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
+          {/* Renderização de dados selecionados para debug */}
+          {JSON.stringify(selectedRowData)}
+
           <Select
             id="gender"
             name="gender"
             options={optionsGender}
-            label="Genero"
+            label="Gênero"
             isOptional={true}
             className="w-full lg:w-[10vw] mt-0 mr-2 bg-gray-50"
             onChange={(e) => console.log(e.target.value)}
@@ -217,7 +218,8 @@ function TableListRegistrations({
         placeholder="Search product..."
         onInput={onFilterTextBoxChanged}
       />
-      <div className="w-full h-full " style={gridStyle}>
+
+      <div className="w-full h-full" style={gridStyle}>
         <AgGridReact
           ref={gridRef}
           columnDefs={colDefs}

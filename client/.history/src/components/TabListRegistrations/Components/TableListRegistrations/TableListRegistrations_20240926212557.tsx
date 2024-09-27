@@ -57,20 +57,18 @@ function TableListRegistrations({
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [rowData, setRowData] = useState<any>();
-  const [selectedRowData, setSelectedRowData] = useState<any>(null);
+
+  const openModalValidate = (rowData: any) => {
+    setSelectedRowData(rowData); // Passando os dados da linha para o estado
+    setIsModalValidate(true);
+  };
+
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
+  const [rowData, setRowData] = useState<any>();
+  const [selectedRowData, setSelectedRowData] = useState<any>(null);
 
-
-
-  const openModalValidate = useCallback((rowData: any) => {
-    // Atualizar o estado primeiro
-    setSelectedRowData(rowData);
-    // Abrir a modal após a atualização do estado
-    setIsModalValidate(true);
-  }, []);
 
   const onGridReady = useCallback(() => {
     setRowData(tableJSON);
@@ -157,9 +155,7 @@ function TableListRegistrations({
     {
       headerName: "Acao",
       cellRenderer: (params: any) =>
-        validateButton(() => {
-          openModalValidate(params?.data)
-        }), // Passando params.data para o modal
+        validateButton(() => openModalValidate(params.data), params.data), // Passando params.data para o modal
       cellStyle: { textAlign: "center" },
       flex: 0.4,
     },
@@ -174,7 +170,7 @@ function TableListRegistrations({
     <div className={`w-full h-full  ${themeClass}`}>
         <ModalValidateRegistration
         isOpen={isModalValidade}
-        path={selectedRowData || ''}
+        path=""
         onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">

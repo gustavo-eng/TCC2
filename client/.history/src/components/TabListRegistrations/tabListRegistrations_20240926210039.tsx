@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import client from "../../service/client";
 import GlobalTile from "../GlobalTitle/GlobalTitle";
 import TableListRegistrations from "./Components/TableListRegistrations/TableListRegistrations";
+import dataMocked from './Components/mock/dataListRegistrations.json';
 
 
 
@@ -11,6 +12,7 @@ function TabListRegistrations(){
     const getRegistrations = async () => {
         try {
             const response =  await client.payments.listAll();
+            console.log('response ', response);
             if(response.status) {
                 setRegistrations(response.payload)
             } else {
@@ -29,8 +31,7 @@ function TabListRegistrations(){
     return (
         <div className="w-screen flex flex-col justify-center items-center p-3">
             <GlobalTile title="Pagamentos e inscrições"/>
-            {registration && <TableListRegistrations tableJSON={registration || []}/> }
-            {!registration && <TableListRegistrations tableJSON={[]}/> }
+            {registration && <TableListRegistrations tableJSON={dataMocked || []}/> }
         </div>
     )
 }

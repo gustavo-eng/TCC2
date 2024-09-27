@@ -11,6 +11,7 @@ function TabListRegistrations(){
     const getRegistrations = async () => {
         try {
             const response =  await client.payments.listAll();
+            console.log('response ', response);
             if(response.status) {
                 setRegistrations(response.payload)
             } else {

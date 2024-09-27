@@ -158,7 +158,8 @@ function TableListRegistrations({
       headerName: "Acao",
       cellRenderer: (params: any) =>
         validateButton(() => {
-          openModalValidate(params?.data)
+
+          openModalValidate(params.data)
         }), // Passando params.data para o modal
       cellStyle: { textAlign: "center" },
       flex: 0.4,
@@ -174,11 +175,12 @@ function TableListRegistrations({
     <div className={`w-full h-full  ${themeClass}`}>
         <ModalValidateRegistration
         isOpen={isModalValidade}
-        path={selectedRowData || ''}
+        path={selectedRowData?.Event?.voucherPath || ''}
         onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
+          {JSON.stringify(selectedRowData)}
           <Select
             id="gender"
             name="gender"

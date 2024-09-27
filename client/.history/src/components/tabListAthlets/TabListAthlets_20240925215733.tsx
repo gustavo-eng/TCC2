@@ -106,6 +106,7 @@ function TabListAthlets() {
     getAthlets();
   }, []);
 
+
   return (
     <div className="w-screen lg:w-full h-fit lg:h-[80vh] flex flex-col items-center p-1">
       <GlobalTile title="Meus Alunos"/>

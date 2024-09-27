@@ -26,6 +26,7 @@ export function structNestedOptions(data: any, key: any) {
                 }
             }
         }
+        //Verifica o array todo e depois retorna o parse dele
         return Array.from(new Set(listOptions.map(item => JSON.stringify(item))))
         .map(item => JSON.parse(item));
 

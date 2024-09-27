@@ -36,7 +36,7 @@ const gym = {
 }
 
 const category = {
-    get: (): Promise<any> => _get('/category'),
+    get: (): Promise<any> => _get('/category')
 }
 
 const athlet = {
