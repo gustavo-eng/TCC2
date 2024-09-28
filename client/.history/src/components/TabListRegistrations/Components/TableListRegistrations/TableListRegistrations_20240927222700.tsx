@@ -24,7 +24,7 @@ ModuleRegistry.registerModules([
 import { AgGridReact } from "@ag-grid-community/react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
-import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from "react";
 import Button from "../../../buttons/button";
 import Input from "../../../input/Input";
 import ModalValidateRegistration from "../../../modal/modalValidateRegistration/ModalValidateRegistration";
@@ -35,7 +35,7 @@ import StatusBadge from "../../../StatusBadge/StatusBadge";
 interface PropsTableRegisters {
   gridTheme?: string;
   tableJSON?: any;
-
+  refreshTable?: any;
 }
 
 const validateButton = (onClick: () => void) => {
@@ -54,7 +54,7 @@ const validateButton = (onClick: () => void) => {
 function TableListRegistrations({
   gridTheme = "ag-theme-quartz",
   tableJSON,
-
+  refreshTable
 }: PropsTableRegisters) {
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
@@ -74,21 +74,17 @@ function TableListRegistrations({
     setIsModalValidate(true);
   }, []);
 
-  /*
   const onGridReady = useCallback(() => {
     setRowData(tableJSON);
     gridRef?.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
-  */
+
 
   /*
   useEffect(() => {
   }, [registration,dispatch])
   */
 
-  useEffect(() => {
-    setRowData(tableJSON || []);
-  }, [tableJSON])
   const defaultColDef = useMemo<ColDef>(
     () => ({
       resizable: true,
@@ -188,6 +184,7 @@ function TableListRegistrations({
         isOpen={isModalValidade}
         path={selectedRowData || ''}
         onClose={() => {
+          refreshTable()
           return setIsModalValidate(false)
         }}
     />
@@ -247,7 +244,7 @@ function TableListRegistrations({
           masterDetail
           getRowHeight={getRowHeight}
           suppressDragLeaveHidesColumns={true}
-          //onGridReady={onGridReady}
+          onGridReady={onGridReady}
         />
       </div>
     </div>

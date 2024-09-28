@@ -24,7 +24,7 @@ ModuleRegistry.registerModules([
 import { AgGridReact } from "@ag-grid-community/react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
-import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from "react";
 import Button from "../../../buttons/button";
 import Input from "../../../input/Input";
 import ModalValidateRegistration from "../../../modal/modalValidateRegistration/ModalValidateRegistration";
@@ -35,7 +35,6 @@ import StatusBadge from "../../../StatusBadge/StatusBadge";
 interface PropsTableRegisters {
   gridTheme?: string;
   tableJSON?: any;
-
 }
 
 const validateButton = (onClick: () => void) => {
@@ -54,7 +53,6 @@ const validateButton = (onClick: () => void) => {
 function TableListRegistrations({
   gridTheme = "ag-theme-quartz",
   tableJSON,
-
 }: PropsTableRegisters) {
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
@@ -74,21 +72,11 @@ function TableListRegistrations({
     setIsModalValidate(true);
   }, []);
 
-  /*
   const onGridReady = useCallback(() => {
     setRowData(tableJSON);
     gridRef?.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
-  */
 
-  /*
-  useEffect(() => {
-  }, [registration,dispatch])
-  */
-
-  useEffect(() => {
-    setRowData(tableJSON || []);
-  }, [tableJSON])
   const defaultColDef = useMemo<ColDef>(
     () => ({
       resizable: true,
@@ -105,7 +93,7 @@ function TableListRegistrations({
     []
   );
 
-
+  //todo Melhorar essa parte do codigo.
   const getRowHeight = useCallback(
     (params: RowHeightParams): number | undefined | null => {
       return 50;
@@ -187,9 +175,7 @@ function TableListRegistrations({
         <ModalValidateRegistration
         isOpen={isModalValidade}
         path={selectedRowData || ''}
-        onClose={() => {
-          return setIsModalValidate(false)
-        }}
+        onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
@@ -247,7 +233,7 @@ function TableListRegistrations({
           masterDetail
           getRowHeight={getRowHeight}
           suppressDragLeaveHidesColumns={true}
-          //onGridReady={onGridReady}
+          onGridReady={onGridReady}
         />
       </div>
     </div>

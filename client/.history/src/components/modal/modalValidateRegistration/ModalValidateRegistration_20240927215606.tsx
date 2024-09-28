@@ -2,10 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
 import client from "../../../service/client";
-import { setRegistration } from "../../../store/registrations/registrationsReducer";
-import { AppDispatch } from "../../../store/store";
 import Modal from "../Modal";
 import { ModalProps } from "../types";
 import { validateRegistration, validateSchema } from "./TypesValidate";
@@ -13,7 +10,6 @@ import { validateRegistration, validateSchema } from "./TypesValidate";
 function ModalValidateRegistration({ isOpen, onClose, path }: ModalProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [errorComent, setErrorComent] = useState<string>("");
-  const dispatch = useDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
@@ -32,9 +28,7 @@ function ModalValidateRegistration({ isOpen, onClose, path }: ModalProps) {
         path.idPayment as string
       );
       if (response.status) {
-        dispatch(setRegistration(response.payload))
         toast.success("Pagamento aceito com sucesso!", { duration: 3000 });
-
       } else {
         toast.error("Não foi possível aprovar pagamento", { duration: 3000 });
       }
@@ -51,9 +45,7 @@ function ModalValidateRegistration({ isOpen, onClose, path }: ModalProps) {
           path.idPayment as string, str as string
         );
         if (response.status) {
-          dispatch(setRegistration(response.payload))
           toast.success("Pagamento reprovado com sucesso!", { duration: 3000 });
-
         } else {
           toast.error("Não foi possível reprovar este pagamento", { duration: 3000 });
         }

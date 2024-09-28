@@ -10,9 +10,9 @@ import TableListRegistrations from "./Components/TableListRegistrations/TableLis
 
 
 function TabListRegistrations(){
-    const [registrationNew, setRegistrations] = useState<any>();
+    const [registration, setRegistrations] = useState<any>();
         const selector = useAppSelector(registrationSelector);
-    const {registration} = selector;
+    const {registrationUpdate} = selector;
     const dispatch = useDispatch<AppDispatch>();
 
     const getRegistrations = async () => {
@@ -31,14 +31,14 @@ function TabListRegistrations(){
 
     useEffect(() => {
         getRegistrations();
-    }, [registration, dispatch])
+        console.log('eeerrrooouu')
+    }, [registrationUpdate, dispatch])
 
     return (
         <div className="w-screen flex flex-col justify-center items-center p-3">
             <GlobalTile title="Pagamentos e inscrições"/>
-            {registrationNew && <TableListRegistrations tableJSON={registrationNew || []}
-            /> }
-            {!registrationNew && <TableListRegistrations tableJSON={[]}/> }
+            {registration && <TableListRegistrations tableJSON={registration || []}/> }
+            {!registration && <TableListRegistrations tableJSON={[]}/> }
         </div>
     )
 }

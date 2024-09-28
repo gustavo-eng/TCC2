@@ -45,8 +45,7 @@ const athlet = {
 }
 
 const fprj = {
-    refuseRegistration: (idPayment: string, comment: string) =>   _put(`/registration/reprove/${String(idPayment)}`, {description: comment}),
-    acceptRegistration: (idPayment: string)  => _post(`/registration/aprove/${String(idPayment)}`)
+    acceptRegistration: (idPayment: string) =>   _put(`/registration/reprove/${String(idPayment)}`)
 }
 
 
@@ -56,7 +55,6 @@ const client = {
     payments,
     gym,
     category,
-    fprj,
     athlet
 }
 

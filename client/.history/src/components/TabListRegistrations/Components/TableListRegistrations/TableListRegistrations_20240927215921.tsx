@@ -35,7 +35,6 @@ import StatusBadge from "../../../StatusBadge/StatusBadge";
 interface PropsTableRegisters {
   gridTheme?: string;
   tableJSON?: any;
-
 }
 
 const validateButton = (onClick: () => void) => {
@@ -54,7 +53,6 @@ const validateButton = (onClick: () => void) => {
 function TableListRegistrations({
   gridTheme = "ag-theme-quartz",
   tableJSON,
-
 }: PropsTableRegisters) {
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
@@ -74,21 +72,11 @@ function TableListRegistrations({
     setIsModalValidate(true);
   }, []);
 
-  /*
   const onGridReady = useCallback(() => {
     setRowData(tableJSON);
     gridRef?.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
-  */
 
-  /*
-  useEffect(() => {
-  }, [registration,dispatch])
-  */
-
-  useEffect(() => {
-    setRowData(tableJSON || []);
-  }, [tableJSON])
   const defaultColDef = useMemo<ColDef>(
     () => ({
       resizable: true,
@@ -105,7 +93,7 @@ function TableListRegistrations({
     []
   );
 
-
+  //todo Melhorar essa parte do codigo.
   const getRowHeight = useCallback(
     (params: RowHeightParams): number | undefined | null => {
       return 50;
@@ -182,14 +170,13 @@ function TableListRegistrations({
     { value: "Feminino", label: "Feminino" },
   ];
 
+  useEffect(() => {}, [isModalValidade])
   return (
     <div className={`w-full h-full  ${themeClass}`}>
         <ModalValidateRegistration
         isOpen={isModalValidade}
         path={selectedRowData || ''}
-        onClose={() => {
-          return setIsModalValidate(false)
-        }}
+        onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
@@ -247,7 +234,7 @@ function TableListRegistrations({
           masterDetail
           getRowHeight={getRowHeight}
           suppressDragLeaveHidesColumns={true}
-          //onGridReady={onGridReady}
+          onGridReady={onGridReady}
         />
       </div>
     </div>

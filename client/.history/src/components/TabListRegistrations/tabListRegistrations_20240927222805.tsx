@@ -31,7 +31,7 @@ function TabListRegistrations(){
 
     useEffect(() => {
         getRegistrations();
-    }, [registration, dispatch])
+    }, [registration, dispatch,getRegistrations])
 
     return (
         <div className="w-screen flex flex-col justify-center items-center p-3">

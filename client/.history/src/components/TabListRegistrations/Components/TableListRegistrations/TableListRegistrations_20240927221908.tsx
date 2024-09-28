@@ -25,6 +25,10 @@ import { AgGridReact } from "@ag-grid-community/react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
 import { ChangeEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import useAppSelector from "../../../../hooks/useAppSelector";
+import { registrationSelector } from "../../../../store/registrations/registrationsReducer";
+import { AppDispatch } from "../../../../store/store";
 import Button from "../../../buttons/button";
 import Input from "../../../input/Input";
 import ModalValidateRegistration from "../../../modal/modalValidateRegistration/ModalValidateRegistration";
@@ -35,7 +39,6 @@ import StatusBadge from "../../../StatusBadge/StatusBadge";
 interface PropsTableRegisters {
   gridTheme?: string;
   tableJSON?: any;
-
 }
 
 const validateButton = (onClick: () => void) => {
@@ -54,7 +57,6 @@ const validateButton = (onClick: () => void) => {
 function TableListRegistrations({
   gridTheme = "ag-theme-quartz",
   tableJSON,
-
 }: PropsTableRegisters) {
   const themeClass = gridTheme;
   const [isModalValidade, setIsModalValidate] = useState<boolean>(false);
@@ -65,7 +67,9 @@ function TableListRegistrations({
   const paginationPageSizeSelector = [5, 10, 20];
   const gridRef = useRef<AgGridReact>(null);
 
-
+  const selector = useAppSelector(registrationSelector);
+  const {registration} = selector;
+  const dispatch = useDispatch<AppDispatch>();
 
   const openModalValidate = useCallback((rowData: any) => {
     // Atualizar o estado primeiro
@@ -74,21 +78,17 @@ function TableListRegistrations({
     setIsModalValidate(true);
   }, []);
 
-  /*
   const onGridReady = useCallback(() => {
     setRowData(tableJSON);
     gridRef?.current?.api.sizeColumnsToFit();
-  }, [tableJSON]);
-  */
+  }, [tableJSON, registration]);
 
-  /*
+
+
   useEffect(() => {
+    console.log('dispaaaatch')
   }, [registration,dispatch])
-  */
 
-  useEffect(() => {
-    setRowData(tableJSON || []);
-  }, [tableJSON])
   const defaultColDef = useMemo<ColDef>(
     () => ({
       resizable: true,
@@ -187,9 +187,7 @@ function TableListRegistrations({
         <ModalValidateRegistration
         isOpen={isModalValidade}
         path={selectedRowData || ''}
-        onClose={() => {
-          return setIsModalValidate(false)
-        }}
+        onClose={() => setIsModalValidate(false)}
     />
       <div className="flex flex-col lg:flex-row justify-start mt-2">
         <div className="flex lg:none mb-8">
@@ -247,7 +245,7 @@ function TableListRegistrations({
           masterDetail
           getRowHeight={getRowHeight}
           suppressDragLeaveHidesColumns={true}
-          //onGridReady={onGridReady}
+          onGridReady={onGridReady}
         />
       </div>
     </div>

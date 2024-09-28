@@ -31,13 +31,13 @@ function TabListRegistrations(){
 
     useEffect(() => {
         getRegistrations();
+        console.log('eeerrrooouu')
     }, [registration, dispatch])
 
     return (
         <div className="w-screen flex flex-col justify-center items-center p-3">
             <GlobalTile title="Pagamentos e inscrições"/>
-            {registrationNew && <TableListRegistrations tableJSON={registrationNew || []}
-            /> }
+            {registrationNew && <TableListRegistrations tableJSON={registrationNew || []}/> }
             {!registrationNew && <TableListRegistrations tableJSON={[]}/> }
         </div>
     )
