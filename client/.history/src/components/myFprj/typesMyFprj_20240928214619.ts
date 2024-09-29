@@ -1,0 +1,8 @@
+import { z } from 'zod';
+
+const myFprjSchema = z.object({
+    president: z.string({message: "Deve ser caracteres "}).min(4, {message: "Minimo 4 caracteres"}).max(255, {message: "Máximo 255 caracteres"}).optional(),
+    email: z.string({message: "Deve ser caracteres "}).email({message: "Email invalido"}).optional(),
+    phone: z.any().optional(),
+    password: z.string({message: "Deve ser caracteres "}).optional()
+})
