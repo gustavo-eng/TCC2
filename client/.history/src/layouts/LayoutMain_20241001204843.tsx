@@ -82,7 +82,7 @@ export default function LayoutMain({ componentName = "tab" }) {
         { id: "lisGyms", icon: <Building size={22} /> },
         { id: "allUsers", icon: <Student size={25} /> },
         { id: "myFprj", icon: <User size={25} /> },
-        { id: "registerTypes", icon: <Info size={24}  /> },
+        { id: "registerTypes", icon: <Info size={24} color="#656334" /> },
         /*
         {
           id: "allStfasdudedsnts",
