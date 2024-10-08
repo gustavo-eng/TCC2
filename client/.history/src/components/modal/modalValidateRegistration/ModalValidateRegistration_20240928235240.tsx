@@ -51,7 +51,7 @@ function ModalValidateRegistration({ isOpen, onClose, path }: ModalProps) {
         );
         if (response.status) {
           dispatch(setRegistration(response.payload))
-          toast.success("Pagamento reprovado com sucesso!", { duration: 3000 });
+          toast.error("Pagamento reprovado com sucesso!", { duration: 3000 });
 
         } else {
           toast.error("Não foi possível reprovar este pagamento", { duration: 3000 });

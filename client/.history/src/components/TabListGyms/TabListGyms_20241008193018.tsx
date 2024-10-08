@@ -188,7 +188,7 @@ function TabListGyms() {
             </Fragment>
           )
         })}
-        <div className="w-full h-full mt-4">
+        <div className="w-full h-full">
           {gyms && <TableListGyms  tableJSON={gyms || []}/>}
           {!gyms && <TableListGyms  tableJSON={[]}/>}
         </div>

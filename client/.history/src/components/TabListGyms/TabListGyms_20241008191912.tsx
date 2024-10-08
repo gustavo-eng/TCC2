@@ -151,7 +151,7 @@ function TabListGyms() {
 
 
   return (
-    <div className="w-full h-full flex flex-col  items-start p-2">
+    <div className="w-full h-full flex flex-col  items-start p-1">
       <ModalRegisterGym
         isOpen={isModalGymOpen}
         onClose={closeModalRegisterGym}
@@ -169,8 +169,7 @@ function TabListGyms() {
         </div>
       </div>
       <div className="w-full flex flex-row flex-wrap lg:justify-start justify-center">
-        {/* Temporario */}
-        {false && gyms.length > 0 && filteredEvents?.map((el, index) => {
+        {true && gyms.length > 0 && filteredEvents?.map((el, index) => {
           return (
             <Fragment key={index}>
               <CardsGym
@@ -188,11 +187,7 @@ function TabListGyms() {
             </Fragment>
           )
         })}
-        <div className="w-full h-full mt-4">
-          {gyms && <TableListGyms  tableJSON={gyms || []}/>}
-          {!gyms && <TableListGyms  tableJSON={[]}/>}
-        </div>
-
+        <TableListGyms  tableJSON={[]}/>
       </div>
     </div>
   );

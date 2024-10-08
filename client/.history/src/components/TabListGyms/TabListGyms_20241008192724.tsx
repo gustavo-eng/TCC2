@@ -151,7 +151,7 @@ function TabListGyms() {
 
 
   return (
-    <div className="w-full h-full flex flex-col  items-start p-2">
+    <div className="w-full h-full flex flex-col  items-start p-1">
       <ModalRegisterGym
         isOpen={isModalGymOpen}
         onClose={closeModalRegisterGym}
@@ -188,11 +188,7 @@ function TabListGyms() {
             </Fragment>
           )
         })}
-        <div className="w-full h-full mt-4">
-          {gyms && <TableListGyms  tableJSON={gyms || []}/>}
-          {!gyms && <TableListGyms  tableJSON={[]}/>}
-        </div>
-
+        <TableListGyms  tableJSON={gyms || []}/>
       </div>
     </div>
   );
