@@ -82,6 +82,7 @@ const CompetitionCard: React.FC<CompetitionCardProps> = ({
 
 
   return (
+
     <div className="bg-white shadow flex flex-col justify-start  lg:w-[15vw] rounded-md m-1 h-fit p-1">
       <div id={idPayment?.toString()} className='hidden'>Id: {idPayment}</div>
       <div className="flex justify-between items-center w-full flex-wrap">

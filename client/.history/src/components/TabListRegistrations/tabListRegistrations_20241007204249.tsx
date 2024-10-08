@@ -41,15 +41,16 @@ function TabListRegistrations(){
     useEffect(() => {
         getRegistrations();
         console.warn('registrationNew ', registrationNew)
-    }, [registration, dispatch]);
+    }, [registration, dispatch])
 
     return (
         <div className="w-screen flex flex-col justify-center items-center p-3">
             <GlobalTile title={`${registrationNew && isNumber(idEvent as string) ?  `Inscrição do evento: ${registrationNew?.[0]?.Event?.description || ""}` : `Inscricoes e pagamentos`}`}/>
             {registrationNew && <TableListRegistrations tableJSON={registrationNew || []}
             /> }
-            {!registrationNew && <TableListRegistrations tableJSON={[]} /> }
+            {!registrationNew && <TableListRegistrations tableJSON={[]}/> }
         </div>
-    );
+    )
 }
+
 export default TabListRegistrations;

@@ -21,7 +21,6 @@ import Button from "../../buttons/button";
 import Input from "../../input/Input";
 //style
 import { describeStatusPayment } from "../../../utils/describeStatusPayment";
-import { structNestedOptions } from "../../../utils/structNestedOptions";
 import ModalViewRegistration from "../../modal/modalViewRegistration/ModalViewRegistration";
 import Select from "../../select/Select";
 import StatusBadge from "../../StatusBadge/StatusBadge";
@@ -63,16 +62,18 @@ function TableRegisters({
   const [selectedIdPayment, setSelectedIdPayment] = useState<string | undefined>(undefined);
   const [isModalViewRegistration, setModalViewRegistration] = useState<boolean>(false);
   const [currentStatusPayment, setCurrentStatusPayment] = useState<string>();
-  const [multiSelectOptions, setMultiSelectOptions] = useState<any>();
+
+
   const themeClass = gridTheme;
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [selectedEvent, setSelectedEvent] = useState<string>();
 
   useEffect(() => {
-    setMultiSelectOptions(structNestedOptions(tableJSON, ['Event','description']))
-  }, [tableJSON]);
+    console.log('tableJSON')
+    console.log(tableJSON)
+  }, [])
 
   const openModalViewRegistraion = (idPayment: string, data?: any) => {
+
     setSelectedIdPayment(idPayment);
     setCurrentStatusPayment(describeStatusPayment(data?.aproved || false, data?.description || ""));
     return setModalViewRegistration(true);
@@ -88,11 +89,13 @@ function TableRegisters({
     gridRef.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
 
+
   const defaultColDef = useMemo<ColDef>(
     () => ({
       resizable: true,
       cellStyle: { textAlign: "center" },
       headerClass: "header-center",
+
     }),
     []
   );
@@ -113,14 +116,6 @@ function TableRegisters({
     });
   }, []);
 
-  const filterEventStartsWith = useCallback((el:string) => {
-    gridRef.current!.api.setColumnFilterModel('Event.description', {
-      type: "startsWith",
-      filter: `${el}`,
-    }).then(() => {
-      gridRef.current!.api.onFilterChanged();
-    });
-  }, [])
 
   const filterGenderStartsWith = useCallback((el:string) => {
     gridRef.current!.api.setColumnFilterModel('Category.gender', {
@@ -146,7 +141,7 @@ function TableRegisters({
       headerName: "Atleta",
       flex: 1,
     },
-    {
+    { //Coluna utilizada apenas para filtro
       field: "description",
       headerName: "description",
       flex: 1,
@@ -199,12 +194,6 @@ function TableRegisters({
       headerName: "Categoria (Kg)",
       flex: 1,
       //hide: true,
-    },
-    {
-      field: "Event.description",
-      hide: true,
-      flex: 1,
-      filter: "agTextColumnFilter"
     },
     {
       headerName: "Ação",
@@ -311,6 +300,8 @@ function TableRegisters({
             classNameSelect="bg-white rounded-md border-gray-400 hover:border-green-500"
             onChange={(e) => filterStatus(e.target.value)}
           />
+
+
         </div>
       </div>
 
@@ -319,9 +310,9 @@ function TableRegisters({
           <div>
             <label className="text-gray-700 font-semibold">Evento</label>
             <MultiSelect
-              className="min-w-[250px] w-fit h-fit  rounded-md border-1 p-0"
-              options={multiSelectOptions}
-              onChange={(e: any) => filterEventStartsWith(e?.value)}
+              className="w-[280px] h-fit  rounded-md border-1"
+              options={optionsStatus}
+              onChange={(e: any) => console.log(e)}
             />
           </div>
         )}

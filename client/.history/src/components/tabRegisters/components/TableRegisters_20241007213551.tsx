@@ -112,16 +112,11 @@ function TableRegisters({
       gridRef.current!.api.onFilterChanged();
     });
   }, []);
-
+/*
   const filterEventStartsWith = useCallback((el:string) => {
-    gridRef.current!.api.setColumnFilterModel('Event.description', {
-      type: "startsWith",
-      filter: `${el}`,
-    }).then(() => {
-      gridRef.current!.api.onFilterChanged();
-    });
-  }, [])
 
+  })
+*/
   const filterGenderStartsWith = useCallback((el:string) => {
     gridRef.current!.api.setColumnFilterModel('Category.gender', {
       type: "startsWith",
@@ -321,7 +316,7 @@ function TableRegisters({
             <MultiSelect
               className="min-w-[250px] w-fit h-fit  rounded-md border-1 p-0"
               options={multiSelectOptions}
-              onChange={(e: any) => filterEventStartsWith(e?.value)}
+              onChange={(e: any) => setSelectedEvent(e?.value)}
             />
           </div>
         )}

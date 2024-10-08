@@ -48,8 +48,9 @@ function TabListRegistrations(){
             <GlobalTile title={`${registrationNew && isNumber(idEvent as string) ?  `Inscrição do evento: ${registrationNew?.[0]?.Event?.description || ""}` : `Inscricoes e pagamentos`}`}/>
             {registrationNew && <TableListRegistrations tableJSON={registrationNew || []}
             /> }
-            {!registrationNew && <TableListRegistrations tableJSON={[]} /> }
+            {!registrationNew && <TableListRegistrations tableJSON={[]}/> }
         </div>
     );
 }
+
 export default TabListRegistrations;

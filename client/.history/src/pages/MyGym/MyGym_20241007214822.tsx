@@ -24,18 +24,14 @@ function MyGym() {
     formState: { errors },
   } = useForm<updateGym>({
     resolver: zodResolver(updateGymSchema),
-    defaultValues: {
-      city: user?.city,
-      cnpj: user?.cnpj,
-      neighborhood: user?.neighborhood,
-
-    }
   });
 
   async function onSubmit(data: any) {
 
     setLoading(true);
+
     let response = await client.gym.update(String(user.idGym), data);
+
     if (response.status) {
       toast.success("Academia atualizada com sucesso", { duration: 4000 });
       setTimeout(() => {
@@ -44,6 +40,7 @@ function MyGym() {
     } else {
       toast.error("Erro ao atualizar academia ", { duration: 4000 });
     }
+
     setLoading(false);
 
   }
@@ -57,7 +54,7 @@ function MyGym() {
         </h1>
         {/* Grid */}
         <div className=" w-fit grid grid-cols-2 gap-1 text-sm mx-auto ">
-          <p className="text-gray-500">Rua: {user?.street} </p>
+          <p className="text-gray-500">Rua: {user?.street}dfasfasdfxczvv </p>
           <p className="text-gray-500">CNPJ: {user?.cnpj} </p>
           <p className="text-gray-500">Numero: {user?.number} </p>
           <p className="text-gray-500">Cidade: {user?.city} </p>

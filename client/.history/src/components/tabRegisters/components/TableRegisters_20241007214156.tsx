@@ -321,7 +321,7 @@ function TableRegisters({
             <MultiSelect
               className="min-w-[250px] w-fit h-fit  rounded-md border-1 p-0"
               options={multiSelectOptions}
-              onChange={(e: any) => filterEventStartsWith(e?.value)}
+              onChange={(e: any) => setSelectedEvent(e?.value)}
             />
           </div>
         )}

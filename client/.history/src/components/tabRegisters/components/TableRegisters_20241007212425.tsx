@@ -66,7 +66,6 @@ function TableRegisters({
   const [multiSelectOptions, setMultiSelectOptions] = useState<any>();
   const themeClass = gridTheme;
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [selectedEvent, setSelectedEvent] = useState<string>();
 
   useEffect(() => {
     setMultiSelectOptions(structNestedOptions(tableJSON, ['Event','description']))
@@ -87,6 +86,7 @@ function TableRegisters({
     setRowData(tableJSON)
     gridRef.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
+
 
   const defaultColDef = useMemo<ColDef>(
     () => ({
@@ -113,14 +113,6 @@ function TableRegisters({
     });
   }, []);
 
-  const filterEventStartsWith = useCallback((el:string) => {
-    gridRef.current!.api.setColumnFilterModel('Event.description', {
-      type: "startsWith",
-      filter: `${el}`,
-    }).then(() => {
-      gridRef.current!.api.onFilterChanged();
-    });
-  }, [])
 
   const filterGenderStartsWith = useCallback((el:string) => {
     gridRef.current!.api.setColumnFilterModel('Category.gender', {
@@ -146,7 +138,7 @@ function TableRegisters({
       headerName: "Atleta",
       flex: 1,
     },
-    {
+    { //Coluna utilizada apenas para filtro
       field: "description",
       headerName: "description",
       flex: 1,
@@ -201,10 +193,11 @@ function TableRegisters({
       //hide: true,
     },
     {
-      field: "Event.description",
-      hide: true,
+      field: "weight",
+      //field: "Category.weight",
+      headerName: "Categoria (Kg)",
       flex: 1,
-      filter: "agTextColumnFilter"
+      //hide: true,
     },
     {
       headerName: "Ação",
@@ -321,7 +314,7 @@ function TableRegisters({
             <MultiSelect
               className="min-w-[250px] w-fit h-fit  rounded-md border-1 p-0"
               options={multiSelectOptions}
-              onChange={(e: any) => filterEventStartsWith(e?.value)}
+              onChange={(e: any) => console.log(e)}
             />
           </div>
         )}

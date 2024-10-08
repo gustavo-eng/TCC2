@@ -35,7 +35,9 @@ function MyGym() {
   async function onSubmit(data: any) {
 
     setLoading(true);
+
     let response = await client.gym.update(String(user.idGym), data);
+
     if (response.status) {
       toast.success("Academia atualizada com sucesso", { duration: 4000 });
       setTimeout(() => {
@@ -45,7 +47,6 @@ function MyGym() {
       toast.error("Erro ao atualizar academia ", { duration: 4000 });
     }
     setLoading(false);
-
   }
 
   return (

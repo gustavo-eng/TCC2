@@ -66,7 +66,6 @@ function TableRegisters({
   const [multiSelectOptions, setMultiSelectOptions] = useState<any>();
   const themeClass = gridTheme;
   const [quickFilterText, setQuickFilterText] = useState<string>();
-  const [selectedEvent, setSelectedEvent] = useState<string>();
 
   useEffect(() => {
     setMultiSelectOptions(structNestedOptions(tableJSON, ['Event','description']))
@@ -87,6 +86,7 @@ function TableRegisters({
     setRowData(tableJSON)
     gridRef.current?.api.sizeColumnsToFit();
   }, [tableJSON]);
+
 
   const defaultColDef = useMemo<ColDef>(
     () => ({
@@ -113,14 +113,6 @@ function TableRegisters({
     });
   }, []);
 
-  const filterEventStartsWith = useCallback((el:string) => {
-    gridRef.current!.api.setColumnFilterModel('Event.description', {
-      type: "startsWith",
-      filter: `${el}`,
-    }).then(() => {
-      gridRef.current!.api.onFilterChanged();
-    });
-  }, [])
 
   const filterGenderStartsWith = useCallback((el:string) => {
     gridRef.current!.api.setColumnFilterModel('Category.gender', {
@@ -146,7 +138,7 @@ function TableRegisters({
       headerName: "Atleta",
       flex: 1,
     },
-    {
+    { //Coluna utilizada apenas para filtro
       field: "description",
       headerName: "description",
       flex: 1,
@@ -199,12 +191,6 @@ function TableRegisters({
       headerName: "Categoria (Kg)",
       flex: 1,
       //hide: true,
-    },
-    {
-      field: "Event.description",
-      hide: true,
-      flex: 1,
-      filter: "agTextColumnFilter"
     },
     {
       headerName: "Ação",
@@ -319,9 +305,9 @@ function TableRegisters({
           <div>
             <label className="text-gray-700 font-semibold">Evento</label>
             <MultiSelect
-              className="min-w-[250px] w-fit h-fit  rounded-md border-1 p-0"
+              className="w-fit h-fit  rounded-md border-1 p-0"
               options={multiSelectOptions}
-              onChange={(e: any) => filterEventStartsWith(e?.value)}
+              onChange={(e: any) => console.log(e)}
             />
           </div>
         )}
