@@ -27,7 +27,7 @@ function MyFprj() {
     defaultValues: {
       president: user?.president,
       email: user?.email,
-      phone: user?.phone
+
     }
   })
 

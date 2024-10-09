@@ -23,12 +23,7 @@ function MyFprj() {
     handleSubmit,
     formState: { errors },
   } = useForm<updateFprj>({
-    resolver: zodResolver(myFprjSchema),
-    defaultValues: {
-      president: user?.president,
-      email: user?.email,
-      phone: user?.phone
-    }
+    resolver: zodResolver(myFprjSchema)
   })
 
   async function onSubmit(data: updateFprj) {

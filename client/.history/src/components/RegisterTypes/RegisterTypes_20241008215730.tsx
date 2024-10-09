@@ -71,40 +71,37 @@ function RegisterTypes() {
 	const getTypeEvents = async () => {
 		try {
 			const response = await client.event.get();
-			console.log('response.payload', response.payload); // Verifique a resposta aqui
-			if (response?.payload?.length > 0) {
-				setTypeEvent([...response?.payload]);
+			if(response?.payload?.length > 0) {
+				setTypeEvent([...response?.payload])
 			} else {
 				setTypeEvent([]);
 			}
-		} catch (err) {
+		}catch(err) {
 			console.error('Erro ao listar tipos de eventos. Erros --> ', err);
 			setTypeEvent([]);
 		}
-	};
-
+	}
 
 
 	const submitTypeEvent = async () => {
 		try {
-			const response = await client.event.post({ type: nameTypeEvent });
-			if (response.status) {
-				toast.success('Tipo de evento adicionado com sucesso');
-				await getTypeEvents(); // Atualiza a tabela após a adição do novo tipo de evento
-			} else {
-				toast.error('Erro ao adicionar tipo de evento');
-			}
-		} catch (err) {
-			console.log(err);
+		  const response = await client.event.post({type: nameTypeEvent});
+		  if (response.status) {
+			toast.success('Tipo de evento adicionado com sucesso');
+			await getTypeEvents(); // Atualiza a tabela após a adição do novo tipo de evento
+		  } else {
 			toast.error('Erro ao adicionar tipo de evento');
+		  }
+		} catch (err) {
+		  console.log(err);
+		  toast.error('Erro ao adicionar tipo de evento');
 		}
-	};
-
+	  };
 
 
 	useEffect(() => {
 		getTypeEvents();
-	}, [setTypeEvent])
+	}, [])
 
     return (
         <div className="w-screen flex flex-col gap-2 p-2">
@@ -127,8 +124,8 @@ function RegisterTypes() {
                 />
             </div>
             <div className="w-full bg-red-30 p-5">
-               { typeEvent && <TableTypeEvents tableJSON={typeEvent ||  []}  gridRef={gridRef}/>  }
-               { !typeEvent && <TableTypeEvents tableJSON={[]} gridRef={gridRef}/>  }
+               { typeEvent && <TableTypeEvents tableJSON={typeEvent ||  []} />  }
+               { !typeEvent && <TableTypeEvents tableJSON={[]} />  }
             </div>
           </div>
 		  {/* Formulario */}

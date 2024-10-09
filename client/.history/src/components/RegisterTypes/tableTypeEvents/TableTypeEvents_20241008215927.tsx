@@ -16,7 +16,7 @@ import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 import { AgGridReact } from "@ag-grid-community/react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
@@ -70,10 +70,9 @@ function TableTypeEvents({
     },
   ]);
 
-  useEffect(() => {
+  const onGridReady = useCallback(() => {
     setRowData(tableJSON || []);
-}, [tableJSON]); // Atualize rowData sempre que tableJSON mudar
-
+  }, [tableJSON]);
 
   const getRowHeight = useCallback(
     (params: RowHeightParams): number | undefined | null => {
@@ -99,7 +98,7 @@ function TableTypeEvents({
         masterDetail
         getRowHeight={getRowHeight}
         suppressDragLeaveHidesColumns={true}
-
+        onGridReady={onGridReady}
       />
     </div>
   );

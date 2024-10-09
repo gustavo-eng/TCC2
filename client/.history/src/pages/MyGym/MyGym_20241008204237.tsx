@@ -30,7 +30,7 @@ function MyGym() {
       neighborhood: user?.neighborhood,
       street: user?.street,
       number: user?.number,
-      phone: user?.phone,
+      phone: user?.phone
     }
   });
 

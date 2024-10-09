@@ -1,6 +1,5 @@
-import { AgGridReact } from '@ag-grid-community/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import client from '../../service/client';
@@ -11,11 +10,42 @@ import TableTypeEvents from "./tableTypeEvents/TableTypeEvents";
 import { registerType, typeRegisterScheema } from './typeRegisterTypes';
 
 
+let mockdata = {
+	"status": true,
+	"msg": "Event types listed successfully",
+	"payload": [
+		{
+			"idTypeEvent": 1,
+			"type": "Brasileiro",
+			"createdAt": "2024-09-14T18:34:37.000Z",
+			"updatedAt": "2024-09-14T18:34:37.000Z"
+		},
+		{
+			"idTypeEvent": 2,
+			"type": "Mundial",
+			"createdAt": "2024-09-14T20:16:27.000Z",
+			"updatedAt": "2024-09-14T20:16:27.000Z"
+		},
+		{
+			"idTypeEvent": 3,
+			"type": "Regional",
+			"createdAt": "2024-09-29T22:35:15.000Z",
+			"updatedAt": "2024-09-29T22:35:15.000Z"
+		},
+		{
+			"idTypeEvent": 3,
+			"type": "Regional",
+			"createdAt": "2024-09-29T22:35:15.000Z",
+			"updatedAt": "2024-09-29T22:35:15.000Z"
+		},
+
+	]
+}
 
 function RegisterTypes() {
+
+	const [output, setOutput] = useState<any>();
 	const [nameTypeEvent, setNameTypeEvent] = useState<string>("");
-	const [typeEvent,setTypeEvent] = useState<any>();
-	const gridRef = useRef<AgGridReact>(null);
 
 	const {
 		register,
@@ -31,8 +61,6 @@ function RegisterTypes() {
 		control,
 		name: 'weight',
 	})
-
-
 
 	const submitCategory = async (data: any) => {
 
@@ -58,6 +86,8 @@ function RegisterTypes() {
 		//setOutput(objResult)
 	}
 
+
+
 	const addNewWeight  = () => {
 		append({ valueText: '' });
 	};
@@ -67,49 +97,22 @@ function RegisterTypes() {
 	}
 
 
+	const submitTypeEvent = () => {
 
-	const getTypeEvents = async () => {
+
 		try {
-			const response = await client.event.get();
-			console.log('response.payload', response.payload); // Verifique a resposta aqui
-			if (response?.payload?.length > 0) {
-				setTypeEvent([...response?.payload]);
-			} else {
-				setTypeEvent([]);
-			}
-		} catch (err) {
-			console.error('Erro ao listar tipos de eventos. Erros --> ', err);
-			setTypeEvent([]);
+
+		}catch {
+
 		}
-	};
 
-
-
-	const submitTypeEvent = async () => {
-		try {
-			const response = await client.event.post({ type: nameTypeEvent });
-			if (response.status) {
-				toast.success('Tipo de evento adicionado com sucesso');
-				await getTypeEvents(); // Atualiza a tabela após a adição do novo tipo de evento
-			} else {
-				toast.error('Erro ao adicionar tipo de evento');
-			}
-		} catch (err) {
-			console.log(err);
-			toast.error('Erro ao adicionar tipo de evento');
-		}
-	};
-
-
-
-	useEffect(() => {
-		getTypeEvents();
-	}, [setTypeEvent])
+	}
 
     return (
         <div className="w-screen flex flex-col gap-2 p-2">
-		   <Toaster position='top-right'/>
+			<Toaster position='top-right'/>
           <GlobalTile  title="Registro de tipos de eventos e categoria" />
+		  {JSON.stringify(nameTypeEvent)}
           <div className="w-full flex flex-col items-center gap-3">
             <h1  className="text-green-600 font-bold text-2xl">Tipos de eventos </h1>
             <div className="flex flex-row gap-2">
@@ -122,13 +125,13 @@ function RegisterTypes() {
                 <Button
                     label="Adicionar"
 					type='button'
-					onClick={() => submitTypeEvent()}
+					onClick={() => console.log('')}
                     className="p-2 rounded-md bg-green-500/90 hover:bg-green-600"
                 />
             </div>
             <div className="w-full bg-red-30 p-5">
-               { typeEvent && <TableTypeEvents tableJSON={typeEvent ||  []}  gridRef={gridRef}/>  }
-               { !typeEvent && <TableTypeEvents tableJSON={[]} gridRef={gridRef}/>  }
+               { mockdata.payload && <TableTypeEvents tableJSON={mockdata.payload ||  []} />  }
+               { !mockdata.payload && <TableTypeEvents tableJSON={[]} />  }
             </div>
           </div>
 		  {/* Formulario */}

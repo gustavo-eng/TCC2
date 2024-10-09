@@ -28,9 +28,7 @@ function MyGym() {
       city: user?.city,
       cnpj: user?.cnpj,
       neighborhood: user?.neighborhood,
-      street: user?.street,
-      number: user?.number,
-      phone: user?.phone,
+
     }
   });
 

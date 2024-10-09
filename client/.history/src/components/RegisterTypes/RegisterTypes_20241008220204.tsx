@@ -87,24 +87,24 @@ function RegisterTypes() {
 
 	const submitTypeEvent = async () => {
 		try {
-			const response = await client.event.post({ type: nameTypeEvent });
-			if (response.status) {
-				toast.success('Tipo de evento adicionado com sucesso');
-				await getTypeEvents(); // Atualiza a tabela após a adição do novo tipo de evento
-			} else {
-				toast.error('Erro ao adicionar tipo de evento');
-			}
-		} catch (err) {
-			console.log(err);
+		  const response = await client.event.post({type: nameTypeEvent});
+		  if (response.status) {
+			toast.success('Tipo de evento adicionado com sucesso');
+			await getTypeEvents(); // Atualiza a tabela após a adição do novo tipo de evento
+			gridRef.current?.api.refreshCells({ force: true });
+		  } else {
 			toast.error('Erro ao adicionar tipo de evento');
+		  }
+		} catch (err) {
+		  console.log(err);
+		  toast.error('Erro ao adicionar tipo de evento');
 		}
-	};
-
+	  };
 
 
 	useEffect(() => {
 		getTypeEvents();
-	}, [setTypeEvent])
+	}, [])
 
     return (
         <div className="w-screen flex flex-col gap-2 p-2">

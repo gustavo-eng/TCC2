@@ -16,7 +16,7 @@ import { SetFilterModule } from "@ag-grid-enterprise/set-filter";
 import { AgGridReact } from "@ag-grid-community/react";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
@@ -44,7 +44,7 @@ function TableTypeEvents({
   const [selectedRowData, setSelectedRowData] = useState<any>(null);
   const gridStyle = useMemo(() => ({ height: "100%", width: "100%" }), []);
   const paginationPageSizeSelector = [5, 10, 20];
-
+  const gridRef = useRef<AgGridReact>(null);
 
   const defaultColDef = useMemo<ColDef>(
     () => ({
@@ -70,10 +70,10 @@ function TableTypeEvents({
     },
   ]);
 
-  useEffect(() => {
+  const onGridReady = useCallback(() => {
     setRowData(tableJSON || []);
-}, [tableJSON]); // Atualize rowData sempre que tableJSON mudar
-
+    gridRef.current?.api.sizeColumnsToFit();
+  }, [tableJSON]);
 
   const getRowHeight = useCallback(
     (params: RowHeightParams): number | undefined | null => {
@@ -99,7 +99,7 @@ function TableTypeEvents({
         masterDetail
         getRowHeight={getRowHeight}
         suppressDragLeaveHidesColumns={true}
-
+        onGridReady={onGridReady}
       />
     </div>
   );

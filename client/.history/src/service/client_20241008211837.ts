@@ -30,7 +30,6 @@ const payments = {
 
 const event = {
     post: (data: {type: string}): Promise<any> => _post('/typeEvent', data),
-    get: (): Promise<any> => _get('/typeEvent'),
 }
 
 const gym = {
@@ -66,7 +65,6 @@ const client = {
     gym,
     category,
     fprj,
-    event,
     athlet
 }
 

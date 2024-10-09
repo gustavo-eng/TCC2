@@ -92,6 +92,12 @@ export default function CreateAccountManager() {
     setAllGyms()
   }, []);
 
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+
 
   return (
     <div className="w-full h-[70vh] pb-1 mb-0 flex flex-col">
@@ -198,7 +204,7 @@ export default function CreateAccountManager() {
               />
               <div className=" flex flex-col items-start w-full mt-2 ">
                 <label htmlFor="" className="text-gray-600/90 font-semibold" >Escolha a academia</label>
-                <Select className="w-full" options={gyms} onChange={(e: any) => setIdGym(e?.value)}/>
+                <Select className="w-fit" options={gyms} onChange={(e: any) => setIdGym(e?.value)}/>
               </div>
             </div>
           </FormWizard.TabContent>
@@ -208,3 +214,13 @@ export default function CreateAccountManager() {
   );
 }
 
+  {/*
+              <Select
+                id="hours"
+                label="Academia"
+                options={gyms}
+                onChange={(e: any) => setIdGym(e.target.value)}
+                classNameOptions="bg-red-300"
+                classNameSelect="bg-white rounded-md border-gray-400 hover:border-green-500  "
+              />
+              */}

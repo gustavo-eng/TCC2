@@ -23,12 +23,7 @@ function MyFprj() {
     handleSubmit,
     formState: { errors },
   } = useForm<updateFprj>({
-    resolver: zodResolver(myFprjSchema),
-    defaultValues: {
-      president: user?.president,
-      email: user?.email,
-      phone: user?.phone
-    }
+    resolver: zodResolver(myFprjSchema)
   })
 
   async function onSubmit(data: updateFprj) {
@@ -58,9 +53,10 @@ function MyFprj() {
         <h1 className="text-2xl text-green-500 font-semibold mt-5">FPRJ</h1>
         <div className=" w-fit grid grid-cols-3 gap-2 text-sm mx-auto ">
           {/*
-            <p className="text-gray-500">Presidente: {user?.president || ""}</p>
-            <p className="text-gray-500">Email: {user?.email || ""}</p>
-            <p className="text-gray-500">Telefone: {user?.phone || ""} </p>
+          <p className="text-gray-500">Presidente: {user?.president || ""}</p>
+          <p className="text-gray-500">Email: {user?.email || ""}</p>
+          <p className="text-gray-500">Telefone: {user?.phone || ""} </p>
+
           */}
         </div>
       </div>

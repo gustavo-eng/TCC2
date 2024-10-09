@@ -92,6 +92,12 @@ export default function CreateAccountManager() {
     setAllGyms()
   }, []);
 
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
+
 
   return (
     <div className="w-full h-[70vh] pb-1 mb-0 flex flex-col">

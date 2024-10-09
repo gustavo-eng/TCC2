@@ -104,7 +104,7 @@ function RegisterTypes() {
 
 	useEffect(() => {
 		getTypeEvents();
-	}, [setTypeEvent])
+	}, [submitTypeEvent])
 
     return (
         <div className="w-screen flex flex-col gap-2 p-2">

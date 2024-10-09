@@ -71,7 +71,7 @@ function TableTypeEvents({
   ]);
 
   useEffect(() => {
-    setRowData(tableJSON || []);
+    setRowData(tableJSON);
 }, [tableJSON]); // Atualize rowData sempre que tableJSON mudar
 
 
