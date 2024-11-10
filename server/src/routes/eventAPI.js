@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const events = require("../controllers/eventController");
-
-
 const validate = require('../middleware/validate');
 const schemaEvent = require('../schemas/eventSchema');
 
@@ -14,7 +12,7 @@ router.get("/:idEvent", events.findOne);
 
 //Create event
 //router.post("/", validate(eventSchema), events.create);
-router.post("/", validate(schemaEvent), events.create);
+router.post("/",  validate(schemaEvent), events.create);
 
 //Delete event
 router.delete("/:idEvent", events.delete);

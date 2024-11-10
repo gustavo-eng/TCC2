@@ -155,7 +155,7 @@ export default function TabCompetitions() {
               street={el?.street ?? " "}
               idEvent={String(el?.idEvent)}
               onClick={() => handleCardAction(Number(el?.idEvent))}
-              description={`${el?.description} _idEvent : ${el?.idEvent}`}
+              description={`${el?.description}`}
               price={String(el?.price) || ""}
               btn={user.role == "athlet" ? true : findEventById(allRegistration, Number(el?.idEvent))}
               //btn={user.role == "athlet" ? true : (findEventById(allRegistration, Number(el?.idEvent)))}

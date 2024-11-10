@@ -9,7 +9,7 @@ const objectError = {
 
 const typeEventSchema = z.object({
     type: z.string(objectError)
-        .min(5, { message: "Must be less 5 chateres" })
+        .min(3, { message: "Must be less 3 chateres" })
         .max(15, { message: "Must be max 15 chateres" })
 });
 

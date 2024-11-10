@@ -6,16 +6,12 @@ var http = require("http");
 const bodyParser = require("body-parser");
 const compression = require("compression");
 const morgan = require("morgan");
-const cron = require("node-cron");
 const { rateLimit } = require("express-rate-limit");
 const { controllAccess } = require("./middleware/Auth");
-
 // Middleware Controll And Response
 const { fail } = require("./helpers/response");
-
 // Synchronize with the database
 const db = require("../src/config/db");
-
 db.sequelize
   .sync({ alter: true })
   .then(() => {
@@ -25,17 +21,13 @@ db.sequelize
     console.log("Error connecting to database. Error -> " + err);
     process.exit(1);
   });
-
 const app = express();
 const server = http.createServer(app);
-
 const initServer = async () => {
   const getPort = (await import("get-port")).default;
   const defaultPort = 3001;
   const port = await getPort({ port: [defaultPort, 3002, 3003] });
-
   app.set("port", port);
-
   // Configuration for Rate Limiting
   const limiter = rateLimit({
     windowMs: 105 * 60 * 1000,
@@ -45,11 +37,9 @@ const initServer = async () => {
   // 15/09 - Futuramente, estabelecer regras de cors.
   const corsOptions = {
     origin: "*", // Permite todas as origens. Para mais segurança, especifique as origens.
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Métodos HTTP permitidos
-    //allowedHeaders: ['Content-Type', 'Authorization'], // Cabeçalhos permitidos
-    credentials: true, // Permitir credenciais (cookies, headers de autenticação, etc.)
+    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos HTTP permitidos
+    credentials: true,
   };
-
   app.use(limiter);
   app.use(morgan("dev"));
   app.use(bodyParser.json());
@@ -61,8 +51,6 @@ const initServer = async () => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, "uploads")));
-
-  // Routes
   var routeLogin = require("./routes/login");
   var routePayment = require("./routes/registrationAPI");
   var routeFprj = require("./routes/fprjAPI");
@@ -75,7 +63,6 @@ const initServer = async () => {
   var routeTypeEvent = require("./routes/typeEventAPI");
   var routeRequest = require("./routes/requestAPI");
   var routerResetPassword = require("./routes/resetPasswordAPI");
-
   app.use("/registration", routePayment);
   app.use("/category", routeCategory);
   app.use("/events", routeEvent);
@@ -89,7 +76,6 @@ const initServer = async () => {
   app.use("/resetPassword", routerResetPassword);
   app.use("/token", routerToken);
   app.use("/mail", require("./routes/mailAPI"));
-
   // Middleware to catch Multer errors
   app.use((err, req, res, next) => {
     if (err.code === "INVALID_FILE_TYPE") {
@@ -100,21 +86,10 @@ const initServer = async () => {
     }
     next(err);
   });
-
-  // 11/09
   app.use((req, res, next) => {
-    res.setHeader("Cache-Control", "public, max-age=0"); // 0 segundos
+    res.setHeader("Cache-Control", "public, max-age=0");
     next();
   });
-  // Schedule task to run every minute
-  /*
-    cron.schedule('* * * * *', () => {
-        console.log('Running task every minute')
-        cleanObsoletAthlets({ XDays: 10 });
-    });
-    */
-
-  // Error handling middleware
   app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get("env") === "development" ? err : {};
@@ -127,10 +102,18 @@ const initServer = async () => {
     console.log(`Server running on port ${port}`);
   });
 };
-
 initServer();
-
 module.exports = app;
+
+ // Schedule task to run every minute
+  /*
+    cron.schedule('* * * * *', () => {
+        console.log('Running task every minute')
+        cleanObsoletAthlets({ XDays: 10 });
+    });
+    */
+
+  // Error handling middleware
 
 /*
 var express = require('express');

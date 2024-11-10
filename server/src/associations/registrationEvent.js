@@ -1,5 +1,4 @@
 module.exports = (db) => {
-
     try {
 
         db.Event.hasMany(db.Registration, {
@@ -15,8 +14,6 @@ module.exports = (db) => {
             onDelete: "CASCADE",
             onUpdate: "CASCADE",
         });
-
-
     } catch (err) {
         console.log('Erro relacionamentos event and typeEvent. Error ==> ' + err)
     }

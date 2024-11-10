@@ -29,16 +29,16 @@ exports.sendRequestEmail = async (req, res) => {
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         await user.save();
 
-        // Alterar esse link por um link de frontEnd
-        const resetUrl = `http://localhost:3000/resetPassword/${resetToken}`;
-        const message = `You requested a password reset. Please make a PUT request to: \n\n ${resetUrl}`;
+
+        const resetUrl = `http://localhost:5173/forgot-password/${resetToken}`
+        const message = `You requested a password reset. Please access : \n\n ${resetUrl}`;
 
         let recipient = email;
         let subject = "New Function reset password";
         let text = message;
 
         await sendEmail(process.env.EMAIL_SENDER, recipient, subject, text);
-        res.status(statusCode.OK).json(success({}, "payload", "Email enviado com successo"));
+        res.status(statusCode.OK).json(success({token: resetToken || null}, "payload", "Email enviado com successo"));
 
     } catch (err) {
         res.status(statusCode.BAD_REQUEST).json(fail("Error sending email. Error ==>  " + err));
@@ -57,10 +57,9 @@ exports.resetPassword = async (req, res) => {
             return res.status(statusCode.BAD_REQUEST).json(fail("Token and password are required"));
         };
 
-
         // Hash o token recebido
         const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-        const user = await Athlet.findOne({
+        const user = await db.Athlet.findOne({
             where: {
                 resetPasswordToken: hashedToken,
                 resetPasswordExpires: { [Op.gt]: Date.now() },
@@ -73,10 +72,10 @@ exports.resetPassword = async (req, res) => {
         user.resetPasswordExpires = null;
         await user.save();
 
-        res.status(200).send('Password updated')
+        res.status(statusCode.OK).json(success({}, "payload", "Senha resetada com sucesso!"))
 
     } catch (err) {
-        res.status(500).send('Error resetting password. Erro' + err);
+        res.status(500).json(fail("Error ao resetar senha. Error -> " + err));
     };
 
 };
