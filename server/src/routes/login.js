@@ -13,6 +13,8 @@ const { fail } = require('../helpers/response');
 router.post("/signIn", async (req, res) => {
 
     let { email, password } = req.body;
+    console.log('login body ')
+    console.log(req.body)
 
     try {
         let user = await returnUser({ email: email });

@@ -25,6 +25,9 @@ exports.findAll = async (req, res) => {
 exports.create = async (req, res) => {
     try {
 
+        console.log('body create fprj => ');
+        console.log(req.body);
+
         const {
             president,
             phone,
@@ -73,7 +76,8 @@ exports.update = async (req, res) => {
     try {
 
         const { president, phone, email, password } = req.body;
-
+        console.log('atualizando fprj')
+        console.log(req.body)
 
         const fprj = await Fprj.findOne();
 
@@ -81,7 +85,7 @@ exports.update = async (req, res) => {
         if (president) obj.president = president;
         if (phone) obj.phone = phone;
         if (email) obj.email = email;
-        if (password) obj.password = password;
+        if (password) obj.password = bcrypt.hashSync(password, 10); //password
 
         if (Object.keys(obj).length != 0) Object.keys(obj).forEach(key => fprj[key] = obj[key]);
 

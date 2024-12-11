@@ -59,7 +59,7 @@ exports.create = async (req, res) => {
 
         const newEvent = {
             description,
-            price: npm(price), // 29/09/2024
+            price: Number(price),
             startDate: startDate,
             endDate: endDate,
             neighborhood,
