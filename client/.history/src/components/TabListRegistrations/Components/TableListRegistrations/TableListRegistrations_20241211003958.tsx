@@ -221,8 +221,8 @@ function TableListRegistrations({
           return setIsModalValidate(false)
         }}
     />
-      <div className="flex flex-col lg:flex-row justify-start mt-2">
-        <div className="flex lg:flex-row flex-col lg:none mb-8">
+      <div className="flex flex-col lg:flex-row justify-start mt-2 gap-2">
+        <div className="flex lg:none mb-8">
         <Select
             id="gender"
             name="gender"

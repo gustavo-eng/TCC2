@@ -12,6 +12,9 @@ const { controllAccess } = require("./middleware/Auth");
 const { fail } = require("./helpers/response");
 // Synchronize with the database
 const db = require("../src/config/db");
+const cron = require('node-cron');
+const backupMySQL = require('./utils/backupMySQL');
+
 db.sequelize
   .sync({ alter: true })
   .then(() => {
@@ -51,6 +54,8 @@ const initServer = async () => {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(cookieParser());
   app.use(express.static(path.join(__dirname, "uploads")));
+
+
   var routeLogin = require("./routes/login");
   var routePayment = require("./routes/registrationAPI");
   var routeFprj = require("./routes/fprjAPI");
@@ -63,6 +68,8 @@ const initServer = async () => {
   var routeTypeEvent = require("./routes/typeEventAPI");
   var routeRequest = require("./routes/requestAPI");
   var routerResetPassword = require("./routes/resetPasswordAPI");
+
+
   app.use("/registration", routePayment);
   app.use("/category", routeCategory);
   app.use("/events", routeEvent);
@@ -76,6 +83,7 @@ const initServer = async () => {
   app.use("/resetPassword", routerResetPassword);
   app.use("/token", routerToken);
   app.use("/mail", require("./routes/mailAPI"));
+
   // Middleware to catch Multer errors
   app.use((err, req, res, next) => {
     if (err.code === "INVALID_FILE_TYPE") {
@@ -98,12 +106,44 @@ const initServer = async () => {
       .json(fail("Internal server error. Error -> " + err));
   });
 
+  cron.schedule('0 3 * * 1', () => {
+    console.log('Iniciando o backup semanal...');
+    backupMySQL();
+  });
+
   server.listen(port, () => {
     console.log(`Server running on port ${port}`);
   });
 };
+
 initServer();
+
 module.exports = app;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  // Schedule task to run every minute
   /*

@@ -19,7 +19,6 @@ export const login = createAsyncThunk<AuthResponse, AuthRequest>(
     return client.auth.post(data);
   }
 );
-
 /*
 export const register = createAsyncThunk<RegisterRequest, RegisterResponse>("auht/register", async (data) => {
   return client.auth.register(data)

@@ -132,7 +132,7 @@ export default function TabCompetitions() {
   }, []);
 
   return (
-    <div className="lg:w-full w-screen">
+    <div className="w-full">
       <ModalRegistration
         isOpen={isModalRegistration}
         onClose={closeModalRegistration}
@@ -149,7 +149,7 @@ export default function TabCompetitions() {
       </div>
       <div className="w-full flex flex-row justify-center items-end gap-2 mb-2 pr-1.5 flex-wrap h-fit ">
         <Input
-          className="  lg:w-[50%] w-full   ml-4 h-fit"
+          className=" w-full lg:w-[50%] w-full   ml-4 h-fit"
           spanInputClassName=""
           inputClassName="rounded-md border-gray-400 hover:border-green-500 m-0 p-2"
           placeholder="Pesquise pelo nome ou pela data"
@@ -159,7 +159,7 @@ export default function TabCompetitions() {
         />
         {user.role == "fprj" && (
           <Button
-            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit w-full py-2 lg:px-4 rounded-md flex flex-row lg:justify-between justify-center lg:ml-0 ml-4 lg:gap-0 gap-3 h-full"
+            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit py-2 px-4 rounded-md flex flex-row justify-between h-full"
             label="Evento"
             classNameLabel="text-sm"
             onClick={openModalEvent}

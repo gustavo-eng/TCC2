@@ -151,12 +151,12 @@ function TabListGyms() {
 
 
   return (
-    <div className="lg:w-full w-screen h-full flex flex-col  items-start p-2">
+    <div className="w-full h-full flex flex-col  items-start p-2">
       <ModalRegisterGym
         isOpen={isModalGymOpen}
         onClose={closeModalRegisterGym}
         refresh={getGyms}
-      />
+      />ddd
       <div className=" w-full flex flex-col items-center text-center mb-4 ">
       <GlobalTile title="Academias"/>
         <div className="w-full flex flex-row justify-center items-center mt-5 ">

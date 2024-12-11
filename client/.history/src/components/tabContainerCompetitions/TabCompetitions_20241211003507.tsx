@@ -132,7 +132,7 @@ export default function TabCompetitions() {
   }, []);
 
   return (
-    <div className="lg:w-full w-screen">
+    <div className="w-full bg-red">
       <ModalRegistration
         isOpen={isModalRegistration}
         onClose={closeModalRegistration}
@@ -159,7 +159,7 @@ export default function TabCompetitions() {
         />
         {user.role == "fprj" && (
           <Button
-            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit w-full py-2 lg:px-4 rounded-md flex flex-row lg:justify-between justify-center lg:ml-0 ml-4 lg:gap-0 gap-3 h-full"
+            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit py-2 px-4 rounded-md flex flex-row justify-between h-full"
             label="Evento"
             classNameLabel="text-sm"
             onClick={openModalEvent}

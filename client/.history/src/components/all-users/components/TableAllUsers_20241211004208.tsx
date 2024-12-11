@@ -158,7 +158,7 @@ function TableAllUsers({
   return (
     <div className={`w-full h-full  ${themeClass}`}>
       <div className="flex flex-col lg:flex-row justify-start mt-2">
-        <div className="flex lg:flex-row flex-col lg:ml-0 ml-3 lg:none mb-8">
+        <div className="flex lg:flex-row flex-col lg:ml-0 ml-2 lg:none mb-8">
           <Select
             id="gym"
             name="gym"

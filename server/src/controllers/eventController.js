@@ -59,7 +59,7 @@ exports.create = async (req, res) => {
 
         const newEvent = {
             description,
-            price: Number(price), // 29/09/2024
+            price: npm(price), // 29/09/2024
             startDate: startDate,
             endDate: endDate,
             neighborhood,
@@ -100,15 +100,16 @@ exports.delete = async (req, res) => {
         if (!event) res.status(statusCode.NOT_FOUND).json(fail("Event not found"));
 
         await Event.destroy({ where: { idEvent: idEvent } }).then(_ => {
-            return res.status(statusCode.OK).json(success("Event deleted successfully"));
+           res.status(statusCode.OK).json(success("Event deleted successfully"));
         }).catch(err => {
-            return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Fail to delete event. Erro -> ", err));
+            console.log('Erro in DELETE /events/{id}. Error => ', err);
+            res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Fail to delete event. Erro -> ", err));
         });
 
     } catch (err) {
-        return res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error: " + err));
+        console.log(`Error in DELETE /events/{id}. Erro ==> ${err}`);
+        res.status(statusCode.INTERNAL_SERVER_ERROR).json(fail("Error server. Error: " + err));
     }
-
 }
 
 exports.update = async (req, res) => {

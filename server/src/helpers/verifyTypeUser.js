@@ -1,6 +1,4 @@
 const db = require('../config/db');
-const bcrypt = require('bcrypt');
-////bcrypt.compareSync(password, email)
 
 const returnUser = async ({ email }) => {
 
@@ -12,10 +10,10 @@ const returnUser = async ({ email }) => {
 
         const Gym = await db.Gym.findOne({ where: { email: email } });
         if (Gym) return Gym.get({ plain: true });
-        //bcrypt.compareSync(password, email
+
         const Fprj = await db.Fprj.findOne({ where: { email: email } });
         if (Fprj) return Fprj.get({ plain: true });
-        return false; // Se nenhum dos registros foi encontrado
+        return false;
 
     } catch (err) {
         return 'Error -> ' + err.message;
@@ -24,13 +22,3 @@ const returnUser = async ({ email }) => {
 
 
 module.exports = returnUser;
-
-/*
-const returnUser = ({email, senha}) => { // forca a passar o parametro  correto
-    console.log('Email ' + email)
-    console.log('Senha ' + senha)
-  }
-
-
-  returnUser({"email": "Gustavo", "senha": "fadsfadsfasdfas"})
-*/

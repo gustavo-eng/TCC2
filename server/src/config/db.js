@@ -14,7 +14,6 @@ const sequelize = new Sequelize('fprjsystem',
             acquire: 30000,
             idle: 10000
         }
-
     },
 );
 

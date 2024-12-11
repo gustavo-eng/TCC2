@@ -159,7 +159,7 @@ export default function TabCompetitions() {
         />
         {user.role == "fprj" && (
           <Button
-            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit w-full py-2 lg:px-4 rounded-md flex flex-row lg:justify-between justify-center lg:ml-0 ml-4 lg:gap-0 gap-3 h-full"
+            className="lg:mt-0  bg-green-500/85 hover:bg-green-500  lg:w-fit w-full py-2 lg:px-4 rounded-md flex flex-row lg:justify-between justify-center lg:gap-0 gap-3 h-full"
             label="Evento"
             classNameLabel="text-sm"
             onClick={openModalEvent}

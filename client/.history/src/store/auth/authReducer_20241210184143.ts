@@ -25,6 +25,10 @@ export const register = createAsyncThunk<RegisterRequest, RegisterResponse>("auh
   return client.auth.register(data)
 })
 */
+
+
+
+
 const authSlice = createSlice({
   name: "user",
   initialState,
