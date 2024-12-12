@@ -105,7 +105,7 @@ export default function CardAction({
             {endDate && (
               <p className="text-sm mt-1">
                 Data de Fim: {endDate || " "} {endDate &&  (endHour && "Horario: " + endHour )}
-              </p>
+              </p>DD
             )}
           </div>
           <p className="lg:text-[12px] text-[8px]">

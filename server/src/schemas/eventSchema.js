@@ -15,15 +15,13 @@ const eventSchema = z.object({
         .nullable().optional(),
 
     price: z.number({ invalid_type_error: "Field must be a valid number" })
-        .positive({ message: "Must be a positive value" })
-        .max(20000),
-    startDate: z.string()
-        .regex(isoDateRegex, { message: "Date must be in ISO 8601 format: YYYY-MM-DDTHH:mm:ss.sssZ" }),
-
-    endDate: z.string()
-        .regex(isoDateRegex, { message: "Date must be in ISO 8601 format: YYYY-MM-DDTHH:mm:ss.sssZ" })
-        .optional(),
-
+        .positive({ message: "Must be a positive value" }),
+    startDate: z.any().optional(),
+    //    .regex(isoDateRegex, { message: "Date must be in ISO 8601 format: YYYY-MM-DDTHH:mm:ss.sssZ" }),
+    endDate: z.any().optional(),
+    //z.string()
+     //   .regex(isoDateRegex, { message: "Date must be in ISO 8601 format: YYYY-MM-DDTHH:mm:ss.sssZ" })
+     //   .optional(),
     street: z.string({ invalid_type_error: "Must be a string" })
         .min(3, { message: "Must be at least 3 characteres" })
         .max(255, { message: "This field must contain a maximum of 255 characters" }),

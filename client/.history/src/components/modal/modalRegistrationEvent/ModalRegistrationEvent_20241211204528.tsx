@@ -82,6 +82,8 @@ export default function ModalRegistrationEvent({
         idTypeEvent: Number(data.idTypeEvent)
       };
 
+     console.log('formattedData ', formattedData)
+
       const response = await client.competition.post(formattedData);
       if (response.status) {
         toast.success("Evento cadastrado com sucesso");

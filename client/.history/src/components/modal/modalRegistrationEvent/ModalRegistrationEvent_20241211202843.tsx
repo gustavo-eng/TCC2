@@ -1,4 +1,3 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
@@ -7,7 +6,7 @@ import Input from "../../input/Input";
 import Select from "../../select/Select";
 import TimerPicker from "../../timerPicker/TimerPicker";
 import Modal from "../Modal";
-import { registerEvent, registerEventSchema } from "./typeRegisterEvent";
+import { registerEvent } from "./typeRegisterEvent";
 interface eventModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -55,32 +54,28 @@ export default function ModalRegistrationEvent({
     setValue,
     watch
   } = useForm<registerEvent>({
-    resolver: zodResolver(registerEventSchema),
+    //resolver: zodResolver(registerEventSchema),
     reValidateMode: "onBlur"
   });
 
   const onSubmit = async (data: registerEvent) => {
-
     console.log(`submit new event *** `)
     console.log(data)
-    console.log('dataStart' , dataStart);
-    console.log('dataEnd ', dataEnd);
-
     setLoading(true);
     try {
       // Formatar startDate e endDate como strings
       const formattedData = {
         ...data,
         //startDate: format(data.startDate, 'yyyy-MM-dd HH:mm:ss'), // Formato desejado
-        //startDate:(new Date(String(dataStart))).toISOString(), // Formato desejado
+        startDate:(new Date(String(dataStart))).toISOString(), // Formato desejado
         //endDate: format(data.endDate, 'yyyy-MM-dd HH:mm:ss'), // Formato desejado
-        //endDate: (new Date(String(dataEnd))).toISOString(), // Formato desejado
-        startDate: new Date(String(dataStart))?.toISOString(),
-        endDate: new Date(String(dataEnd))?.toISOString(),
+        endDate: (new Date(String(dataEnd))).toISOString(), // Formato desejado
         price: Number(data.price),
         number: Number(data.number),
         idTypeEvent: Number(data.idTypeEvent)
       };
+
+     console.log('formattedData ', formattedData)
 
       const response = await client.competition.post(formattedData);
       if (response.status) {

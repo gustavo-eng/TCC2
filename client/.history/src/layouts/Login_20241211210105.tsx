@@ -2,6 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import Logo from "../components/logo/Logo";
 import ImageLogin from "../images/ImageLogin";
 
+
+
 export default function Login() {
     return (
         <>

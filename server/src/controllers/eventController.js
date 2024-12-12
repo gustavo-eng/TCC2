@@ -42,7 +42,7 @@ exports.findByTypeEvent = async (req, res) => {
 
 
 exports.create = async (req, res) => {
-
+    console.log(`create`)
     try {
 
         const {
@@ -57,6 +57,8 @@ exports.create = async (req, res) => {
             idTypeEvent
         } = req.body;
 
+        console.log(`req.body create event `, req?.body)
+
         const newEvent = {
             description,
             price: Number(price),
@@ -69,6 +71,8 @@ exports.create = async (req, res) => {
             idTypeEvent: Number(idTypeEvent),
         };
 
+        console.log(`newEvent backend`)
+        console.log(newEvent)
 
         await Event.create(newEvent).then(event => {
 

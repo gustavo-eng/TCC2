@@ -60,12 +60,8 @@ export default function ModalRegistrationEvent({
   });
 
   const onSubmit = async (data: registerEvent) => {
-
     console.log(`submit new event *** `)
     console.log(data)
-    console.log('dataStart' , dataStart);
-    console.log('dataEnd ', dataEnd);
-
     setLoading(true);
     try {
       // Formatar startDate e endDate como strings
@@ -75,12 +71,12 @@ export default function ModalRegistrationEvent({
         //startDate:(new Date(String(dataStart))).toISOString(), // Formato desejado
         //endDate: format(data.endDate, 'yyyy-MM-dd HH:mm:ss'), // Formato desejado
         //endDate: (new Date(String(dataEnd))).toISOString(), // Formato desejado
-        startDate: new Date(String(dataStart))?.toISOString(),
-        endDate: new Date(String(dataEnd))?.toISOString(),
         price: Number(data.price),
         number: Number(data.number),
         idTypeEvent: Number(data.idTypeEvent)
       };
+
+     console.log('formattedData ', formattedData)
 
       const response = await client.competition.post(formattedData);
       if (response.status) {

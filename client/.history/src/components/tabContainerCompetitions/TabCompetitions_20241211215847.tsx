@@ -1,5 +1,5 @@
 import { Plus } from "@phosphor-icons/react";
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/buttons/button";
@@ -41,17 +41,13 @@ export default function TabCompetitions() {
   const [isModalEventOpen, setModalEventOpen] = useState(false);
   const [isModalRegistration, setModalRegistration] = useState<boolean>(false);
   const [idEvent, setIdEvent] = useState<string>("");
-  const [isClose, setisClose] = useState(true)
   const [allRegistration, setAllRegistratiom] = useState<any>();
   const [events, setEvents] = useState<EventTypes[] | null>(null);
   //Events modal
 
   //Event
   const openModalEvent = () => setModalEventOpen(true);
-  const closeModalEvent = () => {
-    setisClose(!isClose)
-    return setModalEventOpen(false)
-  };
+  const closeModalEvent = () => setModalEventOpen(false);
 
   const handleCardAction = useCallback(
     (id: any) => {
@@ -136,11 +132,9 @@ export default function TabCompetitions() {
   }, []);
 
 
-  useMemo(() => {
-    if(!isClose) {
-      getAllCompetitions();
-    }
-  }, [isClose])
+  useEffect(() => {
+
+  },[closeModalEvent])
 
 
   return (
@@ -181,15 +175,12 @@ export default function TabCompetitions() {
         )}
       </div>
       <div className="w-fit grid grid-cols-2 lg:grid-cols-4 gap-0">
-        {/* JSON.stringify(filteredEvents) */}
         {filteredEvents?.map((el, idx) => (
           <Fragment key={idx}>
             <CardAction
               name={el?.typeEvent?.type}
               startDate={formatDate(String(el?.startDate))}
-              startHour={extractHour(String(el?.startDate)) || null}
-              endDate={formatDate(String(el?.endDate)) || null}
-              endHour={extractHour(String(el?.endDate)) || null}
+              startHour={extractHour(String(el?.createdAt))}
               city={el?.city ?? " "}
               neighborhood={el?.neighborhood}
               street={el?.street ?? " "}

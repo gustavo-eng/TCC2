@@ -101,10 +101,12 @@ export default function CardAction({
           <div className="flex flex-col mb-2 justify-stretch">
             <p className="text-sm mb-0">
               Data de inicio: {startDate || " "} {startDate &&  (startHour && "Horario: " + startHour )}
-            </p>
+
+            </p>dddddd
             {endDate && (
               <p className="text-sm mt-1">
-                Data de Fim: {endDate || " "} {endDate &&  (endHour && "Horario: " + endHour )}
+                Data de Fim: {endDate || "xx/xx/xxxx"} Horário:{" "}
+                {endHour || "hh:mm:yyyy"}{" "}
               </p>
             )}
           </div>

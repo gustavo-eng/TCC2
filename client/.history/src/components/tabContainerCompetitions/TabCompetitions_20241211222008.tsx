@@ -41,7 +41,7 @@ export default function TabCompetitions() {
   const [isModalEventOpen, setModalEventOpen] = useState(false);
   const [isModalRegistration, setModalRegistration] = useState<boolean>(false);
   const [idEvent, setIdEvent] = useState<string>("");
-  const [isClose, setisClose] = useState(true)
+  const [control, setControl] = useState(false)
   const [allRegistration, setAllRegistratiom] = useState<any>();
   const [events, setEvents] = useState<EventTypes[] | null>(null);
   //Events modal
@@ -49,7 +49,7 @@ export default function TabCompetitions() {
   //Event
   const openModalEvent = () => setModalEventOpen(true);
   const closeModalEvent = () => {
-    setisClose(!isClose)
+    setControl(!control)
     return setModalEventOpen(false)
   };
 
@@ -137,10 +137,8 @@ export default function TabCompetitions() {
 
 
   useMemo(() => {
-    if(!isClose) {
-      getAllCompetitions();
-    }
-  }, [isClose])
+
+  }, [isModalEventOpen])
 
 
   return (

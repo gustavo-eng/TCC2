@@ -7,6 +7,11 @@ import { authSelector } from "../../store/auth/authReducer";
 import { hasNotifications } from "../../utils/hasNotifications";
 import Button from "../buttons/button";
 
+interface BellNotificationsProps {
+ // hasNotification?: boolean;
+}
+
+
 
 
 export default function BellNotifications() {
@@ -19,6 +24,7 @@ export default function BellNotifications() {
   const toggleDropdown = async () => {
     let response = await client.gym.solicitation(String(user?.idGym));
     setSolicitations(response.payload);
+    console.log(response.payload, '**************')
 
     if(hasNotifications(solicitations)) {
       setIsOpen(!isOpen);
@@ -30,7 +36,7 @@ export default function BellNotifications() {
   const acceptAthlet = async (id: string | number) => {
     let response = await client.gym.acceptSolicitation(id);
     if(response.status) {
-      toast.success('Atleta aceito com sucesso', {duration: 4000});
+      toast.success('Atleta Deletado com sucesso', {duration: 4000});
     } else {
       toast.error('Erro ao aceitar atleta', {duration: 4000});
     }
