@@ -53,7 +53,6 @@ export default function ModalRegistration({
   const [allCategory, setAllCategory] = useState<any>();
   const [optionsGenderGenerate, setOptionsGenderGenerate] = useState<any>();
   const [optionsWeight, setOptionsWeight] = useState<any>();
-  const [sent, setSent] = useState(false)
 
   const { user } = useAppSelector(authSelector);
 
@@ -174,9 +173,9 @@ export default function ModalRegistration({
     try {
       const el = await client.payments.post(formData);
       if (el?.status) {
-        setSent(true);
-        //toast.success("Inscrição enviada com sucesso", { duration: 2000 });
-
+        toast.dismiss()
+        toast.success("Inscrição enviada com sucesso", { duration: 2000 });
+        toast.dismiss()
       } else {
         toast.error("Erro ao enviar inscrição", { duration: 4000 });
       }
@@ -200,7 +199,7 @@ export default function ModalRegistration({
         textHeader={textHeader || "Register"}
         hasFooter
         labelBtnCancel="Cancelar"
-        labelBtnOk={sent ? "Enviado!": "Salvar"}
+        labelBtnOk="Salvar"
       >
         <div className=" w-full h-full p-1">
           <div className="p-0.5">
@@ -233,7 +232,6 @@ export default function ModalRegistration({
             <Select
               id="gender"
               name="gender"
-              data-testId="select-gender"
               options={optionsGenderGenerate}
               label="Sexo"
               isOptional={false}
@@ -251,7 +249,6 @@ export default function ModalRegistration({
             <Select
               id="classCategory"
               name="classCategory"
-              data-testId="select-category"
               options={classCategoryOptions}
               isOptional={false}
               label="Selecione a classe"
@@ -264,11 +261,10 @@ export default function ModalRegistration({
                 }
               }}
               disabled={!gender}
-              />
+            />
             <Select
               id="weight"
               name="weight"
-              data-testId="select-weight"
               isOptional={false}
               options={optionsWeight}
               label="Categoria (Kg)"
@@ -278,7 +274,7 @@ export default function ModalRegistration({
             />
           </div>
           <div className="mt-2">
-            <FileInput data-cy="file-input" label="Anexe o comprovante" onFileDrop={setFile} />
+            <FileInput label="Anexe o comprovante" onFileDrop={setFile} />
           </div>
         </div>
       </Modal>

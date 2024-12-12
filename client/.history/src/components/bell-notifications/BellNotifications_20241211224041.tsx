@@ -48,6 +48,7 @@ export default function BellNotifications() {
 
   const getSolicitation = async () => {
     let response = await client.gym.solicitation(String(user?.idGym));
+    console.warn('responseee' , response)
     setSolicitations(response.payload);
 
   };

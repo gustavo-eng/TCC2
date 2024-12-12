@@ -251,7 +251,6 @@ export default function ModalRegistration({
             <Select
               id="classCategory"
               name="classCategory"
-              data-testId="select-category"
               options={classCategoryOptions}
               isOptional={false}
               label="Selecione a classe"
@@ -264,11 +263,10 @@ export default function ModalRegistration({
                 }
               }}
               disabled={!gender}
-              />
+            />
             <Select
               id="weight"
               name="weight"
-              data-testId="select-weight"
               isOptional={false}
               options={optionsWeight}
               label="Categoria (Kg)"
@@ -278,7 +276,7 @@ export default function ModalRegistration({
             />
           </div>
           <div className="mt-2">
-            <FileInput data-cy="file-input" label="Anexe o comprovante" onFileDrop={setFile} />
+            <FileInput label="Anexe o comprovante" onFileDrop={setFile} />
           </div>
         </div>
       </Modal>
